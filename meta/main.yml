@@ -1,0 +1,32 @@
+---
+galaxy_info:
+  role_name: "sonarqube"
+  author: "Lean Delivery team <team@lean-delivery.com>"
+  description: "Lean Delivery SonarQube server install"
+  company: "Epam Systems"
+  license: "Apache"
+  min_ansible_version: "2.5"
+  issue_tracker_url: "https://github.com/lean-delivery/ansible-role-sonarqube/issues"
+  platforms:
+    - name: "Ubuntu"
+      versions:
+        - "xenial"
+        - "trusty"
+    - name: "Debian"
+      versions:
+        - "stretch"
+        - "jessie"
+    - name: "EL"
+      versions:
+        - "7"
+
+  galaxy_tags:
+    - "development"
+    - "system"
+    - "packaging"
+    - "system"
+    - "web"
+    - "java"
+
+dependencies:
+  - "lean_delivery.java"

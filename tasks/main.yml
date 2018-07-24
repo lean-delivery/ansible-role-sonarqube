@@ -1,0 +1,25 @@
+---
+# tasks file for sonarqube
+
+- name: "Choose platform based task "
+  include_tasks: "{{ platform }}"
+  with_first_found:
+    - "system/{{ ansible_facts.system }}.yml"
+    - "system/not-supported.yml"
+  loop_control:
+    loop_var: platform
+
+- name: "Download plugins"
+  get_url:
+    url: "{{ item }}"
+    dest: "{{ sonar_installation }}extensions/plugins"
+    mode: "0644"
+    owner: "{{ sonar_user }}"
+    group: "{{ sonar_group }}"
+  until: "'OK' in sonar_plugin.msg"
+  retries: 3
+  delay: 5
+  register: sonar_plugin
+  with_items:
+    - "{{ sonar_plugins }}"
+  become: True

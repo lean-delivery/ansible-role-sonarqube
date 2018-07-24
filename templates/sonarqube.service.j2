@@ -1,0 +1,17 @@
+[Unit]
+Description=SonarQube Server
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}
+ExecStart={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh start
+ExecStop={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh stop
+ExecReload={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh restart
+PIDFile={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/SonarQube.pid
+Type=forking
+User={{ sonar_user }}
+StartLimitInterval=30
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+---
+postgresql_users:
+  - name: sonar
+    pass: sonar
+
+postgresql_databases:
+  - name: sonar
+    owner: sonar
