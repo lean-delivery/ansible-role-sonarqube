@@ -42,3 +42,7 @@ sonar_db:
 sonar_store: "https://sonarsource.bintray.com/Distribution/sonarqube"
 # local download path
 download_path: "/tmp/"
+
+sonar_proxy:
+  ssl_cert_path: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
+  ssl_key_path: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
