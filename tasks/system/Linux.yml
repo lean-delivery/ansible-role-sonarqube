@@ -94,5 +94,5 @@
       dest: "/home/{{ sonar_user }}/https.conf"
       mode: "0444"
       owner: "{{ sonar_user }}"
-            
+
   become: True
