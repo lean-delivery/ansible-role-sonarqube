@@ -57,6 +57,7 @@
         - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties
       dest: "{{ sonar_path }}"
       list_files: True
+    become: False      
     become_user: "{{ sonar_user }}"
     register: sonar_installation_result
 
