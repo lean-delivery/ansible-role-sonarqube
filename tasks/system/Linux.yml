@@ -56,9 +56,8 @@
       exclude:
         - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties
       dest: "{{ sonar_path }}"
-      owner: "{{ sonar_user }}"
-      group: "{{ sonar_group }}"
       list_files: True
+    become_user: "{{ sonar_user }}"
     register: sonar_installation_result
 
   - name: "SonarQube installation facts"
