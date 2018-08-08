@@ -7,7 +7,12 @@ lint:
   name: yamllint
 platforms:
   - name: instance
-    image: centos:7
+    image: solita/ubuntu-systemd:latest
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
   lint:
