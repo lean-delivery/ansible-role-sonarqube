@@ -60,6 +60,7 @@
       group: "{{ sonar_group }}"
       list_files: True
     register: sonar_installation_result
+    diff: yes
 
   - name: "SonarQube installation facts"
     set_fact:
