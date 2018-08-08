@@ -54,7 +54,7 @@
     unarchive:
       src: "{{ sonar_artifact.dest }}"
       exclude:
-        - conf/sonar.properties
+        - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties
       dest: "{{ sonar_path }}"
       owner: "{{ sonar_user }}"
       group: "{{ sonar_group }}"
