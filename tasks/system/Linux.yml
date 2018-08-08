@@ -53,6 +53,7 @@
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
     unarchive:
       src: "{{ sonar_artifact.dest }}"
+      exclude: "conf/sonar.properties"
       dest: "{{ sonar_path }}"
       owner: "{{ sonar_user }}"
       group: "{{ sonar_group }}"
