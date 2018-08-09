@@ -30,7 +30,6 @@
       state: "directory"
       owner: "{{ sonar_user }}"
       group: "{{ sonar_group }}"
-      mode: "0555"
 
   - name: "Install requirement unzip"
     package:
