@@ -51,7 +51,7 @@
     register: sonar_artifact
 
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
-    become_user: "{{ sonar_user }}"  
+    become_user: "{{ sonar_user }}"
     unarchive:
       src: "{{ sonar_artifact.dest }}"
       exclude:
