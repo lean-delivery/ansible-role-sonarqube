@@ -18,7 +18,7 @@
   - name: "Create sonar user"
     user:
       name: "{{ sonar_user }}"
-      shell: "/bin/nologin"
+      shell: "/sbin/nologin"
       group: "{{ sonar_group }}"
       state: "present"
       home: "/home/{{ sonar_user }}"
