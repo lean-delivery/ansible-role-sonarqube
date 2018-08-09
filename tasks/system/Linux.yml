@@ -56,7 +56,6 @@
       exclude:
         - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties
       dest: "{{ sonar_path }}"
-      mode: "0755"
       list_files: True
     register: sonar_installation_result
 
