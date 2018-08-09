@@ -51,16 +51,15 @@
     register: sonar_artifact
 
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
+    become_user: "{{ sonar_user }}"  
     unarchive:
       src: "{{ sonar_artifact.dest }}"
       exclude:
         - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties
       dest: "{{ sonar_path }}"
-      owner: "{{ sonar_user }}"
-      group: "{{ sonar_group }}"
+      mode: "0755"
       list_files: True
     register: sonar_installation_result
-    diff: yes
 
   - name: "SonarQube installation facts"
     set_fact:
