@@ -5,7 +5,8 @@ sonar_plugins:
 
 # Default plugins set:
 # This plugins set is mandatory for the all E-Commerce projects
-  - 'https://github.com/checkstyle/sonar-checkstyle/releases/download/4.11/checkstyle-sonar-plugin-4.11.jar'
+  - 'https://github.com/checkstyle/sonar-checkstyle/releases/download/4.11/ |
+    checkstyle-sonar-plugin-4.11.jar'
   - 'https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/2.6/sonar-pmd-plugin-2.6.jar'
   - 'https://sonarsource.bintray.com/Distribution/sonar-web-plugin/sonar-web-plugin-2.6.0.1053.jar'
   # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
