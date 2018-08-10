@@ -8,14 +8,12 @@ lint:
   options:
     config-file: molecule/yamllint.yml
 platforms:
-  - name: test-ca-root
+  - name: instance
     image: leandelivery/docker-systemd:centos7
     capabilities:
       - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    groups:
-      - ca-root
 provisioner:
   name: ansible
   config_options:
@@ -28,7 +26,7 @@ provisioner:
     name: ansible-lint
     enabled: False
 scenario:
-  name: docker-new
+  name: default
 verifier:
   name: testinfra
   lint:
