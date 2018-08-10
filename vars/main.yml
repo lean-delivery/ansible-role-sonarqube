@@ -3,7 +3,7 @@
 
 sonar_plugins:
 
-# Default plugins set:
+# Default plugins.
 # This plugins set is mandatory for the all E-Commerce projects
   - "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.11/\
     checkstyle-sonar-plugin-4.11.jar"
@@ -25,7 +25,7 @@ sonar_plugins:
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/\
     sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar"
 
-# optional plugins
+# Optional plugins.
 #     you have to delete old 5.4 plugin manually after role is installed
 #  - "https://sonarsource.bintray.com/Distribution/sonar-java-plugin/\
 #    sonar-java-plugin-5.5.0.14655.jar"
@@ -50,3 +50,7 @@ sonar_plugins:
 #    sonar-gitlab-plugin-3.0.1.jar"
 #  - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
 #    sonar-auth-gitlab-plugin-1.3.2.jar"
+
+sonar_exclude_plugins:
+
+# Exclude plugins that goes with SonarQube installation: 1.if you don't need them or 2.if there is newer version in sonar_plugins list
