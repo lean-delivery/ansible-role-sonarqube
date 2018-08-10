@@ -12,7 +12,7 @@ server {
     }
 
     # extensions list will be updated
-    location ~* .(svg|jpg|jpeg|gif|png|ico|css|zip|rar|pdf)$ {
+    location ~* .(css|gif|html|ico|jpeg|js|map|png|svg|txt|xml)$ {
       root {{ sonar_installation }}web;
     }   
 }
