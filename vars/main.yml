@@ -30,9 +30,6 @@ sonar_plugins:
     sonar-javascript-plugin-4.2.1.6529.jar"
 
 # Optional plugins.
-#     you have to delete old 5.4 plugin manually after role is installed
-#  - "https://sonarsource.bintray.com/Distribution/sonar-java-plugin/\
-#    sonar-java-plugin-5.5.0.14655.jar"
 #  - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
 #    sonar-auth-github-plugin-1.3.jar"
 #  - "https://github.com/racodond/sonar-css-plugin/releases/download/4.18/\
