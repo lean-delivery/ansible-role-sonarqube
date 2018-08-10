@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: instance
-    image: solita/ubuntu-systemd:latest
+    image: leandelivery/docker-systemd:centos7
     command: /sbin/init
     capabilities:
       - SYS_ADMIN
