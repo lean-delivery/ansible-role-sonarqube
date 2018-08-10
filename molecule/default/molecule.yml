@@ -5,22 +5,31 @@ driver:
   name: docker
 lint:
   name: yamllint
+  options:
+    config-file: molecule/yamllint.yml
 platforms:
-  - name: instance
+  - name: test-ca-root
     image: leandelivery/docker-systemd:centos7
-    command: /sbin/init
     capabilities:
       - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - ca-root
 provisioner:
   name: ansible
+  config_options:
+    ssh_connection:
+      control_path: "/var/ans/%%h"
+  env:
+    ANSIBLE_LIBRARY:
+      /home/gitlab-runner/.local/lib/python2.7/site-packages/epam_ansible
   lint:
     name: ansible-lint
+    enabled: False
 scenario:
-  name: default
+  name: docker-new
 verifier:
   name: testinfra
   lint:
     name: flake8
-    enabled: true
