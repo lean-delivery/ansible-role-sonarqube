@@ -8,12 +8,17 @@ lint:
   options:
     config-file: molecule/yamllint.yml
 platforms:
-  - name: instance
+  - name: test_sonarqube
     image: leandelivery/docker-systemd:centos7
+    tmpfs:
+      - /tmp
+      - /run    
     capabilities:
       - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - sonarqube
 provisioner:
   name: ansible
   config_options:
