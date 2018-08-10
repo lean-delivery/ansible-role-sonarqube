@@ -53,4 +53,6 @@ sonar_plugins:
 
 sonar_exclude_plugins:
 
-# Exclude plugins that goes with SonarQube installation: 1.if you don't need them or 2.if there is newer version in sonar_plugins list
+# Exclude plugins that goes with SonarQube installation: 
+# 1.if you don't need them or 
+# 2.if there is newer version in sonar_plugins list
