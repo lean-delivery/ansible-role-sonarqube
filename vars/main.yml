@@ -9,8 +9,8 @@ sonar_plugins:
     checkstyle-sonar-plugin-4.11.jar"
   - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/2.6/\
     sonar-pmd-plugin-2.6.jar"
-  - "https://sonarsource.bintray.com/Distribution/sonar-web-plugin/\
-    sonar-web-plugin-2.6.0.1053.jar"
+  - "https://sonarsource.bintray.com/Distribution/sonar-html-plugin/\
+    sonar-html-plugin-3.0.0.1411.jar"
   # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
   - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.7.0/\
     sonar-findbugs-plugin-3.7.0.jar"
