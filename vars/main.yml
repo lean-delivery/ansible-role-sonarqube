@@ -24,6 +24,10 @@ sonar_plugins:
     sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar"
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/\
     sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar"
+  - "https://sonarsource.bintray.com/Distribution/sonar-java-plugin/\
+    sonar-java-plugin-5.6.1.15064.jar"
+  - "https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/\
+    sonar-javascript-plugin-4.2.1.6529.jar"
 
 # Optional plugins.
 #     you have to delete old 5.4 plugin manually after role is installed
@@ -53,6 +57,8 @@ sonar_plugins:
 
 sonar_exclude_plugins:
 
-# Exclude plugins that goes with SonarQube installation: 
-# 1.if you don't need them or 
+# Exclude plugins that goes with SonarQube installation:
+# 1.if you don't need them or
 # 2.if there is newer version in sonar_plugins list
+  - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/extensions/plugins/sonar-java-plugin-5.4.0.14284.jar
+  - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/extensions/plugins/sonar-javascript-plugin-4.1.0.6085.jar

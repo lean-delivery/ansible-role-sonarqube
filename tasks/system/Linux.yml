@@ -55,6 +55,7 @@
       src: "{{ sonar_artifact.dest }}"
       exclude:
         - sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties
+        - {{ sonar_exclude_plugins }}
       dest: "{{ sonar_path }}"
       list_files: True
     register: sonar_installation_result
