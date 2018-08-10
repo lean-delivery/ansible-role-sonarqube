@@ -1,0 +1,18 @@
+upstream sonar {
+    server {{ web.host }}:{{ web.port }};
+}
+
+server {
+
+    server_name {{ ansible_hostname }};
+    listen {{ sonar_proxy.http.port }};
+
+    location / {
+      proxy_pass http://sonar;
+    }
+
+    # extensions list will be updated
+    location ~* .(svg|jpg|jpeg|gif|png|ico|css|zip|rar|pdf)$ {
+      root {{ sonar_installation }}web;
+    }   
+}

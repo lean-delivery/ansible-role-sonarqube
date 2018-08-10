@@ -5,10 +5,10 @@ upstream sonar {
 server {
 
     server_name {{ ansible_hostname }};
-    listen 443 ssl;
+    listen {{ sonar_proxy.https.port }} ssl;
 
-    ssl_certificate {{ sonar_proxy.ssl_cert_path }};
-    ssl_certificate_key {{ sonar_proxy.ssl_key_path }};
+    ssl_certificate {{ sonar_proxy.https.ssl_cert_path }};
+    ssl_certificate_key {{ sonar_proxy.https.ssl_key_path }};
 
     location / {
       proxy_pass http://sonar;

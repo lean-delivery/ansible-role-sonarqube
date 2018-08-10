@@ -88,11 +88,20 @@
       name: "sonarqube"
       enabled: True
 
-  - name: "Render nginx config"
+  - name: "Render nginx http config"
     template:
-      src: "https.conf.j2"
+      src: "nginx.http.conf.j2"
       dest: "/home/{{ sonar_user }}/https.conf"
       mode: "0444"
       owner: "{{ sonar_user }}"
+    when: sonar_proxy.protocol == "http"
+
+  - name: "Render nginx https config"
+    template:
+      src: "nginx.https.conf.j2"
+      dest: "/home/{{ sonar_user }}/https.conf"
+      mode: "0444"
+      owner: "{{ sonar_user }}"
+    when: sonar_proxy.protocol == "https"    
 
   become: True
