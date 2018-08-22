@@ -88,20 +88,20 @@
       name: "sonarqube"
       enabled: True
 
-  - name: "Render nginx http config"
+  - name: "Render nginx config"
     template:
-      src: "nginx.http.conf.j2"
-      dest: "/home/{{ sonar_user }}/nginx.https.conf"
+      src: "nginx.conf.j2"
+      dest: "/home/{{ sonar_user }}/nginx.conf"
       mode: "0444"
       owner: "{{ sonar_user }}"
-    when: sonar_proxy.protocol == "http"
+    when: sonar_proxy.type == "nginx"
 
-  - name: "Render nginx https config"
+  - name: "Render apache config"
     template:
-      src: "nginx.https.conf.j2"
-      dest: "/home/{{ sonar_user }}/nginx.https.conf"
+      src: "apache.conf.j2"
+      dest: "/home/{{ sonar_user }}/apache.conf"
       mode: "0444"
       owner: "{{ sonar_user }}"
-    when: sonar_proxy.protocol == "https"
+    when: sonar_proxy.type == "apache"
 
   become: True
