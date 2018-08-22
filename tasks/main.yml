@@ -23,7 +23,7 @@
   with_items:
     - "{{ sonar_plugins }}"
   become: True
-  
+
 - name: "Start sonarqube.service"
   service:
     name: "sonarqube"
