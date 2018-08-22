@@ -28,3 +28,4 @@
   service:
     name: "sonarqube"
     state: "started"
+  become: True
