@@ -6,4 +6,5 @@
   roles:
     - "lean_delivery.java"
     - "anxs.postgresql"
+    - "nginxinc.nginx"
     - "../../"  # this role
