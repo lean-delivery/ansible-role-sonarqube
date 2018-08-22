@@ -25,7 +25,7 @@ sonar_plugins:
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/\
     sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar"
   - "https://sonarsource.bintray.com/Distribution/sonar-java-plugin/\
-    sonar-java-plugin-5.7.0.15470.jar"    
+    sonar-java-plugin-5.7.0.15470.jar"
   - "https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/\
     sonar-javascript-plugin-4.2.1.6529.jar"
 
