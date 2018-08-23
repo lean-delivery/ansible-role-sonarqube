@@ -90,16 +90,16 @@
 
   - name: "Render nginx config"
     template:
-      src: "nginx.conf.j2"
-      dest: "/home/{{ sonar_user }}/nginx.conf"
+      src: "nginx.sonar.conf.j2"
+      dest: "/home/{{ sonar_user }}/conf/nginx/sonar.conf"
       mode: "0444"
       owner: "{{ sonar_user }}"
     when: sonar_proxy.type == "nginx"
 
   - name: "Render apache config"
     template:
-      src: "apache.conf.j2"
-      dest: "/home/{{ sonar_user }}/apache.conf"
+      src: "apache.sonar.conf.j2"
+      dest: "/home/{{ sonar_user }}/conf/apache/sonar.conf"
       mode: "0444"
       owner: "{{ sonar_user }}"
     when: sonar_proxy.type == "apache"
