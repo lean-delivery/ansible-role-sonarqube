@@ -6,3 +6,8 @@ postgresql_users:
 postgresql_databases:
   - name: sonar
     owner: sonar
+
+web:
+  host: "localhost"
+  port: 9000
+  path: "/"

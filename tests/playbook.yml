@@ -5,6 +5,11 @@
     - "./vars.yml"
   roles:
     - "lean_delivery.java"
+#   - "lean_delivery.ca-root"
+#   - "lean_delivery.ca-cert"    
     - "anxs.postgresql"
     - "nginxinc.nginx"
     - "../../"  # this role
+  post_tasks:
+    - service: name="sonarqube" state="started"    
+    - service: name="nginx" state="restarted"
