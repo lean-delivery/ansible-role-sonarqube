@@ -1,0 +1,24 @@
+upstream sonar {
+    server {{ web.host }}:{{ web.port }};
+}
+
+server {
+
+    server_name {{ ansible_hostname }};
+{% if sonar_proxy.ssl %}
+    listen {{ sonar_proxy.port }} ssl;
+
+    ssl_certificate {{ sonar_proxy.ssl_cert_path }};
+    ssl_certificate_key {{ sonar_proxy.ssl_key_path }};
+{% else %}
+	listen {{ sonar_proxy.port }};
+{% endif %}	
+
+    location / {
+      proxy_pass http://sonar;
+    }
+
+    location ~* .(css|gif|html|ico|jpeg|js|map|png|svg|txt|xml)$ {
+      root {{ sonar_installation }}web;
+    }   
+}

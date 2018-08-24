@@ -18,7 +18,7 @@
   - name: "Create sonar user"
     user:
       name: "{{ sonar_user }}"
-      shell: "/bin/nologin"
+      shell: "/sbin/nologin"
       group: "{{ sonar_group }}"
       state: "present"
       home: "/home/{{ sonar_user }}"
@@ -30,7 +30,6 @@
       state: "directory"
       owner: "{{ sonar_user }}"
       group: "{{ sonar_group }}"
-      mode: "0555"
 
   - name: "Install requirement unzip"
     package:
@@ -53,10 +52,11 @@
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
     unarchive:
       src: "{{ sonar_artifact.dest }}"
+      exclude: "{{ sonar_exclude_plugins }} + \
+      [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties' ]"
       dest: "{{ sonar_path }}"
-      owner: "{{ sonar_user }}"
-      group: "{{ sonar_group }}"
       list_files: True
+    become_user: "{{ sonar_user }}"
     register: sonar_installation_result
 
   - name: "SonarQube installation facts"
@@ -83,9 +83,22 @@
     systemd:
       daemon_reload: True
 
-  - name: "Start SonarQube server"
+  - name: "Enable sonarqube.service"
     service:
       name: "sonarqube"
       enabled: True
+
+  - name: "Check nginx conf directory"
+    stat:
+      path: /etc/nginx/conf.d
+    register: nginx_conf_dir
+
+  - name: "Render nginx config"
+    template:
+      src: "nginx.sonar.conf.j2"
+      dest: "/etc/nginx/conf.d/sonar.conf"
+      mode: "0444"
+      owner: "{{ sonar_user }}"
+    when: sonar_proxy.type == "nginx" and nginx_conf_dir.stat.exists and nginx_conf_dir.stat.isdir
 
   become: True

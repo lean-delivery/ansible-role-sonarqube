@@ -28,5 +28,4 @@ galaxy_info:
     - "web"
     - "java"
 
-dependencies:
-  - "lean_delivery.java"
+dependencies: []

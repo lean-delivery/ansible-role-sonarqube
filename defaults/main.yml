@@ -2,7 +2,7 @@
 # defaults file for sonarqube
 
 sonar_major_version: 7
-sonar_minor_version: 2
+sonar_minor_version: 2.1
 
 sonar_path: "/opt/sonarqube"
 sonar_user: "sonar"
@@ -42,3 +42,11 @@ sonar_db:
 sonar_store: "https://sonarsource.bintray.com/Distribution/sonarqube"
 # local download path
 download_path: "/tmp/"
+
+sonar_proxy:
+  type: "nginx"
+# type: "apache"
+  port: 443
+  ssl: True
+  ssl_cert_path: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
+  ssl_key_path: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"

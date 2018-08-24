@@ -6,3 +6,19 @@ postgresql_users:
 postgresql_databases:
   - name: sonar
     owner: sonar
+
+web:
+  host: "localhost"
+  port: 9000
+  path: "/"
+
+sonar_proxy:
+  type: "nginx"
+  port: 443
+  ssl: True
+  ssl_cert_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.pem"
+  ssl_key_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key"
+
+ssl_certs_path_owner: "root"
+ssl_certs_path_group: "root"
+ssl_certs_mode: "0755"
