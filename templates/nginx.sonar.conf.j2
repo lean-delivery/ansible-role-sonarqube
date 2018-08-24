@@ -18,7 +18,6 @@ server {
       proxy_pass http://sonar;
     }
 
-    # extensions list will be updated
     location ~* .(css|gif|html|ico|jpeg|js|map|png|svg|txt|xml)$ {
       root {{ sonar_installation }}web;
     }   
