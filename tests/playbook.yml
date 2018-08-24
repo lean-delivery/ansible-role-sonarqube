@@ -11,9 +11,8 @@
       when: ansible_distribution == 'RedHat'
   roles:
     - "lean_delivery.java"
-#   - "lean_delivery.ca-root"
-#   - "lean_delivery.ca-cert"
     - "anxs.postgresql"
+    - "jdauphant.ssl-certs"
     - "nginxinc.nginx"
     - "../../"  # this role
   post_tasks:
