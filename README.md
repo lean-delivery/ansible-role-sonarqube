@@ -22,13 +22,13 @@ Requirements
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
- - **Supported web servers** 
+ - **Supported web servers**
    - nginx 
  - **Supported OS**:
    - CentOS
      - 7
    - RHEL
-     - 7   
+     - 7
 
 Java, database, web server with self-signed certificate should be installed preliminarily:
     - lean_delivery.java
@@ -54,39 +54,39 @@ Role Variables
       - `host` - SonarQube binding ip address
         default: "0.0.0.0"
         `port` - TCP port for incoming HTTP connections
-		default: 9000
+        default: 9000
         `path` - web context
         default: "/"
   - `sonar_db` - database settings
       - `type` 
-	    default : "postgresql"
+        default : "postgresql"
         `port`
-		default : 5432
+        default : 5432
         `host`
-		default : "localhost"
+        default : "localhost"
         `name`
-		default: "sonar"
+        default: "sonar"
         `user`
-		default: "sonar"
+        default: "sonar"
         `password`
-		default: "sonar"
+        default: "sonar"
         `options`
-		default: ""
+        default: ""
   - `sonar_store` - sonarqube artifact provider
     default: "https://sonarsource.bintray.com/Distribution/sonarqube"
   - `download_path` - local download path
-    default: "/tmp/"		
+    default: "/tmp/"
   - `sonar_proxy` - web server settings
       - `type`
-	    default: "nginx"
-	    `port`
-	    default: 443
+        default: "nginx"
+        `port`
+        default: 443
         `ssl`
-	    default: True
+        default: True
         `ssl_cert_path`
-		default: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
+        default: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
         `ssl_key_path`
-		default: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"	
+        default: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
   - `sonar_plugins` - list of plugins that not included into SonarQube installation and should be also installed (override this variable excluding findbugs, checkstyle, pmd when installing SonarQube 7.3)
     default: see in /vars/main.yml
   - `sonar_exclude_plugins` - list of default plugins that should be excluded during installation
@@ -107,14 +107,14 @@ Example Playbook
   roles:
     - "lean_delivery.java"
     - "ANXS.postgresql"
-	  postgresql_users:
+      postgresql_users:
         - name: sonar
           pass: sonar
-	  postgresql_databases:
+      postgresql_databases:
         - name: sonar
-          owner: sonar	  
+          owner: sonar
     - "jdauphant.ssl-certs"
-	  ssl_certs_path_owner: "root"
+      ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
       ssl_certs_mode: "0755"
     - "nginxinc.nginx"
@@ -126,9 +126,9 @@ Example Playbook
       sonar_proxy:
         type: "nginx"
         port: 443
-        ssl: True  
+        ssl: True
         ssl_cert_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.pem"
-        ssl_key_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key"    
+        ssl_key_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key"
   post_tasks:
     - name: "start sonarqube"
       service: name="sonarqube" state="started"
