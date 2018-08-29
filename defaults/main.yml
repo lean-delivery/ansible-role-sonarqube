@@ -1,0 +1,52 @@
+---
+# defaults file for sonarqube
+
+sonar_major_version: 7
+sonar_minor_version: 2.1
+
+sonar_path: "/opt/sonarqube"
+sonar_user: "sonar"
+sonar_group: "sonar"
+
+# sonarqube web interface
+# should be covered reverse proxy
+web:
+  host: "0.0.0.0"
+  port: 9000
+  path: "/"
+
+# database connection
+sonar_db:
+  type: "postgresql"
+  port: 5432
+  host: "localhost"
+  name: "sonar"
+  user: "sonar"
+  password: "sonar"
+  options: ""
+
+# Since 7.1 mysql deprecated
+#  type: "mysql"
+#  port: 3306
+#  host: "localhost"
+#  name: "sonar"
+#  user: "sonar"
+#  password: "sonar"
+#  options: "?useUnicode=true&\
+#            characterEncoding=utf8&\
+#            rewriteBatchedStatements=true&\
+#            useConfigs=maxPerformance&\
+#            useSSL=false"
+
+# sonarqube artifact provider
+sonar_store: "https://sonarsource.bintray.com/Distribution/sonarqube"
+# local download path
+download_path: "/tmp/"
+
+sonar_proxy:
+  type: "nginx"
+# type: "apache"
+  port: 443
+  ssl: True
+  ssl_cert_path: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
+  ssl_key_path: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
