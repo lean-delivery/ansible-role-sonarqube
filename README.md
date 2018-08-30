@@ -137,7 +137,7 @@ Example Playbook
         ssl_key_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key"
       sonar_optional_plugins:
         - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
-          sonar-auth-github-plugin-1.3.jar" 		
+          sonar-auth-github-plugin-1.3.jar"
   post_tasks:
     - name: "start sonarqube"
       service: name="sonarqube" state="started"
