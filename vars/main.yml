@@ -10,7 +10,7 @@ sonar_plugins:
   - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/2.6/\
     sonar-pmd-plugin-2.6.jar"
   - "https://sonarsource.bintray.com/Distribution/sonar-html-plugin/\
-    sonar-html-plugin-3.0.0.1411.jar"
+    sonar-html-plugin-3.0.1.1444.jar"
   # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
   - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.7.0/\
     sonar-findbugs-plugin-3.7.0.jar"
@@ -29,27 +29,6 @@ sonar_plugins:
   - "https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/\
     sonar-javascript-plugin-4.2.1.6529.jar"
 
-# Optional plugins.
-#  - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
-#    sonar-auth-github-plugin-1.3.jar"
-#  - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
-#    qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
-#  - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
-#    qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
-#  - "https://github.com/racodond/sonar-json-plugin/releases/download/2.3/\
-#    sonar-json-plugin-2.3.jar"
-#  - "https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
-#    sonar-auth-bitbucket-plugin-1.0.jar"
-#    you have to build this plugin manually after role is installed, use "mvn clean install" command
-#  - "https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/\
-#    v1.2.3.zip"
-#  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
-#    sonar-xanitizer-plugin-1.5.0.jar"
-#  - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/3.0.1/\
-#    sonar-gitlab-plugin-3.0.1.jar"
-#  - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
-#    sonar-auth-gitlab-plugin-1.3.2.jar"
-
 sonar_exclude_plugins:
 
 # Exclude plugins that goes with SonarQube installation:
@@ -59,3 +38,5 @@ sonar_exclude_plugins:
     sonar-java-plugin-5.4.0.14284.jar"
   - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/extensions/plugins/\
     sonar-javascript-plugin-4.1.0.6085.jar"
+  - "{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/extensions/plugins/\
+    sonar-html-plugin-3.0.0.1411.jar"
