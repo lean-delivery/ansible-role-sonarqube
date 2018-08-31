@@ -143,6 +143,10 @@ Example Playbook
       service: name="sonarqube" state="started"
     - name: "restart nginx"
       service: name="nginx" state="restarted"
+# see https://github.com/ANXS/postgresql/issues/363
+    - name: "enable postgresql"
+      service: name="postgresql-{{ postgresql_version }}" enabled=True
+	  when: ansible_distribution == 'CentOS'
 ```
 
 ## License
