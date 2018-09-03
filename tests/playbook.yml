@@ -20,3 +20,6 @@
       service: name="sonarqube" state="started"
     - name: "restart nginx"
       service: name="nginx" state="restarted"
+    - name: "enable postgresql"
+      service: name="postgresql-{{ postgresql_version }}" enabled=True
+      when: ansible_distribution == 'CentOS'
