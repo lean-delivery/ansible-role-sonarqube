@@ -73,3 +73,7 @@ sonar_optional_plugins: []
 #    sonar-gitlab-plugin-3.0.1.jar"
 #  - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
 #    sonar-auth-gitlab-plugin-1.3.2.jar"
+#  - "https://sonarsource.bintray.com/Distribution/sonar-css-plugin/\
+#    sonar-css-plugin-1.0.1.508.jar"
+#  - "https://sonarsource.bintray.com/Distribution/sonar-kotlin-plugin/\
+#    sonar-kotlin-plugin-1.0.1.965.jar"
