@@ -120,6 +120,7 @@ Example Playbook
         - name: sonar
           owner: sonar
     - "jdauphant.ssl-certs"
+      ssl_certs_common_name: "example.com"
       ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
       ssl_certs_mode: "0755"
@@ -133,8 +134,8 @@ Example Playbook
         type: "nginx"
         port: 443
         ssl: True
-        ssl_cert_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.pem"
-        ssl_key_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key"
+        ssl_cert_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.pem"
+        ssl_key_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.key"
       sonar_optional_plugins:
         - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
           sonar-auth-github-plugin-1.3.jar"
