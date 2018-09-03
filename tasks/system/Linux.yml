@@ -52,17 +52,13 @@
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
     unarchive:
       src: "{{ sonar_artifact.dest }}"
-      exclude: "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties"
+      exclude: "{{ sonar_exclude_plugins }} + \
+      [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties' ]"
       dest: "{{ sonar_path }}"
       list_files: True
     become_user: "{{ sonar_user }}"
     register: sonar_installation_result
-
-  - name: "Delete old plugins"
-    file:
-      state: "absent"
-      path: "{{ item }}"
-    with_items: "{{ sonar_exclude_plugins }}"
+    ignore_errors: True
 
   - name: "SonarQube installation facts"
     set_fact:
