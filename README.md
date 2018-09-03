@@ -147,7 +147,7 @@ Example Playbook
 # see https://github.com/ANXS/postgresql/issues/363
     - name: "enable postgresql"
       service: name="postgresql-{{ postgresql_version }}" enabled=True
-	  when: ansible_distribution == 'CentOS'
+      when: ansible_distribution == 'CentOS'
 ```
 
 ## License
