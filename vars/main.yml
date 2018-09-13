@@ -30,6 +30,8 @@ sonar_plugins:
     sonar-java-plugin-5.7.0.15470.jar"
   - "https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/\
     sonar-javascript-plugin-4.2.1.6529.jar"
+  - "https://sonarsource.bintray.com/Distribution/sonar-typescript-plugin/\
+    sonar-typescript-plugin-1.8.0.3332.jar"
 
 sonar_exclude_plugins:
 
@@ -39,3 +41,5 @@ sonar_exclude_plugins:
     /extensions/plugins/sonar-java-plugin-5.4.0.14284.jar"
   - "{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
     /extensions/plugins/sonar-javascript-plugin-4.1.0.6085.jar"
+  - "{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-typescript-plugin-1.7.0.2893.jar"
