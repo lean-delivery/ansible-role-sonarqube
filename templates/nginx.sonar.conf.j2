@@ -22,5 +22,5 @@ server {
       root {{ sonar_installation }}web;
     }
     
-    client_max_body_size 32m;
+    client_max_body_size {{ sonar_proxy.client_max_body_size }};
 }

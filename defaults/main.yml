@@ -50,6 +50,7 @@ sonar_proxy:
   ssl: True
   ssl_cert_path: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
   ssl_key_path: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
+  client_max_body_size: "32m"
 
 sonar_optional_plugins: []
 
