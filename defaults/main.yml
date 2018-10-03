@@ -76,4 +76,4 @@ sonar_optional_plugins: []
 #  - "https://sonarsource.bintray.com/Distribution/sonar-css-plugin/\
 #    sonar-css-plugin-1.0.2.611.jar"
 #  - "https://sonarsource.bintray.com/Distribution/sonar-kotlin-plugin/\
-#    sonar-kotlin-plugin-1.0.1.965.jar"
+#    sonar-kotlin-plugin-1.1.0.1552.jar"
