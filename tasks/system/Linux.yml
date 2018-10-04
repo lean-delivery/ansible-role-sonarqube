@@ -58,8 +58,6 @@
       list_files: True
     become_user: "{{ sonar_user }}"
     register: sonar_installation_result
-    # see https://github.com/ansible/ansible/issues/45124
-    ignore_errors: True
 
   - name: "SonarQube installation facts"
     set_fact:
