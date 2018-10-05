@@ -66,7 +66,7 @@
       sonar_installation: "{{ sonar_path }}/{{ sonar_installation_result.files.0 }}"
       distro: "{{ ansible_facts.system | lower }}"
       arch: "{{ 'x86-32' if ansible_architecture == 'i386' else 'x86-64' }}"
-    when: sonar_installation_result is defined
+    when: sonar_installation_result.files is defined
 
     # continuation of ansible 2.6.* workaround
   - name: "SonarQube installation facts"
@@ -74,7 +74,7 @@
       sonar_installation: "{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/"
       distro: "{{ ansible_facts.system | lower }}"
       arch: "{{ 'x86-32' if ansible_architecture == 'i386' else 'x86-64' }}"
-    when: sonar_installation_result is not defined
+    when: sonar_installation_result.files is not defined
 
   - name: "Render sonar.properties"
     template:
