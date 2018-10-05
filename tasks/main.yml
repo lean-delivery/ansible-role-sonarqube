@@ -21,5 +21,5 @@
   delay: 5
   register: sonar_plugin
   with_items:
-    - "{{ sonar_plugins }}"
+    - "{{ sonar_plugins }} + {{ sonar_optional_plugins }}"
   become: True
