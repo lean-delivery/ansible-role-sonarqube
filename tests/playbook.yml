@@ -18,8 +18,8 @@
   post_tasks:
     - name: "start sonarqube"
       service: name="sonarqube" state="started"
-    - name: "restart nginx"
-      service: name="nginx" state="restarted"
+    - name: "restart, enable nginx"
+      service: name="nginx" state="restarted" enabled=True
     - name: "enable postgresql"
       service: name="postgresql-{{ postgresql_version }}" enabled=True
       when: ansible_distribution == 'CentOS'
