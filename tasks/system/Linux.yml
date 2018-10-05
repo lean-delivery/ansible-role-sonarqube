@@ -71,7 +71,8 @@
     # continuation of ansible 2.6.* workaround
   - name: "SonarQube installation facts"
     set_fact:
-      sonar_installation: "{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/"
+      sonar_installation: "{{ sonar_path }}/\
+      sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/"
       distro: "{{ ansible_facts.system | lower }}"
       arch: "{{ 'x86-32' if ansible_architecture == 'i386' else 'x86-64' }}"
     when: sonar_installation_result.files is not defined
