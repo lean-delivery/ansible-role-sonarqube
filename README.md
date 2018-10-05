@@ -8,17 +8,26 @@ sonarqube role
 
 This role installs SonarQube with extended set of plugins. It uses postgreSQL database and nginx web server which enables https and serves static content.
 
+In addition to default plugins included into SonarQube installation role installs following extra plugins:
+  - checkstyle-sonar-plugin-4.11
+  - sonar-pmd-plugin-2.6
+  - sonar-html-plugin-3.0.1.1444
+  - sonar-findbugs-plugin-3.8.0
+  - sonar-groovy-plugin-1.5.jar
+  - sonar-dependency-check-plugin-1.1.1
+  - sonar-jproperties-plugin-2.6.jar
+  - sonar-jdepend-plugin-1.1.1
+  - sonar-issueresolver-plugin-1.0.2
+  - sonar-yaml-plugin-1.0.1.jar
+
 
 Requirements
 --------------
 
- - **Supported Ansible versions**:
-   - 2.5.*
-   - 2.6.* is not supported, see https://github.com/lean-delivery/ansible-role-sonarqube/issues/3
+ - **Mininmal Ansible version**: 2.5
  - **Supported SonarQube versions**:
    - 7.0 - 7.2.1
-   - 7.3 without findbugs, checkstyle and pmd plugins (see https://github.com/spotbugs/sonar-findbugs/issues/204, https://github.com/checkstyle/sonar-checkstyle/issues/157, https://github.com/SonarQubeCommunity/sonar-pmd/issues/49)
-   - _lower and higher versions should be retested_
+   - 7.3 is not supported for now due to broken checkstyle and pmd plugins (see https://github.com/checkstyle/sonar-checkstyle/issues/157, https://github.com/SonarQubeCommunity/sonar-pmd/issues/49)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -87,10 +96,11 @@ Role Variables
         default: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
         `ssl_key_path`
         default: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
-  - `sonar_plugins` - list of plugins that not included into SonarQube installation and should be also installed (override this variable excluding findbugs, checkstyle, pmd when installing SonarQube 7.3)
-    default: see in /vars/main.yml
-  - `sonar_exclude_plugins` - list of default plugins that should be excluded during installation
-    default: see in /vars/main.yml
+        `client_max_body_size'
+        default: "32m"
+  - `sonar_optional_plugins` - list of additional plugins, see defaults/main.yml 
+    default: []
+  - `sonar_exclude_plugins` - list of plugins excluded from SonarQube installer
 
 Example Playbook
 ----------------
@@ -114,6 +124,7 @@ Example Playbook
         - name: sonar
           owner: sonar
     - "jdauphant.ssl-certs"
+      ssl_certs_common_name: "example.com"
       ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
       ssl_certs_mode: "0755"
@@ -127,13 +138,21 @@ Example Playbook
         type: "nginx"
         port: 443
         ssl: True
-        ssl_cert_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.pem"
-        ssl_key_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key"
+        ssl_cert_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.pem"
+        ssl_key_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.key"
+		default: "32m"
+      sonar_optional_plugins:
+        - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
+          sonar-auth-github-plugin-1.3.jar"
   post_tasks:
     - name: "start sonarqube"
       service: name="sonarqube" state="started"
-    - name: "restart nginx"
-      service: name="nginx" state="restarted"
+    - name: "restart, enable nginx"
+      service: name="nginx" state="restarted" enabled=True
+# see https://github.com/ANXS/postgresql/issues/363
+    - name: "enable postgresql"
+      service: name="postgresql-{{ postgresql_version }}" enabled=True
+      when: ansible_distribution == 'CentOS'
 ```
 
 ## License
