@@ -18,7 +18,7 @@ server {
       proxy_pass http://sonar;
     }
 
-    location ~* .(css|gif|html|ico|jpeg|js|map|png|svg|txt|xml)$ {
+    location ~* \.(css|gif|html|ico|jpeg|js|map|png|svg|txt|xml)$ {
       root {{ sonar_installation }}web;
     }
     
