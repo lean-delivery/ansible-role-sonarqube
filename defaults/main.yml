@@ -78,3 +78,15 @@ sonar_optional_plugins: []
 #    sonar-css-plugin-1.0.2.611.jar"
 #  - "https://sonarsource.bintray.com/Distribution/sonar-kotlin-plugin/\
 #    sonar-kotlin-plugin-1.1.0.1552.jar"
+
+sonar_exclude_plugins:
+
+# Exclude plugins that goes with SonarQube installation:
+# 1. if there is newer version in sonar_plugins list in vars/main.yml
+# 2. if you don't need it
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-java-plugin-5.4.0.14284.jar"
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-javascript-plugin-4.1.0.6085.jar"
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-typescript-plugin-1.7.0.2893.jar"
