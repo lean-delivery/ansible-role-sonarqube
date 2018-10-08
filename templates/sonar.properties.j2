@@ -7,3 +7,9 @@ sonar.web.context={{ web.path }}
 sonar.jdbc.username={{ sonar_db.user }}
 sonar.jdbc.password={{ sonar_db.password }}
 sonar.jdbc.url=jdbc:{{ sonar_db.type }}://{{ sonar_db.host }}:{{ sonar_db.port }}/{{ sonar_db.name }}{{ sonar_db.options }}
+
+# Tuning
+sonar.log.level={{ sonar_log_level }}
+sonar.web.javaOpts={{ sonar_java_opts.web }}
+sonar.search.javaOpts={{ sonar_java_opts.es }}
+sonar.ce.javaOpts={{ sonar_java_opts.ce }}
