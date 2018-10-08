@@ -59,6 +59,19 @@ Role Variables
     default: "sonar"
   - `sonar_group` - group of SonarQube user
     default: "sonar"
+  - `sonar_nofile` - file descriptors amount that user running SonarQube can open
+    default: "65536"
+  - `sonar_nproc` - threads amount that user running SonarQube can open
+    default: "2048"
+  - `sonar_log_level` - Logging level of SonarQube server
+    default: "INFO"
+  - `sonar_java_opts`:
+      - `web` - additional java options for web part of SonarQube
+        default: "-server -Xmx512m -Xms512m"
+        `es` - additional java options for Elasticsearch 
+        default: "-Xmx512m -Xms512m"
+        `ce` - additional java options for Compute Engine 
+        default: "-Xmx512m -Xms512m"
   - `web`:
       - `host` - SonarQube binding ip address
         default: "0.0.0.0"
