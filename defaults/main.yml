@@ -39,7 +39,7 @@ sonar_db:
 #            useSSL=false"
 
 # sonarqube artifact provider
-sonar_store: "https://sonarsource.bintray.com/Distribution/sonarqube"
+sonar_store: "https://binaries.sonarsource.com/Distribution/sonarqube"
 # local download path
 download_path: "/tmp/"
 
@@ -55,7 +55,7 @@ sonar_proxy:
 sonar_optional_plugins: []
 
 # Optional plugins.
-#  - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
+#  - "https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/\
 #    sonar-auth-github-plugin-1.3.jar"
 #  - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
 #    qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
@@ -74,9 +74,9 @@ sonar_optional_plugins: []
 #    sonar-gitlab-plugin-3.0.1.jar"
 #  - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
 #    sonar-auth-gitlab-plugin-1.3.2.jar"
-#  - "https://sonarsource.bintray.com/Distribution/sonar-css-plugin/\
+#  - "https://binaries.sonarsource.com/Distribution/sonar-css-plugin/\
 #    sonar-css-plugin-1.0.2.611.jar"
-#  - "https://sonarsource.bintray.com/Distribution/sonar-kotlin-plugin/\
+#  - "https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
 #    sonar-kotlin-plugin-1.1.0.1552.jar"
 
 sonar_exclude_plugins:
