@@ -14,7 +14,7 @@ sonar_nproc: 2048
 sonar_log_level: "INFO"
 sonar_java_opts:
   web: "-server -Xmx512m -Xms512m"
-  es: "-Xmx512m -Xms512m" 
+  es: "-Xmx512m -Xms512m"
   ce: "-Xmx512m -Xms512m"
 
 # sonarqube web interface
