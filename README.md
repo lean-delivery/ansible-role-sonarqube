@@ -109,7 +109,7 @@ Role Variables
         default: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
         `ssl_key_path`
         default: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
-        `client_max_body_size'
+        `client_max_body_size` 
         default: "32m"
   - `sonar_optional_plugins` - list of additional plugins, see defaults/main.yml 
     default: []
