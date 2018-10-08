@@ -143,6 +143,10 @@ Example Playbook
       ssl_certs_mode: "0755"
     - "nginxinc.nginx"
     - "ansible-role-sonarqube"
+      sonar_java_opts:
+        web: "-server -Xmx1g -Xms1g"
+        es: "-Xmx2g -Xms2g" 
+        ce: "-Xmx1g -Xms1g"
       web:
         host: "localhost"
         port: 9000
