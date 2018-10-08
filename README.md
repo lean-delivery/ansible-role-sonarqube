@@ -153,7 +153,7 @@ Example Playbook
         ssl: True
         ssl_cert_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.pem"
         ssl_key_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.key"
-		default: "32m"
+        client_max_body_size: "80m"
       sonar_optional_plugins:
         - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
           sonar-auth-github-plugin-1.3.jar"
