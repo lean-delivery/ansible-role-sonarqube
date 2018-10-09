@@ -13,9 +13,9 @@ sonar_nofile: 65536
 sonar_nproc: 2048
 sonar_log_level: "INFO"
 sonar_java_opts:
-  web: "-server -Xmx512m -Xms512m"
-  es: "-Xmx512m -Xms512m"
-  ce: "-Xmx512m -Xms512m"
+  web: "-Xmx512m -Xms128m"
+  es: "-Xms512m -Xmx512m"
+  ce: "-Xmx512m -Xms128m"
 
 # sonarqube web interface
 # should be covered reverse proxy
