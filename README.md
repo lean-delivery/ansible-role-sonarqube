@@ -59,6 +59,19 @@ Role Variables
     default: "sonar"
   - `sonar_group` - group of SonarQube user
     default: "sonar"
+  - `sonar_nofile` - file descriptors amount that user running SonarQube can open
+    default: "65536"
+  - `sonar_nproc` - threads amount that user running SonarQube can open
+    default: "2048"
+  - `sonar_log_level` - Logging level of SonarQube server
+    default: "INFO"
+  - `sonar_java_opts`:
+      - `web` - additional java options for web part of SonarQube
+        default: "-Xmx512m -Xms128m"
+        `es` - additional java options for Elasticsearch 
+        default: "-Xms512m -Xmx512m"
+        `ce` - additional java options for Compute Engine 
+        default: "-Xmx512m -Xms128m"
   - `web`:
       - `host` - SonarQube binding ip address
         default: "0.0.0.0"
@@ -96,7 +109,7 @@ Role Variables
         default: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
         `ssl_key_path`
         default: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
-        `client_max_body_size'
+        `client_max_body_size` 
         default: "32m"
   - `sonar_optional_plugins` - list of additional plugins, see defaults/main.yml 
     default: []
@@ -130,6 +143,10 @@ Example Playbook
       ssl_certs_mode: "0755"
     - "nginxinc.nginx"
     - "ansible-role-sonarqube"
+      sonar_java_opts:
+        web: "-server -Xmx1g -Xms1g"
+        es: "-Xmx2g -Xms2g" 
+        ce: "-Xmx1g -Xms1g"
       web:
         host: "localhost"
         port: 9000
@@ -140,7 +157,7 @@ Example Playbook
         ssl: True
         ssl_cert_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.pem"
         ssl_key_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.key"
-		default: "32m"
+        client_max_body_size: "80m"
       sonar_optional_plugins:
         - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
           sonar-auth-github-plugin-1.3.jar"

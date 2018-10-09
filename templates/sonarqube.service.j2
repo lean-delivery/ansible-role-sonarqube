@@ -4,6 +4,8 @@ After=network.target network-online.target
 Wants=network-online.target
 
 [Service]
+LimitNOFILE={{ sonar_nofile }}
+LimitNPROC={{ sonar_nproc }}
 WorkingDirectory={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}
 ExecStart={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh start
 ExecStop={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh stop
