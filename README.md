@@ -67,11 +67,11 @@ Role Variables
     default: "INFO"
   - `sonar_java_opts`:
       - `web` - additional java options for web part of SonarQube
-        default: "-server -Xmx512m -Xms512m"
+        default: "-Xmx512m -Xms128m"
         `es` - additional java options for Elasticsearch 
-        default: "-Xmx512m -Xms512m"
+        default: "-Xms512m -Xmx512m"
         `ce` - additional java options for Compute Engine 
-        default: "-Xmx512m -Xms512m"
+        default: "-Xmx512m -Xms128m"
   - `web`:
       - `host` - SonarQube binding ip address
         default: "0.0.0.0"
