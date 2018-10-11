@@ -61,6 +61,37 @@ sonar_proxy:
   ssl_key_path: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
   client_max_body_size: "32m"
 
+sonar_plugins:
+# Default plugins.
+# This plugins set is mandatory for the all E-Commerce projects
+  - "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.11/\
+    checkstyle-sonar-plugin-4.11.jar"
+  - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/2.6/\
+    sonar-pmd-plugin-2.6.jar"
+  # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
+  - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.8.0/\
+    sonar-findbugs-plugin-3.8.0.jar"
+  - "https://binaries.sonarsource.com/Distribution/sonar-html-plugin/\
+    sonar-html-plugin-3.0.1.1444.jar"
+  - "https://github.com/pmayweg/sonar-groovy/releases/download/1.5/\
+    sonar-groovy-plugin-1.5.jar"
+  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.1.1/\
+    sonar-dependency-check-plugin-1.1.1.jar"
+  - "https://github.com/racodond/sonar-jproperties-plugin/releases/download/2.6/\
+    sonar-jproperties-plugin-2.6.jar"
+  - "https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/\
+    sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar"
+  - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/\
+    sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar"
+  - "https://github.com/sbaudoin/sonar-yaml/releases/download/v1.0.1/\
+    sonar-yaml-plugin-1.0.1.jar"
+  - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/\
+    sonar-java-plugin-5.7.0.15470.jar"
+  - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/\
+    sonar-javascript-plugin-5.0.0.6962.jar"
+  - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/\
+    sonar-typescript-plugin-1.8.0.3332.jar"
+
 sonar_optional_plugins: []
 
 # Optional plugins.
