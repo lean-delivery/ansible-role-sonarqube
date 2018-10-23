@@ -86,7 +86,7 @@ sonar_plugins:
   - "https://github.com/sbaudoin/sonar-yaml/releases/download/v1.0.1/\
     sonar-yaml-plugin-1.0.1.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/\
-    sonar-java-plugin-5.7.0.15470.jar"
+    sonar-java-plugin-5.8.0.15699.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/\
     sonar-javascript-plugin-5.0.0.6962.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/\
@@ -117,7 +117,7 @@ sonar_optional_plugins: []
 #  - "https://binaries.sonarsource.com/Distribution/sonar-css-plugin/\
 #    sonar-css-plugin-1.0.2.611.jar"
 #  - "https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
-#    sonar-kotlin-plugin-1.1.0.1552.jar"
+#    sonar-kotlin-plugin-1.2.1.2009.jar"
 
 sonar_exclude_plugins:
 
