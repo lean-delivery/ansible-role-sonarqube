@@ -128,21 +128,21 @@ Example Playbook
         state: "present"
       when: ansible_distribution == 'RedHat'
   roles:
-    - "lean_delivery.java"
-    - "ANXS.postgresql"
+    - role: lean_delivery.java
+    - role: ANXS.postgresql
       postgresql_users:
         - name: sonar
           pass: sonar
       postgresql_databases:
         - name: sonar
           owner: sonar
-    - "jdauphant.ssl-certs"
+    - role: jdauphant.ssl-certs
       ssl_certs_common_name: "example.com"
       ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
       ssl_certs_mode: "0755"
-    - "nginxinc.nginx"
-    - "ansible-role-sonarqube"
+    - role: nginxinc.nginx
+    - role: ansible-role-sonarqube
       sonar_java_opts:
         web: "-server -Xmx1g -Xms1g"
         es: "-Xmx2g -Xms2g" 
