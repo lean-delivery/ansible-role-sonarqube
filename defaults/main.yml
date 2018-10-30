@@ -91,6 +91,8 @@ sonar_plugins:
     sonar-javascript-plugin-5.0.0.6962.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/\
     sonar-typescript-plugin-1.8.0.3332.jar"
+  - "https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/\
+    sonar-scm-git-plugin-1.6.0.1349.jar"
 
 sonar_optional_plugins: []
 
@@ -130,3 +132,5 @@ sonar_exclude_plugins:
     /extensions/plugins/sonar-javascript-plugin-4.1.0.6085.jar"
   - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
     /extensions/plugins/sonar-typescript-plugin-1.7.0.2893.jar"
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-scm-git-plugin-1.4.1.1128.jar"
