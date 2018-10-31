@@ -52,16 +52,15 @@ sonar_store: "https://binaries.sonarsource.com/Distribution/sonarqube"
 # local download path
 download_path: "/tmp/"
 
-sonar_proxy:
-  type: "nginx"
-  server_name: "{{ ansible_hostname }}"
-  http: False
-  http_port: 80
-  ssl: True
-  ssl_port: 443
-  ssl_cert_path: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
-  ssl_key_path: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
-  client_max_body_size: "32m"
+sonar_proxy_type: "nginx"
+sonar_proxy_server_name: "{{ ansible_hostname }}"
+sonar_proxy_http: False
+sonar_proxy_http_port: 80
+sonar_proxy_ssl: True
+sonar_proxy_ssl_port: 443
+sonar_proxy_ssl_cert_path: "/etc/pki/tls/certs/{{ sonar_proxy_server_name }}.ca-cert.pem"
+sonar_proxy_ssl_key_path: "/etc/pki/tls/private/{{ sonar_proxy_server_name }}.ca-pkey.pem"
+sonar_proxy_client_max_body_size: "32m"
 
 sonar_plugins:
 # Default plugins.
