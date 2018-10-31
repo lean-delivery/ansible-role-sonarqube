@@ -54,7 +54,7 @@ download_path: "/tmp/"
 
 sonar_proxy:
   type: "nginx"
-  server_name: {{ ansible_hostname }}
+  server_name: "{{ ansible_hostname }}"
   http: False
   http_port: 80
   ssl: True
