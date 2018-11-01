@@ -3,15 +3,15 @@ upstream sonar {
 }
 
 server {
+    server_name {{ sonar_proxy_server_name }};
+{% if sonar_proxy_http %}
+    listen {{ sonar_proxy_http_port }};
+{% endif %}
+{% if sonar_proxy_ssl %}
+    listen {{ sonar_proxy_ssl_port }} ssl;
 
-    server_name {{ ansible_hostname }};
-{% if sonar_proxy.ssl %}
-    listen {{ sonar_proxy.port }} ssl;
-
-    ssl_certificate {{ sonar_proxy.ssl_cert_path }};
-    ssl_certificate_key {{ sonar_proxy.ssl_key_path }};
-{% else %}
-    listen {{ sonar_proxy.port }};
+    ssl_certificate {{ sonar_proxy_ssl_cert_path }};
+    ssl_certificate_key {{ sonar_proxy_ssl_key_path }};
 {% endif %}
 
     location / {
@@ -24,5 +24,5 @@ server {
 #      root {{ sonar_installation }}web;
 #    }
     
-    client_max_body_size {{ sonar_proxy.client_max_body_size }};
+    client_max_body_size {{ sonar_proxy_client_max_body_size }};
 }
