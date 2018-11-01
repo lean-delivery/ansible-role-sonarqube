@@ -58,8 +58,8 @@ sonar_proxy_http: False
 sonar_proxy_http_port: 80
 sonar_proxy_ssl: True
 sonar_proxy_ssl_port: 443
-sonar_proxy_ssl_cert_path: "/etc/pki/tls/certs/{{ sonar_proxy_server_name }}.ca-cert.pem"
-sonar_proxy_ssl_key_path: "/etc/pki/tls/private/{{ sonar_proxy_server_name }}.ca-pkey.pem"
+sonar_proxy_ssl_cert_path: "/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.pem"
+sonar_proxy_ssl_key_path: "/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key"
 sonar_proxy_client_max_body_size: "32m"
 
 sonar_plugins:
