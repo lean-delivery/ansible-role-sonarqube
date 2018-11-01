@@ -18,11 +18,9 @@ server {
       proxy_pass http://sonar;
     }
 
-# temporarily disabled, doesn't work correctly on all systems
-#
-#    location ~* \.(css|gif|html|ico|jpeg|js|map|png|svg|txt|xml)$ {
-#      root {{ sonar_installation }}web;
-#    }
+    location ~* \.(css|gif|html|ico|jpeg|js|map|png|svg|txt|xml)$ {
+      root {{ sonar_installation }}web;
+    }
     
     client_max_body_size {{ sonar_proxy_client_max_body_size }};
 }
