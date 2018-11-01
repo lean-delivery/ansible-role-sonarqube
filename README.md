@@ -98,19 +98,24 @@ Role Variables
     default: "https://sonarsource.bintray.com/Distribution/sonarqube"
   - `download_path` - local download path
     default: "/tmp/"
-  - `sonar_proxy` - web server settings
-      - `type`
-        default: "nginx"
-        `port`
-        default: 443
-        `ssl`
-        default: True
-        `ssl_cert_path`
-        default: "/etc/pki/tls/certs/{{ ansible_hostname }}.ca-cert.pem"
-        `ssl_key_path`
-        default: "/etc/pki/tls/private/{{ ansible_hostname }}.ca-pkey.pem"
-        `client_max_body_size` 
-        default: "32m"
+  - `sonar_proxy_type` - web server, nginx is only supported for now
+    default: `nginx`
+  - `sonar_proxy_server_name` - server name in webserver config
+    default: `{{ ansible_hostname }}`
+  - `sonar_proxy_http` - is http connection allowed
+    default: `False`
+  - `sonar_proxy_http_port` - http port
+    default: `80`
+  - `sonar_proxy_ssl` - is https connection allowed
+    default: `True`
+  - `sonar_proxy_ssl_port` - https port
+    default: `443`
+  - `sonar_proxy_ssl_cert_path` - path to certificate
+    default: `/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.pem`
+  - `sonar_proxy_ssl_key_path` - path to key
+    default: `/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key`
+  - `sonar_proxy_client_max_body_size` - client max body size setting in web server config
+    default: `32m`
   - `sonar_optional_plugins` - list of additional plugins, see defaults/main.yml 
     default: []
   - `sonar_exclude_plugins` - list of plugins excluded from SonarQube installer
@@ -151,22 +156,20 @@ Example Playbook
         host: "localhost"
         port: 9000
         path: "/" 
-      sonar_proxy:
-        type: "nginx"
-        port: 443
-        ssl: True
-        ssl_cert_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.pem"
-        ssl_key_path: "/etc/ssl/{{ ssl_certs_common_name }}/{{ ssl_certs_common_name }}.key"
-        client_max_body_size: "80m"
+      sonar_proxy_server_name: "{{ ssl_certs_common_name }}"
       sonar_optional_plugins:
         - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
           sonar-auth-github-plugin-1.3.jar"
   post_tasks:
     - name: "start sonarqube"
       service: name="sonarqube" state="started"
+    - name: "delete default nginx config"
+      file:
+        path: /etc/nginx/conf.d/default.conf
+        state: absent
     - name: "restart, enable nginx"
       service: name="nginx" state="restarted" enabled=True
-# see https://github.com/ANXS/postgresql/issues/363
+    # see https://github.com/ANXS/postgresql/issues/363
     - name: "enable postgresql"
       service: name="postgresql-{{ postgresql_version }}" enabled=True
       when: ansible_distribution == 'CentOS'
