@@ -68,8 +68,8 @@ sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
   - "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.11/\
     checkstyle-sonar-plugin-4.11.jar"
-  - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/2.6/\
-    sonar-pmd-plugin-2.6.jar"
+  - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.0.1/\
+    sonar-pmd-plugin-3.0.1.jar"
   # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
   - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.8.0/\
     sonar-findbugs-plugin-3.8.0.jar"
@@ -85,8 +85,8 @@ sonar_plugins:
     sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar"
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/\
     sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar"
-  - "https://github.com/sbaudoin/sonar-yaml/releases/download/v1.0.1/\
-    sonar-yaml-plugin-1.0.1.jar"
+  - "https://github.com/sbaudoin/sonar-yaml/releases/download/v1.1.0/\
+    sonar-yaml-plugin-1.1.0.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/\
     sonar-java-plugin-5.8.0.15699.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/\
