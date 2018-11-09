@@ -17,7 +17,7 @@ before_install:
   - git clone -b ${lint_version} https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
 
 install:
-  - pip install --upgrade ansible==2.5.* ansible-lint docker-py molecule==2.17 pyOpenSSL PyYAML
+  - pip install --upgrade ansible==2.5.* ansible-lint docker-py molecule==2.17 pyOpenSSL PyYAML pytest==3.7.4
   - ansible --version
 
 script:
