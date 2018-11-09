@@ -1,3 +1,6 @@
 [submodule "submodules/java-plugin"]
 	path = submodules/java-plugin
 	url = https://github.com/SonarSource/sonar-java.git
+[submodule "submodules/sonarqube"]
+	path = submodules/sonarqube
+	url = https://github.com/SonarSource/sonarqube.git
