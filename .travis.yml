@@ -9,6 +9,10 @@ python:
 services:
   - docker
 
+git:
+  submodules:
+    false
+
 before_install:
   # - deactivate
   - git clone -b ${lint_version} https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
