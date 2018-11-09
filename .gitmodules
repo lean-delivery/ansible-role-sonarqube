@@ -4,3 +4,6 @@
 [submodule "submodules/sonarqube"]
 	path = submodules/sonarqube
 	url = https://github.com/SonarSource/sonarqube.git
+[submodule "submodules/checkstyle-plugin"]
+	path = submodules/checkstyle-plugin
+	url = https://github.com/checkstyle/sonar-checkstyle.git
