@@ -10,3 +10,6 @@
 [submodule "submodules/findbugs-plugin"]
 	path = submodules/findbugs-plugin
 	url = https://github.com/spotbugs/sonar-findbugs.git
+[submodule "submodules/pmd-plugin"]
+	path = submodules/pmd-plugin
+	url = https://github.com/jensgerdes/sonar-pmd.git
