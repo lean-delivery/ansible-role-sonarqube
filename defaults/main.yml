@@ -87,6 +87,9 @@ sonar_plugins:
     sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar"
   - "https://github.com/sbaudoin/sonar-yaml/releases/download/v1.1.0/\
     sonar-yaml-plugin-1.1.0.jar"
+  - "https://github.com/SonarSource/sonar-ldap/releases/download/2.2-RC3/\
+    sonar-ldap-plugin-2.2.0.601.jar"
+  # Plugins below are updates of SonarQube 7.2.1 OOTB plugins
   - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/\
     sonar-java-plugin-5.9.1.16423.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/\
