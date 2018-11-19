@@ -71,8 +71,8 @@ sonar_plugins:
   - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.0.1/\
     sonar-pmd-plugin-3.0.1.jar"
   # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
-  - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.8.0/\
-    sonar-findbugs-plugin-3.8.0.jar"
+  - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.9.0/\
+    sonar-findbugs-plugin-3.9.0.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-html-plugin/\
     sonar-html-plugin-3.0.1.1444.jar"
   - "https://github.com/pmayweg/sonar-groovy/releases/download/1.5/\
