@@ -172,9 +172,6 @@ Example Playbook
           sonar-json-plugin-2.3.jar"
         - "https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
           sonar-auth-bitbucket-plugin-1.0.jar"
-        # you have to build this plugin manually after role is installed, use "mvn clean install" command
-        - "https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/\
-          v1.2.3.zip"
         - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
           sonar-xanitizer-plugin-1.5.0.jar"
         - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/3.0.1/\
@@ -185,6 +182,12 @@ Example Playbook
           sonar-css-plugin-1.0.2.611.jar"
         - "https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
           sonar-kotlin-plugin-1.2.1.2009.jar"
+        # you have to build plugins below manually after role is installed, use "mvn clean install" command
+        - "https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/\
+          v1.2.3.zip"
+        - "https://github.com/msanez/sonar-branch-community/archive/\
+          2.0.0.zip"
+
   post_tasks:
     - name: "start sonarqube"
       service: name="sonarqube" state="started"
