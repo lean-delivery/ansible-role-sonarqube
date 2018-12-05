@@ -1,0 +1,15 @@
+[submodule "submodules/java-plugin"]
+	path = submodules/java-plugin
+	url = https://github.com/SonarSource/sonar-java.git
+[submodule "submodules/sonarqube"]
+	path = submodules/sonarqube
+	url = https://github.com/SonarSource/sonarqube.git
+[submodule "submodules/checkstyle-plugin"]
+	path = submodules/checkstyle-plugin
+	url = https://github.com/checkstyle/sonar-checkstyle.git
+[submodule "submodules/findbugs-plugin"]
+	path = submodules/findbugs-plugin
+	url = https://github.com/spotbugs/sonar-findbugs.git
+[submodule "submodules/pmd-plugin"]
+	path = submodules/pmd-plugin
+	url = https://github.com/jensgerdes/sonar-pmd.git
