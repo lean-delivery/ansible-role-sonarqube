@@ -6,7 +6,7 @@ pipeline {
 	environment {
 		SONARQUBE_NAME = "SonarQube"
         PROJECT = sh(returnStdout: true, script: "echo $GIT_URL | cut -d/ -f5 | sed s/.git//").trim()
-        EXCLUSIONS = ' '
+        EXCLUSIONS = 'dependency-check-report.html'
         MAVEN_PLUGIN = '3.5.0.1254'
 	}
 	stages {
