@@ -18,7 +18,6 @@ pipeline {
 		stage('SonarQube branch analysis') {
 			when {
 				not { changeRequest() }
-				}
 			}
 			steps {
 				dependencyCheckAnalyzer scanpath: WORKSPACE, outdir: WORKSPACE, datadir: '/tmp', suppressionFile: '', hintsFile: '', zipExtensions: '',  isAutoupdateDisabled: false, includeHtmlReports: true, includeVulnReports: false, includeJsonReports: false, includeCsvReports: false, skipOnScmChange: false, skipOnUpstreamChange: false
