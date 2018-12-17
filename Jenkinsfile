@@ -5,10 +5,8 @@ pipeline {
     }
     environment {
         SONARQUBE_NAME = "SonarQube"
-        PROJECT = sh(returnStdout: true, script: "echo $GIT_URL | cut -d/ -f5 | sed s/.git//").trim()
-        REPO = sh(returnStdout: true, script: "echo $GIT_URL_1 | cut -d/ -f5 | sed s/.git//").trim()
-        PROJECT_PR = "${REPO}-pr"
-        GITHUB_ACCOUNT = sh(returnStdout: true, script: "echo $GIT_URL_1 | cut -d/ -f4").trim()
+        REPO = sh(returnStdout: true, script: "echo $GIT_URL | cut -d/ -f5 | sed s/.git//").trim()
+        GITHUB_ACCOUNT = sh(returnStdout: true, script: "echo $GIT_URL | cut -d/ -f4").trim()
         GITHUB_TOKEN = credentials('GITHUB_TOKEN')
         EXCLUSIONS = 'dependency-check-report.html'
         MAVEN_PLUGIN = '3.5.0.1254'
@@ -21,9 +19,9 @@ pipeline {
             steps {
                 withSonarQubeEnv(SONARQUBE_NAME) {
                     sh """
-                        mvn archetype:generate -DgroupId=${PROJECT_PR} -DartifactId=${PROJECT_PR} -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-                        mv ${PROJECT_PR}/pom.xml .
-                        rm -rf ${PROJECT_PR}
+                        mvn archetype:generate -DgroupId=${REPO} -DartifactId=${REPO} -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+                        mv ${REPO}/pom.xml .
+                        rm -rf ${REPO}
                         mvn org.sonarsource.scanner.maven:sonar-maven-plugin:${MAVEN_PLUGIN}:sonar --batch-mode --errors \
                             -Dsonar.github.repository=$GITHUB_ACCOUNT/$REPO \
                             -Dsonar.github.oauth=$GITHUB_TOKEN \
@@ -45,12 +43,12 @@ pipeline {
                 dependencyCheckPublisher canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
                 withSonarQubeEnv(SONARQUBE_NAME) {
                     sh """
-                        mvn archetype:generate -DgroupId=${PROJECT} -DartifactId=${PROJECT} -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-                        mv ${PROJECT}/pom.xml .
-                        rm -rf ${PROJECT}
+                        mvn archetype:generate -DgroupId=${REPO} -DartifactId=${REPO} -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+                        mv ${REPO}/pom.xml .
+                        rm -rf ${REPO}
                         mvn org.sonarsource.scanner.maven:sonar-maven-plugin:${MAVEN_PLUGIN}:sonar --batch-mode --errors \
                             -Dsonar.sources=. \
-                            -Dsonar.projectKey=${PROJECT} \
+                            -Dsonar.projectKey=${REPO} \
                             -Dsonar.projectVersion=${BUILD_NUMBER} \
                             -Dsonar.exclusions=${EXCLUSIONS} \
                             -Dsonar.dependencyCheck.reportPath=${WORKSPACE}/dependency-check-report.xml \
