@@ -200,6 +200,19 @@ Example Playbook
       when: ansible_distribution == 'CentOS'
 ```
 
+Jenkins integration
+-------------------
+Install Jenkins plugins:
+- https://wiki.jenkins.io/display/JENKINS/SonarQube+plugin
+- https://wiki.jenkins.io/display/JENKINS/OWASP+Dependency-Check+Plugin
+
+Go to Manage Jenkins > Configure System > SonarQube Servers, set SonarQube Server URL and Name=SonarQube.
+Go to Manage Jenkins > Global Tool Configuration and add Maven installation with Name=mvn
+
+Log into SonarQube, go to Administration > Configuration > Webhooks and add Jenkins webhook with URL=<your_jenkins_URL>/sonarqube-webhook/
+
+See Jenkins pipeline example for SonarQube scan in Jenkinsfile.
+
 ## License
 
 Apache2
