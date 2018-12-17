@@ -7,12 +7,11 @@ pipeline {
 		SONARQUBE_NAME = "SonarQube"
         PROJECT = sh(returnStdout: true, script: "echo $GIT_URL | cut -d/ -f5 | sed s/.git//").trim()
 		REPO = sh(returnStdout: true, script: "echo $GIT_URL_1 | cut -d/ -f5 | sed s/.git//").trim()
-		GITHUB_ACCOUNT = sh(returnStdout: true, script: "echo $GIT_URL_1 | cut -d/ -f4").trim()
 		PROJECT_PR = "${REPO}-pr"
+		GITHUB_ACCOUNT = sh(returnStdout: true, script: "echo $GIT_URL_1 | cut -d/ -f4").trim()
+		GITHUB_TOKEN = credentials('GITHUB_TOKEN')
         EXCLUSIONS = 'dependency-check-report.html'
         MAVEN_PLUGIN = '3.5.0.1254'
-		BITBUCKET_CREDS = credentials('BITBUCKET_SONAR_USER')
-		BITBUCKET_COMMENT_SEVERITY = "MAJOR"
 	}
 	stages {
 		stage('SonarQube pull request analysis') {
@@ -27,7 +26,7 @@ pipeline {
 						rm -rf ${PROJECT_PR}
 						mvn org.sonarsource.scanner.maven:sonar-maven-plugin:${MAVEN_PLUGIN}:sonar --batch-mode --errors \
 							-Dsonar.github.repository=$GITHUB_ACCOUNT/$REPO \
-							-Dsonar.github.oauth= \
+							-Dsonar.github.oauth=$GITHUB_TOKEN \
 							-Dsonar.github.pullRequestId=$CHANGE_ID \
 							-Dsonar.analysis.mode=issues \
 							-Dsonar.sources=. \
