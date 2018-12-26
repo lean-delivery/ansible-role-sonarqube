@@ -66,8 +66,8 @@ sonar_proxy_client_max_body_size: "32m"
 sonar_plugins:
 # Default plugins.
 # This plugins set is mandatory for the all E-Commerce projects
-  - "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.11/\
-    checkstyle-sonar-plugin-4.11.jar"
+  - "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.15/\
+    checkstyle-sonar-plugin-4.15.jar"
   - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.1.3/\
     sonar-pmd-plugin-3.1.3.jar"
   # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
