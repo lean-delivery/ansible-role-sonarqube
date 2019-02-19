@@ -6,7 +6,7 @@ driver:
 lint:
   name: yamllint
   options:
-    config-file: .yamllint.yml
+    config-file: .yamllint
 platforms:
   - name: test_sonarqube
     image: leandelivery/docker-systemd:centos7
