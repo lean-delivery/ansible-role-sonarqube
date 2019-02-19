@@ -1,6 +1,9 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    sonar_db:
+      type: "H2"
   roles:
     - role: ansible-role-sonarqube
   post_tasks:
