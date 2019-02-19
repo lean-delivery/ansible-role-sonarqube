@@ -3,3 +3,11 @@
   hosts: all
   roles:
     - role: ansible-role-sonarqube
+  post-tasks:
+    - name: "start sonarqube"
+      service: 
+        name: "sonarqube"
+        state: "started"
+    - name: "verify sonarqube"
+      uri:
+        url: "http://localhost:9000"
