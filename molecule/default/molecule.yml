@@ -6,7 +6,7 @@ driver:
 lint:
   name: yamllint
   options:
-    config-file: molecule/yamllint.yml
+    config-file: .yamllint.yml
 platforms:
   - name: test_sonarqube
     image: leandelivery/docker-systemd:centos7
@@ -21,18 +21,15 @@ platforms:
       - sonarqube
 provisioner:
   name: ansible
-  config_options:
-    ssh_connection:
-      control_path: "/var/ans/%%h"
-  env:
-    ANSIBLE_LIBRARY:
-      /home/gitlab-runner/.local/lib/python2.7/site-packages/epam_ansible
+  log: False
   lint:
     name: ansible-lint
-    enabled: False
 scenario:
   name: default
 verifier:
   name: testinfra
+  options:
+    verbose: True
+  directory: ../resources/tests/
   lint:
     name: flake8
