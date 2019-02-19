@@ -3,7 +3,7 @@
   hosts: all
   roles:
     - role: ansible-role-sonarqube
-  post-tasks:
+  post_tasks:
     - name: "start sonarqube"
       service: 
         name: "sonarqube"
