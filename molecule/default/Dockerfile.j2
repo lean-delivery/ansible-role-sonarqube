@@ -1,6 +1,5 @@
 # Molecule managed
 
-{% raw -%}
 {% if item.registry is defined %}
 FROM {{ item.registry.url }}/{{ item.image }}
 {% else %}
@@ -16,4 +15,3 @@ RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get install -y pyth
 
 RUN if [ -f /sbin/agetty ]; then cp /bin/true /sbin/agetty; \
     elif [ -f /sbin/mingetty ]; then cp /bin/true /sbin/mingetty; fi
-{%- endraw %}
