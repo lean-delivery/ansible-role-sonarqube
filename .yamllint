@@ -1,3 +1,4 @@
+---
 extends: default
 
 rules:
@@ -7,7 +8,26 @@ rules:
   brackets:
     max-spaces-inside: 1
     level: error
-  line-length: disable
-  # NOTE(retr0h): Templates no longer fail this lint rule.
-  #               Uncomment if running old Molecule templates.
-  # truthy: disable
+  colons:
+    max-spaces-after: -1
+    level: error
+  commas:
+    max-spaces-after: -1
+    level: error
+  empty-lines:
+    max: 3
+    level: error
+  hyphens:
+    level: error
+  truthy: disable
+  comments: disable
+  comments-indentation: disable
+  indentation: disable
+  key-duplicates: enable
+  line-length:
+    max: 150
+    level: warning
+  new-lines: disable
+
+ignore: |
+  molecule
