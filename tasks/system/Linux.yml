@@ -53,7 +53,7 @@
 
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
     unarchive:
-      src: "{{ sonar_artifact.dest }}"
+      src: "{{ download_sonarqube_result.dest }}"
       exclude: "{{ sonar_exclude_plugins }} + \
       [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties' ]"
       dest: "{{ sonar_path }}"
