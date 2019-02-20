@@ -14,3 +14,8 @@
     - name: "verify sonarqube"
       uri:
         url: "http://localhost:9000"
+    - name: print to stdout
+      command: systemctl status sonarqube
+      register: status
+    - debug: 
+      msg: "{{ status.stdout }}"
