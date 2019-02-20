@@ -50,6 +50,8 @@
     until: download_sonarqube_result is success
     retries: 3
     delay: 5
+    delegate_to: "localhost"
+    connection: "local"
 
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
     unarchive:
