@@ -35,19 +35,21 @@
     package:
       name: "unzip"
       state: "present"
+    register: install_unzip_result
+    until: install_unzip_result is success
+    retries: 3
+    delay: 5
 
   - name: "Download SonarQube installation archive"
     get_url:
       url: "{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip"
       dest: "{{ download_path }}"
       mode: "0755"
-    until: "'OK' in sonar_artifact.msg"
+    become: False
+    register: download_sonarqube_result
+    until: download_sonarqube_result is success
     retries: 3
     delay: 5
-    delegate_to: "localhost"
-    connection: "local"
-    become: False
-    register: sonar_artifact
 
   - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
     unarchive:
