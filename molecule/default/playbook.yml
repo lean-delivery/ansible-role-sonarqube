@@ -17,5 +17,4 @@
     - name: print to stdout
       command: systemctl status sonarqube
       register: status
-    - debug: 
-      msg: "{{ status.stdout }}"
+    - debug: msg="{{ hello.stdout }}"
