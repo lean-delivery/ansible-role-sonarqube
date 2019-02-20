@@ -4,6 +4,12 @@
   vars:
     sonar_db:
       type: "H2"
+      port: ""
+      host: ""
+      name: ""
+      user: ""
+      password: ""
+      options: ""
   roles:
     - role: ansible-role-sonarqube
   post_tasks:
@@ -13,7 +19,7 @@
         state: "started"
       ignore_errors: True
     - name: print to stdout
-      command: journalctl -xe
+      command: systemctl status sonarqube
       register: status
     - debug: msg="{{ status.stdout }}"
     - name: "verify sonarqube"
