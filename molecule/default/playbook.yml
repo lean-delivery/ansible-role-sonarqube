@@ -15,7 +15,7 @@
     - name: print to stdout
       command: journalctl -xe
       register: status
-    - debug: msg="{{ hello.stdout }}"
+    - debug: msg="{{ status.stdout }}"
     - name: "verify sonarqube"
       uri:
         url: "http://localhost:9000"
