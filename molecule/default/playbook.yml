@@ -11,10 +11,11 @@
       service: 
         name: "sonarqube"
         state: "started"
-    - name: "verify sonarqube"
-      uri:
-        url: "http://localhost:9000"
+      ignore_error: True
     - name: print to stdout
       command: systemctl status sonarqube
       register: status
     - debug: msg="{{ hello.stdout }}"
+    - name: "verify sonarqube"
+      uri:
+        url: "http://localhost:9000"
