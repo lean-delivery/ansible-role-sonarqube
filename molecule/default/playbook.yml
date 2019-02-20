@@ -11,7 +11,7 @@
       service: 
         name: "sonarqube"
         state: "started"
-      ignore_error: True
+      ignore_errors: True
     - name: print to stdout
       command: systemctl status sonarqube
       register: status
