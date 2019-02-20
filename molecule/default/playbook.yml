@@ -13,7 +13,7 @@
         state: "started"
       ignore_errors: True
     - name: print to stdout
-      command: systemctl status sonarqube
+      command: journalctl -xe
       register: status
     - debug: msg="{{ hello.stdout }}"
     - name: "verify sonarqube"
