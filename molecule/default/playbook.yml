@@ -1,5 +1,35 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    sonar_db:
+      type: "H2"
+      port: ""
+      host: ""
+      name: ""
+      user: ""
+      password: ""
+      options: ""
+    web:
+      host: "127.0.0.1"
+      port: 9000
+      path: "/"
   roles:
+    - role: lean_delivery.java
     - role: ansible-role-sonarqube
+  post_tasks:
+    - name: "start sonarqube"
+      service: 
+        name: "sonarqube"
+        state: "started"
+    - name: "verify sonarqube"
+      uri:
+        url: "http://localhost:9000"
+      register: uri_result
+      until: uri_result is success
+      retries: 3
+      delay: 30
+    - name: "stop sonarqube"
+      service: 
+        name: "sonarqube"
+        state: "stopped"
