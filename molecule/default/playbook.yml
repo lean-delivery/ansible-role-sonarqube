@@ -11,6 +11,7 @@
       password: ""
       options: ""
   roles:
+    - role: ansible-role-java
     - role: ansible-role-sonarqube
   post_tasks:
     - name: "start sonarqube"
