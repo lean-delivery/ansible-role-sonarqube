@@ -10,6 +10,10 @@
       user: ""
       password: ""
       options: ""
+    web:
+      host: "127.0.0.1"
+      port: 9000
+      path: "/"
   roles:
     - role: lean_delivery.java
     - role: ansible-role-sonarqube
@@ -18,11 +22,10 @@
       service: 
         name: "sonarqube"
         state: "started"
-      ignore_errors: True
-    - name: print to stdout
-      command: systemctl status sonarqube
-      register: status
-    - debug: msg="{{ status.stdout }}"
     - name: "verify sonarqube"
       uri:
         url: "http://localhost:9000"
+      register: uri_result
+      until: uri_result is success
+      retries: 3
+      delay: 30
