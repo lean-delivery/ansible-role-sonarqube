@@ -29,3 +29,7 @@
       until: uri_result is success
       retries: 3
       delay: 30
+    - name: "stop sonarqube"
+      service: 
+        name: "sonarqube"
+        state: "stopped"
