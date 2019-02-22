@@ -116,4 +116,18 @@
       owner: "{{ sonar_user }}"
     when: sonar_proxy_type == "nginx" and nginx_conf_dir.stat.exists and nginx_conf_dir.stat.isdir
 
+  - name: "Download plugins"
+    get_url:
+      url: "{{ item }}"
+      dest: "{{ sonar_installation }}extensions/plugins"
+      mode: "0644"
+      owner: "{{ sonar_user }}"
+      group: "{{ sonar_group }}"
+    register: download_plugins_result
+    until: download_plugins_result is success
+    retries: 3
+    delay: 5
+    with_items:
+      - "{{ sonar_plugins }} + {{ sonar_optional_plugins }}"
+
   become: True
