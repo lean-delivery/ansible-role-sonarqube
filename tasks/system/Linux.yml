@@ -4,12 +4,6 @@
 - name: "Become section"
   block:
 
-  - name: "Stop SonarQube if running"
-    service:
-      name: "sonarqube"
-      state: "stopped"
-    ignore_errors: True
-
   - name: "Create sonar group"
     group:
       name: "{{ sonar_group }}"
@@ -23,6 +17,10 @@
       state: "present"
       home: "/home/{{ sonar_user }}"
       createhome: True
+    notify: Stop Sonarqube
+
+  - name: "Force all notified handlers to run"
+    meta: flush_handlers
 
   - name: "Mkdir for SonarQube installation"
     file:
