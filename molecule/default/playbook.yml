@@ -17,3 +17,4 @@
   roles:
     - role: lean_delivery.java
     - role: ansible-role-sonarqube
+  notify: "Start sonarqube"
