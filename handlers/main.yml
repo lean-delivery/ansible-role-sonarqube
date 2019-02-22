@@ -15,7 +15,6 @@
   until: uri_result is success
   retries: 60
   delay: 1
-  notify: Stop Sonarqube
 
 - name: "Stop Sonarqube"
   service:
