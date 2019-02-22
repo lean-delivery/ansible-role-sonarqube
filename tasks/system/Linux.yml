@@ -55,7 +55,8 @@
     unarchive:
       src: "{{ download_sonarqube_result.dest }}"
       exclude: "{{ sonar_exclude_plugins }} + \
-      [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties' ]"
+      [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties', \
+      'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
       dest: "{{ sonar_path }}"
       list_files: True
     become: True
