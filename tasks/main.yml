@@ -23,5 +23,5 @@
   with_items:
     - "{{ sonar_plugins }} + {{ sonar_optional_plugins }}"
   become: True
-  notify: 
+  notify:
     - Start Sonarqube
