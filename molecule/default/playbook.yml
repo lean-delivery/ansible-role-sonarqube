@@ -17,19 +17,3 @@
   roles:
     - role: lean_delivery.java
     - role: ansible-role-sonarqube
-  post_tasks:
-    - name: "start sonarqube"
-      service: 
-        name: "sonarqube"
-        state: "started"
-    - name: "verify sonarqube"
-      uri:
-        url: "http://localhost:9000"
-      register: uri_result
-      until: uri_result is success
-      retries: 3
-      delay: 30
-    - name: "stop sonarqube"
-      service: 
-        name: "sonarqube"
-        state: "stopped"
