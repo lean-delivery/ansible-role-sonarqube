@@ -21,7 +21,7 @@ platforms:
       - sonarqube
 provisioner:
   name: ansible
-  log: False
+  log: True
   lint:
     name: ansible-lint
 scenario:
