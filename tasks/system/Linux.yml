@@ -68,7 +68,6 @@
       sonar_installation: "{{ sonar_path }}/{{ sonar_installation_result.files.0 }}"
       distro: "{{ ansible_facts.system | lower }}"
       arch: "{{ 'x86-32' if ansible_architecture == 'i386' else 'x86-64' }}"
-    when: sonar_installation_result.files is defined
 
   - name: "Render sonar.properties"
     template:
