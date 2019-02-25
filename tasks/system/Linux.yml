@@ -34,7 +34,7 @@
       name: "unzip"
       state: "present"
     register: install_unzip_result
-    until: install_unzip_result is success
+    until: install_unzip_result is succeeded
     retries: 3
     delay: 5
 
