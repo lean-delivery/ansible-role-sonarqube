@@ -149,7 +149,7 @@ Example Playbook
       ssl_certs_common_name: "example.com"
       ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
-      ssl_certs_mode: "0755"
+      ssl_certs_mode: 0755
     - role: nginxinc.nginx
     - role: ansible-role-sonarqube
       sonar_java_opts:
