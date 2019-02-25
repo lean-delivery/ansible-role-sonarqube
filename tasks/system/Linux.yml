@@ -114,7 +114,7 @@
       owner: "{{ sonar_user }}"
       group: "{{ sonar_group }}"
     register: download_plugins_result
-    until: download_plugins_result is success
+    until: download_plugins_result is succeeded
     retries: 3
     delay: 5
     with_items:
