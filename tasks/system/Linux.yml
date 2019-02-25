@@ -45,7 +45,7 @@
       mode: "0755"
     become: False
     register: download_sonarqube_result
-    until: download_sonarqube_result is success
+    until: download_sonarqube_result is succeeded
     retries: 3
     delay: 5
     delegate_to: "localhost"
