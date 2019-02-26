@@ -116,7 +116,7 @@
     until: download_plugins_result is succeeded
     retries: 3
     delay: 5
-    with_items:
+    loop:
       - "{{ sonar_plugins }} + {{ sonar_optional_plugins }}"
     notify: Start Sonarqube
 
