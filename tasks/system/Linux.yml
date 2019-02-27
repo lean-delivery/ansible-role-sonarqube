@@ -72,7 +72,7 @@
   - name: Render sonar.properties
     template:
       src: sonar.properties.j2
-      dest: '{{ sonar_installation }}conf/sonar.properties"
+      dest: '{{ sonar_installation }}conf/sonar.properties'
       mode: 0400
       owner: '{{ sonar_user }}'
 
