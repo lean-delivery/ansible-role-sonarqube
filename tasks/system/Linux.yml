@@ -1,123 +1,123 @@
 ---
 # tasks file for sonarqube pre install
 
-- name: "Become section"
+- name: Become section
   block:
 
-  - name: "Create sonar group"
+  - name: Create sonar group
     group:
-      name: "{{ sonar_group }}"
-      state: "present"
+      name: '{{ sonar_group }}'
+      state: present
 
   - name: "Create sonar user"
     user:
-      name: "{{ sonar_user }}"
-      shell: "/sbin/nologin"
-      group: "{{ sonar_group }}"
-      state: "present"
-      home: "/home/{{ sonar_user }}"
+      name: '{{ sonar_user }}'
+      shell: /sbin/nologin
+      group: '{{ sonar_group }}'
+      state: present
+      home: '/home/{{ sonar_user }}'
       createhome: True
     notify: Stop Sonarqube
 
-  - name: "Force all notified handlers to run"
+  - name: Force all notified handlers to run
     meta: flush_handlers
 
-  - name: "Mkdir for SonarQube installation"
+  - name: Mkdir for SonarQube installation
     file:
-      path: "{{ sonar_path }}"
-      state: "directory"
-      owner: "{{ sonar_user }}"
-      group: "{{ sonar_group }}"
+      path: '{{ sonar_path }}'
+      state: directory
+      owner: '{{ sonar_user }}'
+      group: '{{ sonar_group }}'
 
-  - name: "Install requirement unzip"
+  - name: Install requirement unzip
     package:
-      name: "unzip"
-      state: "present"
+      name: unzip
+      state: present
     register: install_unzip_result
     until: install_unzip_result is succeeded
     retries: 3
     delay: 5
 
-  - name: "Download SonarQube installation archive"
+  - name: Download SonarQube installation archive
     get_url:
-      url: "{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip"
-      dest: "{{ download_path }}"
+      url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
+      dest: '{{ download_path }}'
       mode: 0755
     become: False
     register: download_sonarqube_result
     until: download_sonarqube_result is succeeded
     retries: 3
     delay: 5
-    delegate_to: "localhost"
-    connection: "local"
+    delegate_to: localhost
+    connection: local
 
-  - name: "Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}"
+  - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
     unarchive:
-      src: "{{ download_sonarqube_result.dest }}"
+      src: '{{ download_sonarqube_result.dest }}'
       exclude: "{{ sonar_exclude_plugins }} + \
       [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties', \
       'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
-      dest: "{{ sonar_path }}"
+      dest: '{{ sonar_path }}'
       list_files: True
     become: True
-    become_user: "{{ sonar_user }}"
+    become_user: '{{ sonar_user }}'
     register: sonar_installation_result
 
-  - name: "SonarQube installation facts"
+  - name: SonarQube installation facts
     set_fact:
-      sonar_installation: "{{ sonar_path }}/{{ sonar_installation_result.files.0 }}"
-      distro: "{{ ansible_facts.system | lower }}"
+      sonar_installation: '{{ sonar_path }}/{{ sonar_installation_result.files.0 }}'
+      distro: '{{ ansible_facts.system | lower }}'
       arch: "{{ 'x86-32' if ansible_architecture == 'i386' else 'x86-64' }}"
 
-  - name: "Render sonar.properties"
+  - name: Render sonar.properties
     template:
-      src: "sonar.properties.j2"
-      dest: "{{ sonar_installation }}conf/sonar.properties"
+      src: sonar.properties.j2
+      dest: '{{ sonar_installation }}conf/sonar.properties"
       mode: 0400
-      owner: "{{ sonar_user }}"
+      owner: '{{ sonar_user }}'
 
-  - name: "Render sonarqube.service"
+  - name: Render sonarqube.service
     template:
-      src: "sonarqube.service.j2"
-      dest: "/etc/systemd/system/sonarqube.service"
+      src: sonarqube.service.j2
+      dest: /etc/systemd/system/sonarqube.service
       mode: 0444
-      owner: "{{ sonar_user }}"
+      owner: '{{ sonar_user }}'
 
-  - name: "Systemd daemon-reload"
+  - name: Systemd daemon-reload
     systemd:
       daemon_reload: True
 
-  - name: "Enable sonarqube.service"
+  - name: Enable sonarqube.service
     service:
-      name: "sonarqube"
+      name: sonarqube
       enabled: True
 
-  - name: "Check nginx conf directory"
+  - name: Check nginx conf directory
     stat:
       path: /etc/nginx/conf.d
     register: nginx_conf_dir
 
-  - name: "Render nginx config"
+  - name: Render nginx config
     template:
-      src: "nginx.sonar.conf.j2"
-      dest: "/etc/nginx/conf.d/sonar.conf"
+      src: nginx.sonar.conf.j2
+      dest: /etc/nginx/conf.d/sonar.conf
       mode: 0444
-      owner: "{{ sonar_user }}"
+      owner: '{{ sonar_user }}'
     when: sonar_proxy_type == "nginx" and nginx_conf_dir.stat.exists and nginx_conf_dir.stat.isdir
 
-  - name: "Download plugins"
+  - name: Download plugins
     get_url:
-      url: "{{ item }}"
-      dest: "{{ sonar_installation }}extensions/plugins"
+      url: '{{ item }}'
+      dest: '{{ sonar_installation }}extensions/plugins'
       mode: 0644
-      owner: "{{ sonar_user }}"
-      group: "{{ sonar_group }}"
+      owner: '{{ sonar_user }}'
+      group: '{{ sonar_group }}'
     register: download_plugins_result
     until: download_plugins_result is succeeded
     retries: 3
     delay: 5
-    loop:
-      - "{{ sonar_plugins }} + {{ sonar_optional_plugins }}"
+    with_items:
+      - '{{ sonar_plugins }} + {{ sonar_optional_plugins }}'
     notify: Start Sonarqube
 
   become: True

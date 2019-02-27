@@ -1,25 +1,25 @@
 ---
-- hosts: "all"
-  remote_user: "root"
+- hosts: all
+  remote_user: root
   vars_files:
-    - "./vars.yml"
+    - ./vars.yml
   pre_tasks:
-    - name: "install epel"
+    - name: install epel
       package:
-        name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-        state: "present"
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
       when: ansible_distribution == 'RedHat'
   roles:
-    - "lean_delivery.java"
-    - "anxs.postgresql"
-    - "jdauphant.ssl-certs"
-    - "nginxinc.nginx"
-    - "../../"  # this role
+    - lean_delivery.java
+    - anxs.postgresql
+    - jdauphant.ssl-certs
+    - nginxinc.nginx
+    - ../../ # this role
   post_tasks:
-    - name: "start sonarqube"
-      service: name="sonarqube" state="started"
-    - name: "restart, enable nginx"
-      service: name="nginx" state="restarted" enabled=True
-    - name: "enable postgresql"
-      service: name="postgresql-{{ postgresql_version }}" enabled=True
+    - name: start sonarqube
+      service: name=sonarqube state=started
+    - name: restart, enable nginx
+      service: name=nginx state=restarted enabled=True
+    - name: enable postgresql
+      service: name='postgresql-{{ postgresql_version }}' enabled=True
       when: ansible_distribution == 'CentOS'

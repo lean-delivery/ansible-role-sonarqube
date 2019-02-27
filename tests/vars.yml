@@ -8,18 +8,18 @@ postgresql_databases:
     owner: sonar
 
 web:
-  host: "localhost"
+  host: localhost
   port: 9000
-  path: "/"
+  path: /
 
 sonar_proxy:
-  type: "nginx"
+  type: nginx
   port: 443
   ssl: True
-  ssl_cert_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.pem"
-  ssl_key_path: "/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key"
-  client_max_body_size: "32m"
+  ssl_cert_path: '/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.pem'
+  ssl_key_path: '/etc/ssl/{{ ansible_fqdn }}/{{ ansible_fqdn }}.key'
+  client_max_body_size: 32m
 
-ssl_certs_path_owner: "root"
-ssl_certs_path_group: "root"
+ssl_certs_path_owner: root
+ssl_certs_path_group: root
 ssl_certs_mode: 0755

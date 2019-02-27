@@ -1,24 +1,24 @@
 ---
 # handlers file for sonarqube
-- name: "Start Sonarqube"
+- name: Start Sonarqube
   service:
-    name: "sonarqube"
+    name: sonarqube
     state: started
     enabled: True
   notify: Wait for Sonarqube
   become: True
 
-- name: "Wait for Sonarqube"
+- name: Wait for Sonarqube
   uri:
-    url: "http://{{ web.host }}:{{ web.port }}"
+    url: 'http://{{ web.host }}:{{ web.port }}'
   register: uri_result
   until: uri_result is success
   retries: 60
   delay: 1
 
-- name: "Stop Sonarqube"
+- name: Stop Sonarqube
   service:
-    name: "sonarqube"
+    name: sonarqube
     state: stopped
   ignore_errors: True
   become: True
