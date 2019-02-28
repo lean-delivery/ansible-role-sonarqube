@@ -162,29 +162,29 @@ Example Playbook
         path: / 
       sonar_proxy_server_name: '{{ ssl_certs_common_name }}'
       sonar_optional_plugins:
-        - 'https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
-          sonar-auth-github-plugin-1.3.jar'
-        - 'https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
-          qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar'
-        - 'https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
-          qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar'
-        - 'https://github.com/racodond/sonar-json-plugin/releases/download/2.3/\
-          sonar-json-plugin-2.3.jar'
-        - 'https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
-          sonar-auth-bitbucket-plugin-1.0.jar'
+        - "https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/\
+          sonar-auth-github-plugin-1.3.jar"
+        - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
+          qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
+        - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
+          qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
+        - "https://github.com/racodond/sonar-json-plugin/releases/download/2.3/\
+          sonar-json-plugin-2.3.jar"
+        - "https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
+          sonar-auth-bitbucket-plugin-1.0.jar"
         # you have to build this plugin manually after role is installed, use "mvn clean install" command
-        - 'https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/\
-          v1.2.3.zip'
-        - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
-          sonar-xanitizer-plugin-1.5.0.jar'
-        - 'https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/3.0.1/\
-          sonar-gitlab-plugin-3.0.1.jar'
-        - 'https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
-          sonar-auth-gitlab-plugin-1.3.2.jar'
-        - 'https://binaries.sonarsource.com/Distribution/sonar-css-plugin/\
-          sonar-css-plugin-1.0.2.611.jar'
-        - 'https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
-          sonar-kotlin-plugin-1.2.1.2009.jar'
+        - "https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/\
+          v1.2.3.zip"
+        - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
+          sonar-xanitizer-plugin-1.5.0.jar"
+        - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/3.0.1/\
+          sonar-gitlab-plugin-3.0.1.jar"
+        - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
+          sonar-auth-gitlab-plugin-1.3.2.jar"
+        - "https://binaries.sonarsource.com/Distribution/sonar-css-plugin/\
+          sonar-css-plugin-1.0.2.611.jar"
+        - "https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
+          sonar-kotlin-plugin-1.2.1.2009.jar"
   post_tasks:
     - name: start sonarqube
       service: name=sonarqube state=started
