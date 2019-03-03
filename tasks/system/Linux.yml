@@ -119,5 +119,13 @@
     service:
       name: sonarqube
       state: restarted
+  
+  - name: Wait for Sonarqube
+    uri:
+      url: 'http://{{ web.host }}:{{ web.port }}'
+    register: uri_result
+    until: uri_result is success
+    retries: 60
+    delay: 1
 
   become: True
