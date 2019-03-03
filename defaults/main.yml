@@ -13,9 +13,9 @@ sonar_nofile: 65536
 sonar_nproc: 2048
 sonar_log_level: INFO
 sonar_java_opts:
-  web: '-Xmx512m -Xms128m'
-  es: '-Xms512m -Xmx512m'
-  ce: '-Xmx512m -Xms128m'
+  web: -Xmx512m -Xms128m
+  es: -Xms512m -Xmx512m
+  ce: -Xmx512m -Xms128m
 
 # sonarqube web interface
 # should be covered reverse proxy
@@ -32,7 +32,7 @@ sonar_db:
   name: sonar
   user: sonar
   password: sonar
-  options: ''
+  options:
 
 # Since 7.1 mysql deprecated
 #  type: mysql
@@ -41,11 +41,11 @@ sonar_db:
 #  name: sonar
 #  user: sonar
 #  password: sonar
-#  options: '?useUnicode=true&\
+#  options: "?useUnicode=true&\
 #            characterEncoding=utf8&\
 #            rewriteBatchedStatements=true&\
 #            useConfigs=maxPerformance&\
-#            useSSL=false'
+#            useSSL=false"
 
 # sonarqube artifact provider
 sonar_store: https://binaries.sonarsource.com/Distribution/sonarqube
@@ -58,8 +58,8 @@ sonar_proxy_http: False
 sonar_proxy_http_port: 80
 sonar_proxy_ssl: True
 sonar_proxy_ssl_port: 443
-sonar_proxy_ssl_cert_path: '/etc/ssl/{{ sonar_proxy_server_name }}/\
-{{ sonar_proxy_server_name }}.pem'
+sonar_proxy_ssl_cert_path: "/etc/ssl/{{ sonar_proxy_server_name }}/\
+{{ sonar_proxy_server_name }}.pem"
 sonar_proxy_ssl_key_path: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
 sonar_proxy_client_max_body_size: 32m
 
@@ -128,11 +128,11 @@ sonar_exclude_plugins:
 # Exclude plugins that goes with SonarQube installation:
 # 1. if there is newer version in sonar_plugins list in vars/main.yml
 # 2. if you don't need it
-  - 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
-    /extensions/plugins/sonar-java-plugin-5.4.0.14284.jar'
-  - 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
-    /extensions/plugins/sonar-javascript-plugin-4.1.0.6085.jar'
-  - 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
-    /extensions/plugins/sonar-typescript-plugin-1.7.0.2893.jar'
-  - 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
-    /extensions/plugins/sonar-scm-git-plugin-1.4.1.1128.jar'
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-java-plugin-5.4.0.14284.jar"
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-javascript-plugin-4.1.0.6085.jar"
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-typescript-plugin-1.7.0.2893.jar"
+  - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
+    /extensions/plugins/sonar-scm-git-plugin-1.4.1.1128.jar"

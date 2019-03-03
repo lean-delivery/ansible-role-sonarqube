@@ -4,12 +4,12 @@
   vars:
     sonar_db:
       type: H2
-      port: ''
-      host: ''
-      name: ''
-      user: ''
-      password: ''
-      options: ''
+      port:
+      host:
+      name:
+      user:
+      password:
+      options:
     web:
       host: 127.0.0.1
       port: 9000

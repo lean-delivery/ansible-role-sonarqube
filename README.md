@@ -66,11 +66,11 @@ Role Variables
     default: INFO
   - `sonar_java_opts`:
       - `web` - additional java options for web part of SonarQube
-        default: '-Xmx512m -Xms128m'
+        default: -Xmx512m -Xms128m
         `es` - additional java options for Elasticsearch 
-        default: '-Xms512m -Xmx512m'
+        default: -Xms512m -Xmx512m
         `ce` - additional java options for Compute Engine 
-        default: '-Xmx512m -Xms128m'
+        default: -Xmx512m -Xms128m
   - `web`:
       - `host` - SonarQube binding ip address
         default: 0.0.0.0
@@ -92,29 +92,29 @@ Role Variables
         `password`
         default: sonar
         `options`
-        default: ''
+        default:
   - `sonar_store` - sonarqube artifact provider
     default: https://sonarsource.bintray.com/Distribution/sonarqube
   - `download_path` - local download path
     default: /tmp/
   - `sonar_proxy_type` - web server, nginx is only supported for now
-    default: `nginx`
+    default: nginx
   - `sonar_proxy_server_name` - server name in webserver config
-    default: `{{ ansible_hostname }}`
+    default: '{{ ansible_hostname }}'
   - `sonar_proxy_http` - is http connection allowed
-    default: `False`
+    default: False
   - `sonar_proxy_http_port` - http port
-    default: `80`
+    default: 80
   - `sonar_proxy_ssl` - is https connection allowed
-    default: `True`
+    default: True
   - `sonar_proxy_ssl_port` - https port
-    default: `443`
+    default: 443
   - `sonar_proxy_ssl_cert_path` - path to certificate
-    default: `/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.pem`
+    default: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.pem'
   - `sonar_proxy_ssl_key_path` - path to key
-    default: `/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key`
+    default: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
   - `sonar_proxy_client_max_body_size` - client max body size setting in web server config
-    default: `32m`
+    default: 32m
   - `sonar_optional_plugins` - list of additional plugins, see playbook example below
     default: []
   - `sonar_exclude_plugins` - list of plugins excluded from SonarQube installer
@@ -153,9 +153,9 @@ Example Playbook
     - role: nginxinc.nginx
     - role: ansible-role-sonarqube
       sonar_java_opts:
-        web: '-server -Xmx1g -Xms1g'
-        es: '-Xmx2g -Xms2g' 
-        ce: '-Xmx1g -Xms1g'
+        web: -server -Xmx1g -Xms1g
+        es: -Xmx2g -Xms2g 
+        ce: -Xmx1g -Xms1g
       web:
         host: localhost
         port: 9000

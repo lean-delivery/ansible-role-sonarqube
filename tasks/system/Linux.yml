@@ -103,7 +103,7 @@
       dest: /etc/nginx/conf.d/sonar.conf
       mode: 0444
       owner: '{{ sonar_user }}'
-    when: sonar_proxy_type == "nginx" and nginx_conf_dir.stat.exists and nginx_conf_dir.stat.isdir
+    when: sonar_proxy_type == 'nginx' and nginx_conf_dir.stat.exists and nginx_conf_dir.stat.isdir
 
   - name: Download plugins
     get_url:
