@@ -17,10 +17,6 @@
       state: present
       home: '/home/{{ sonar_user }}'
       createhome: True
-    notify: Stop Sonarqube
-
-  - name: Force all notified handlers to run
-    meta: flush_handlers
 
   - name: Mkdir for SonarQube installation
     file:
@@ -118,6 +114,10 @@
     delay: 5
     with_items:
       - '{{ sonar_plugins }} + {{ sonar_optional_plugins }}'
-    notify: Start Sonarqube
+
+  - name Restart sonarqube
+    service:
+      name: sonarqube
+      state: restarted
 
   become: True
