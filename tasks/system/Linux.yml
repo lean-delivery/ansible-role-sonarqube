@@ -115,12 +115,12 @@
     with_items:
       - '{{ sonar_plugins }} + {{ sonar_optional_plugins }}'
 
-  - name Restart sonarqube
+  - name: Restart sonarqube
     service:
       name: sonarqube
       state: restarted
   
-  - name: Wait for Sonarqube
+  - name: Wait for sonarqube
     uri:
       url: 'http://{{ web.host }}:{{ web.port }}'
     register: uri_result
