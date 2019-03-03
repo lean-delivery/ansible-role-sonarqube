@@ -119,7 +119,7 @@
     service:
       name: sonarqube
       state: restarted
-  
+
   - name: Wait for sonarqube
     uri:
       url: 'http://{{ web.host }}:{{ web.port }}'
