@@ -83,11 +83,6 @@
     systemd:
       daemon_reload: True
 
-  - name: Enable sonarqube.service
-    service:
-      name: sonarqube
-      enabled: True
-
   - name: Check nginx conf directory
     stat:
       path: /etc/nginx/conf.d
@@ -119,6 +114,7 @@
     service:
       name: sonarqube
       state: restarted
+      enabled: True
 
   - name: Wait for sonarqube
     uri:
