@@ -41,6 +41,7 @@
       [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties', \
       'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
       dest: '{{ sonar_path }}'
+      remote_src: True
       list_files: True
     become: True
     become_user: '{{ sonar_user }}'
