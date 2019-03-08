@@ -9,7 +9,7 @@
       name: '{{ sonar_group }}'
       state: present
 
-  - name: "Create sonar user"
+  - name: Create sonar user
     user:
       name: '{{ sonar_user }}'
       shell: /sbin/nologin
@@ -42,8 +42,6 @@
       'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
       dest: '{{ sonar_path }}'
       remote_src: True
-    become: True
-    become_user: '{{ sonar_user }}'
 
   - name: Render sonar.properties
     template:
