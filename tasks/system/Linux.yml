@@ -77,10 +77,6 @@
       mode: 0444
       owner: '{{ sonar_user }}'
 
-  - name: Systemd daemon-reload
-    systemd:
-      daemon_reload: True
-
   - name: Check nginx conf directory
     stat:
       path: /etc/nginx/conf.d
@@ -112,9 +108,10 @@
       - '{{ sonar_plugins }} + {{ sonar_optional_plugins }}'
 
   - name: Restart sonarqube
-    service:
+    systemd:
       name: sonarqube
       state: restarted
+      daemon_reload: True
       enabled: True
 
   - name: Wait for sonarqube
