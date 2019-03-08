@@ -34,22 +34,9 @@
     retries: 3
     delay: 5
 
-  - name: Download SonarQube installation archive
-    get_url:
-      url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
-      dest: '{{ download_path }}'
-      mode: 0755
-    become: False
-    register: download_sonarqube_result
-    until: download_sonarqube_result is succeeded
-    retries: 3
-    delay: 5
-    delegate_to: localhost
-    connection: local
-
   - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
     unarchive:
-      src: '{{ download_sonarqube_result.dest }}'
+      src: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
       exclude: "{{ sonar_exclude_plugins }} + \
       [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties', \
       'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
