@@ -44,11 +44,6 @@
       remote_src: True
     become: True
     become_user: '{{ sonar_user }}'
-    register: sonar_installation_result
-
-  - name: SonarQube installation facts
-    set_fact:
-      sonar_installation: '{{ sonar_path }}/{{ sonar_installation_result.files.0 }}'
 
   - name: Render sonar.properties
     template:
