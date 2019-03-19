@@ -52,8 +52,11 @@
       mode: 0400
       owner: '{{ sonar_user }}'
 
-  - name: print ansible_local
-    debug: var=ansible_local
+  - name: print arch
+    debug: var=arch
+
+  - name: print distro
+    debug: var=distro
 
   - name: Render sonarqube.service
     template:
