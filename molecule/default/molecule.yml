@@ -8,17 +8,21 @@ lint:
   options:
     config-file: .yamllint
 platforms:
-  - name: test_sonarqube
+  - name: test-docker-centos7-ansible-role-sonarqube
     image: leandelivery/docker-systemd:centos7
+    privileged: True
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     tmpfs:
       - /tmp
       - /run    
     capabilities:
       - SYS_ADMIN
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     groups:
-      - sonarqube
+      # - sonarqube
+      - rhel_family
 provisioner:
   name: ansible
   log: False
