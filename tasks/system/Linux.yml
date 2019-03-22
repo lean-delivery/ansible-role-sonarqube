@@ -56,12 +56,6 @@
       owner: '{{ sonar_user }}'
     notify: Restart Sonarqube
 
-  - name: print arch
-    debug: var=arch
-
-  - name: print distro
-    debug: var=distro
-
   - name: Render sonarqube.service
     template:
       src: sonarqube.service.j2
