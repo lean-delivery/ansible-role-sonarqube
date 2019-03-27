@@ -25,6 +25,7 @@
         - name: sonar
           owner: sonar
     - role: jdauphant.ssl-certs
+      become: yes
       ssl_certs_common_name: '{{ ansible_hostname }}'
       ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
