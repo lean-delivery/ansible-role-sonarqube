@@ -17,6 +17,7 @@
   roles:
     - role: lean_delivery.java
     - role: ANXS.postgresql
+      become: yes
       postgresql_users:
         - name: sonar
           pass: sonar
