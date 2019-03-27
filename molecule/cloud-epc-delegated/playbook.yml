@@ -1,11 +1,11 @@
 ---
 - name: Converge
+  become: yes
   gather_facts: true
   hosts: all
   roles:
     - role: lean_delivery.java
     - role: ANXS.postgresql
-      become: yes
       postgresql_users:
         - name: sonar
           pass: sonar
@@ -13,7 +13,6 @@
         - name: sonar
           owner: sonar
     - role: jdauphant.ssl-certs
-      become: yes
       ssl_certs_common_name: '{{ ansible_hostname }}'
       ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
