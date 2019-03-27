@@ -1,8 +1,7 @@
 ---
 - name: Converge
+  gather_facts: true
   hosts: all
-  vars:
-    ssl_certs_common_name: "{{ sonar_proxy_server_name }}"
   roles:
     - role: lean_delivery.java
     - role: ANXS.postgresql
@@ -13,7 +12,7 @@
         - name: sonar
           owner: sonar
     - role: jdauphant.ssl-certs
-      ssl_certs_common_name: "example.com"
+      ssl_certs_common_name: '{{ ansible_hostname }}'
       ssl_certs_path_owner: "root"
       ssl_certs_path_group: "root"
       ssl_certs_mode: "0755"
