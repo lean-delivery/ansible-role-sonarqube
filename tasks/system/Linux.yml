@@ -92,9 +92,7 @@
     until: download_plugins_result is succeeded
     retries: 3
     delay: 5
-    loop:
-      - '{{ sonar_plugins }}'
-      - '{{ sonar_optional_plugins }}'
     notify: Restart Sonarqube
+    loop: '{{ sonar_plugins }} + {{ sonar_optional_plugins }}'
 
   become: True
