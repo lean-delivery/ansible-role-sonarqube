@@ -13,6 +13,6 @@
     uri:
       url: 'http://{{ web.host }}:{{ web.port }}'
     register: uri_result
-    until: uri_result is success
+    until: uri_result is succeeded
     retries: 60
     delay: 1
