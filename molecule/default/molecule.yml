@@ -19,7 +19,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     tmpfs:
       - /tmp
-      - /run    
+      - /run
     capabilities:
       - SYS_ADMIN
     groups:
