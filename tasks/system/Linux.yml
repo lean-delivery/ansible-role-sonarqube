@@ -37,7 +37,7 @@
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} checksum'
     uri:
-      url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha
+      url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha'
       return_content: True
     register: sonarqube_checksum
 
@@ -49,7 +49,6 @@
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
       checksum: 'sha1:{{ sonarqube_checksum.content|trim }}'
-      # checksum: 'sha1:{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha'
     register: download_distrib_result
     until: download_distrib_result is succeeded
     retries: 3
