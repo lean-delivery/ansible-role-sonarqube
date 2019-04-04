@@ -38,7 +38,7 @@
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} checksum'
     uri:
       url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha
-      return_content: yes
+      return_content: True
     register: sonarqube_checksum
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
