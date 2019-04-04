@@ -35,9 +35,29 @@
     delay: 5
     notify: Restart Sonarqube
 
+  - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} checksum'
+    uri:
+      url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha
+      return_content: yes
+    register: sonarqube_checksum
+
+  - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
+    get_url:
+      url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
+      dest: '{{ sonar_temp_dir }}'
+      mode: 0644
+      owner: '{{ sonar_user }}'
+      group: '{{ sonar_group }}'
+      checksum: 'sha1:{{ sonarqube_checksum.content|trim }}'
+      # checksum: 'sha1:{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha'
+    register: download_distrib_result
+    until: download_distrib_result is succeeded
+    retries: 3
+    delay: 5
+
   - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
     unarchive:
-      src: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
+      src: '{{ sonar_temp_dir }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
       exclude: "{{ sonar_exclude_plugins }} + \
       [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties', \
       'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
