@@ -130,11 +130,6 @@ Example Playbook
   hosts: all
   become: True
   pre_tasks:
-    - name: install epel
-      package:
-        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        state: present
-      when: ansible_distribution == 'RedHat'
     # delete plugins installed on previous run to prevent conflict in case if any plugin is updated
     - name: delete plugins
       file:

@@ -4,6 +4,11 @@
 - name: Become section
   block:
 
+  - name: Install epel
+    package:
+      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      state: present
+
   - name: Create sonar group
     group:
       name: '{{ sonar_group }}'

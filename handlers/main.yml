@@ -11,7 +11,7 @@
 
   - name: Wait for Sonarqube
     uri:
-      url: 'http://{{ web.host }}:{{ web.port }}'
+      url: 'https://{{ web.host }}:{{ web.port }}'
     register: uri_result
     until: uri_result is succeeded
     retries: 60
