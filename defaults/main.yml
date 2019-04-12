@@ -50,6 +50,10 @@ sonar_db:
 
 # sonarqube artifact provider
 sonar_store: https://binaries.sonarsource.com/Distribution/sonarqube
+epel_packet: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+# Need to use http for self-signed certificates
+sonar_check_url: http://{{ web.host }}:{{ web.port }}
 # local download path
 download_path: /tmp/
 
