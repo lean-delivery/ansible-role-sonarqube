@@ -104,7 +104,7 @@ Role Variables
   - `sonar_proxy_type` - web server, nginx is only supported for now
     default: nginx
   - `sonar_proxy_server_name` - server name in webserver config
-    default: '{{ ansible_hostname }}'
+    default: '{{ ansible_fqdn }}'
   - `sonar_proxy_http` - is http connection allowed
     default: False
   - `sonar_proxy_http_port` - http port

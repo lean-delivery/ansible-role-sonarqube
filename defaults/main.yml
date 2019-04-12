@@ -54,7 +54,7 @@ sonar_store: https://binaries.sonarsource.com/Distribution/sonarqube
 download_path: /tmp/
 
 sonar_proxy_type: nginx
-sonar_proxy_server_name: '{{ ansible_hostname }}'
+sonar_proxy_server_name: '{{ ansible_fqdn }}'
 sonar_proxy_http: False
 sonar_proxy_http_port: 80
 sonar_proxy_ssl: True
