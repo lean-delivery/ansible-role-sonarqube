@@ -1,4 +1,4 @@
-sonarqube role
+SonarQube role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/LICENSE)
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-sonarqube.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-sonarqube)
@@ -185,18 +185,12 @@ Example Playbook
         - "https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
           sonar-kotlin-plugin-1.2.1.2009.jar"
   post_tasks:
-    - name: start sonarqube
-      service: name=sonarqube state=started
     - name: delete default nginx config
       file:
         path: /etc/nginx/conf.d/default.conf
         state: absent
     - name: restart, enable nginx
       service: name=nginx state=restarted enabled=True
-    # see https://github.com/ANXS/postgresql/issues/363
-    - name: enable postgresql
-      service: name='postgresql-{{ postgresql_version }}' enabled=True
-      when: ansible_distribution == 'CentOS'
 ```
 
 ## License
