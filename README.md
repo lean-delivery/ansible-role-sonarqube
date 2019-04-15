@@ -55,6 +55,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version
     default: 7
   - `sonar_minor_version` - minor number of SonarQube version
+  
     default: 2.1
   - `sonar_path` - installation directory
     default: /opt/sonarqube
