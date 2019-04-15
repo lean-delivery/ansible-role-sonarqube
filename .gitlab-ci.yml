@@ -32,7 +32,7 @@ Docker sonarqube:
   tags:
     - aws
 
-AWS ansible-role-sonarqube:
+AWS sonarqube:
   variables:
     AWS_REGION: us-east-1
   stage: deployment test
