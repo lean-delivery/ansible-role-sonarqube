@@ -52,74 +52,74 @@ Java, database, web server with self-signed certificate should be installed prel
 Role Variables
 --------------
 
-  - `sonar_major_version` - major number of SonarQube version
+  - `sonar_major_version` - major number of SonarQube version\
     default: 7
-  - `sonar_minor_version` - minor number of SonarQube version
+  - `sonar_minor_version` - minor number of SonarQube version\
     default: 2.1
-  - `sonar_path` - installation directory
+  - `sonar_path` - installation directory\
     default: /opt/sonarqube
-  - `sonar_user` - user for installing SonarQube
+  - `sonar_user` - user for installing SonarQube\
     default: sonar
-  - `sonar_group` - group of SonarQube user
+  - `sonar_group` - group of SonarQube user\
     default: sonar
-  - `sonar_nofile` - file descriptors amount that user running SonarQube can open
+  - `sonar_nofile` - file descriptors amount that user running SonarQube can open\
     default: 65536
-  - `sonar_nproc` - threads amount that user running SonarQube can open
+  - `sonar_nproc` - threads amount that user running SonarQube can open\
     default: 2048
-  - `sonar_log_level` - Logging level of SonarQube server
+  - `sonar_log_level` - Logging level of SonarQube server\
     default: INFO
   - `sonar_java_opts`:
-      - `web` - additional java options for web part of SonarQube
+      - `web` - additional java options for web part of SonarQube\
         default: -Xmx512m -Xms128m
-        `es` - additional java options for Elasticsearch 
+      - `es` - additional java options for Elasticsearch\
         default: -Xms512m -Xmx512m
-        `ce` - additional java options for Compute Engine 
+      - `ce` - additional java options for Compute Engine\
         default: -Xmx512m -Xms128m
   - `web`:
-      - `host` - SonarQube binding ip address
+      - `host` - SonarQube binding ip address\
         default: 0.0.0.0
-        `port` - TCP port for incoming HTTP connections
+      - `port` - TCP port for incoming HTTP connections\
         default: 9000
-        `path` - web context
+      - `path` - web context\
         default: /
   - `sonar_db` - database settings
-      - `type` 
+      - `type`\
         default : postgresql
-        `port`
+      - `port`\
         default : 5432
-        `host`
+      - `host`\
         default : localhost
-        `name`
+      - `name`\
         default: sonar
-        `user`
+      - `user`\
         default: sonar
-        `password`
+      - `password`\
         default: sonar
-        `options`
+      - `options`\
         default:
-  - `sonar_store` - sonarqube artifact provider
+  - `sonar_store` - sonarqube artifact provider\
     default: https://sonarsource.bintray.com/Distribution/sonarqube
-  - `download_path` - local download path
+  - `download_path` - local download path\
     default: /tmp/
-  - `sonar_proxy_type` - web server, nginx is only supported for now
+  - `sonar_proxy_type` - web server, nginx is only supported for now\
     default: nginx
-  - `sonar_proxy_server_name` - server name in webserver config
+  - `sonar_proxy_server_name` - server name in webserver config\
     default: '{{ ansible_fqdn }}'
-  - `sonar_proxy_http` - is http connection allowed
+  - `sonar_proxy_http` - is http connection allowed\
     default: False
-  - `sonar_proxy_http_port` - http port
+  - `sonar_proxy_http_port` - http port\
     default: 80
-  - `sonar_proxy_ssl` - is https connection allowed
+  - `sonar_proxy_ssl` - is https connection allowed\
     default: True
-  - `sonar_proxy_ssl_port` - https port
+  - `sonar_proxy_ssl_port` - https port\
     default: 443
-  - `sonar_proxy_ssl_cert_path` - path to certificate
+  - `sonar_proxy_ssl_cert_path` - path to certificate\
     default: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.pem'
-  - `sonar_proxy_ssl_key_path` - path to key
+  - `sonar_proxy_ssl_key_path` - path to key\
     default: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
-  - `sonar_proxy_client_max_body_size` - client max body size setting in web server config
+  - `sonar_proxy_client_max_body_size` - client max body size setting in web server config\
     default: 32m
-  - `sonar_optional_plugins` - list of additional plugins, see playbook example below
+  - `sonar_optional_plugins` - list of additional plugins, see playbook example below\
     default: []
   - `sonar_exclude_plugins` - list of plugins excluded from SonarQube installer
 

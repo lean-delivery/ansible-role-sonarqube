@@ -54,6 +54,8 @@ epel_packet: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 
 # Need to use http for self-signed certificates
 sonar_check_url: http://{{ web.host }}:{{ web.port }}
+sonar_installation: '{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}'
+
 # local download path
 download_path: /tmp/
 
