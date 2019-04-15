@@ -25,14 +25,14 @@ Ansible lint:
   tags:
     - aws
 
-Docker ansible-role-sonarqube:
+Docker sonarqube:
   stage: deployment test
   script:
     - molecule test -s default
   tags:
     - aws
 
-AWS ansible-role-sonarqube:
+AWS sonarqube:
   variables:
     AWS_REGION: us-east-1
   stage: deployment test
@@ -41,7 +41,7 @@ AWS ansible-role-sonarqube:
   tags:
     - aws
 
-EPC ansible-role-sonarqube:
+EPC sonarqube:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
