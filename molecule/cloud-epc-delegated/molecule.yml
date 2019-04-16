@@ -26,7 +26,7 @@ provisioner:
     destroy: ../resources/provisioning/EPC/destroy.yml
   config_options:
     ssh_connection:
-      control_path: "/var/ans/%%h"
+      control_path: '/var/ans/%%h'
   lint:
     name: ansible-lint
   env:

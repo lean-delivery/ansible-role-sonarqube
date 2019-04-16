@@ -6,7 +6,7 @@
 
   - name: Install epel
     package:
-      name: "{{ epel_packet }}"
+      name: '{{ epel_packet }}'
       state: present
     register: download_epel_result
     until: download_epel_result is succeeded
@@ -100,7 +100,7 @@
   - name: Render nginx config
     template:
       src: nginx.sonar.conf.j2
-      dest: "{{ nginx_config_path }}"
+      dest: '{{ nginx_config_path }}'
       mode: 0444
       owner: '{{ sonar_user }}'
     when:
