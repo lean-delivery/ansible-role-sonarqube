@@ -83,11 +83,6 @@
       owner: '{{ sonar_user }}'
     notify: Restart Sonarqube
 
-  - name: Check nginx conf directory
-    stat:
-      path: /etc/nginx/conf.d
-    register: nginx_conf_dir
-
   - name: Render nginx config
     template:
       src: nginx.sonar.conf.j2
