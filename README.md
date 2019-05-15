@@ -41,6 +41,12 @@ Requirements
      - 7
    - RHEL
      - 7
+   - Ubuntu
+      - 'xenial'
+      - 'bionic'
+   - Debian
+      - 'stretch'
+      - 'jessie'
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
     - lean_delivery.java
