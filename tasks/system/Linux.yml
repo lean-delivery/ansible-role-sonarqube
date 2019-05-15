@@ -91,8 +91,6 @@
       owner: '{{ sonar_user }}'
     when:
       - sonar_proxy_type == 'nginx'
-      - nginx_conf_dir.stat.exists
-      - nginx_conf_dir.stat.isdir
     notify: Restart Sonarqube
 
   - name: Download plugins
