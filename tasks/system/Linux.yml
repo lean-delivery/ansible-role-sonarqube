@@ -4,14 +4,14 @@
 - name: Become section
   block:
 
-  - name: Install epel
-    package:
-      name: '{{ epel_packet }}'
-      state: present
-    register: download_epel_result
-    until: download_epel_result is succeeded
-    retries: 3
-    delay: 5
+  # - name: Install epel
+  #   package:
+  #     name: '{{ epel_packet }}'
+  #     state: present
+  #   register: download_epel_result
+  #   until: download_epel_result is succeeded
+  #   retries: 3
+  #   delay: 5
 
   - name: Create sonar group
     group:
