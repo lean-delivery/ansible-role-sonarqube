@@ -57,7 +57,7 @@ sonar_check_url: http://{{ web.host }}:{{ web.port }}
 sonar_installation: '{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}'
 
 # local download path
-download_path: /tmp/
+sonar_download_path: /tmp
 
 sonar_proxy_type: nginx
 sonar_proxy_server_name: '{{ ansible_fqdn }}'

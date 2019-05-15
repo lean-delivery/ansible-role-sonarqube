@@ -105,7 +105,7 @@ Role Variables
         default:
   - `sonar_store` - sonarqube artifact provider\
     default: https://sonarsource.bintray.com/Distribution/sonarqube
-  - `download_path` - local download path\
+  - `sonar_download_path` - local download path\
     default: /tmp/
   - `sonar_proxy_type` - web server, nginx is only supported for now\
     default: nginx
