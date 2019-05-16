@@ -1,38 +1,55 @@
 ---
 dependency:
   name: galaxy
+  options:
+    role-file: requirements.yml
 driver:
   name: docker
 lint:
   name: yamllint
   options:
-    config-file: molecule/yamllint.yml
+    config-file: .yamllint
 platforms:
-  - name: test_sonarqube
+  - name: test-docker-centos7-ansible-role-sonarqube
     image: leandelivery/docker-systemd:centos7
-    tmpfs:
-      - /tmp
-      - /run    
-    capabilities:
-      - SYS_ADMIN
+    privileged: True
+    security_opts:
+      - seccomp=unconfined
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
     groups:
-      - sonarqube
+      # - sonarqube
+      - rhel_family
+  - name: test-docker-ubuntu1804-openjdk
+    image: leandelivery/docker-systemd:ubuntu-18.04
+    privileged: True
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
+    groups:
+      - debian_family
 provisioner:
   name: ansible
-  config_options:
-    ssh_connection:
-      control_path: "/var/ans/%%h"
-  env:
-    ANSIBLE_LIBRARY:
-      /home/gitlab-runner/.local/lib/python2.7/site-packages/epam_ansible
+  log: False
   lint:
     name: ansible-lint
-    enabled: False
 scenario:
   name: default
 verifier:
   name: testinfra
+  options:
+    verbose: True
+  directory: ../resources/tests/
   lint:
     name: flake8
