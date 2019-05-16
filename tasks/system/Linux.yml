@@ -105,6 +105,6 @@
     retries: 3
     delay: 5
     notify: Restart Sonarqube
-    loop: '{{ sonar_plugins }} + {{ sonar_optional_plugins }}'
+    loop: '{{ sonar_all_plugins }}'
 
   become: True
