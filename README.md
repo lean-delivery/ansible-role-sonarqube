@@ -189,7 +189,7 @@ Example Playbook
         - "https://binaries.sonarsource.com/Distribution/sonar-css-plugin/\
           sonar-css-plugin-1.0.2.611.jar"
         - "https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
-          sonar-kotlin-plugin-1.2.1.2009.jar"
+          sonar-kotlin-plugin-1.5.0.315.jar"
   post_tasks:
     - name: delete default nginx config
       file:
