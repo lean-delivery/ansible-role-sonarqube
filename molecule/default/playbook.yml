@@ -1,20 +1,8 @@
 ---
 - name: Converge
-  hosts: all
   become: yes
-  vars:
-    sonar_db:
-      type: H2
-      port:
-      host:
-      name:
-      user:
-      password:
-      options:
-    web:
-      host: 127.0.0.1
-      port: 9000
-      path: /
+  gather_facts: true
+  hosts: all
   roles:
     - role: lean_delivery.java
     - role: ANXS.postgresql
