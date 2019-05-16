@@ -101,7 +101,7 @@ sonar_plugins:
   - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/\
     sonar-typescript-plugin-1.8.0.3332.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/\
-    sonar-scm-git-plugin-1.6.0.1349.jar"
+    sonar-scm-git-plugin-1.8.0.1574.jar"
 
 sonar_optional_plugins: []
 
