@@ -29,7 +29,7 @@ Requirements
 
  - **Mininmal Ansible version**: 2.5
  - **Supported SonarQube versions**:
-   - 7.0 - 7.3
+   - 7.0 - 7.4
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -60,7 +60,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 7
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 3
+    default: 4
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
