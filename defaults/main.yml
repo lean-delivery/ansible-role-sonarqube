@@ -146,4 +146,4 @@ sonar_exclude_plugins:
   - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
     /extensions/plugins/sonar-scm-git-plugin-1.4.1.1128.jar"
   - "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}\
-    /extensions/plugins/sonar-python-plugin-1.10.0.2131.jar"  
+    /extensions/plugins/sonar-python-plugin-1.10.0.2131.jar"
