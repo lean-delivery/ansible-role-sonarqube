@@ -19,3 +19,4 @@
       ssl_certs_mode: '0755'
     - role: nginxinc.nginx
     - role: ansible-role-sonarqube
+      sonar_install_optional_plugins: True
