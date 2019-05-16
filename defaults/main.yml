@@ -95,7 +95,7 @@ sonar_plugins:
   - "https://github.com/sbaudoin/sonar-yaml/releases/download/v1.1.0/\
     sonar-yaml-plugin-1.1.0.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/\
-    sonar-java-plugin-5.9.2.16552.jar"
+    sonar-java-plugin-5.12.1.17771.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/\
     sonar-javascript-plugin-5.0.0.6962.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/\
