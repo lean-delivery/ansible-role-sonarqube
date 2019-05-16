@@ -97,7 +97,7 @@ sonar_plugins:
   - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/\
     sonar-java-plugin-5.9.2.16552.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/\
-    sonar-javascript-plugin-5.0.0.6962.jar"
+    sonar-javascript-plugin-5.1.1.7506.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/\
     sonar-typescript-plugin-1.8.0.3332.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/\
