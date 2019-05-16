@@ -155,6 +155,6 @@ sonar_exclude_plugins:
   - "{{ sonar_plugins_path }}/sonar-python-plugin-1.10.0.2131.jar"
   - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar"
   - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar"
-  - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar"  
+  - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar"
   - "{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar"
   - "{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar"
