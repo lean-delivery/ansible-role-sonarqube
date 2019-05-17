@@ -135,7 +135,7 @@ Example Playbook
 ----------------
 ```yaml
 - name: Install SonarQube
-  hosts: localhost
+  hosts: sonarqube
   become: True
   pre_tasks:
     # delete plugins installed on previous run to prevent conflict in case if any plugin is updated
@@ -158,7 +158,7 @@ Example Playbook
       ssl_certs_path_group: root
       ssl_certs_mode: 0755
     - role: nginxinc.nginx
-    - role: ansible-role-sonarqube
+    - role: lean_delivery.sonarqube
       sonar_install_optional_plugins: True
   post_tasks:
     - name: delete default nginx config
