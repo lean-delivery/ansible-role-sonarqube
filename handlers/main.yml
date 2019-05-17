@@ -16,7 +16,7 @@
 
   - name: Wait for Sonarqube
     uri:
-      url: {{ sonar_check_url }}
+      url: '{{ sonar_check_url }}'
       follow_redirects: all
       return_content: True
     register: uri_result
