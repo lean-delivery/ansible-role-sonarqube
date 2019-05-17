@@ -29,7 +29,7 @@ Requirements
 
  - **Mininmal Ansible version**: 2.5
  - **Supported SonarQube versions**:
-   - 7.0 - 7.4
+   - 7.0 - 7.5
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -60,7 +60,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 7
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 4
+    default: 5
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -134,7 +134,7 @@ Role Variables
 Example Playbook
 ----------------
 ```yaml
-- name: Install SonarQube 7.3
+- name: Install SonarQube
   hosts: all
   become: True
   pre_tasks:
