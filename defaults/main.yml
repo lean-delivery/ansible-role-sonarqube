@@ -77,7 +77,6 @@ sonar_plugins:
     checkstyle-sonar-plugin-4.20.jar"
   - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.0/\
     sonar-pmd-plugin-3.2.0.jar"
-  # This plugin also contains Findsecbugs rules, this rules should be turned on manualy.
   - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.9.3/\
     sonar-findbugs-plugin-3.9.3.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-html-plugin/\
@@ -117,8 +116,10 @@ sonar_optional_plugins:
     sonar-auth-github-plugin-1.5.0.870.jar"
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
     qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
-  - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
-    qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
+#  Plugin is not supported starting from SonarQube 7.3 version
+#  https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/issues/82
+#  - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
+#    qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
   - "https://github.com/racodond/sonar-json-plugin/releases/download/2.3/\
     sonar-json-plugin-2.3.jar"
   - "https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
