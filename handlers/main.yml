@@ -15,6 +15,6 @@
       follow_redirects: all
       return_content: True
     register: uri_result
-    until: "'Continuous Code Quality' in uri_result.content"
+    until: "'Loading...' in uri_result.content"
     retries: 60
     delay: 1
