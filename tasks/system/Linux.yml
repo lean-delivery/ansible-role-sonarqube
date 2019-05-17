@@ -96,7 +96,7 @@
   - name: Download plugins
     get_url:
       url: '{{ item }}'
-      dest: '{{ sonar_installation }}/extensions/plugins'
+      dest: '{{ sonar_installation }}/extensions/plugins/'
       mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
