@@ -6,13 +6,14 @@
       state: restarted
       daemon_reload: True
       enabled: True
-    notify: Pause
+    notify: 
+      - Pause
+      - Wait for Sonarqube
     become: True
 
   - name: Pause
     pause:
       seconds: 30
-    notify: Wait for Sonarqube
 
   - name: Wait for Sonarqube
     uri:
