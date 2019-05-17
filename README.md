@@ -160,6 +160,7 @@ Example Playbook
     - role: nginxinc.nginx
     - role: lean_delivery.sonarqube
       sonar_install_optional_plugins: True
+      sonar_check_url: 'https://{{ ansible_fqdn }}'
   post_tasks:
     - name: delete default nginx config
       file:

@@ -6,20 +6,14 @@
       state: restarted
       daemon_reload: True
       enabled: True
-    notify:
-      - Pause
-      - Wait for Sonarqube
+    notify: Wait for Sonarqube
     become: True
-
-  - name: Pause
-    pause:
-      seconds: 30
 
   - name: Wait for Sonarqube
     uri:
       url: '{{ sonar_check_url }}'
-      follow_redirects: all
       return_content: True
+      validate_certs: False
     register: uri_result
     until: "'Loading...' in uri_result.content"
     retries: 60
