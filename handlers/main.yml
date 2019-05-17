@@ -21,4 +21,3 @@
     loop:
       - '{{ sonar_check_url }}'
       - '{{ sonar_check_url }}/about'
-      
