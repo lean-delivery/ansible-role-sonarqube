@@ -11,10 +11,14 @@
 
   - name: Wait for Sonarqube
     uri:
-      url: '{{ sonar_check_url }}'
+      url: '{{ item }}'
       follow_redirects: all
       return_content: True
     register: uri_result
     until: "'Loading...' in uri_result.content"
-    retries: 60
-    delay: 1
+    retries: 12
+    delay: 5
+    loop:
+      - '{{ sonar_check_url }}'
+      - '{{ sonar_check_url }}/about'
+      
