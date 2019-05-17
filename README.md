@@ -145,7 +145,7 @@ Example Playbook
         state: absent
   roles:
     - role: lean_delivery.java
-    - role: ANXS.postgresql
+    - role: anxs.postgresql
       postgresql_users:
         - name: sonar
           pass: sonar
