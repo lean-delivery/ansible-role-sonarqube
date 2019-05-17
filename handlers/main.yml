@@ -6,18 +6,20 @@
       state: restarted
       daemon_reload: True
       enabled: True
-    notify: Wait for Sonarqube
+    notify: Pause
     become: True
+
+  - name: Pause
+    pause:
+      seconds: 30
+    notify: Wait for Sonarqube
 
   - name: Wait for Sonarqube
     uri:
-      url: '{{ item }}'
+      url: {{ sonar_check_url }}
       follow_redirects: all
       return_content: True
     register: uri_result
     until: "'Loading...' in uri_result.content"
-    retries: 12
-    delay: 5
-    loop:
-      - '{{ sonar_check_url }}'
-      - '{{ sonar_check_url }}/about'
+    retries: 60
+    delay: 1
