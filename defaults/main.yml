@@ -1,7 +1,7 @@
 ---
 # defaults file for sonarqube
 sonar_major_version: 7
-sonar_minor_version: 6
+sonar_minor_version: 7
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
@@ -172,6 +172,7 @@ sonar_exclude_plugins:
   - "{{ sonar_plugins_path }}/sonar-java-plugin-5.8.0.15699.jar"
   - "{{ sonar_plugins_path }}/sonar-java-plugin-5.9.2.16552.jar"
   - "{{ sonar_plugins_path }}/sonar-java-plugin-5.10.1.16922.jar"
+  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.11.0.17289.jar"
   - "{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar"
   - "{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar"
   - "{{ sonar_plugins_path }}/sonar-javascript-plugin-5.0.0.6962.jar"
