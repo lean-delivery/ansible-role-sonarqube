@@ -82,9 +82,6 @@ sonar_plugins:
   - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.9.3/\
     sonar-findbugs-plugin-3.9.3.jar"
 
-  - "https://binaries.sonarsource.com/Distribution/sonar-html-plugin/\
-    sonar-html-plugin-3.0.1.1444.jar"
-
   - "https://github.com/pmayweg/sonar-groovy/releases/download/1.5/\
     sonar-groovy-plugin-1.5.jar"
 
@@ -123,6 +120,8 @@ sonar_plugins:
     sonar-kotlin-plugin-1.5.0.315.jar"
   - "https://binaries.sonarsource.com/Distribution/sonar-css-plugin/\
     sonar-css-plugin-1.0.3.724.jar"
+  - "https://binaries.sonarsource.com/Distribution/sonar-html-plugin/\
+    sonar-html-plugin-3.1.0.1615.jar"
 
 sonar_install_optional_plugins: False
 sonar_optional_plugins:
@@ -172,6 +171,7 @@ sonar_exclude_plugins:
   - "{{ sonar_plugins_path }}/sonar-java-plugin-5.6.1.15064.jar"
   - "{{ sonar_plugins_path }}/sonar-java-plugin-5.8.0.15699.jar"
   - "{{ sonar_plugins_path }}/sonar-java-plugin-5.9.2.16552.jar"
+  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.10.1.16922.jar"
   - "{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar"
   - "{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar"
   - "{{ sonar_plugins_path }}/sonar-javascript-plugin-5.0.0.6962.jar"
@@ -179,8 +179,10 @@ sonar_exclude_plugins:
   - "{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar"
   - "{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.4.1.1128.jar"
   - "{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.6.0.1349.jar"
+  - "{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.7.0.1491.jar"
   - "{{ sonar_plugins_path }}/sonar-xml-plugin-1.5.1.1452.jar"
   - "{{ sonar_plugins_path }}/sonar-python-plugin-1.10.0.2131.jar"
+  - "{{ sonar_plugins_path }}/sonar-python-plugin-1.11.0.2473.jar"
   - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar"
   - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar"
   - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar"
