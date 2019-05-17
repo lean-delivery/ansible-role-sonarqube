@@ -6,7 +6,7 @@
       state: restarted
       daemon_reload: True
       enabled: True
-    notify: 
+    notify:
       - Pause
       - Wait for Sonarqube
     become: True
