@@ -138,10 +138,10 @@ Example Playbook
   hosts: sonarqube
   become: True
   pre_tasks:
-    # delete plugins installed on previous run to prevent conflict in case if any plugin is updated
-    - name: delete plugins
+    # delete sonar installed on previous run to prevent plugins conflict in case if any plugin is updated
+    - name: delete sonar
       file:
-        path: '{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/extensions/plugins'
+        path: '{{ sonar_path }}'
         state: absent
   roles:
     - role: lean_delivery.java
