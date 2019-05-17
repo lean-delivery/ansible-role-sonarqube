@@ -167,9 +167,9 @@ Example Playbook
         state: absent
     - name: restart, enable nginx
       service: 
-	    name: nginx
-		state: restarted
-		enabled: True
+        name: nginx
+        state: restarted
+        enabled: True
 ```
 
 ## License
