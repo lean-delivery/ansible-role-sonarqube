@@ -135,14 +135,14 @@ Example Playbook
 ----------------
 ```yaml
 - name: Install SonarQube
-  hosts: all
+  hosts: localhost
   become: True
   pre_tasks:
     # delete plugins installed on previous run to prevent conflict in case if any plugin is updated
     - name: delete plugins
       file:
         path: '{{ sonar_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/extensions/plugins'
-        state: absent      
+        state: absent
   roles:
     - role: lean_delivery.java
     - role: ANXS.postgresql
@@ -153,21 +153,12 @@ Example Playbook
         - name: sonar
           owner: sonar
     - role: jdauphant.ssl-certs
-      ssl_certs_common_name: example.com
+      ssl_certs_common_name: '{{ ansible_fqdn }}'
       ssl_certs_path_owner: root
       ssl_certs_path_group: root
       ssl_certs_mode: 0755
     - role: nginxinc.nginx
     - role: ansible-role-sonarqube
-      sonar_java_opts:
-        web: -server -Xmx1g -Xms1g
-        es: -Xmx2g -Xms2g 
-        ce: -Xmx1g -Xms1g
-      web:
-        host: localhost
-        port: 9000
-        path: / 
-      sonar_proxy_server_name: '{{ ssl_certs_common_name }}'
       sonar_install_optional_plugins: True
   post_tasks:
     - name: delete default nginx config
@@ -175,7 +166,10 @@ Example Playbook
         path: /etc/nginx/conf.d/default.conf
         state: absent
     - name: restart, enable nginx
-      service: name=nginx state=restarted enabled=True
+      service: 
+	    name: nginx
+		state: restarted
+		enabled: True
 ```
 
 ## License
