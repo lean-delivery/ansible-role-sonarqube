@@ -12,7 +12,8 @@
   - name: Wait for Sonarqube
     uri:
       url: '{{ sonar_check_url }}'
+      return_content: yes
     register: uri_result
-    until: uri_result is succeeded
+    until: "'Continuous Code Quality' in uri_result.content"
     retries: 60
     delay: 1
