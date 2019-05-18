@@ -4,23 +4,5 @@
   gather_facts: true
   hosts: all
   roles:
-    - role: lean_delivery.java
-      java_package: jre
-      java_major_version: 8
-      transport: web
-      transport_web: "{{ lookup('env','STORAGE_EPC') }}/oracle-java/jre-8u212-linux-x64.tar.gz"
-      java_tarball_install: True
-    - role: ANXS.postgresql
-      postgresql_users:
-        - name: sonar
-          pass: sonar
-      postgresql_databases:
-        - name: sonar
-          owner: sonar
-    - role: jdauphant.ssl-certs
-      ssl_certs_common_name: '{{ ansible_fqdn }}'
-      ssl_certs_path_owner: 'root'
-      ssl_certs_path_group: 'root'
-      ssl_certs_mode: '0755'
-    - role: nginxinc.nginx
     - role: ansible-role-sonarqube
+      sonar_install_optional_plugins: True

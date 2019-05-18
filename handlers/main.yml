@@ -12,7 +12,9 @@
   - name: Wait for Sonarqube
     uri:
       url: '{{ sonar_check_url }}'
+      return_content: True
+      validate_certs: False
     register: uri_result
-    until: uri_result is succeeded
+    until: "'Loading...' in uri_result.content"
     retries: 60
     delay: 1

@@ -96,7 +96,7 @@
   - name: Download plugins
     get_url:
       url: '{{ item }}'
-      dest: '{{ sonar_installation }}/extensions/plugins'
+      dest: '{{ sonar_installation }}/extensions/plugins/'
       mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
@@ -105,6 +105,6 @@
     retries: 3
     delay: 5
     notify: Restart Sonarqube
-    loop: '{{ sonar_plugins }} + {{ sonar_optional_plugins }}'
+    loop: '{{ sonar_all_plugins }}'
 
   become: True
