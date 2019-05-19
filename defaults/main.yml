@@ -85,11 +85,11 @@ sonar_plugins:
   - "https://github.com/pmayweg/sonar-groovy/releases/download/1.5/\
     sonar-groovy-plugin-1.5.jar"
 
-  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.2.3/\
-    sonar-dependency-check-plugin-1.2.3.jar"
+#  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.2.3/\
+#    sonar-dependency-check-plugin-1.2.3.jar"
 #   1.2.3 version is not supported in SonarQube 7.0 - 7.2.1. Use 1.1.4 instead.
-# - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.1.4/\
-#   sonar-dependency-check-plugin-1.1.4.jar"
+  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.1.4/\
+    sonar-dependency-check-plugin-1.1.4.jar"
 
   - "https://github.com/racodond/sonar-jproperties-plugin/releases/download/2.6/\
     sonar-jproperties-plugin-2.6.jar"
