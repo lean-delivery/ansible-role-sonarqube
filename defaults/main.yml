@@ -155,7 +155,7 @@ sonar_optional_plugins:
 #   4.0.0 version is supported in SonarQube 7.0+
 # - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/4.0.0/\
 #   sonar-gitlab-plugin-4.0.0.jar"
-  - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/4.0.0/\
+  - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/3.0.2/\
     sonar-gitlab-plugin-3.0.2.jar"
 
   - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
