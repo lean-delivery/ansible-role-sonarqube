@@ -143,11 +143,11 @@ sonar_optional_plugins:
   - "https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
     sonar-auth-bitbucket-plugin-1.0.jar"
 
-  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/2.0.0/\
-    sonar-xanitizer-plugin-2.0.0.jar"
+#  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/2.0.0/\
+#    sonar-xanitizer-plugin-2.0.0.jar"
 #   2.0.0 version is not supported in SonarQube 7.0 - 7.2.1. Use 1.5.0 instead.
-# - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
-#   sonar-xanitizer-plugin-1.5.0.jar"
+  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
+    sonar-xanitizer-plugin-1.5.0.jar"
 
   - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/4.0.0/\
     sonar-gitlab-plugin-4.0.0.jar"
