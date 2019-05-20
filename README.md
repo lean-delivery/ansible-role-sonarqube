@@ -159,6 +159,9 @@ Example Playbook
       ssl_certs_mode: 0755
     - role: nginxinc.nginx
     - role: lean_delivery.sonarqube
+# to install non default version
+#     sonar_major_version: 6
+#     sonar_minor_version: 7.7
       sonar_install_optional_plugins: True
       sonar_check_url: 'https://{{ ansible_fqdn }}'
   post_tasks:
