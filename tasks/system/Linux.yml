@@ -119,7 +119,7 @@
     args:
       chdir: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master'
     when: sonar_build_bitbucket_plugin
-        
+
   - name: Move bitbucket plugin
     command: "mv {{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar \
              {{ sonar_installation }}/extensions/plugins"
