@@ -113,7 +113,7 @@
       dest: '{{ sonar_installation }}/extensions/plugins/'
       remote_src: True
     when: sonar_build_bitbucket_plugin
-      
+
   - name: Build bitbucket plugin
     command: '/usr/local/bin/mvn clean install -DskipTests'
     args:
