@@ -70,6 +70,8 @@ sonar_proxy_client_max_body_size: 32m
 
 nginx_config_path: /etc/nginx/conf.d/sonar.conf
 
+findbugs_version: '{% if {{ sonar_major_version }}.{{ sonar_minor_version }} is version('7.6', '>=') %} 3.11.0 {% else %} 3.9.4 {% endif %}'
+
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
 
@@ -82,8 +84,8 @@ sonar_plugins:
 #   3.11.0 version is supported in SonarQube 7.6+
 # - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.9.4/\
 #   sonar-findbugs-plugin-3.11.0.jar"
-  - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.9.4/\
-    sonar-findbugs-plugin-3.9.4.jar"
+  - "https://github.com/spotbugs/sonar-findbugs/releases/download/{{ findbugs_version }}/\
+    sonar-findbugs-plugin-{{ findbugs_version }}.jar"
 
   - "https://github.com/pmayweg/sonar-groovy/releases/download/1.5/\
     sonar-groovy-plugin-1.5.jar"
