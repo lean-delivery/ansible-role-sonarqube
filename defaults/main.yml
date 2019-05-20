@@ -72,6 +72,9 @@ nginx_config_path: /etc/nginx/conf.d/sonar.conf
 
 sonar_version: '{{ sonar_major_version }}.{{ sonar_minor_version }}'
 findbugs_version: '{% if sonar_version is version("7.6", ">=") %} 3.11.0 {% else %} 3.9.4 {% endif %}'
+dependency_check_version: '{% if sonar_version is version("7.3", ">=") %} 1.2.3 {% else %} 1.1.4 {% endif %}'
+xanitizer_version: '{% if sonar_version is version("7.3", ">=") %} 2.0.0 {% else %} 1.5.0 {% endif %}'
+gitlab_version: '{% if sonar_version is version("7.0", ">=") %} 4.0.0 {% else %} 3.0.2 {% endif %}'
 
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
@@ -82,20 +85,14 @@ sonar_plugins:
   - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/\
     sonar-pmd-plugin-3.2.1.jar"
 
-#   3.11.0 version is supported in SonarQube 7.6+
-# - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.9.4/\
-#   sonar-findbugs-plugin-3.11.0.jar"
-  - "https://github.com/spotbugs/sonar-findbugs/releases/download/{{ findbugs_version }}/\
-    sonar-findbugs-plugin-{{ findbugs_version }}.jar"
+  - "https://github.com/spotbugs/sonar-findbugs/releases/download/{{findbugs_version}}/\
+    sonar-findbugs-plugin-{{findbugs_version}}.jar"
 
   - "https://github.com/pmayweg/sonar-groovy/releases/download/1.5/\
     sonar-groovy-plugin-1.5.jar"
 
-#  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.2.3/\
-#    sonar-dependency-check-plugin-1.2.3.jar"
-#   1.2.3 version is not supported in SonarQube 7.0 - 7.2.1. Use 1.1.4 instead.
-  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.1.4/\
-    sonar-dependency-check-plugin-1.1.4.jar"
+  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{dependency_check_version}}/\
+    sonar-dependency-check-plugin-{{dependency_check_version}}.jar"
 
   - "https://github.com/racodond/sonar-jproperties-plugin/releases/download/2.6/\
     sonar-jproperties-plugin-2.6.jar"
@@ -149,17 +146,11 @@ sonar_optional_plugins:
   - "https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
     sonar-auth-bitbucket-plugin-1.0.jar"
 
-#  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/2.0.0/\
-#    sonar-xanitizer-plugin-2.0.0.jar"
-#   2.0.0 version is not supported in SonarQube 7.0 - 7.2.1. Use 1.5.0 instead.
-  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
-    sonar-xanitizer-plugin-1.5.0.jar"
+  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{xanitizer_version}}/\
+    sonar-xanitizer-plugin-{{xanitizer_version}}.jar"
 
-#   4.0.0 version is supported in SonarQube 7.0+
-# - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/4.0.0/\
-#   sonar-gitlab-plugin-4.0.0.jar"
-  - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/3.0.2/\
-    sonar-gitlab-plugin-3.0.2.jar"
+  - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/{{gitlab_version}}/\
+    sonar-gitlab-plugin-{{gitlab_version}}.jar"
 
   - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
     sonar-auth-gitlab-plugin-1.3.2.jar"
