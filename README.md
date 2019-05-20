@@ -141,7 +141,7 @@ Example Playbook
     # delete sonar installed on previous run to prevent plugins conflict in case if any plugin is updated
     - name: delete sonar
       file:
-        path: '{{ sonar_path }}'
+        path: '{{ sonar_installation }}'
         state: absent
   roles:
     - role: lean_delivery.java
