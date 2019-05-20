@@ -28,6 +28,7 @@ Requirements
 
  - **Mininmal Ansible version**: 2.5
  - **Supported SonarQube versions**:
+   - 6.7.7 LTS
    - 7.0 - 7.7
  - **Supported databases**
    - PostgreSQL
