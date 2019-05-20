@@ -171,7 +171,7 @@ Example Playbook
     - role: jdauphant.ssl-certs
     - role: nginxinc.nginx
 	- role: gantsign.maven
-	  when: '{{ sonar_build_bitbucket_plugin }}'
+	  when: sonar_build_bitbucket_plugin
     - role: lean_delivery.sonarqube
   tasks:
     - name: delete default nginx config
