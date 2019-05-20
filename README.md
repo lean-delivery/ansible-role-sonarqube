@@ -52,7 +52,7 @@ Java, database, web server with self-signed certificate should be installed prel
     - anxs.postgresql
     - jdauphant.ssl-certs
     - nginxinc.nginx
-
+	- gantsign.maven
 
 Role Variables
 --------------
@@ -124,12 +124,15 @@ Role Variables
     default: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
   - `sonar_proxy_client_max_body_size` - client max body size setting in web server config\
     default: 32m
-  - `sonar_plugins` - list of default plugins
+  - `sonar_plugins` - list of plugins
   - `sonar_install_optional_plugins` - are optional plugins required\
     default: False  
   - `sonar_optional_plugins` - list of additional plugins switched off by default
+  - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
+  - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
-  - `sonar_exclude_plugins` - list of plugins excluded from SonarQube installer
+  - `sonar_build_bitbucket_plugins` - is bitbucket plugin required\
+    default: False
 
 Example Playbook
 ----------------
@@ -137,6 +140,25 @@ Example Playbook
 - name: Install SonarQube
   hosts: sonarqube
   become: True
+  vars:
+# to install non default version
+#   sonar_major_version: 6
+#   sonar_minor_version: 7.7
+    sonar_install_optional_plugins: True
+	sonar_default_excluded_plugins:
+      - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
+    sonar_check_url: 'https://{{ ansible_fqdn }}'
+	sonar_build_bitbucket_plugin: True
+    postgresql_users:
+      - name: sonar
+        pass: sonar
+    postgresql_databases:
+      - name: sonar
+        owner: sonar
+    ssl_certs_common_name: '{{ ansible_fqdn }}'
+    ssl_certs_path_owner: root
+    ssl_certs_path_group: root
+    ssl_certs_mode: 0755  
   pre_tasks:
     # delete previously installed sonar to prevent plugins conflict
     - name: delete sonar
@@ -146,25 +168,12 @@ Example Playbook
   roles:
     - role: lean_delivery.java
     - role: anxs.postgresql
-      postgresql_users:
-        - name: sonar
-          pass: sonar
-      postgresql_databases:
-        - name: sonar
-          owner: sonar
     - role: jdauphant.ssl-certs
-      ssl_certs_common_name: '{{ ansible_fqdn }}'
-      ssl_certs_path_owner: root
-      ssl_certs_path_group: root
-      ssl_certs_mode: 0755
     - role: nginxinc.nginx
+	- role: gantsign.maven
+	  when: '{{ sonar_build_bitbucket_plugin }}'
     - role: lean_delivery.sonarqube
-# to install non default version
-#     sonar_major_version: 6
-#     sonar_minor_version: 7.7
-      sonar_install_optional_plugins: True
-      sonar_check_url: 'https://{{ ansible_fqdn }}'
-  post_tasks:
+  tasks:
     - name: delete default nginx config
       file:
         path: /etc/nginx/conf.d/default.conf

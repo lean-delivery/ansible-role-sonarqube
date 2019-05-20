@@ -18,3 +18,4 @@
       ssl_certs_path_group: root
       ssl_certs_mode: 0755
     - role: nginxinc.nginx
+    - role: gantsign.maven
