@@ -52,7 +52,7 @@ Java, database, web server with self-signed certificate should be installed prel
     - anxs.postgresql
     - jdauphant.ssl-certs
     - nginxinc.nginx
-	- gantsign.maven
+    - gantsign.maven
 
 Role Variables
 --------------
@@ -145,10 +145,10 @@ Example Playbook
 #   sonar_major_version: 6
 #   sonar_minor_version: 7.7
     sonar_install_optional_plugins: True
-	sonar_default_excluded_plugins:
+    sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
-	sonar_build_bitbucket_plugin: True
+    sonar_build_bitbucket_plugin: True
     postgresql_users:
       - name: sonar
         pass: sonar
@@ -170,8 +170,8 @@ Example Playbook
     - role: anxs.postgresql
     - role: jdauphant.ssl-certs
     - role: nginxinc.nginx
-	- role: gantsign.maven
-	  when: sonar_build_bitbucket_plugin
+    - role: gantsign.maven
+      when: sonar_build_bitbucket_plugin
     - role: lean_delivery.sonarqube
   tasks:
     - name: delete default nginx config
