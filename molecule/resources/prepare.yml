@@ -5,6 +5,7 @@
   hosts: all
   roles:
     - role: lean_delivery.java
+      transport: repositories
       java_major_version: 8
     - role: anxs.postgresql
       postgresql_users:
