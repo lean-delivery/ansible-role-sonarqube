@@ -5,8 +5,7 @@
   hosts: all
   roles:
     - role: lean_delivery.java
-      transport: repositories
-      java_major_version: 8
+      java_major_version: 11
     - role: anxs.postgresql
       postgresql_users:
         - name: sonar

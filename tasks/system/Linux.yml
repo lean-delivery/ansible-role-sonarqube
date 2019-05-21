@@ -115,14 +115,16 @@
     when: sonar_build_bitbucket_plugin
 
   - name: Build bitbucket plugin
-    command: '/usr/local/bin/mvn clean install -DskipTests'
+    command: '/usr/local/bin/mvn install -DskipTests'
     args:
       chdir: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master'
     when: sonar_build_bitbucket_plugin
 
   - name: Move bitbucket plugin
-    command: "mv {{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar \
-             {{ sonar_installation }}/extensions/plugins"
+    copy:
+      src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar'
+      dest: '{{ sonar_installation }}/extensions/plugins'
+      remote_src: True
     when: sonar_build_bitbucket_plugin
 
   become: True
