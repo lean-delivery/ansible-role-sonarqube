@@ -149,6 +149,8 @@ Example Playbook
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
     sonar_build_bitbucket_plugin: True
+    java_major_version: 8
+    transport: repositories
     postgresql_users:
       - name: sonar
         pass: sonar
