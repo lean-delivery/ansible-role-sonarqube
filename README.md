@@ -102,6 +102,8 @@ Role Variables
         default: sonar
       - `options`\
         default:
+  - `sonar_check_url` - url for SonarQube startup verification\
+    default: http://{{ web.host }}:{{ web.port }}
   - `sonar_store` - sonarqube artifact provider\
     default: https://sonarsource.bintray.com/Distribution/sonarqube
   - `sonar_download_path` - local download path\
