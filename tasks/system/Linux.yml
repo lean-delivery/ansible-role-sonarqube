@@ -16,7 +16,7 @@
       group: '{{ sonar_group }}'
       state: present
       home: '/home/{{ sonar_user }}'
-      createhome: True
+      createhome: true
 
   - name: Mkdir for SonarQube installation
     file:
@@ -38,7 +38,7 @@
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} checksum'
     uri:
       url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha'
-      return_content: True
+      return_content: true
     register: sonarqube_checksum
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
@@ -63,7 +63,7 @@
       dest: '{{ sonar_path }}'
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
-      remote_src: True
+      remote_src: true
       creates: '{{ sonar_installation }}/conf/wrapper.conf'
     notify: Restart Sonarqube
 
@@ -111,7 +111,7 @@
     unarchive:
       src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master.zip'
       dest: '{{ sonar_installation }}/extensions/plugins/'
-      remote_src: True
+      remote_src: true
     when: sonar_build_bitbucket_plugin
 
   - name: Build bitbucket plugin
@@ -124,7 +124,7 @@
     copy:
       src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar'
       dest: '{{ sonar_installation }}/extensions/plugins/'
-      remote_src: True
+      remote_src: true
     when: sonar_build_bitbucket_plugin
 
-  become: True
+  become: true

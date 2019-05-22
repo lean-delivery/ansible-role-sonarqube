@@ -5,5 +5,5 @@
   hosts: all
   roles:
     - role: ansible-role-sonarqube
-      sonar_install_optional_plugins: True
-      sonar_build_bitbucket_plugin: True
+      sonar_install_optional_plugins: true
+      sonar_build_bitbucket_plugin: true

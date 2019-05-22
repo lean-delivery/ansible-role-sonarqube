@@ -59,9 +59,9 @@ sonar_download_path: /tmp
 
 sonar_proxy_type: nginx
 sonar_proxy_server_name: '{{ ansible_fqdn }}'
-sonar_proxy_http: False
+sonar_proxy_http: false
 sonar_proxy_http_port: 80
-sonar_proxy_ssl: True
+sonar_proxy_ssl: true
 sonar_proxy_ssl_port: 443
 sonar_proxy_ssl_cert_path: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.pem'
 sonar_proxy_ssl_key_path: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
@@ -112,7 +112,7 @@ sonar_plugins:
   - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.1.0.1615.jar
   - https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-3.1.1.4762.jar
 
-sonar_install_optional_plugins: False
+sonar_install_optional_plugins: false
 sonar_optional_plugins:
 
   - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
@@ -177,4 +177,4 @@ sonar_default_excluded_plugins: []
 
 sonar_all_excluded_plugins: '{{ sonar_excluded_plugins }} + {{ sonar_default_excluded_plugins }}'
 
-sonar_build_bitbucket_plugin: False
+sonar_build_bitbucket_plugin: false

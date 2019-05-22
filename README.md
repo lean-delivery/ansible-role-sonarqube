@@ -113,11 +113,11 @@ Role Variables
   - `sonar_proxy_server_name` - server name in webserver config\
     default: '{{ ansible_fqdn }}'
   - `sonar_proxy_http` - is http connection allowed\
-    default: False
+    default: false
   - `sonar_proxy_http_port` - http port\
     default: 80
   - `sonar_proxy_ssl` - is https connection allowed\
-    default: True
+    default: true
   - `sonar_proxy_ssl_port` - https port\
     default: 443
   - `sonar_proxy_ssl_cert_path` - path to certificate\
@@ -128,29 +128,29 @@ Role Variables
     default: 32m
   - `sonar_plugins` - list of plugins
   - `sonar_install_optional_plugins` - are optional plugins required\
-    default: False  
+    default: false
   - `sonar_optional_plugins` - list of additional plugins switched off by default
   - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
   - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
   - `sonar_build_bitbucket_plugins` - is bitbucket plugin required\
-    default: False
+    default: false
 
 Example Playbook
 ----------------
 ```yaml
 - name: Install SonarQube
   hosts: sonarqube
-  become: True
+  become: true
   vars:
 # to install non default version
 #   sonar_major_version: 6
 #   sonar_minor_version: 7.7
-    sonar_install_optional_plugins: True
+    sonar_install_optional_plugins: true
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
-    sonar_build_bitbucket_plugin: True
+    sonar_build_bitbucket_plugin: true
     java_major_version: 8
     transport: repositories
     postgresql_users:
@@ -186,7 +186,7 @@ Example Playbook
       service: 
         name: nginx
         state: restarted
-        enabled: True
+        enabled: true
 ```
 
 ## License
