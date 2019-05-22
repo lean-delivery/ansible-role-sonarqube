@@ -175,5 +175,3 @@ sonar_excluded_plugins:
 sonar_default_excluded_plugins: []
 
 sonar_all_excluded_plugins: '{{ sonar_excluded_plugins }} + {{ sonar_default_excluded_plugins }}'
-
-sonar_build_bitbucket_plugin: false

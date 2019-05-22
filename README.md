@@ -133,8 +133,6 @@ Role Variables
   - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
   - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
-  - `sonar_build_bitbucket_plugins` - is bitbucket plugin required\
-    default: false
 
 Example Playbook
 ----------------
@@ -150,7 +148,6 @@ Example Playbook
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
-    sonar_build_bitbucket_plugin: true
     java_major_version: 8
     transport: repositories
     postgresql_users:
@@ -174,8 +171,8 @@ Example Playbook
     - role: anxs.postgresql
     - role: jdauphant.ssl-certs
     - role: nginxinc.nginx
+    # maven role is required for building bitbucket and groovy plugins
     - role: gantsign.maven
-      when: sonar_build_bitbucket_plugin
     - role: lean_delivery.sonarqube
   tasks:
     - name: delete default nginx config
