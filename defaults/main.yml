@@ -87,7 +87,6 @@ sonar_plugins:
 
 #   Plugin is not supported in SonarQube 7.3+
 # - https://github.com/pmayweg/sonar-groovy/releases/download/1.5/sonar-groovy-plugin-1.5.jar
-  - https://github.com/armsargis/sonar-groovy/zipball/sonar-7.3
 
   - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_version }}/\
     sonar-dependency-check-plugin-{{ dependency_check_version }}.jar"
