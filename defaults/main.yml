@@ -134,7 +134,7 @@ sonar_optional_plugins:
 
   - https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/sonar-auth-gitlab-plugin-1.3.2.jar
 
-#   Plugin is not yet supported in SonarQube 7.7
+#   Plugin is not yet supported in SonarQube 7.7: https://github.com/mibexsoftware/sonar-bitbucket-plugin/issues/104
   - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
 
 sonar_all_plugins: '{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}{% else %}{{ sonar_plugins }}{% endif %}'
