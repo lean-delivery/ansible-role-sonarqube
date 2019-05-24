@@ -138,7 +138,7 @@ sonar_optional_plugins:
 
 #   Plugin is not yet supported in SonarQube 7.7: https://github.com/mibexsoftware/sonar-bitbucket-plugin/issues/104
   - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
-  
+
 #   Plugin is not supported in SonarQube 7.3+
   - https://github.com/pmayweg/sonar-groovy/releases/download/1.5/sonar-groovy-plugin-1.5.jar
 
