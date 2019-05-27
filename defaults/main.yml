@@ -97,7 +97,7 @@ sonar_plugins:
   - https://github.com/sbaudoin/sonar-yaml/releases/download/v1.4.2/sonar-yaml-plugin-1.4.2.jar
 
   - https://github.com/sbaudoin/sonar-ansible/releases/download/v2.1.0/sonar-ansible-extras-plugin-2.1.0.jar
-  
+
   - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.1.0/sonar-shellcheck-plugin-2.1.0.jar
 
 # Updates for plugins included into SonarQube installation
