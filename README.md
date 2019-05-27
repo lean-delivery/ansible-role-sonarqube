@@ -65,7 +65,6 @@ Java, database, web server with self-signed certificate should be installed prel
     - anxs.postgresql
     - jdauphant.ssl-certs
     - nginxinc.nginx
-    - gantsign.maven
 
 Role Variables
 --------------
@@ -142,7 +141,7 @@ Role Variables
   - `sonar_plugins` - list of plugins
   - `sonar_install_optional_plugins` - are optional plugins required\
     default: false
-  - `sonar_optional_plugins` - list of additional plugins switched off by default
+  - `sonar_optional_plugins` - list of optional plugins switched off by default. Not all of them are supported in latest SonarQube versions, so select ones you need and override this property.
   - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
   - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
@@ -154,10 +153,15 @@ Example Playbook
   hosts: sonarqube
   become: true
   vars:
-# to install non default version
-#   sonar_major_version: 6
-#   sonar_minor_version: 7.7
+    sonar_major_version: 7
+    sonar_minor_version: 6
     sonar_install_optional_plugins: true
+    sonar_optional_plugins:
+      - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
+        qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
+      - https://github.com/racodond/sonar-json-plugin/releases/download/2.3/sonar-json-plugin-2.3.jar
+      - https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar
+      - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
@@ -184,10 +188,21 @@ Example Playbook
     - role: anxs.postgresql
     - role: jdauphant.ssl-certs
     - role: nginxinc.nginx
-    # maven role is required for building bitbucket and groovy plugins
+    # maven role is required for building bitbucket plugin
     - role: gantsign.maven
     - role: lean_delivery.sonarqube
   tasks:
+    - name: unzip bitbucket plugin  
+      unarchive:
+        src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master.zip'
+        dest: '{{ sonar_installation }}/extensions/plugins/'
+        remote_src: yes
+    - name: build bitbucket plugin
+      command: '/usr/local/bin/mvn clean install -DskipTests'
+      args:
+        chdir: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master'
+    - name: move bitbucket plugin
+      command: 'mv {{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar {{ sonar_installation }}/extensions/plugins'
     - name: delete default nginx config
       file:
         path: /etc/nginx/conf.d/default.conf
