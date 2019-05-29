@@ -6,4 +6,5 @@
   roles:
     - role: ansible-role-sonarqube
       sonar_install_optional_plugins: true
+      sonar_proxy_server_name: localhost
       sonar_check_url: https://localhost
