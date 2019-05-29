@@ -6,4 +6,4 @@
   roles:
     - role: ansible-role-sonarqube
       sonar_install_optional_plugins: true
-      sonar_check_url: https://127.0.0.1
+      sonar_check_url: https://0.0.0.0
