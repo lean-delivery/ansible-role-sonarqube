@@ -13,3 +13,6 @@
 [submodule "submodules/pmd-plugin"]
 	path = submodules/pmd-plugin
 	url = https://github.com/jensgerdes/sonar-pmd.git
+[submodule "submodules/javascript-plugin"]
+	path = submodules/javascript-plugin
+	url = https://github.com/SonarSource/SonarJS.git
