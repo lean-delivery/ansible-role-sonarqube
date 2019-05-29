@@ -124,7 +124,7 @@ sonar_optional_plugins:
 #   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/issues/82
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
     qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
-    
+
   - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
 
   - https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar
