@@ -101,7 +101,7 @@ sonar_plugins:
   - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.1.0/sonar-shellcheck-plugin-2.1.0.jar
 
 # Updates for plugins included into SonarQube installation
-  - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-5.12.1.17771.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-5.13.0.18197.jar
   - https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-5.1.1.7506.jar
   - https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-1.9.0.3766.jar
   - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.8.0.1574.jar
