@@ -85,14 +85,16 @@ sonar_plugins:
 
   - 'https://github.com/spotbugs/sonar-findbugs/releases/download/{{ findbugs_version }}/sonar-findbugs-plugin-{{ findbugs_version }}.jar'
 
-  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_version }}/\
-    sonar-dependency-check-plugin-{{ dependency_check_version }}.jar"
+  - https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar
 
   - https://github.com/racodond/sonar-jproperties-plugin/releases/download/2.6/sonar-jproperties-plugin-2.6.jar
 
-  - https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar
+  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_version }}/\
+    sonar-dependency-check-plugin-{{ dependency_check_version }}.jar"
 
   - https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar
+
+  - https://github.com/racodond/sonar-json-plugin/releases/download/2.3/sonar-json-plugin-2.3.jar
 
   - https://github.com/sbaudoin/sonar-yaml/releases/download/v1.4.2/sonar-yaml-plugin-1.4.2.jar
 
@@ -115,8 +117,6 @@ sonar_plugins:
 sonar_install_optional_plugins: false
 sonar_optional_plugins:
 
-  - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
-
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
     qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
 
@@ -124,20 +124,20 @@ sonar_optional_plugins:
 #   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/issues/82
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
     qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
-
-  - https://github.com/racodond/sonar-json-plugin/releases/download/2.3/sonar-json-plugin-2.3.jar
+    
+  - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
 
   - https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar
 
-  - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_version }}/sonar-xanitizer-plugin-{{ xanitizer_version }}.jar'
+#   Plugin is not yet supported in SonarQube 7.7: https://github.com/mibexsoftware/sonar-bitbucket-plugin/issues/104
+  - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
+
+  - https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/sonar-auth-gitlab-plugin-1.3.2.jar
 
 #   Plugin is not supported in SonarQube 7.6+
   - 'https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/{{ gitlab_version }}/sonar-gitlab-plugin-{{ gitlab_version }}.jar'
 
-  - https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/sonar-auth-gitlab-plugin-1.3.2.jar
-
-#   Plugin is not yet supported in SonarQube 7.7: https://github.com/mibexsoftware/sonar-bitbucket-plugin/issues/104
-  - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
+  - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_version }}/sonar-xanitizer-plugin-{{ xanitizer_version }}.jar'
 
 #   Plugin is not supported in SonarQube 7.3+
   - https://github.com/pmayweg/sonar-groovy/releases/download/1.5/sonar-groovy-plugin-1.5.jar
