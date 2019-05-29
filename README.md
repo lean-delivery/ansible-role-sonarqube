@@ -16,24 +16,24 @@ In addition to default plugins included into SonarQube installation role install
   - checkstyle-sonar-plugin-4.20
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.0
-  - sonar-dependency-check-plugin-1.2.3
-  - sonar-jproperties-plugin-2.6
   - sonar-jdepend-plugin-1.1.1
-  - sonar-issueresolver-plugin-1.0.2  
+  - sonar-jproperties-plugin-2.6
+  - sonar-dependency-check-plugin-1.2.3
+  - sonar-issueresolver-plugin-1.0.2
+  - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.2
   - sonar-ansible-extras-plugin-2.1.0
   - sonar-shellcheck-plugin-2.1.0
   
 Also you may install optional plugins. Be carefull, not all of them are supported in latest SonarQube versions:
-  - sonar-auth-github-plugin-1.5.0.870
   - qualinsight-sonarqube-smell-plugin-4.0.0
   - qualinsight-sonarqube-badges-3.0.1
-  - sonar-json-plugin-2.3
+  - sonar-auth-github-plugin-1.5.0.870
   - sonar-auth-bitbucket-plugin-1.0
-  - sonar-xanitizer-plugin-2.0.0
-  - sonar-gitlab-plugin-4.0.0
-  - sonar-auth-gitlab-plugin-1.3.2
   - sonar-bitbucket-plugin-1.3.0
+  - sonar-auth-gitlab-plugin-1.3.2
+  - sonar-gitlab-plugin-4.0.0
+  - sonar-xanitizer-plugin-2.0.0
   - sonar-groovy-plugin-1.5
 
 Requirements
