@@ -1,7 +1,5 @@
 ---
 - name: Converge
-  become: yes
-  gather_facts: true
   hosts: all
   roles:
     - role: ansible-role-sonarqube

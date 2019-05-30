@@ -1,7 +1,6 @@
 ---
 - name: Prepare
   become: yes
-  gather_facts: true
   hosts: all
   roles:
     - role: lean_delivery.java
