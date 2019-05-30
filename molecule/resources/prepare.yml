@@ -1,6 +1,5 @@
 ---
 - name: Prepare
-  become: yes
   hosts: all
   roles:
     - role: lean_delivery.java
