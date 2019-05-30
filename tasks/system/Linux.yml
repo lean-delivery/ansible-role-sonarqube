@@ -16,7 +16,7 @@
       group: '{{ sonar_group }}'
       state: present
       home: '/home/{{ sonar_user }}'
-      createhome: True
+      createhome: true
 
   - name: Mkdir for SonarQube installation
     file:
@@ -38,7 +38,7 @@
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} checksum'
     uri:
       url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha'
-      return_content: True
+      return_content: true
     register: sonarqube_checksum
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
@@ -57,13 +57,13 @@
   - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
     unarchive:
       src: '{{ sonar_download_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
-      exclude: "{{ sonar_exclude_plugins }} + \
+      exclude: "{{ sonar_all_excluded_plugins }} + \
       [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties', \
       'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
       dest: '{{ sonar_path }}'
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
-      remote_src: True
+      remote_src: true
       creates: '{{ sonar_installation }}/conf/wrapper.conf'
     notify: Restart Sonarqube
 
@@ -107,4 +107,4 @@
     notify: Restart Sonarqube
     loop: '{{ sonar_all_plugins }}'
 
-  become: True
+  become: true

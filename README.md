@@ -16,18 +16,32 @@ In addition to default plugins included into SonarQube installation role install
   - checkstyle-sonar-plugin-4.20
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.0
-  - sonar-groovy-plugin-1.5.jar
-  - sonar-dependency-check-plugin-1.2.3
-  - sonar-jproperties-plugin-2.6.jar
   - sonar-jdepend-plugin-1.1.1
-  - sonar-issueresolver-plugin-1.0.2  
-  - sonar-yaml-plugin-1.4.2.jar
+  - sonar-jproperties-plugin-2.6
+  - sonar-dependency-check-plugin-1.2.3
+  - sonar-issueresolver-plugin-1.0.2
+  - sonar-json-plugin-2.3
+  - sonar-yaml-plugin-1.4.2
+  - sonar-ansible-extras-plugin-2.1.0
+  - sonar-shellcheck-plugin-2.1.0
+  
+Also you may install optional plugins. Be carefull, not all of them are supported in latest SonarQube versions:
+  - qualinsight-sonarqube-smell-plugin-4.0.0
+  - qualinsight-sonarqube-badges-3.0.1
+  - sonar-auth-github-plugin-1.5.0.870
+  - sonar-auth-bitbucket-plugin-1.0
+  - sonar-bitbucket-plugin-1.3.0
+  - sonar-auth-gitlab-plugin-1.3.2
+  - sonar-gitlab-plugin-4.0.0
+  - sonar-xanitizer-plugin-2.0.0
+  - sonar-groovy-plugin-1.5
 
 Requirements
 --------------
 
  - **Mininmal Ansible version**: 2.5
  - **Supported SonarQube versions**:
+   - 6.7.7 LTS
    - 7.0 - 7.7
  - **Supported databases**
    - PostgreSQL
@@ -51,7 +65,6 @@ Java, database, web server with self-signed certificate should be installed prel
     - anxs.postgresql
     - jdauphant.ssl-certs
     - nginxinc.nginx
-
 
 Role Variables
 --------------
@@ -101,6 +114,8 @@ Role Variables
         default: sonar
       - `options`\
         default:
+  - `sonar_check_url` - url for SonarQube startup verification\
+    default: http://{{ web.host }}:{{ web.port }}
   - `sonar_store` - sonarqube artifact provider\
     default: https://sonarsource.bintray.com/Distribution/sonarqube
   - `sonar_download_path` - local download path\
@@ -110,11 +125,11 @@ Role Variables
   - `sonar_proxy_server_name` - server name in webserver config\
     default: '{{ ansible_fqdn }}'
   - `sonar_proxy_http` - is http connection allowed\
-    default: False
+    default: false
   - `sonar_proxy_http_port` - http port\
     default: 80
   - `sonar_proxy_ssl` - is https connection allowed\
-    default: True
+    default: true
   - `sonar_proxy_ssl_port` - https port\
     default: 443
   - `sonar_proxy_ssl_cert_path` - path to certificate\
@@ -123,21 +138,44 @@ Role Variables
     default: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
   - `sonar_proxy_client_max_body_size` - client max body size setting in web server config\
     default: 32m
-  - `sonar_plugins` - list of default plugins
+  - `sonar_plugins` - list of plugins
   - `sonar_install_optional_plugins` - are optional plugins required\
-    default: False  
-  - `sonar_optional_plugins` - list of additional plugins switched off by default
+    default: false
+  - `sonar_optional_plugins` - list of optional plugins switched off by default. Not all of them are supported in latest SonarQube versions, so select ones you need and override this property.
+  - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
+  - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
-  - `sonar_exclude_plugins` - list of plugins excluded from SonarQube installer
 
 Example Playbook
 ----------------
 ```yaml
 - name: Install SonarQube
   hosts: sonarqube
-  become: True
+  vars:
+    sonar_major_version: 7
+    sonar_minor_version: 6
+    sonar_install_optional_plugins: true
+    sonar_optional_plugins:
+      - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
+        qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
+      - https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar
+      - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
+    sonar_default_excluded_plugins:
+      - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
+    sonar_check_url: 'https://{{ ansible_fqdn }}'
+    java_major_version: 8
+    transport: repositories
+    postgresql_users:
+      - name: sonar
+        pass: sonar
+    postgresql_databases:
+      - name: sonar
+        owner: sonar
+    ssl_certs_path_owner: root
+    ssl_certs_path_group: root
+    ssl_certs_mode: 0755 
   pre_tasks:
-    # delete sonar installed on previous run to prevent plugins conflict in case if any plugin is updated
+    # delete previously installed sonar to prevent plugins conflict
     - name: delete sonar
       file:
         path: '{{ sonar_path }}'
@@ -145,22 +183,25 @@ Example Playbook
   roles:
     - role: lean_delivery.java
     - role: anxs.postgresql
-      postgresql_users:
-        - name: sonar
-          pass: sonar
-      postgresql_databases:
-        - name: sonar
-          owner: sonar
+      become: true
     - role: jdauphant.ssl-certs
-      ssl_certs_common_name: '{{ ansible_fqdn }}'
-      ssl_certs_path_owner: root
-      ssl_certs_path_group: root
-      ssl_certs_mode: 0755
+      become: true
     - role: nginxinc.nginx
+    # maven role is required for building bitbucket plugin
+    - role: gantsign.maven
     - role: lean_delivery.sonarqube
-      sonar_install_optional_plugins: True
-      sonar_check_url: 'https://{{ ansible_fqdn }}'
-  post_tasks:
+  tasks:
+    - name: unzip bitbucket plugin  
+      unarchive:
+        src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master.zip'
+        dest: '{{ sonar_installation }}/extensions/plugins/'
+        remote_src: yes
+    - name: build bitbucket plugin
+      command: '/usr/local/bin/mvn clean install -DskipTests'
+      args:
+        chdir: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master'
+    - name: move bitbucket plugin
+      command: 'mv {{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar {{ sonar_installation }}/extensions/plugins'
     - name: delete default nginx config
       file:
         path: /etc/nginx/conf.d/default.conf
@@ -169,7 +210,7 @@ Example Playbook
       service: 
         name: nginx
         state: restarted
-        enabled: True
+        enabled: true
 ```
 
 ## License

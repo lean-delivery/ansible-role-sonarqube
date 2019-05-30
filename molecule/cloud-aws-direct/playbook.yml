@@ -1,8 +1,7 @@
 ---
 - name: Converge
-  become: yes
-  gather_facts: true
   hosts: all
+  strategy: mitogen_linear
   roles:
     - role: ansible-role-sonarqube
-      sonar_install_optional_plugins: True
+      sonar_install_optional_plugins: true

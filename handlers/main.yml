@@ -4,16 +4,16 @@
     systemd:
       name: sonarqube
       state: restarted
-      daemon_reload: True
-      enabled: True
+      daemon_reload: true
+      enabled: true
     notify: Wait for Sonarqube
-    become: True
+    become: true
 
   - name: Wait for Sonarqube
     uri:
       url: '{{ sonar_check_url }}'
-      return_content: True
-      validate_certs: False
+      return_content: true
+      validate_certs: false
     register: uri_result
     until: "'Loading...' in uri_result.content"
     retries: 60

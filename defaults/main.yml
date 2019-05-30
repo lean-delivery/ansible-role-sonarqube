@@ -59,133 +59,124 @@ sonar_download_path: /tmp
 
 sonar_proxy_type: nginx
 sonar_proxy_server_name: '{{ ansible_fqdn }}'
-sonar_proxy_http: False
+sonar_proxy_http: false
 sonar_proxy_http_port: 80
-sonar_proxy_ssl: True
+sonar_proxy_ssl: true
 sonar_proxy_ssl_port: 443
-sonar_proxy_ssl_cert_path: "/etc/ssl/{{ sonar_proxy_server_name }}/\
-{{ sonar_proxy_server_name }}.pem"
+sonar_proxy_ssl_cert_path: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.pem'
 sonar_proxy_ssl_key_path: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
 sonar_proxy_client_max_body_size: 32m
 
 nginx_config_path: /etc/nginx/conf.d/sonar.conf
 
+sonar_version: '{{ sonar_major_version }}.{{ sonar_minor_version }}'
+findbugs_version: '{% if sonar_version is version("7.6", ">=") %}3.11.0{% else %}3.9.4{% endif %}'
+dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}1.2.3{% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
+                          {% else %}1.1.4{% endif %}"
+xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
+gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
+
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
 
-  - "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.20/\
-    checkstyle-sonar-plugin-4.20.jar"
+  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.20/checkstyle-sonar-plugin-4.20.jar
 
-  - "https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/\
-    sonar-pmd-plugin-3.2.1.jar"
+  - https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar
 
-  - "https://github.com/spotbugs/sonar-findbugs/releases/download/3.11.0/\
-    sonar-findbugs-plugin-3.11.0.jar"
+  - 'https://github.com/spotbugs/sonar-findbugs/releases/download/{{ findbugs_version }}/sonar-findbugs-plugin-{{ findbugs_version }}.jar'
 
-  - "https://github.com/pmayweg/sonar-groovy/releases/download/1.5/\
-    sonar-groovy-plugin-1.5.jar"
+  - https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar
 
-  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.2.3/\
-    sonar-dependency-check-plugin-1.2.3.jar"
-#   1.2.3 version is not supported in SonarQube 7.0 - 7.2.1. Use 1.1.4 instead.
-# - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/1.1.4/\
-#   sonar-dependency-check-plugin-1.1.4.jar"
+  - https://github.com/racodond/sonar-jproperties-plugin/releases/download/2.6/sonar-jproperties-plugin-2.6.jar
 
-  - "https://github.com/racodond/sonar-jproperties-plugin/releases/download/2.6/\
-    sonar-jproperties-plugin-2.6.jar"
+  - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_version }}/\
+    sonar-dependency-check-plugin-{{ dependency_check_version }}.jar"
 
-  - "https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/\
-    sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar"
+  - https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar
 
-  - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/\
-    sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar"
+  - https://github.com/racodond/sonar-json-plugin/releases/download/2.3/sonar-json-plugin-2.3.jar
 
-  - "https://github.com/sbaudoin/sonar-yaml/releases/download/v1.4.2/\
-    sonar-yaml-plugin-1.4.2.jar"
+  - https://github.com/sbaudoin/sonar-yaml/releases/download/v1.4.2/sonar-yaml-plugin-1.4.2.jar
+
+  - https://github.com/sbaudoin/sonar-ansible/releases/download/v2.2.0/sonar-ansible-extras-plugin-2.2.0.jar
+
+  - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.1.0/sonar-shellcheck-plugin-2.1.0.jar
 
 # Updates for plugins included into SonarQube installation
-  - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/\
-    sonar-java-plugin-5.12.1.17771.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/\
-    sonar-javascript-plugin-5.1.1.7506.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/\
-    sonar-typescript-plugin-1.9.0.3766.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/\
-    sonar-scm-git-plugin-1.8.0.1574.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/\
-    sonar-xml-plugin-2.0.1.2020.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-python-plugin/\
-    sonar-python-plugin-1.13.0.2922.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/\
-    sonar-kotlin-plugin-1.5.0.315.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-css-plugin/\
-    sonar-css-plugin-1.0.3.724.jar"
-  - "https://binaries.sonarsource.com/Distribution/sonar-html-plugin/\
-    sonar-html-plugin-3.1.0.1615.jar"
+  - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-5.13.0.18197.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-5.1.1.7506.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-1.9.0.3766.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.8.0.1574.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.0.1.2020.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-1.13.0.2922.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-1.5.0.315.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-1.0.3.724.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.1.0.1615.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-3.1.1.4762.jar
 
-sonar_install_optional_plugins: False
+sonar_install_optional_plugins: false
 sonar_optional_plugins:
-
-  - "https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/\
-    sonar-auth-github-plugin-1.5.0.870.jar"
 
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
     qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
 
-#   Plugin is not supported in SonarQube 7.3+ versions
+#   Plugin is not supported in SonarQube 7.3+
 #   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/issues/82
-# - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
-#   qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
+  - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
+    qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
 
-  - "https://github.com/racodond/sonar-json-plugin/releases/download/2.3/\
-    sonar-json-plugin-2.3.jar"
+  - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
 
-  - "https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/\
-    sonar-auth-bitbucket-plugin-1.0.jar"
+  - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
 
-  - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/2.0.0/\
-    sonar-xanitizer-plugin-2.0.0.jar"
-#   2.0.0 version is not supported in SonarQube 7.0 - 7.2.1. Use 1.5.0 instead.
-# - "https://github.com/RIGS-IT/sonar-xanitizer/releases/download/1.5.0/\
-#   sonar-xanitizer-plugin-1.5.0.jar"
+#   Plugin is not yet supported in SonarQube 7.7: https://github.com/mibexsoftware/sonar-bitbucket-plugin/issues/104
+  - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
 
-  - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/4.0.0/\
-    sonar-gitlab-plugin-4.0.0.jar"
+  - https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/sonar-auth-gitlab-plugin-1.3.2.jar
 
-  - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/\
-    sonar-auth-gitlab-plugin-1.3.2.jar"
+#   Plugin is not supported in SonarQube 7.6+
+  - 'https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/{{ gitlab_version }}/sonar-gitlab-plugin-{{ gitlab_version }}.jar'
 
-#   You have to build this plugin manually after role is installed, use 'mvn clean install' command
-  - "https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/\
-    master.zip"
+  - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_version }}/sonar-xanitizer-plugin-{{ xanitizer_version }}.jar'
+
+#   Plugin is not supported in SonarQube 7.3+
+  - https://github.com/pmayweg/sonar-groovy/releases/download/1.5/sonar-groovy-plugin-1.5.jar
 
 sonar_all_plugins: '{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}{% else %}{{ sonar_plugins }}{% endif %}'
 
 sonar_plugins_path: "sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/extensions/plugins"
-sonar_exclude_plugins:
 
-# Exclude plugins that goes with SonarQube installation:
-# 1. if there is newer version in sonar_plugins list in vars/main.yml
-# 2. if you don't need it
-  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.4.0.14284.jar"
-  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.6.1.15064.jar"
-  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.8.0.15699.jar"
-  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.9.2.16552.jar"
-  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.10.1.16922.jar"
-  - "{{ sonar_plugins_path }}/sonar-java-plugin-5.11.0.17289.jar"
-  - "{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar"
-  - "{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar"
-  - "{{ sonar_plugins_path }}/sonar-javascript-plugin-5.0.0.6962.jar"
-  - "{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar"
-  - "{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar"
-  - "{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.4.1.1128.jar"
-  - "{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.6.0.1349.jar"
-  - "{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.7.0.1491.jar"
-  - "{{ sonar_plugins_path }}/sonar-xml-plugin-1.5.1.1452.jar"
-  - "{{ sonar_plugins_path }}/sonar-python-plugin-1.10.0.2131.jar"
-  - "{{ sonar_plugins_path }}/sonar-python-plugin-1.11.0.2473.jar"
-  - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar"
-  - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar"
-  - "{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar"
-  - "{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar"
-  - "{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar"
+# Exclude old plugins that go with SonarQube installations
+sonar_excluded_plugins:
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-5.4.0.14284.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-5.6.1.15064.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-5.8.0.15699.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-5.9.2.16552.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-5.10.1.16922.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-5.11.0.17289.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-5.0.0.6962.jar'
+  - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar'
+  - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar'
+  - '{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.4.1.1128.jar'
+  - '{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.6.0.1349.jar'
+  - '{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.7.0.1491.jar'
+  - '{{ sonar_plugins_path }}/sonar-xml-plugin-1.5.1.1452.jar'
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-1.10.0.2131.jar'
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-1.11.0.2473.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar'
+  - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar'
+  - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-2.13.0.3107.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-2.14.0.3569.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-2.15.0.4060.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-2.16.0.4355.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-3.0.0.4537.jar'
+
+# Override this var to exclude default plugins you don't need
+sonar_default_excluded_plugins: []
+
+sonar_all_excluded_plugins: '{{ sonar_excluded_plugins }} + {{ sonar_default_excluded_plugins }}'
