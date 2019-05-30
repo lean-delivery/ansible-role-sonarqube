@@ -159,7 +159,6 @@ Example Playbook
     sonar_optional_plugins:
       - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
         qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
-      - https://github.com/racodond/sonar-json-plugin/releases/download/2.3/sonar-json-plugin-2.3.jar
       - https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar
       - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
     sonar_default_excluded_plugins:

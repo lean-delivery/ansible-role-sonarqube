@@ -16,3 +16,75 @@
 [submodule "submodules/javascript-plugin"]
 	path = submodules/javascript-plugin
 	url = https://github.com/SonarSource/SonarJS.git
+[submodule "submodules/jdepend-plugin"]
+	path = submodules/jdepend-plugin
+	url = https://github.com/willemsrb/sonar-jdepend-plugin.git
+[submodule "submodules/jproperties-plugin"]
+	path = submodules/jproperties-plugin
+	url = https://github.com/racodond/sonar-jproperties-plugin.git
+[submodule "submodules/dependency-check-plugin"]
+	path = submodules/dependency-check-plugin
+	url = https://github.com/SonarSecurityCommunity/dependency-check-sonar-plugin.git
+[submodule "submodules/issueresolver-plugin"]
+	path = submodules/issueresolver-plugin
+	url = https://github.com/willemsrb/sonar-issueresolver-plugin.git
+[submodule "submodules/json-plugin"]
+	path = submodules/json-plugin
+	url = https://github.com/racodond/sonar-json-plugin.git
+[submodule "submodules/yaml-plugin"]
+	path = submodules/yaml-plugin
+	url = https://github.com/sbaudoin/sonar-yaml.git
+[submodule "submodules/ansible-plugin"]
+	path = submodules/ansible-plugin
+	url = https://github.com/sbaudoin/sonar-ansible.git
+[submodule "submodules/shellcheck-plugin"]
+	path = submodules/shellcheck-plugin
+	url = https://github.com/sbaudoin/sonar-shellcheck.git
+[submodule "submodules/typescript-plugin"]
+	path = submodules/typescript-plugin
+	url = https://github.com/SonarSource/SonarTS.git
+[submodule "submodules/git-plugin"]
+	path = submodules/git-plugin
+	url = https://github.com/SonarSource/sonar-scm-git.git
+[submodule "submodules/xml-plugin"]
+	path = submodules/xml-plugin
+	url = https://github.com/SonarSource/sonar-xml.git
+[submodule "submodules/python-plugin"]
+	path = submodules/python-plugin
+	url = https://github.com/SonarSource/sonar-python.git
+[submodule "submodules/css-plugin"]
+	path = submodules/css-plugin
+	url = https://github.com/SonarSource/sonar-css.git
+[submodule "submodules/html-plugin"]
+	path = submodules/html-plugin
+	url = https://github.com/SonarSource/sonar-html.git
+[submodule "submodules/php-plugin"]
+	path = submodules/php-plugin
+	url = https://github.com/SonarSource/sonar-php.git
+[submodule "submodules/smell-plugin"]
+	path = submodules/smell-plugin
+	url = https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell.git
+[submodule "submodules/badges-plugin"]
+	path = submodules/badges-plugin
+	url = https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges.git
+[submodule "submodules/auth-github-plugin"]
+	path = submodules/auth-github-plugin
+	url = https://github.com/SonarSource/sonar-auth-github.git
+[submodule "submodules/auth-bitbucket-plugin"]
+	path = submodules/auth-bitbucket-plugin
+	url = https://github.com/SonarSource/sonar-auth-bitbucket.git
+[submodule "submodules/bitbucket-plugin"]
+	path = submodules/bitbucket-plugin
+	url = https://github.com/mibexsoftware/sonar-bitbucket-plugin.git
+[submodule "submodules/auth-gitlab-plugin"]
+	path = submodules/auth-gitlab-plugin
+	url = https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin.git
+[submodule "submodules/gitlab-plugin"]
+	path = submodules/gitlab-plugin
+	url = https://github.com/gabrie-allaigre/sonar-gitlab-plugin.git
+[submodule "submodules/xanitizer-plugin"]
+	path = submodules/xanitizer-plugin
+	url = https://github.com/RIGS-IT/sonar-xanitizer.git
+[submodule "submodules/groovy-plugin"]
+	path = submodules/groovy-plugin
+	url = https://github.com/pmayweg/sonar-groovy.git
