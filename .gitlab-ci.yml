@@ -10,6 +10,7 @@ before_script:
   - ansible-lint --version
   - molecule --version
   - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+  - mkdir -p /tmp/molecule/plugins && git clone https://github.com/dw/mitogen.git /tmp/molecule/plugins/mitogen
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"
@@ -25,7 +26,7 @@ Ansible lint:
   tags:
     - aws
 
-Docker sonarqube:
+.Docker sonarqube:
   stage: deployment test
   script:
     - molecule test -s default
@@ -41,7 +42,7 @@ AWS sonarqube:
   tags:
     - aws
 
-EPC sonarqube:
+.EPC sonarqube:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test

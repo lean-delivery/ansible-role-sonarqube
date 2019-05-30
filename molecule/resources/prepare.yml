@@ -1,5 +1,8 @@
 ---
-- name: Prepare
+- name: Prepare Python
+  import_playbook: provisioning/AWS/prepare.yml
+
+- name: Prepare pre-requisites
   hosts: all
   roles:
     - role: lean_delivery.java
@@ -19,3 +22,4 @@
       ssl_certs_path_group: root
       ssl_certs_mode: 0755
     - role: nginxinc.nginx
+      become: true
