@@ -171,8 +171,9 @@ Example Playbook
     postgresql_databases:
       - name: sonar
         owner: sonar
-    ssl_certs_path_owner: nginx
-    ssl_certs_path_group: nginx
+    ssl_certs_path_owner: root
+    ssl_certs_path_group: root
+    ssl_certs_mode: 0755 
   pre_tasks:
     # delete previously installed sonar to prevent plugins conflict
     - name: delete sonar
@@ -184,6 +185,7 @@ Example Playbook
     - role: anxs.postgresql
       become: true
     - role: jdauphant.ssl-certs
+      become: true
     - role: nginxinc.nginx
     # maven role is required for building bitbucket plugin
     - role: gantsign.maven
