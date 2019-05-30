@@ -1,4 +1,18 @@
 ---
+- name: Prepare Ubuntu / Debian
+  hosts: debian_family
+  strategy: linear
+  gather_facts: false
+  tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt install -y python-minimal)
+      become: true
+      changed_when: false
+      register: update_result
+      retries: 10
+      delay: 5
+      until: update_result.rc == 0
+
 - name: Prepare pre-requisites
   hosts: all
   roles:
