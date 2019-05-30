@@ -1,6 +1,7 @@
 ---
 - name: Converge
   hosts: all
+  strategy: mitogen_linear
   roles:
     - role: ansible-role-sonarqube
       sonar_install_optional_plugins: true

@@ -4,6 +4,7 @@
 
 - name: Prepare pre-requisites
   hosts: all
+  strategy: mitogen_linear
   roles:
     - role: lean_delivery.java
       java_major_version: 8
