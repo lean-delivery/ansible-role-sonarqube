@@ -151,7 +151,6 @@ Example Playbook
 ```yaml
 - name: Install SonarQube
   hosts: sonarqube
-  become: true
   vars:
     sonar_major_version: 7
     sonar_minor_version: 6
@@ -185,6 +184,7 @@ Example Playbook
   roles:
     - role: lean_delivery.java
     - role: anxs.postgresql
+      become: true
     - role: jdauphant.ssl-certs
     - role: nginxinc.nginx
     # maven role is required for building bitbucket plugin
