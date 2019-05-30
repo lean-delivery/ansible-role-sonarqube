@@ -186,6 +186,7 @@ Example Playbook
     - role: anxs.postgresql
       become: true
     - role: jdauphant.ssl-certs
+      become: true
     - role: nginxinc.nginx
     # maven role is required for building bitbucket plugin
     - role: gantsign.maven
