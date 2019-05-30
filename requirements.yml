@@ -3,4 +3,3 @@
 - src: anxs.postgresql
 - src: jdauphant.ssl-certs
 - src: nginxinc.nginx
-- src: gantsign.maven
