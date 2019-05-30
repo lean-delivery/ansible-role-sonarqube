@@ -42,8 +42,6 @@ platforms:
 provisioner:
   name: ansible
   log: false
-  playbooks:
-    prepare: ../resources/prepare.yml
   lint:
     name: ansible-lint
 scenario:

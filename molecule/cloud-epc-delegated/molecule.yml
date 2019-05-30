@@ -23,7 +23,6 @@ provisioner:
   config_options:
     defaults:
       strategy_plugins: /tmp/molecule/plugins/mitogen/ansible_mitogen/plugins/strategy
-      # strategy: mitogen_linear
     ssh_connection:
       control_path: '/var/ans/%%h'
   playbooks:

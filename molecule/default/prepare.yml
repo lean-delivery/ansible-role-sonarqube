@@ -1,7 +1,6 @@
 ---
 - name: Prepare Ubuntu / Debian
   hosts: debian_family
-  strategy: linear
   gather_facts: false
   tasks:
     - name: Install python for Ansible
@@ -15,7 +14,6 @@
 
 - name: Prepare pre-requisites
   hosts: all
-  strategy: mitogen_linear
   roles:
     - role: lean_delivery.java
       java_major_version: 8

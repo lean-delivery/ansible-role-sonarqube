@@ -27,7 +27,7 @@ Ansible lint:
   tags:
     - aws
 
-.Docker sonarqube:
+Docker sonarqube:
   stage: deployment test
   script:
     - molecule test -s default
