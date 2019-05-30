@@ -1,7 +1,4 @@
 ---
-- name: Prepare Python
-  import_playbook: provisioning/AWS/prepare.yml
-
 - name: Prepare pre-requisites
   hosts: all
   strategy: mitogen_linear

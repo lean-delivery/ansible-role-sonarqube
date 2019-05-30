@@ -20,13 +20,15 @@ platforms:
 provisioner:
   name: ansible
   log: true
+  config_options:
+    defaults:
+      strategy_plugins: /tmp/molecule/plugins/mitogen/ansible_mitogen/plugins/strategy
+    ssh_connection:
+      control_path: '/var/ans/%%h'
   playbooks:
     create: ../resources/provisioning/EPC/create.yml
     prepare: ../resources/prepare.yml
     destroy: ../resources/provisioning/EPC/destroy.yml
-  config_options:
-    ssh_connection:
-      control_path: '/var/ans/%%h'
   lint:
     name: ansible-lint
   env:
