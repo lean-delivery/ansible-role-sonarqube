@@ -28,10 +28,9 @@
       postgresql_databases:
         - name: sonar
           owner: sonar
-    - role: jdauphant.ssl-certs
-      become: true
-      ssl_certs_path_owner: root
-      ssl_certs_path_group: root
-      ssl_certs_mode: 0755
     - role: nginxinc.nginx
       become: true
+    - role: jdauphant.ssl-certs
+      become: true
+      ssl_certs_path_owner: nginx
+      ssl_certs_path_group: nginx

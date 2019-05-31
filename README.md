@@ -151,6 +151,7 @@ Example Playbook
 ```yaml
 - name: Install SonarQube
   hosts: sonarqube
+  become: true
   vars:
     sonar_major_version: 7
     sonar_minor_version: 6
@@ -158,7 +159,7 @@ Example Playbook
     sonar_optional_plugins:
       - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
         qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
-      - https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar
+      - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
       - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
@@ -171,10 +172,14 @@ Example Playbook
     postgresql_databases:
       - name: sonar
         owner: sonar
-    ssl_certs_path_owner: root
-    ssl_certs_path_group: root
-    ssl_certs_mode: 0755 
+    ssl_certs_path_owner: nginx
+    ssl_certs_path_group: nginx
   pre_tasks:
+    - name: install epel
+      package:
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
+      when: ansible_distribution == 'RedHat'
     # delete previously installed sonar to prevent plugins conflict
     - name: delete sonar
       file:
@@ -183,15 +188,13 @@ Example Playbook
   roles:
     - role: lean_delivery.java
     - role: anxs.postgresql
-      become: true
-    - role: jdauphant.ssl-certs
-      become: true
     - role: nginxinc.nginx
+    - role: jdauphant.ssl-certs
     # maven role is required for building bitbucket plugin
     - role: gantsign.maven
     - role: lean_delivery.sonarqube
   tasks:
-    - name: unzip bitbucket plugin  
+    - name: unzip bitbucket plugin
       unarchive:
         src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master.zip'
         dest: '{{ sonar_installation }}/extensions/plugins/'
@@ -200,17 +203,15 @@ Example Playbook
       command: '/usr/local/bin/mvn clean install -DskipTests'
       args:
         chdir: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master'
-    - name: move bitbucket plugin
-      command: 'mv {{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar {{ sonar_installation }}/extensions/plugins'
+    - name: copy bitbucket plugin
+      copy:
+        src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar'
+        dest: '{{ sonar_installation }}/extensions/plugins'
+        remote_src: true
     - name: delete default nginx config
       file:
         path: /etc/nginx/conf.d/default.conf
         state: absent
-    - name: restart, enable nginx
-      service: 
-        name: nginx
-        state: restarted
-        enabled: true
 ```
 
 ## License
