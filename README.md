@@ -18,7 +18,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-findbugs-plugin-3.11.0
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
-  - sonar-dependency-check-plugin-1.2.3
+  - sonar-dependency-check-plugin-1.2.4
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.2
