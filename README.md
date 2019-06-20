@@ -81,7 +81,9 @@ Role Variables
   - `sonar_nofile` - file descriptors amount that user running SonarQube can open\
     default: 65536
   - `sonar_nproc` - threads amount that user running SonarQube can open\
-    default: 2048
+    default: 4096
+  - `sonar_max_map_count` - mmap counts limit required for Elasticsearch\
+    default: 262144
   - `sonar_log_level` - Logging level of SonarQube server\
     default: INFO
   - `sonar_java_opts`:
