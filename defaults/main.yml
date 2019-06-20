@@ -9,7 +9,7 @@ sonar_group: sonar
 
 # Tuning
 sonar_nofile: 65536
-sonar_nproc: 2048
+sonar_nproc: 4096
 sonar_log_level: INFO
 sonar_java_opts:
   web: -Xmx512m -Xms128m
