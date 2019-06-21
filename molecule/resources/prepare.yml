@@ -18,8 +18,6 @@
   strategy: mitogen_linear
   roles:
     - role: lean_delivery.java
-      java_major_version: 8
-      transport: repositories
     - role: anxs.postgresql
       become: true
       postgresql_users:
