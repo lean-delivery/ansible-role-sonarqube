@@ -42,6 +42,9 @@ Requirements
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
+ - **Supported Java**:
+   - Oracle JRE	8, 11
+   - OpenJDK 8, 11
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -165,8 +168,10 @@ Example Playbook
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
-    java_major_version: 8
-    transport: repositories
+    java_major_version: 11
+    java_tarball_install: true
+    transport: web
+    transport_web: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
     postgresql_users:
       - name: sonar
         pass: sonar

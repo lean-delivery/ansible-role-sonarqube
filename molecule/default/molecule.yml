@@ -25,7 +25,7 @@ platforms:
     groups:
       # - sonarqube
       - rhel_family
-  - name: test-docker-ubuntu1804-openjdk
+  - name: test-docker-ubuntu1804-ansible-role-sonarqube
     image: leandelivery/docker-systemd:ubuntu-18.04
     privileged: true
     security_opts:
