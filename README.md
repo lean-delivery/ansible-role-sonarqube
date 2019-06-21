@@ -168,10 +168,8 @@ Example Playbook
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
-    java_major_version: 11
-    java_tarball_install: true
-    transport: web
-    transport_web: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
+    java_major_version: 8
+    transport: repositories
     postgresql_users:
       - name: sonar
         pass: sonar
