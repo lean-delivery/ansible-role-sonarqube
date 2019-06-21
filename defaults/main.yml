@@ -1,7 +1,7 @@
 ---
 # defaults file for sonarqube
 sonar_major_version: 7
-sonar_minor_version: 7
+sonar_minor_version: 8
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
@@ -9,7 +9,8 @@ sonar_group: sonar
 
 # Tuning
 sonar_nofile: 65536
-sonar_nproc: 2048
+sonar_nproc: 4096
+sonar_max_map_count: 262144
 sonar_log_level: INFO
 sonar_java_opts:
   web: -Xmx512m -Xms128m
@@ -112,6 +113,7 @@ sonar_plugins:
   - https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-1.1.0.993.jar
   - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.1.0.1615.jar
   - https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-3.1.1.4762.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
 
 sonar_install_optional_plugins: false
 sonar_optional_plugins:
@@ -123,8 +125,6 @@ sonar_optional_plugins:
 #   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/issues/82
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
     qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
-
-  - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
 
   - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
 

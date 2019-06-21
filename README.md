@@ -28,7 +28,6 @@ In addition to default plugins included into SonarQube installation role install
 Also you may install optional plugins. Be carefull, not all of them are supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0
   - qualinsight-sonarqube-badges-3.0.1
-  - sonar-auth-github-plugin-1.5.0.870
   - sonar-auth-bitbucket-plugin-1.0
   - sonar-bitbucket-plugin-1.3.0
   - sonar-auth-gitlab-plugin-1.3.2
@@ -42,7 +41,10 @@ Requirements
  - **Mininmal Ansible version**: 2.5
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
-   - 7.0 - 7.7
+   - 7.0 - 7.8
+ - **Supported Java**:
+   - Oracle JRE	8, 11
+   - OpenJDK 8, 11
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -72,7 +74,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 7
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 7
+    default: 8
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -82,7 +84,9 @@ Role Variables
   - `sonar_nofile` - file descriptors amount that user running SonarQube can open\
     default: 65536
   - `sonar_nproc` - threads amount that user running SonarQube can open\
-    default: 2048
+    default: 4096
+  - `sonar_max_map_count` - mmap counts limit required for Elasticsearch\
+    default: 262144
   - `sonar_log_level` - Logging level of SonarQube server\
     default: INFO
   - `sonar_java_opts`:
