@@ -42,9 +42,10 @@ Requirements
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
+   - 7.9 - 7.9.1 LTS
  - **Supported Java**:
-   - Oracle JRE	8, 11
-   - OpenJDK 8, 11
+   - Oracle JRE	8, 11 (SonarQube 7.9.* requries Java 11+ to run)
+   - OpenJDK 8, 11 (SonarQube 7.9.* requries Java 11+ to run)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -74,7 +75,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 7
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 8
+    default: 9
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -158,7 +159,7 @@ Example Playbook
   become: true
   vars:
     sonar_major_version: 7
-    sonar_minor_version: 6
+    sonar_minor_version: 9
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
       - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
@@ -168,8 +169,10 @@ Example Playbook
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
-    java_major_version: 8
-    transport: repositories
+    java_major_version: 11
+    java_tarball_install: true
+    transport: web
+    transport_web: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
     postgresql_users:
       - name: sonar
         pass: sonar

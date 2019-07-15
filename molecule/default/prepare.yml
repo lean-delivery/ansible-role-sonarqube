@@ -16,8 +16,10 @@
   hosts: all
   roles:
     - role: lean_delivery.java
-      java_major_version: 8
-      transport: repositories
+      java_major_version: 11
+      java_tarball_install: true
+      transport: web
+      transport_web: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
     - role: anxs.postgresql
       become: true
       postgresql_users:
