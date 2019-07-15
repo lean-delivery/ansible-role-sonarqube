@@ -33,7 +33,7 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
-  - sonar-groovy-plugin-1.5
+  - sonar-groovy-plugin-1.6
 
 Requirements
 --------------

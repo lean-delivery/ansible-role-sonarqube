@@ -87,4 +87,4 @@
 	url = https://github.com/RIGS-IT/sonar-xanitizer.git
 [submodule "submodules/groovy-plugin"]
 	path = submodules/groovy-plugin
-	url = https://github.com/pmayweg/sonar-groovy.git
+	url = https://github.com/Inform-Software/sonar-groovy.git

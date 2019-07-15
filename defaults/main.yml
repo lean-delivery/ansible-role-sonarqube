@@ -138,8 +138,7 @@ sonar_optional_plugins:
 
   - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_version }}/sonar-xanitizer-plugin-{{ xanitizer_version }}.jar'
 
-#   Plugin is not supported in SonarQube 7.3+
-  - https://github.com/pmayweg/sonar-groovy/releases/download/1.5/sonar-groovy-plugin-1.5.jar
+  - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
 
 sonar_all_plugins: '{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}{% else %}{{ sonar_plugins }}{% endif %}'
 
