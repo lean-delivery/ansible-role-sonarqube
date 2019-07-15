@@ -75,7 +75,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 7
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 9
+    default: 9.1
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -159,7 +159,7 @@ Example Playbook
   become: true
   vars:
     sonar_major_version: 7
-    sonar_minor_version: 9
+    sonar_minor_version: 9.1
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
       - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
@@ -201,20 +201,6 @@ Example Playbook
     - role: gantsign.maven
     - role: lean_delivery.sonarqube
   tasks:
-    - name: unzip bitbucket plugin
-      unarchive:
-        src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master.zip'
-        dest: '{{ sonar_installation }}/extensions/plugins/'
-        remote_src: yes
-    - name: build bitbucket plugin
-      command: '/usr/local/bin/mvn clean install -DskipTests'
-      args:
-        chdir: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master'
-    - name: copy bitbucket plugin
-      copy:
-        src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar'
-        dest: '{{ sonar_installation }}/extensions/plugins'
-        remote_src: true
     - name: delete default nginx config
       file:
         path: /etc/nginx/conf.d/default.conf
