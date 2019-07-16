@@ -33,7 +33,7 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
-  - sonar-groovy-plugin-1.5
+  - sonar-groovy-plugin-1.6
 
 Requirements
 --------------
@@ -42,9 +42,10 @@ Requirements
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
+   - 7.9 - 7.9.1 LTS
  - **Supported Java**:
-   - Oracle JRE	8, 11
-   - OpenJDK 8, 11
+   - Oracle JRE	8, 11 (SonarQube 7.9.* requries Java 11+ to run)
+   - OpenJDK 8, 11 (SonarQube 7.9.* requries Java 11+ to run)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -74,7 +75,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 7
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 8
+    default: 9.1
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -158,7 +159,7 @@ Example Playbook
   become: true
   vars:
     sonar_major_version: 7
-    sonar_minor_version: 6
+    sonar_minor_version: 9.1
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
       - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
@@ -168,8 +169,10 @@ Example Playbook
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
-    java_major_version: 8
-    transport: repositories
+    java_major_version: 11
+    java_tarball_install: true
+    transport: web
+    transport_web: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
     postgresql_users:
       - name: sonar
         pass: sonar
@@ -198,20 +201,6 @@ Example Playbook
     - role: gantsign.maven
     - role: lean_delivery.sonarqube
   tasks:
-    - name: unzip bitbucket plugin
-      unarchive:
-        src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master.zip'
-        dest: '{{ sonar_installation }}/extensions/plugins/'
-        remote_src: yes
-    - name: build bitbucket plugin
-      command: '/usr/local/bin/mvn clean install -DskipTests'
-      args:
-        chdir: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master'
-    - name: copy bitbucket plugin
-      copy:
-        src: '{{ sonar_installation }}/extensions/plugins/sonar-bitbucket-plugin-master/target/sonar-bitbucket-plugin-1.3.0.jar'
-        dest: '{{ sonar_installation }}/extensions/plugins'
-        remote_src: true
     - name: delete default nginx config
       file:
         path: /etc/nginx/conf.d/default.conf
