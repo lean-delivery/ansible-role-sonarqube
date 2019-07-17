@@ -170,9 +170,7 @@ Example Playbook
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
     java_major_version: 11
-    java_tarball_install: true
-    transport: web
-    transport_web: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
+    transport: repositories
     postgresql_users:
       - name: sonar
         pass: sonar
@@ -197,8 +195,6 @@ Example Playbook
     - role: anxs.postgresql
     - role: nginxinc.nginx
     - role: jdauphant.ssl-certs
-    # maven role is required for building bitbucket plugin
-    - role: gantsign.maven
     - role: lean_delivery.sonarqube
   tasks:
     - name: delete default nginx config
