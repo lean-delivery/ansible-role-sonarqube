@@ -1,14 +1,11 @@
-SonarQube role
+sonarqube role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/LICENSE)
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-sonarqube.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-sonarqube)
-[![Build Status](https://gitlab.com/lean-delivery/ansible-role-sonarqube/badges/master/build.svg)](https://gitlab.com/lean-delivery/ansible-role-sonarqube/pipelines)
+[![Build Status](https://gitlab.com/lean-delivery/ansible-role-sonarqube/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-sonarqube/pipelines)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.sonarqube-blue.svg)](https://galaxy.ansible.com/lean_delivery/sonarqube)
-![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
-![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29212%2F&query=$.min_ansible_version)
-
-## Summary
---------------
+![Ansible](https://img.shields.io/ansible/role/d/role_id.svg)
+![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2Frole_id%2F&query=$.min_ansible_version)
 
 This role installs SonarQube with extended set of plugins. It uses postgreSQL database and nginx web server which enables https and serves static content.
 
@@ -203,10 +200,12 @@ Example Playbook
         state: absent
 ```
 
-## License
+License
+-------
+Apache
 
-Apache2
+Author Information
+------------------
 
-## Authors
-
-team@lean-delivery.com
+authors:
+  - Lean Delivery Team <team@lean-delivery.com>
