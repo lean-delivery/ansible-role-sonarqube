@@ -111,7 +111,7 @@ sonar_plugins:
   - https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-1.14.1.3143.jar
   - https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-1.5.0.315.jar
   - https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-1.1.1.1010.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.1.0.1615.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.2.0.2082.jar
   - https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-3.2.0.4868.jar
   - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
 
@@ -182,6 +182,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-php-plugin-2.16.0.4355.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.0.0.4537.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.1.1.4762.jar'
+  - '{{ sonar_plugins_path }}/sonar-html-plugin-3.1.0.1615.jar'
 
 # Override this var to exclude default plugins you don't need
 sonar_default_excluded_plugins: []
