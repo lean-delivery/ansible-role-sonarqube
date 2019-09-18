@@ -26,7 +26,8 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - qualinsight-sonarqube-smell-plugin-4.0.0
   - qualinsight-sonarqube-badges-3.0.1
   - sonar-auth-bitbucket-plugin-1.0
-  - sonar-bitbucket-plugin-1.3.0
+  - sonar-bitbucket-plugin-1.3.0 (for Bitbucket Cloud)
+  - sonar-stash-plugin-1.6.0 (for Bitbucket Server)
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
