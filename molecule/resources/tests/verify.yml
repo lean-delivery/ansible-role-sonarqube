@@ -4,6 +4,21 @@
 - name: Verify
   hosts: all
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+
+    - name: Populate service facts
+      service_facts:
+
+    - name: Assert that filebeat service is running
+      assert:
+        that: "'running' in ansible_facts.services['sonarqube.service'].state"
+
+    - name: Check url
+      uri:
+        url: http://0.0.0.0:9000
+        return_content: true
+        validate_certs: false
+      register: uri_result
+
+    - name: Debug uri
+      debug:
+        var: uri_result
