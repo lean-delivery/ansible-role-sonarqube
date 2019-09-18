@@ -46,7 +46,6 @@ provisioner:
   config_options:
     defaults:
       callback_whitelist: profile_tasks,timer
-      strategy_plugins: /tmp/molecule/plugins/mitogen/ansible_mitogen/plugins/strategy
   playbooks:
     create: ../resources/provisioning/AWS/create.yml
     prepare: ../resources/prepare.yml

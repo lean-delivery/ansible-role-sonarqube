@@ -33,8 +33,6 @@ provisioner:
     destroy: ../resources/provisioning/EPC/destroy.yml
     verify: ../resources/tests/verify.yml
   config_options:
-    defaults:
-      strategy_plugins: /tmp/molecule/plugins/mitogen/ansible_mitogen/plugins/strategy
     ssh_connection:
       control_path: "/var/ans/%%h"
   lint:
