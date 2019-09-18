@@ -38,6 +38,7 @@ provisioner:
     defaults:
       callback_whitelist: profile_tasks,timer
   playbooks:
+    prepare: ../resources/prepare.yml
     verify: ../resources/tests/verify.yml
 scenario:
   name: default

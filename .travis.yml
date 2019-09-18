@@ -20,6 +20,7 @@ install:
   - pip install --upgrade ansible==2.8.* docker
   - pip install molecule==2.22
   - pip install git+https://github.com/ansible/ansible-lint.git
+  - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
 
