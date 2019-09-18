@@ -1,6 +1,6 @@
 ---
 - name: Prepare Ubuntu / Debian
-  hosts: debian_family
+  hosts: all
   gather_facts: false
   tasks:
     - name: Install python for Ansible
