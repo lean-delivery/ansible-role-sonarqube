@@ -18,7 +18,7 @@ before_install:
 
 install:
   - pip install --upgrade ansible==2.8.* docker
-  - pip install git+git://github.com/ansible/molecule@2.22rc3
+  - pip install molecule==2.22
   - pip install git+https://github.com/ansible/ansible-lint.git
   - ansible --version
   - ansible-lint --version
