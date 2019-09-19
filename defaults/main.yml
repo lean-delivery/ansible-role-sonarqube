@@ -79,7 +79,7 @@ gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
 
-  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.21/checkstyle-sonar-plugin-4.21.jar
+  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.22/checkstyle-sonar-plugin-4.22.jar
 
   - https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar
 
@@ -108,7 +108,7 @@ sonar_plugins:
   - https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-1.9.0.3766.jar
   - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.9.0.1725.jar
   - https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.0.1.2020.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-1.14.1.3143.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-1.15.1.4116.jar
   - https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-1.5.0.315.jar
   - https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-1.1.1.1010.jar
   - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.2.0.2082.jar
@@ -172,6 +172,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.11.0.2473.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.13.0.2922.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.14.0.3086.jar'
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-1.14.1.3143.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar'
