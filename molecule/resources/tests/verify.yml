@@ -13,9 +13,12 @@
     #     that: "'running' in ansible_facts.services['sonarqube.service'].state"
 
     - name: Check log
-      debug: var=item
-      with_file:
-        - /opt/sonarqube/sonarqube-7.9.1/logs/sonar.log
+      shell: cat /opt/sonarqube/sonarqube-7.9.1/logs/sonar.log
+      register: log
+
+    - name: Debug log
+      debug:
+        var: log
 
     - name: Debug uri
       debug:
