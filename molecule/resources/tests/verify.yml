@@ -4,6 +4,14 @@
   hosts: all
   tasks:
 
+    - name: Check log
+      shell: cat /opt/sonarqube/sonarqube-7.9.1/logs/sonar.log
+      register: log
+
+    - name: Debug log
+      debug:
+        var: log
+
     - name: Check url
       uri:
         url: http://0.0.0.0:9000
