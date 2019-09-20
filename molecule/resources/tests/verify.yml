@@ -14,4 +14,4 @@
     - name: Check content
       assert:
         that:
-          - 'Loading...' in uri_result.content
+          - "'Loading...' in uri_result.content"
