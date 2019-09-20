@@ -8,22 +8,6 @@
     - name: Populate service facts
       service_facts:
 
-    # - name: Assert that filebeat service is running
-    #   assert:
-    #     that: "'running' in ansible_facts.services['sonarqube.service'].state"
-
-    - name: Check log
-      shell: cat /opt/sonarqube/sonarqube-7.9.1/logs/sonar.log
-      register: log
-
-    - name: Debug log
-      debug:
-        var: log
-
-    - name: Debug uri
-      debug:
-        var: ansible_facts.services
-
     - name: Check url
       uri:
         url: http://0.0.0.0:9000
