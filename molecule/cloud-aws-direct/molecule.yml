@@ -10,9 +10,10 @@ lint:
   options:
     config-file: .yamllint
 platforms:
-  - name: test-aws-centos7-ansible-role-sonarqube
+  - name: test-aws-centos7-sonarqube
     image: ami-9887c6e7
-    instance_type: m5.large
+    platform: centos7
+    instance_type: t3.medium
     region: us-east-1
     vpc_subnet_id: subnet-0f2b9cd66faea38af
     assign_public_ip: false
@@ -24,15 +25,16 @@ platforms:
     groups:
       - rhel_family
 
-  - name: test-aws-ubuntu18-ansible-role-sonarqube
+  - name: test-aws-ubuntu18-sonarqube
     image: ami-012fd5eb46f56731f
-    instance_type: m5.large
+    platform: ubuntu18
+    instance_type: t3.medium
     region: us-east-1
     vpc_subnet_id: subnet-0f2b9cd66faea38af
-    assign_public_ip: False
-    spot_price: 0.04
+    assign_public_ip: false
     security_group_name:
       - default
+    spot_price: 0.04
     wait_timeout: 1800
     ssh_user: ubuntu
     groups:
@@ -40,22 +42,20 @@ platforms:
 
 provisioner:
   name: ansible
-  log: false
+  log: true
   config_options:
     defaults:
-      strategy_plugins: /tmp/molecule/plugins/mitogen/ansible_mitogen/plugins/strategy
+      callback_whitelist: profile_tasks,timer
   playbooks:
     create: ../resources/provisioning/AWS/create.yml
     prepare: ../resources/prepare.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
+    verify: ../resources/tests/verify.yml
   lint:
     name: ansible-lint
 scenario:
   name: cloud-aws-direct
 verifier:
-  name: testinfra
-  options:
-    verbose: true
-  directory: ../resources/tests/
+  name: ansible
   lint:
-    name: flake8
+    name: ansible-lint

@@ -10,25 +10,31 @@ lint:
   options:
     config-file: .yamllint
 platforms:
-  - name: test-epc-centos7-ansible-role-sonarqube
+  - name: test-epc-centos7-sonarqube
     image: CentOS7_64-bit
-    shape: small
+    shape: medium
     region: EPAM-BY2
     wait_timeout: 3600
     groups:
       - rhel_family
+  - name: test-epc-ubuntu1804-sonarqube
+    image: Ubuntu18.04_64-bit
+    shape: medium
+    region: EPAM-BY2
+    wait_timeout: 3600
+    groups:
+      - debian_family
 provisioner:
   name: ansible
   log: true
-  config_options:
-    defaults:
-      strategy_plugins: /tmp/molecule/plugins/mitogen/ansible_mitogen/plugins/strategy
-    ssh_connection:
-      control_path: '/var/ans/%%h'
   playbooks:
     create: ../resources/provisioning/EPC/create.yml
     prepare: ../resources/prepare.yml
     destroy: ../resources/provisioning/EPC/destroy.yml
+    verify: ../resources/tests/verify.yml
+  config_options:
+    ssh_connection:
+      control_path: "/var/ans/%%h"
   lint:
     name: ansible-lint
   env:
@@ -36,9 +42,9 @@ provisioner:
 scenario:
   name: cloud-epc-delegated
 verifier:
-  name: testinfra
+  name: ansible
   options:
     verbose: true
   directory: ../resources/tests/
   lint:
-    name: flake8
+    name: ansible-lint

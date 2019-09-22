@@ -10,22 +10,12 @@ lint:
   options:
     config-file: .yamllint
 platforms:
-  - name: test-docker-centos7-ansible-role-sonarqube
+  - name: test-docker-centos7-sonarqube
     image: leandelivery/docker-systemd:centos7
     privileged: true
-    security_opts:
-      - seccomp=unconfined
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    tmpfs:
-      - /tmp
-      - /run
-    capabilities:
-      - SYS_ADMIN
     groups:
-      # - sonarqube
       - rhel_family
-  - name: test-docker-ubuntu1804-ansible-role-sonarqube
+  - name: test-docker-ubuntu1804-sonarqube
     image: leandelivery/docker-systemd:ubuntu-18.04
     privileged: true
     security_opts:
@@ -41,15 +31,18 @@ platforms:
       - debian_family
 provisioner:
   name: ansible
-  log: false
+  # log: true
   lint:
     name: ansible-lint
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks,timer
+  playbooks:
+    prepare: ../resources/prepare.yml
+    verify: ../resources/tests/verify.yml
 scenario:
   name: default
 verifier:
-  name: testinfra
-  options:
-    verbose: true
-  directory: ../resources/tests/
+  name: ansible
   lint:
-    name: flake8
+    name: ansible-lint

@@ -88,3 +88,6 @@
 [submodule "submodules/groovy-plugin"]
 	path = submodules/groovy-plugin
 	url = https://github.com/Inform-Software/sonar-groovy.git
+[submodule "submodules/stash-plugin"]
+	path = submodules/stash-plugin
+	url = https://github.com/AmadeusITGroup/sonar-stash.git

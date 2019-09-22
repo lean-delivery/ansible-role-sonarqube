@@ -1,27 +1,13 @@
 ---
-- name: Prepare Ubuntu / Debian
-  hosts: debian_family
-  strategy: linear
-  gather_facts: false
-  tasks:
-    - name: Install python for Ansible
-      raw: test -e /usr/bin/python || (apt install -y python-minimal)
-      become: true
-      changed_when: false
-      register: update_result
-      retries: 10
-      delay: 5
-      until: update_result.rc == 0
+- name: Include common prepare
+  import_playbook: provisioning/AWS/prepare.yml
 
 - name: Prepare pre-requisites
   hosts: all
-  strategy: mitogen_linear
   roles:
     - role: lean_delivery.java
       java_major_version: 11
-      java_tarball_install: true
-      transport: web
-      transport_web: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
+      transport: repositories
     - role: anxs.postgresql
       become: true
       postgresql_users:

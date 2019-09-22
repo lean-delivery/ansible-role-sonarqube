@@ -1,24 +1,21 @@
-SonarQube role
+sonarqube role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/LICENSE)
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-sonarqube.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-sonarqube)
-[![Build Status](https://gitlab.com/lean-delivery/ansible-role-sonarqube/badges/master/build.svg)](https://gitlab.com/lean-delivery/ansible-role-sonarqube/pipelines)
+[![Build Status](https://gitlab.com/lean-delivery/ansible-role-sonarqube/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-sonarqube/pipelines)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.sonarqube-blue.svg)](https://galaxy.ansible.com/lean_delivery/sonarqube)
 ![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29212%2F&query=$.min_ansible_version)
 
-## Summary
---------------
-
 This role installs SonarQube with extended set of plugins. It uses postgreSQL database and nginx web server which enables https and serves static content.
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-4.21
+  - checkstyle-sonar-plugin-4.22
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.0
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
-  - sonar-dependency-check-plugin-1.2.4
+  - sonar-dependency-check-plugin-1.2.5
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.3
@@ -29,7 +26,8 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - qualinsight-sonarqube-smell-plugin-4.0.0
   - qualinsight-sonarqube-badges-3.0.1
   - sonar-auth-bitbucket-plugin-1.0
-  - sonar-bitbucket-plugin-1.3.0
+  - sonar-bitbucket-plugin-1.3.0 (for Bitbucket Cloud)
+  - sonar-stash-plugin-1.6.0 (for Bitbucket Server)
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
@@ -203,10 +201,12 @@ Example Playbook
         state: absent
 ```
 
-## License
+License
+-------
+Apache
 
-Apache2
+Author Information
+------------------
 
-## Authors
-
-team@lean-delivery.com
+authors:
+  - Lean Delivery Team <team@lean-delivery.com>
