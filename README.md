@@ -12,7 +12,7 @@ This role installs SonarQube with extended set of plugins. It uses postgreSQL da
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
   - checkstyle-sonar-plugin-4.22
   - sonar-pmd-plugin-3.2.1
-  - sonar-findbugs-plugin-3.11.0
+  - sonar-findbugs-plugin-3.11.1
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
   - sonar-dependency-check-plugin-1.2.5
