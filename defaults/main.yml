@@ -103,6 +103,8 @@ sonar_plugins:
 
   - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.1.0/sonar-shellcheck-plugin-2.1.0.jar
 
+  - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
+
 # Updates for plugins included into SonarQube installation
   - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-5.14.0.18788.jar
   - https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-5.2.1.7778.jar
@@ -141,8 +143,6 @@ sonar_optional_plugins:
   - 'https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/{{ gitlab_version }}/sonar-gitlab-plugin-{{ gitlab_version }}.jar'
 
   - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_version }}/sonar-xanitizer-plugin-{{ xanitizer_version }}.jar'
-
-  - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
 
 sonar_all_plugins: '{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}{% else %}{{ sonar_plugins }}{% endif %}'
 
