@@ -75,6 +75,7 @@ dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}1.2
                           {% else %}1.1.6{% endif %}"
 xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
+python_version: '{% if sonar_version is version("7.9", ">=") %}1.15.1.4116{% else %}1.14.1.3143{% endif %}'
 
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
@@ -108,7 +109,7 @@ sonar_plugins:
   - https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-1.9.0.3766.jar
   - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.9.1.1834.jar
   - https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.0.1.2020.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-1.15.1.4116.jar
+  - 'https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-{{ python_version }}.jar'
   - https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-1.5.0.315.jar
   - https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-1.1.1.1010.jar
   - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.2.0.2082.jar

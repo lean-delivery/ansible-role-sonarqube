@@ -163,7 +163,6 @@ Example Playbook
       - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
         qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
       - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
-      - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_check_url: 'https://{{ ansible_fqdn }}'
