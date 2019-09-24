@@ -62,10 +62,10 @@ Requirements
       - 'jessie'
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
-    - lean_delivery.java
-    - anxs.postgresql
-    - jdauphant.ssl-certs
-    - nginxinc.nginx
+  - lean_delivery.java
+  - anxs.postgresql
+  - jdauphant.ssl-certs
+  - nginxinc.nginx
 
 Role Variables
 --------------
