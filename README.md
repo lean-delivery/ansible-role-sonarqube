@@ -19,7 +19,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.3
-  - sonar-ansible-extras-plugin-2.1.0
+  - sonar-ansible-plugin-2.2.0
   - sonar-shellcheck-plugin-2.1.0
   
 Also you may install optional plugins. Be carefull, not all of them are supported in latest SonarQube versions:
@@ -32,6 +32,8 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
   - sonar-groovy-plugin-1.6
+  
+See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
 Requirements
 --------------
