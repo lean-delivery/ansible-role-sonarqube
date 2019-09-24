@@ -176,6 +176,8 @@ Example Playbook
         owner: sonar
     ssl_certs_path_owner: nginx
     ssl_certs_path_group: nginx
+    ssl_certs_common_name: sonarqube.example.com
+    sonar_proxy_server_name: sonarqube.example.com
   pre_tasks:
     - name: install epel
       package:
