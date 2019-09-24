@@ -38,7 +38,7 @@ See plugin matrix here: https://docs.sonarqube.org/latest/instance-administratio
 Requirements
 --------------
 
- - **Mininmal Ansible version**: 2.5
+ - **Minimal Ansible version**: 2.7
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
