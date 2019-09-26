@@ -154,6 +154,7 @@ Role Variables
 Example Playbook
 ----------------
 ```yaml
+---
 - name: Install SonarQube
   hosts: sonarqube
   become: true
