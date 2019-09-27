@@ -113,4 +113,19 @@
     notify: Restart Sonarqube
     loop: '{{ sonar_all_plugins }}'
 
+  - meta: flush_handlers
+
+  - name: Create jenkins webhook
+    uri:
+      url: '{{ sonar_check_url }}/api/webhooks/create'
+      method: POST
+      force_basic_auth: true
+      user: '{{ sonar_web_user }}'
+      password: '{{ sonar_web_password }}'
+      body:
+        name: '{{ sonar_jenkins_webhook_name }}'
+        url: '{{ sonar_jenkins_webhook_name }}'
+      body_format: json
+      validate_certs: false
+
   become: true
