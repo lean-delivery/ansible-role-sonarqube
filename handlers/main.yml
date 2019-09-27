@@ -16,5 +16,5 @@
       validate_certs: false
     register: uri_result
     until: "'UP' in uri_result.content"
-    retries: 60
+    retries: 120
     delay: 1
