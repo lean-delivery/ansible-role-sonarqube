@@ -198,6 +198,11 @@ sonar_all_excluded_plugins: '{{ sonar_excluded_plugins }} + {{ sonar_default_exc
 
 # SonarQube configuration
 sonar_web_user: admin
-sonar_web_password: admin
+sonar_web_default_password: admin
+
+sonar_set_jenkins_webhook: false
 sonar_jenkins_webhook_name: jenkins
 sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
+
+sonar_change_default_password: false
+sonar_web_password:
