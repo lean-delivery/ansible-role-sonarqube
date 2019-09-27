@@ -122,7 +122,7 @@
       force_basic_auth: true
       user: '{{ sonar_web_user }}'
       password: '{{ sonar_web_password }}'
-      body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_name }}'
+      body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_url }}'
       body_format: form-urlencoded
       validate_certs: false
 
