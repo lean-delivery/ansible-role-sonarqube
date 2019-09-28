@@ -126,7 +126,7 @@
       return_content: true
     register: webhooks_list
     when:
-      - sonar_set_jenkins_webhook
+      - sonar_set_jenkins_webhook | bool
 
   - name: debug webhooks_list
     debug:
@@ -135,11 +135,12 @@
   - name: Get jenkins webhook key
     set_fact:
       webhook_key: '{{ item }}'
-    loop: '{{ webhooks_list | default([]) | json_query(webhook_name_query) }}'
+    loop: '{{ webhooks_list | default([]) | json_query(webhook_name_query, wantlist=true) }}'
     vars:
       webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
     when:
-      - sonar_set_jenkins_webhook
+      - sonar_set_jenkins_webhook | bool
+      - (webhooks_list | default([]) | length) 
 
   - name: Create jenkins webhook
     uri:
@@ -152,7 +153,7 @@
       body_format: form-urlencoded
       validate_certs: false
     when:
-      - sonar_set_jenkins_webhook
+      - sonar_set_jenkins_webhook | bool
       - webhook_key is undefined
 
   - name: Update jenkins webhook
@@ -167,7 +168,7 @@
       validate_certs: false
       status_code: 204
     when:
-      - sonar_set_jenkins_webhook
+      - sonar_set_jenkins_webhook | bool
       - webhook_key is defined
 
   become: true
