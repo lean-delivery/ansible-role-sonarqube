@@ -7,7 +7,7 @@
   - name: Tune virtual memory
     sysctl:
       name: vm.max_map_count
-      value: '{{ sonar_max_map_count }}'
+      value: '{{ sonar_max_map_count | int }}'
       state: present
 
   - name: Create sonar group
@@ -115,60 +115,59 @@
 
   - meta: flush_handlers
 
-  - name: Get webhooks list
-    uri:
-      url: '{{ sonar_check_url }}/api/webhooks/list'
-      method: GET
-      force_basic_auth: true
-      user: '{{ sonar_web_user }}'
-      password: '{{ sonar_web_default_password }}'
-      validate_certs: false
-      return_content: true
-    register: webhooks_list
-    when:
-      - sonar_set_jenkins_webhook | bool
-
-  - name: debug webhooks_list
-    debug:
-      var: webhooks_list
-
-  - name: Get jenkins webhook key
-    set_fact:
-      webhook_key: '{{ item }}'
-    loop: '{{ webhooks_list.content | json_query(webhook_name_query) }}'
-    vars:
-      webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
-    when:
-      - sonar_set_jenkins_webhook | bool
-      - not webhooks_list.skipped
-
-  - name: Create jenkins webhook
-    uri:
-      url: '{{ sonar_check_url }}/api/webhooks/create'
-      method: POST
-      force_basic_auth: true
-      user: '{{ sonar_web_user }}'
-      password: '{{ sonar_web_default_password }}'
-      body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_url }}'
-      body_format: form-urlencoded
-      validate_certs: false
-    when:
-      - sonar_set_jenkins_webhook | bool
-      - webhook_key is undefined
-
-  - name: Update jenkins webhook
-    uri:
-      url: '{{ sonar_check_url }}/api/webhooks/update'
-      method: POST
-      force_basic_auth: true
-      user: '{{ sonar_web_user }}'
-      password: '{{ sonar_web_default_password }}'
-      body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_url }}&webhook={{ webhook_key }}'
-      body_format: form-urlencoded
-      validate_certs: false
-      status_code: 204
-    when:
-      - sonar_set_jenkins_webhook | bool
-      - webhook_key is defined
-
   become: true
+
+- name: Webhook block
+  block:
+    - name: Get webhooks list
+      uri:
+        url: '{{ sonar_check_url }}/api/webhooks/list'
+        method: GET
+        force_basic_auth: true
+        user: '{{ sonar_web_user }}'
+        password: '{{ sonar_web_default_password }}'
+        validate_certs: false
+        return_content: true
+      register: webhooks_list
+
+    - name: debug webhooks_list
+      debug:
+        var: webhooks_list
+
+    - name: Get jenkins webhook key
+      set_fact:
+        webhook_key: '{{ item }}'
+      loop: '{{ webhooks_list.content | json_query(webhook_name_query) }}'
+      vars:
+        webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
+      when:
+        - not webhooks_list.skipped
+
+    - name: Create jenkins webhook
+      uri:
+        url: '{{ sonar_check_url }}/api/webhooks/create'
+        method: POST
+        force_basic_auth: true
+        user: '{{ sonar_web_user }}'
+        password: '{{ sonar_web_default_password }}'
+        body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_url }}'
+        body_format: form-urlencoded
+        validate_certs: false
+      when:
+        - webhook_key is undefined
+
+    - name: Update jenkins webhook
+      uri:
+        url: '{{ sonar_check_url }}/api/webhooks/update'
+        method: POST
+        force_basic_auth: true
+        user: '{{ sonar_web_user }}'
+        password: '{{ sonar_web_default_password }}'
+        body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_url }}&webhook={{ webhook_key }}'
+        body_format: form-urlencoded
+        validate_certs: false
+        status_code: 204
+      when:
+        - webhook_key is undefined
+  when:
+    - sonar_set_jenkins_webhook | bool
