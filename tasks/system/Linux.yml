@@ -123,6 +123,7 @@
       user: '{{ sonar_web_user }}'
       password: '{{ sonar_web_default_password }}'
       validate_certs: false
+      return_content: true
     register: webhooks_list
     when:
       - sonar_set_jenkins_webhook
@@ -134,7 +135,7 @@
   - name: Get jenkins webhook key
     set_fact:
       webhook_key: '{{ item }}'
-    loop: '{{ webhooks_list | json_query(webhook_name_query) }}'
+    loop: '{{ webhooks_list | default([]) | json_query(webhook_name_query) }}'
     vars:
       webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
     when:
