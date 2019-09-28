@@ -130,10 +130,6 @@
         return_content: true
       register: webhooks_list
 
-    - name: debug webhooks_list
-      debug:
-        var: webhooks_list
-
     - name: Get jenkins webhook key
       set_fact:
         webhook_key: '{{ (webhooks_list.content | default([])) | json_query(webhook_name_query) | first }}'
