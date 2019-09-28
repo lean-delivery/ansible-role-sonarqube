@@ -127,6 +127,10 @@
     when:
       - sonar_set_jenkins_webhook
 
+  - name: debug webhooks_list
+    debug:
+      var: webhooks_list
+
   - name: Get jenkins webhook key
     set_fact:
       webhook_key: '{{ item }}'
