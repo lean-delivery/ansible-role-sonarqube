@@ -135,12 +135,12 @@
   - name: Get jenkins webhook key
     set_fact:
       webhook_key: '{{ item }}'
-    loop: '{{ webhooks_list | default([]) | json_query(webhook_name_query, wantlist=true) }}'
+    loop: '{{ webhooks_list.content | json_query(webhook_name_query) }}'
     vars:
       webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
     when:
       - sonar_set_jenkins_webhook | bool
-      - (webhooks_list | default([]) | length)
+      - not webhooks_list.skipped
 
   - name: Create jenkins webhook
     uri:
