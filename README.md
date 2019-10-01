@@ -10,7 +10,7 @@ sonarqube role
 This role installs SonarQube with extended set of plugins. It uses postgreSQL database and nginx web server which enables https and serves static content.
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-4.22
+  - checkstyle-sonar-plugin-4.23
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.1
   - sonar-jdepend-plugin-1.1.1

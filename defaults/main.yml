@@ -80,7 +80,7 @@ python_version: '{% if sonar_version is version("7.9", ">=") %}1.15.1.4116{% els
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
 
-  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.22/checkstyle-sonar-plugin-4.22.jar
+  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.23/checkstyle-sonar-plugin-4.23.jar
 
   - https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar
 
