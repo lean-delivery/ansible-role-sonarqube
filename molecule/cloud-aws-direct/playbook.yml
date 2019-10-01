@@ -4,3 +4,4 @@
   roles:
     - role: ansible-role-sonarqube
       sonar_install_optional_plugins: true
+      sonar_set_jenkins_webhook: true
