@@ -135,11 +135,10 @@
 
     - name: Get jenkins webhook key
       set_fact:
-        webhook_key: '{{ (webhooks_list.content | default([])) | json_query(webhook_name_query) | first }}'
+        webhook_key: '{{ item }}'
+      loop: '{{ webhooks_list | json_query(webhook_name_query) }}'
       vars:
         webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
-      when:
-        - not webhooks_list.skipped
 
     - name: Create jenkins webhook
       uri:
@@ -166,6 +165,6 @@
         validate_certs: false
         status_code: 204
       when:
-        - webhook_key is undefined
+        - webhook_key is defined
   when:
     - sonar_set_jenkins_webhook | bool
