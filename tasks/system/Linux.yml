@@ -119,6 +119,15 @@
 
 - name: Webhook block
   block:
+    - name: Install python-setuptools
+      package:
+        name: python-setuptools
+        state: present
+      register: install_python-setuptools_result
+      until: install_python-setuptools_result is succeeded
+      retries: 3
+      delay: 5
+
     - name: Install jmespath
       pip:
         name: jmespath
