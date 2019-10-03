@@ -119,6 +119,11 @@
 
 - name: Webhook block
   block:
+    - name: Install jmespath
+      pip:
+        name: jmespath
+      become: true
+
     - name: Get webhooks list
       uri:
         url: '{{ sonar_check_url }}/api/webhooks/list'
