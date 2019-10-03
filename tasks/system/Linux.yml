@@ -123,8 +123,8 @@
       package:
         name: python-setuptools
         state: present
-      register: install_python-setuptools_result
-      until: install_python-setuptools_result is succeeded
+      register: install_setuptools_result
+      until: install_setuptools_result is succeeded
       retries: 3
       delay: 5
 
