@@ -122,6 +122,10 @@
     - name: Install jmespath
       pip:
         name: jmespath
+      register: install_jmespath_result
+      until: install_jmespath_result is succeeded
+      retries: 3
+      delay: 5
       become: true
 
     - name: Get webhooks list
