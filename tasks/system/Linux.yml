@@ -121,12 +121,15 @@
   block:
     - name: Install python-setuptools
       package:
-        name: python-setuptools
+        name: '{{ item }}'
         state: present
-      register: install_setuptools_result
-      until: install_setuptools_result is succeeded
+      register: install_package_result
+      until: install_package_result is succeeded
       retries: 3
       delay: 5
+      loop:
+        - python-setuptools
+        - python-pip
 
     - name: Install jmespath
       pip:
