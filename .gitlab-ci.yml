@@ -30,7 +30,7 @@ Lint:
   tags:
     - aws
 
-.Docker sonarqube:
+Docker sonarqube:
   stage: deployment test
   script:
     - molecule test -s default
@@ -46,7 +46,7 @@ AWS sonarqube:
   tags:
     - aws
 
-.EPC sonarqube:
+EPC sonarqube:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
