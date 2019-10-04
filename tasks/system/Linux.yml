@@ -130,6 +130,7 @@
       loop:
         - python-setuptools
         - python-pip
+      become: true
 
     - name: Install jmespath
       pip:
