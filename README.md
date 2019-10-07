@@ -7,7 +7,7 @@ sonarqube role
 ![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29212%2F&query=$.min_ansible_version)
 
-This role installs SonarQube with extended set of plugins. It uses postgreSQL database and nginx web server which enables https and serves static content.
+This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
   - checkstyle-sonar-plugin-4.23
@@ -34,6 +34,8 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - sonar-groovy-plugin-1.6
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
+
+This role also configures jenkins webhook.
 
 Requirements
 --------------
@@ -150,6 +152,16 @@ Role Variables
   - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
   - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
+  - `sonar_web_user` - default username for admin user
+    default: admin
+  - `sonar_web_default_password` - default password for admin user
+    default: admin
+  - `sonar_set_jenkins_webhook` - is jenkins webhook configuration required
+    default: false
+  - `sonar_jenkins_webhook_name` - name of jenkins webhook
+    default: jenkins
+  - `sonar_jenkins_webhook_url` - url of jenkins webhook
+    default: https://jenkins.example.com/sonarqube-webhook/
 
 Example Playbook
 ----------------
@@ -159,8 +171,25 @@ Example Playbook
   hosts: sonarqube
   become: true
   vars:
+    # java
+    java_major_version: 11
+    transport: repositories
+    # postgresql
+    postgresql_users:
+      - name: sonar
+        pass: sonar
+    postgresql_databases:
+      - name: sonar
+        owner: sonar
+    # ssl-certs
+    ssl_certs_path_owner: nginx
+    ssl_certs_path_group: nginx
+    ssl_certs_common_name: sonarqube.example.com
+    # sonarqube
     sonar_major_version: 7
     sonar_minor_version: 9.1
+    sonar_check_url: 'https://{{ ansible_fqdn }}'
+    sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
       - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
@@ -168,19 +197,8 @@ Example Playbook
       - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
-    sonar_check_url: 'https://{{ ansible_fqdn }}'
-    java_major_version: 11
-    transport: repositories
-    postgresql_users:
-      - name: sonar
-        pass: sonar
-    postgresql_databases:
-      - name: sonar
-        owner: sonar
-    ssl_certs_path_owner: nginx
-    ssl_certs_path_group: nginx
-    ssl_certs_common_name: sonarqube.example.com
-    sonar_proxy_server_name: sonarqube.example.com
+    sonar_set_jenkins_webhook: true
+    sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
   pre_tasks:
     - name: install epel
       package:
