@@ -109,8 +109,8 @@ sonar_plugins:
 
 # Updates for plugins included into SonarQube installation
   - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-5.14.0.18788.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-5.2.1.7778.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-1.9.0.3766.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-6.0.0.9595.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.0.0.4283.jar
   - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.9.1.1834.jar
   - https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.0.1.2020.jar
   - 'https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-{{ python_version }}.jar'
@@ -164,8 +164,10 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-5.0.0.6962.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-5.1.1.7506.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-5.2.1.7778.jar'
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar'
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar'
+  - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.9.0.3766.jar'  
   - '{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.4.1.1128.jar'
   - '{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.6.0.1349.jar'
   - '{{ sonar_plugins_path }}/sonar-scm-git-plugin-1.7.0.1491.jar'

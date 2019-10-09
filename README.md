@@ -15,6 +15,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-findbugs-plugin-3.11.1
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
+  - sonar-groovy-plugin-1.6
   - sonar-dependency-check-plugin-1.2.5
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
@@ -31,7 +32,6 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
-  - sonar-groovy-plugin-1.6
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
