@@ -31,7 +31,7 @@ platforms:
       - debian_family
 provisioner:
   name: ansible
-  log: false
+  log: true
   lint:
     name: ansible-lint
   config_options:
