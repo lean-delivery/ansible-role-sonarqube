@@ -14,6 +14,7 @@ before_script:
   - ansible-lint --version
   - molecule --version
   - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+  - pip install jmespath
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"

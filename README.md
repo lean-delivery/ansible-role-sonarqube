@@ -7,19 +7,20 @@ sonarqube role
 ![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29212%2F&query=$.min_ansible_version)
 
-This role installs SonarQube with extended set of plugins. It uses postgreSQL database and nginx web server which enables https and serves static content.
+This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-4.22
+  - checkstyle-sonar-plugin-4.23
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.1
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
-  - sonar-dependency-check-plugin-1.2.5
+  - sonar-groovy-plugin-1.6
+  - sonar-dependency-check-plugin-1.2.6
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.3
-  - sonar-ansible-extras-plugin-2.1.0
+  - sonar-ansible-plugin-2.2.0
   - sonar-shellcheck-plugin-2.1.0
   
 Also you may install optional plugins. Be carefull, not all of them are supported in latest SonarQube versions:
@@ -31,12 +32,15 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
-  - sonar-groovy-plugin-1.6
+  
+See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
+
+This role also configures jenkins webhook.
 
 Requirements
 --------------
 
- - **Mininmal Ansible version**: 2.5
+ - **Minimal Ansible version**: 2.7
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
@@ -62,10 +66,10 @@ Requirements
       - 'jessie'
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
-    - lean_delivery.java
-    - anxs.postgresql
-    - jdauphant.ssl-certs
-    - nginxinc.nginx
+  - lean_delivery.java
+  - anxs.postgresql
+  - jdauphant.ssl-certs
+  - nginxinc.nginx
 
 Role Variables
 --------------
@@ -148,35 +152,53 @@ Role Variables
   - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
   - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
+  - `sonar_web_user` - default username for admin user
+    default: admin
+  - `sonar_web_default_password` - default password for admin user
+    default: admin
+  - `sonar_set_jenkins_webhook` - is jenkins webhook configuration required
+    default: false
+  - `sonar_jenkins_webhook_name` - name of jenkins webhook
+    default: jenkins
+  - `sonar_jenkins_webhook_url` - url of jenkins webhook
+    default: https://jenkins.example.com/sonarqube-webhook/
 
 Example Playbook
 ----------------
 ```yaml
+---
 - name: Install SonarQube
   hosts: sonarqube
   become: true
   vars:
-    sonar_major_version: 7
-    sonar_minor_version: 9.1
-    sonar_install_optional_plugins: true
-    sonar_optional_plugins:
-      - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
-        qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
-      - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
-      - https://github.com/mibexsoftware/sonar-bitbucket-plugin/archive/master.zip
-    sonar_default_excluded_plugins:
-      - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
-    sonar_check_url: 'https://{{ ansible_fqdn }}'
+    # java
     java_major_version: 11
     transport: repositories
+    # postgresql
     postgresql_users:
       - name: sonar
         pass: sonar
     postgresql_databases:
       - name: sonar
         owner: sonar
+    # ssl-certs
     ssl_certs_path_owner: nginx
     ssl_certs_path_group: nginx
+    ssl_certs_common_name: sonarqube.example.com
+    # sonarqube
+    sonar_major_version: 7
+    sonar_minor_version: 9.1
+    sonar_check_url: 'https://{{ ansible_fqdn }}'
+    sonar_proxy_server_name: sonarqube.example.com
+    sonar_install_optional_plugins: true
+    sonar_optional_plugins:
+      - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
+        qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
+      - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
+    sonar_default_excluded_plugins:
+      - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
+    sonar_set_jenkins_webhook: true
+    sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
   pre_tasks:
     - name: install epel
       package:
