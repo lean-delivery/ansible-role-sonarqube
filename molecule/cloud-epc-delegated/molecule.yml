@@ -14,14 +14,14 @@ platforms:
     image: CentOS7_64-bit
     shape: medium
     region: EPAM-BY2
-    wait_timeout: 3600
+    wait_timeout: 7200
     groups:
       - rhel_family
   - name: test-epc-ubuntu1804-sonarqube
     image: Ubuntu18.04_64-bit
     shape: medium
     region: EPAM-BY2
-    wait_timeout: 3600
+    wait_timeout: 7200
     groups:
       - debian_family
 provisioner:
