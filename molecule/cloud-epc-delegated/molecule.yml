@@ -12,14 +12,14 @@ lint:
 platforms:
   - name: test-epc-centos7-sonarqube
     image: CentOS7_64-bit
-    shape: medium
+    shape: large
     region: EPAM-BY2
     wait_timeout: 3600
     groups:
       - rhel_family
   - name: test-epc-ubuntu1804-sonarqube
     image: Ubuntu18.04_64-bit
-    shape: medium
+    shape: large
     region: EPAM-BY2
     wait_timeout: 3600
     groups:
