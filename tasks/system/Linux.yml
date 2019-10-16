@@ -117,6 +117,17 @@
 
   become: true
 
+- name: Migrate DB block
+  block:
+    - name: Migrate DB
+      uri:
+        url: '{{ sonar_check_url }}/api/system/migrate_db'
+        method: POST
+        validate_certs: false
+        return_content: true
+  when:
+    - sonar_migrate_db | bool
+
 - name: Jenkins webhook block
   block:
     - name: Get webhooks list
@@ -186,7 +197,7 @@
 
     - name: Restore profiles
       # See https://github.com/ansible/ansible/issues/38172
-      shell: "curl -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \"backup=@{{ item.path }}\" \
+      command: "curl -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \"backup=@{{ item.path }}\" \
              {{ sonar_check_url }}/api/qualityprofiles/restore"
       loop: '{{ sonar_profile_list_result.files }}'
   when:
