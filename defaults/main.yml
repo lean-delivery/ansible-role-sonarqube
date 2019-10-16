@@ -76,6 +76,8 @@ dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}1.2
 xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
 python_version: '{% if sonar_version is version("7.9", ">=") %}1.16.0.4432{% else %}1.14.1.3143{% endif %}'
+javascript_version: '{% if sonar_version is version("7.9", ">=") %}6.0.0.9595{% else %}5.2.1.7778{% endif %}'
+typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.0.0.4283{% else %}1.9.0.3766{% endif %}'
 
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
@@ -109,8 +111,8 @@ sonar_plugins:
 
 # Updates for plugins included into SonarQube installation
   - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-5.14.0.18788.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-6.0.0.9595.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.0.0.4283.jar
+  - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_version }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-{{ typescript_version }}.jar'
   - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.9.1.1834.jar
   - https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.0.1.2020.jar
   - 'https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-{{ python_version }}.jar'
@@ -205,3 +207,7 @@ sonar_web_default_password: admin
 sonar_set_jenkins_webhook: false
 sonar_jenkins_webhook_name: jenkins
 sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
+
+sonar_restore_profiles: false
+sonar_profile_list:
+  - files/example_profile.xml
