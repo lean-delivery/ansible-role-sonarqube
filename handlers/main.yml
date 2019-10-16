@@ -7,9 +7,21 @@
       daemon_reload: true
       enabled: true
     notify:
+      - Wait for migrate DB
       - Migrate DB
       - Wait for Sonarqube
     become: true
+
+  - name: Wait for migrate DB
+    uri:
+      url: '{{ sonar_check_url }}/api/system/status'
+      return_content: true
+      validate_certs: false
+    register: uri_result
+    until: "'DB_MIGRATION_NEEDED' in uri_result.content"
+    retries: 120
+    delay: 3
+    when: sonar_migrate_db | bool
 
   - name: Migrate DB
     uri:
@@ -27,4 +39,4 @@
     register: uri_result
     until: "'UP' in uri_result.content"
     retries: 120
-    delay: 1
+    delay: 3
