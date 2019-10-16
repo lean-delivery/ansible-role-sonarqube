@@ -191,7 +191,7 @@
         force_basic_auth: true
         user: '{{ sonar_web_user }}'
         password: '{{ sonar_web_default_password }}'
-        src: {{ item.path }}
+        src: '{{ item.path }}'
         validate_certs: false
       loop: '{{ sonar_profile_list_result.files }}'
 
