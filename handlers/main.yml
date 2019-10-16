@@ -6,8 +6,18 @@
       state: restarted
       daemon_reload: true
       enabled: true
-    notify: Wait for Sonarqube
+    notify:
+      - Migrate DB
+      - Wait for Sonarqube
     become: true
+
+  - name: Migrate DB
+    uri:
+      url: '{{ sonar_check_url }}/api/system/migrate_db'
+      method: POST
+      validate_certs: false
+      return_content: true
+    when: sonar_migrate_db | bool
 
   - name: Wait for Sonarqube
     uri:
