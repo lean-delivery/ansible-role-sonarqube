@@ -75,8 +75,8 @@ dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}1.2
                           {% else %}1.1.6{% endif %}"
 xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
-python_version: '{% if sonar_version is version("7.9", ">=") %}1.16.0.4432{% else %}1.14.1.3143{% endif %}'
-javascript_version: '{% if sonar_version is version("7.9", ">=") %}6.0.0.9595{% else %}5.2.1.7778{% endif %}'
+python_version: '{% if sonar_version is version("7.9", ">=") %}1.17.0.4900{% else %}1.14.1.3143{% endif %}'
+javascript_version: '{% if sonar_version is version("7.9", ">=") %}6.0.1.10206{% else %}5.2.1.7778{% endif %}'
 typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.0.0.4283{% else %}1.9.0.3766{% endif %}'
 
 sonar_plugins:
@@ -105,7 +105,7 @@ sonar_plugins:
 
   - https://github.com/sbaudoin/sonar-ansible/releases/download/v2.2.0/sonar-ansible-extras-plugin-2.2.0.jar
 
-  - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.1.0/sonar-shellcheck-plugin-2.1.0.jar
+  - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.2.0/sonar-shellcheck-plugin-2.2.0.jar
 
   - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
 
@@ -182,6 +182,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.13.0.2922.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.14.0.3086.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.14.1.3143.jar'
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-1.16.0.4432.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar'

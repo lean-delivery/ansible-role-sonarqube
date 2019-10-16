@@ -19,7 +19,7 @@
       validate_certs: false
     register: uri_result
     until: "'DB_MIGRATION_NEEDED' in uri_result.content"
-    retries: 120
+    retries: 40
     delay: 3
     when: sonar_migrate_db | bool
 
@@ -38,5 +38,5 @@
       validate_certs: false
     register: uri_result
     until: "'UP' in uri_result.content"
-    retries: 120
+    retries: 40
     delay: 3
