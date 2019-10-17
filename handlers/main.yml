@@ -31,9 +31,9 @@
       return_content: true
     when: sonar_migrate_db | bool
 
-  - name: Wait for Sonarqube
+  - name: Wait
     block:
-      - name: Wait
+      - name: Wait for Sonarqube
         uri:
           url: '{{ sonar_check_url }}/api/system/status'
           return_content: true
