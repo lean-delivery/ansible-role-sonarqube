@@ -183,37 +183,37 @@
 
 - name: Restore profiles block
   block:
-#    - name: Cleanup temp directory
-#      file:
-#        path: /tmp/profiles/
-#        state: absent
+    - name: Cleanup temp directory
+      file:
+        path: /tmp/profiles/
+        state: absent
 
-#    - name: Copy profiles to temp directory
-#      copy:
-#        src: '{{ item }}'
-#        dest: /tmp/profiles/
-#      loop: '{{ sonar_profile_list }}'
-
-#    - name: Get list of profiles
-#      find:
-#        paths: /tmp/profiles/
-#      register: sonar_profile_list_result
-
-    - name: Restore profiles
-      uri:
-        url: '{{ sonar_check_url }}/api/qualityprofiles/restore'
-        method: POST
-        force_basic_auth: true
-        user: '{{ sonar_web_user }}'
-        password: '{{ sonar_web_default_password }}'
+    - name: Copy profiles to temp directory
+      copy:
         src: '{{ item }}'
-        validate_certs: false
+        dest: /tmp/profiles/
       loop: '{{ sonar_profile_list }}'
 
+    - name: Get list of profiles
+      find:
+        paths: /tmp/profiles/
+      register: sonar_profile_list_result
+
 #    - name: Restore profiles
+#      uri:
+#        url: '{{ sonar_check_url }}/api/qualityprofiles/restore'
+#        method: POST
+#        force_basic_auth: true
+#        user: '{{ sonar_web_user }}'
+#        password: '{{ sonar_web_default_password }}'
+#        src: '{{ item }}'
+#        validate_certs: false
+#      loop: '{{ sonar_profile_list }}'
+
+    - name: Restore profiles
       # See https://github.com/ansible/ansible/issues/38172
-#      command: "curl -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \"backup=@{{ item.path }}\" \
-#             {{ sonar_check_url }}/api/qualityprofiles/restore"
-#      loop: '{{ sonar_profile_list_result.files }}'
+      command: "curl -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \"backup=@{{ item.path }}\" \
+             {{ sonar_check_url }}/api/qualityprofiles/restore"
+      loop: '{{ sonar_profile_list_result.files }}'
   when:
     - sonar_restore_profiles | bool
