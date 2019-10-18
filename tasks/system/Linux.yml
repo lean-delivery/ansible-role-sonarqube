@@ -116,11 +116,19 @@
   - meta: flush_handlers
 
   rescue:
-    - name: Show logs
-      debug: var=item
-      with_file:
-        - "{{ sonar_installation }}/logs/sonar.log"
-        - "{{ sonar_installation }}/logs/web.log"
+    - name: Get sonar log
+      command: 'cat {{ sonar_installation }}/logs/sonar.log'
+      register: sonar_log
+
+    - debug:
+        var: sonar_log.stdout
+
+    - name: Get web log
+      command: 'cat {{ sonar_installation }}/logs/web.log'
+      register: web_log
+
+    - debug:
+        var: web_log.stdout
 
   become: true
 
