@@ -183,26 +183,26 @@
 
 - name: Restore profiles block
   block:
-    - name: Cleanup temp directory
+    - name: Cleanup profiles directory
       file:
-        path: /tmp/profiles/
+        path: '{{ sonar_path }}/profiles/'
         state: absent
 
-    - name: Copy profiles to temp directory
+    - name: Copy profiles to profiles directory
       copy:
         src: '{{ item }}'
-        dest: /tmp/profiles/
+        dest: '{{ sonar_path }}/profiles/'
       loop: '{{ sonar_profile_list }}'
 
     - name: Get list of profiles
       find:
-        paths: /tmp/profiles/
+        paths: '{{ sonar_path }}/profiles/'
       register: sonar_profile_list_result
 
     - name: Restore profiles
       # have to use curl because of https://github.com/ansible/ansible/issues/38172
       command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F 'backup=@{{ item.path }}' \
-             {{ sonar_check_url }}/api/qualityprofiles/restore"
+               {{ sonar_check_url }}/api/qualityprofiles/restore"
       loop: '{{ sonar_profile_list_result.files }}'
   when:
     - sonar_restore_profiles | bool
