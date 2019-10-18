@@ -119,8 +119,8 @@
     - name: Show logs
       debug: var=item
       with_file:
-        - "{{ sonar_installation }}/logs/web.log"
         - "{{ sonar_installation }}/logs/sonar.log"
+        - "{{ sonar_installation }}/logs/web.log"
 
   become: true
 
