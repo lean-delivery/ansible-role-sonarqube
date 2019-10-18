@@ -199,7 +199,8 @@
         paths: '{{ sonar_path }}/profiles/'
       register: sonar_profile_list_result
 
-    - set_fact:
+    - name: Check command
+      set_fact:
         restore_command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F 'backup=@{{ item.path }}' \
                {{ sonar_check_url }}/api/qualityprofiles/restore"
 
