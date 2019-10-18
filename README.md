@@ -43,7 +43,7 @@ This role also provides some configuration options:
 Requirements
 --------------
 
- - **Minimal Ansible version**: 2.7
+ - **Minimal Ansible version**: 2.8
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8

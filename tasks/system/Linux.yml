@@ -199,6 +199,9 @@
         paths: '{{ sonar_path }}/profiles/'
       register: sonar_profile_list_result
 
+    - debug:
+        var: sonar_profile_list_result.files
+
     - name: Restore profiles
       # have to use curl because of https://github.com/ansible/ansible/issues/38172
       command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F 'backup=@{{ item.path }}' \
