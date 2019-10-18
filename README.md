@@ -21,7 +21,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.3
   - sonar-ansible-plugin-2.2.0
-  - sonar-shellcheck-plugin-2.1.0
+  - sonar-shellcheck-plugin-2.2.0
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0
@@ -38,6 +38,7 @@ See plugin matrix here: https://docs.sonarqube.org/latest/instance-administratio
 This role also provides some configuration options:
   - ability to migrate db when updating SonarQube to new version
   - ability to set Jenkins webhook
+  - ability to restore custom profiles
 
 Requirements
 --------------
@@ -167,6 +168,9 @@ Role Variables
     default: jenkins
   - `sonar_jenkins_webhook_url` - url of jenkins webhook\
     default: https://jenkins.example.com/sonarqube-webhook/
+  - `sonar_restore_profiles` - is profile restore required\
+    default: false
+  - `sonar_profile_list` - list of profiles to restore
 
 Example Playbook
 ----------------
@@ -205,6 +209,10 @@ Example Playbook
     sonar_migrate_db: false # set to true if updating SonarQube to new version 
     sonar_set_jenkins_webhook: true
     sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
+    sonar_restore_profiles: true
+    sonar_profile_list:
+      - files/custom_profile_1.xml
+      - files/custom_profile_2.xml
   pre_tasks:
     - name: install epel
       package:

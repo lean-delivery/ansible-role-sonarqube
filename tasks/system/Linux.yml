@@ -199,17 +199,6 @@
         paths: /tmp/profiles/
       register: sonar_profile_list_result
 
-#    - name: Restore profiles
-#      uri:
-#        url: '{{ sonar_check_url }}/api/qualityprofiles/restore'
-#        method: POST
-#        force_basic_auth: true
-#        user: '{{ sonar_web_user }}'
-#        password: '{{ sonar_web_default_password }}'
-#        src: '{{ item }}'
-#        validate_certs: false
-#      loop: '{{ sonar_profile_list }}'
-
     - name: Restore profiles
       # have to use curl because of https://github.com/ansible/ansible/issues/38172
       command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \"backup=@{{ item.path }}\" \
