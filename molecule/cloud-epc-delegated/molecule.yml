@@ -24,9 +24,14 @@ platforms:
     wait_timeout: 3600
     groups:
       - debian_family
+      - python3
 provisioner:
   name: ansible
   log: true
+  inventory:
+    group_vars:
+      python3:
+        ansible_python_interpreter: /usr/bin/python3
   playbooks:
     create: ../resources/provisioning/EPC/create.yml
     prepare: ../resources/prepare.yml

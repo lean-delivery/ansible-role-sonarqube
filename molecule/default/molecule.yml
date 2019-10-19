@@ -29,6 +29,7 @@ platforms:
       - SYS_ADMIN
     groups:
       - debian_family
+      - python3
 provisioner:
   name: ansible
   log: true
@@ -37,6 +38,10 @@ provisioner:
   config_options:
     defaults:
       callback_whitelist: profile_tasks,timer
+  inventory:
+    group_vars:
+      python3:
+        ansible_python_interpreter: /usr/bin/python3
   playbooks:
     prepare: ../resources/prepare.yml
     verify: ../resources/tests/verify.yml
