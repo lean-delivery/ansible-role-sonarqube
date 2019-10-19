@@ -189,7 +189,7 @@
         state: '{{ profile_directory_state }}'
       loop:
         - absent
-        - present
+        - directory
       loop_control:
         loop_var: profile_directory_state
 
