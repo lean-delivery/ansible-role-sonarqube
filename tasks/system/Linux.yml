@@ -186,13 +186,20 @@
     - name: Cleanup profiles directory
       file:
         path: '{{ sonar_path }}/profiles/'
-        state: absent
+        state: '{{ profile_directory_state }}'
+      loop:
+        - absent
+        - present
+      loop_control:
+        loop_var: profile_directory_state
 
     - name: Copy profiles to profiles directory
       copy:
-        src: '{{ item }}'
+        src: '{{ profile_item }}'
         dest: '{{ sonar_path }}/profiles/'
       loop: '{{ sonar_profile_list }}'
+      loop_control:
+        loop_var: profile_item
 
     - name: Get list of profiles
       find:
