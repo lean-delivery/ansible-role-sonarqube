@@ -183,29 +183,35 @@
 
 - name: Restore profiles block
   block:
-    - name: Remove profiles directory
+    - name: Cleanup profiles directory
       file:
         path: '{{ sonar_path }}/profiles'
-        state: absent
-
-    - name: Create profiles directory
-      file:
-        path: '{{ sonar_path }}/profiles'
-        state: directory
-        recurse: true
+        state: '{{ profile_directory_state }}'
+        owner: '{{ sonar_user }}'
+        group: '{{ sonar_group }}'
+      loop:
+        - absent
+        - directory
+      loop_control:
+        loop_var: profile_directory_state
+      become: true
 
     - name: Copy profiles to profiles directory
       copy:
         src: '{{ profile_item }}'
         dest: '{{ sonar_path }}/profiles/'
+        owner: '{{ sonar_user }}'
+        group: '{{ sonar_group }}'
       loop: '{{ sonar_profile_list }}'
       loop_control:
         loop_var: profile_item
+      become: true
 
     - name: Get list of profiles
       find:
         paths: '{{ sonar_path }}/profiles/'
       register: sonar_profile_list_result
+      become: true
 
     - name: Check command
       set_fact:
