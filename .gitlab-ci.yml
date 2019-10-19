@@ -31,14 +31,14 @@ Lint:
   tags:
     - aws
 
-.Docker sonarqube:
+Docker sonarqube:
   stage: deployment test
   script:
     - molecule test -s default
   tags:
     - aws
 
-.AWS sonarqube:
+AWS sonarqube:
   variables:
     AWS_REGION: us-east-1
   stage: deployment test
@@ -47,7 +47,7 @@ Lint:
   tags:
     - aws
 
-.EPC sonarqube:
+EPC sonarqube:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
