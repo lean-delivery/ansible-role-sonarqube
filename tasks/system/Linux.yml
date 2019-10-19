@@ -185,7 +185,7 @@
   block:
     - name: Cleanup profiles directory
       file:
-        path: '{{ sonar_path }}/profiles/'
+        path: '{{ sonar_path }}/profiles'
         state: '{{ profile_directory_state }}'
       loop:
         - absent
