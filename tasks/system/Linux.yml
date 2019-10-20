@@ -225,19 +225,24 @@
       register: sonar_profile_list_result
       become: true
 
-    - name: Check command
-      set_fact:
-        restore_command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \
-        'backup=@{{ sonar_profile_list_result.files[0].path }}' {{ sonar_check_url }}/api/qualityprofiles/restore"
+    # - name: Check command
+    #   set_fact:
+    #     restore_command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \
+    #     'backup=@{{ sonar_profile_list_result.files[0].path }}' {{ sonar_check_url }}/api/qualityprofiles/restore"
 
-    - debug:
-        var: restore_command
+    # - debug:
+    #     var: restore_command
 
     - name: Restore profiles
       # have to use curl because of https://github.com/ansible/ansible/issues/38172
-      command: '{{ restore_command }}'
+      command: >-
+        {{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F
+          'backup=@{{ profile_item.path }}' {{ sonar_check_url }}/api/qualityprofiles/restore
       args:
         warn: false
+      loop: '{{ sonar_profile_list_result.files }}'
+      loop_control:
+        loop_var: profile_item
   when:
     - sonar_restore_profiles | bool
     - sonar_profile_names_list | difference(sonar_profile_names_list_initial) | length
