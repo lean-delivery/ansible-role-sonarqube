@@ -216,6 +216,15 @@
       register: sonar_profile_list_result
       become: true
 
+    - name: Install curl
+      package:
+        name: curl
+        state: present
+      register: install_curl_result
+      until: install_curl_result is succeeded
+      retries: 3
+      delay: 5
+
     - name: Check command
       set_fact:
         restore_command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \
