@@ -196,14 +196,6 @@
     sonar_profile_names_list: >-
       {{ sonar_profile_list | map('basename') | list }}
 
-- name: debug sonar_profile_names_list_initial
-  debug:
-    var: sonar_profile_names_list_initial
-
-- name: debug sonar_profile_names_list
-  debug:
-    var: sonar_profile_names_list
-
 - name: Restore profiles block
   block:
     - name: Copy profiles to profiles directory
