@@ -31,12 +31,14 @@
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
 
-  - name: Install requirement unzip
+  - name: Install requirements
     package:
-      name: unzip
+      name:
+        - unzip
+        - curl
       state: present
-    register: install_unzip_result
-    until: install_unzip_result is succeeded
+    register: install_result
+    until: install_result is succeeded
     retries: 3
     delay: 5
     notify: Restart Sonarqube
@@ -115,9 +117,24 @@
 
   - meta: flush_handlers
 
+  rescue:
+    - name: Get sonar log
+      command: 'cat {{ sonar_installation }}/logs/sonar.log'
+      register: sonar_log
+
+    - debug:
+        var: sonar_log.stdout
+
+    - name: Get web log
+      command: 'cat {{ sonar_installation }}/logs/web.log'
+      register: web_log
+
+    - debug:
+        var: web_log.stdout
+
   become: true
 
-- name: Webhook block
+- name: Jenkins webhook block
   block:
     - name: Get webhooks list
       uri:
@@ -165,3 +182,62 @@
         - webhook_key is defined
   when:
     - sonar_set_jenkins_webhook | bool
+
+- name: Get initial list of profiles
+  find:
+    paths: '{{ sonar_path }}/profiles/'
+  register: sonar_profile_list_initial
+  become: true
+
+- name: Set list of profile filenames
+  set_fact:
+    sonar_profile_names_list_initial: >-
+      {{ sonar_profile_list_initial.files | map(attribute='path') | map('basename') | list }}
+    sonar_profile_names_list: >-
+      {{ sonar_profile_list | map('basename') | list }}
+
+- name: Restore profiles block
+  block:
+    - name: Copy profiles to profiles directory
+      copy:
+        src: '{{ profile_item }}'
+        dest: '{{ sonar_path }}/profiles/'
+        owner: '{{ sonar_user }}'
+        group: '{{ sonar_group }}'
+      loop: '{{ sonar_profile_list }}'
+      loop_control:
+        loop_var: profile_item
+      become: true
+
+    - name: Cleanup profiles directory
+      file:
+        path: '{{ profile_item.path }}'
+        state: absent
+      loop: '{{ sonar_profile_list_initial.files }}'
+      loop_control:
+        loop_var: profile_item
+      when: (profile_item.path | basename) not in sonar_profile_names_list
+      become: true
+
+    - name: Get list of profiles
+      find:
+        paths: '{{ sonar_path }}/profiles/'
+      register: sonar_profile_list_result
+      become: true
+
+    - name: Check command
+      set_fact:
+        restore_command: "{{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F \
+        'backup=@{{ sonar_profile_list_result.files[0].path }}' {{ sonar_check_url }}/api/qualityprofiles/restore"
+
+    - debug:
+        var: restore_command
+
+    - name: Restore profiles
+      # have to use curl because of https://github.com/ansible/ansible/issues/38172
+      command: '{{ restore_command }}'
+      args:
+        warn: false
+  when:
+    - sonar_restore_profiles | bool
+    - sonar_profile_names_list | difference(sonar_profile_names_list_initial) | length

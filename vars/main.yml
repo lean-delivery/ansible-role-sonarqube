@@ -3,3 +3,6 @@
 
 arch: "{{ 'x86-32' if ansible_architecture == 'i386' else 'x86-64' }}"
 distro: '{{ ansible_facts.system | lower }}'
+
+# to cheat ansible lint, have to use curl because of https://github.com/ansible/ansible/issues/38172
+curl_command: curl

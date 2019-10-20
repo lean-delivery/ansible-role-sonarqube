@@ -6,7 +6,7 @@ galaxy_info:
   company: EPAM Systems
   issue_tracker_url: https://github.com/lean-delivery/ansible-role-sonarqube/issues
   license: Apache
-  min_ansible_version: 2.7
+  min_ansible_version: 2.8
   platforms:
     - name: 'Ubuntu'
       versions:

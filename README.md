@@ -21,9 +21,9 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.3
   - sonar-ansible-plugin-2.2.0
-  - sonar-shellcheck-plugin-2.1.0
+  - sonar-shellcheck-plugin-2.2.0
   
-Also you may install optional plugins. Be carefull, not all of them are supported in latest SonarQube versions:
+Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0
   - qualinsight-sonarqube-badges-3.0.1
   - sonar-auth-bitbucket-plugin-1.0
@@ -35,19 +35,23 @@ Also you may install optional plugins. Be carefull, not all of them are supporte
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
-This role also configures jenkins webhook.
+This role also provides some configuration options:
+  - ability to migrate db when updating SonarQube to new version
+  - ability to set Jenkins webhook
+  - ability to restore custom profiles
 
 Requirements
 --------------
 
- - **Minimal Ansible version**: 2.7
+ - **Minimal Ansible version**: 2.8
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
    - 7.9 - 7.9.1 LTS
+   - 8.0
  - **Supported Java**:
-   - Oracle JRE	8, 11 (SonarQube 7.9.* requries Java 11+ to run)
-   - OpenJDK 8, 11 (SonarQube 7.9.* requries Java 11+ to run)
+   - Oracle JRE    8, 11 (SonarQube 7.9+ requries Java 11+ to run)
+   - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -75,9 +79,9 @@ Role Variables
 --------------
 
   - `sonar_major_version` - major number of SonarQube version\
-    default: 7
+    default: 8
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 9.1
+    default: 0
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -152,16 +156,21 @@ Role Variables
   - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
   - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
-  - `sonar_web_user` - default username for admin user
+  - `sonar_web_user` - default username for admin user\
     default: admin
-  - `sonar_web_default_password` - default password for admin user
+  - `sonar_web_default_password` - default password for admin user\
     default: admin
-  - `sonar_set_jenkins_webhook` - is jenkins webhook configuration required
+  - `sonar_migrate_db` - is DB migrate required. Set to true when updating existing SonarQube to new version.\
     default: false
-  - `sonar_jenkins_webhook_name` - name of jenkins webhook
+  - `sonar_set_jenkins_webhook` - is jenkins webhook configuration required\
+    default: false
+  - `sonar_jenkins_webhook_name` - name of jenkins webhook\
     default: jenkins
-  - `sonar_jenkins_webhook_url` - url of jenkins webhook
+  - `sonar_jenkins_webhook_url` - url of jenkins webhook\
     default: https://jenkins.example.com/sonarqube-webhook/
+  - `sonar_restore_profiles` - is profile restore required\
+    default: false
+  - `sonar_profile_list` - list of profiles to restore
 
 Example Playbook
 ----------------
@@ -186,8 +195,8 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_major_version: 7
-    sonar_minor_version: 9.1
+    sonar_major_version: 8
+    sonar_minor_version: 0
     sonar_check_url: 'https://{{ ansible_fqdn }}'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
@@ -197,8 +206,13 @@ Example Playbook
       - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
+    sonar_migrate_db: false # set to true if updating SonarQube to new version 
     sonar_set_jenkins_webhook: true
     sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
+    sonar_restore_profiles: true
+    sonar_profile_list:
+      - files/custom_profile_1.xml
+      - files/custom_profile_2.xml
   pre_tasks:
     - name: install epel
       package:
