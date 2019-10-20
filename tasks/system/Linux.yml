@@ -206,12 +206,6 @@
 
 - name: Restore profiles block
   block:
-    - name: Get initial list of profiles
-      find:
-        paths: '{{ sonar_path }}/profiles/'
-      register: sonar_profile_list_initial
-      become: true
-
     - name: Copy profiles to profiles directory
       copy:
         src: '{{ profile_item }}'
