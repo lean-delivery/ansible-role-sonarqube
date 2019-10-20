@@ -236,6 +236,7 @@
     - name: Restore profiles
       # have to use curl because of https://github.com/ansible/ansible/issues/38172
       command: '{{ restore_command }}'
+      warn: false
   when:
     - sonar_restore_profiles | bool
     - sonar_profile_names_list | difference(sonar_profile_names_list_initial) | length
