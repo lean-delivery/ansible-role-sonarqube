@@ -14,8 +14,8 @@
   set_fact:
     webhook_key: '{{ item }}'
   loop: '{{ webhooks_list | json_query(webhook_name_query) }}'
-    vars:
-      webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
+  vars:
+    webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
 
 - name: Create jenkins webhook
   uri:
