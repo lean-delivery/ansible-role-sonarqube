@@ -10,7 +10,7 @@ sonarqube role
 This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-4.24
+  - checkstyle-sonar-plugin-4.25
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.1
   - sonar-jdepend-plugin-1.1.1
@@ -21,7 +21,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.4.3
   - sonar-ansible-plugin-2.2.0
-  - sonar-shellcheck-plugin-2.2.0
+  - sonar-shellcheck-plugin-2.2.1
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0
