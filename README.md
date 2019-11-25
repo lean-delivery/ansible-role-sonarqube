@@ -172,6 +172,31 @@ Role Variables
     default: false
   - `sonar_profile_list` - list of profiles to restore
 
+  Ldap configuration section. 
+  See https://docs.sonarqube.org/latest/instance-administration/delegated-auth/#header-6 to get description
+  default: undefined
+  - `ldap`:
+      - `authenticator_downcase`\
+        default: false
+      - `url`\
+        default: ldap://myserver.mycompany.com
+      - `bind_dn`\
+        default: my_bind_dn
+      - `bind_password`\
+        default: my_bind_password
+      - `user_base_dn`\
+        default : ou=Users,dc=mycompany,dc=com
+      - `user_request`\
+        default: (&(objectClass=inetOrgPerson)(uid={login}))
+      - `user_real_name_attribute`\
+        default: cn
+      - `user_email_attribute`\
+        default: mail
+      - `group_base_dn`\
+        default: ou=Groups,dc=sonarsource,dc=com
+      - `group_request`\
+        default: (&(objectClass=posixGroup)(memberUid={uid}))
+
 Example Playbook
 ----------------
 ```yaml
