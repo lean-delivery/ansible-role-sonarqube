@@ -82,7 +82,7 @@ typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.0.0.4283{% 
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
 
-  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.25/checkstyle-sonar-plugin-4.25.jar
+  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.26/checkstyle-sonar-plugin-4.26.jar
 
   - https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar
 
