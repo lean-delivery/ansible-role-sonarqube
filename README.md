@@ -10,7 +10,7 @@ sonarqube role
 This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-4.25
+  - checkstyle-sonar-plugin-4.26
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.1
   - sonar-jdepend-plugin-1.1.1
@@ -171,6 +171,31 @@ Role Variables
   - `sonar_restore_profiles` - is profile restore required\
     default: false
   - `sonar_profile_list` - list of profiles to restore
+
+  Ldap configuration section. 
+  See https://docs.sonarqube.org/latest/instance-administration/delegated-auth/#header-6 to get description
+  default: undefined
+  - `ldap`:
+      - `authenticator_downcase`\
+        default: false
+      - `url`\
+        default: ldap://myserver.mycompany.com
+      - `bind_dn`\
+        default: my_bind_dn
+      - `bind_password`\
+        default: my_bind_password
+      - `user_base_dn`\
+        default : ou=Users,dc=mycompany,dc=com
+      - `user_request`\
+        default: (&(objectClass=inetOrgPerson)(uid={login}))
+      - `user_real_name_attribute`\
+        default: cn
+      - `user_email_attribute`\
+        default: mail
+      - `group_base_dn`\
+        default: ou=Groups,dc=sonarsource,dc=com
+      - `group_request`\
+        default: (&(objectClass=posixGroup)(memberUid={uid}))
 
 Example Playbook
 ----------------

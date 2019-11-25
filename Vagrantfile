@@ -12,8 +12,23 @@ Vagrant.configure(2) do |config|
         #node.vm.box = "bento/centos-6.9"
     end
 
-  config.vm.provision "ansible" do |ansible|
+  # SetUp Machine
+  config.vm.provision  "prepare", type:'ansible' do |ansible|
+    ansible.playbook = 'molecule/resources/prepare_vagrant.yml'
+    ansible.sudo = true
+    ansible.verbose = "vvv"
+  end
+
+  # Setup SonarQube
+  config.vm.provision "sonar", type:'ansible' do |ansible|
     ansible.playbook = 'molecule/default/playbook.yml'
+    ansible.sudo = true
+    ansible.verbose = "vvv"
+  end
+
+  # Verify
+  config.vm.provision  "test", type:'ansible' do |ansible|
+    ansible.playbook = 'molecule/resources/tests/verify.yml'
     ansible.sudo = true
     ansible.verbose = "vvv"
   end
