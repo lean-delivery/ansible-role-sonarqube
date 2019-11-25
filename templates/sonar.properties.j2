@@ -15,3 +15,23 @@ sonar.log.level={{ sonar_log_level }}
 sonar.web.javaOpts={{ sonar_java_opts.web }}
 sonar.search.javaOpts={{ sonar_java_opts.es }}
 sonar.ce.javaOpts={{ sonar_java_opts.ce }}
+
+# LDAP AUTH
+{%- if (ldap is defined) %}
+# General Configuration
+sonar.security.realm=LDAP
+sonar.authenticator.downcase={{ ldap.authenticator_downcase | default('false') }}
+ldap.url={{ ldap.url | mandatory }}
+ldap.bindDn={{ ldap.bind_dn | mandatory }}
+ldap.bindPassword={{ ldap.bind_password | mandatory }}
+
+# User Configuration
+ldap.user.baseDn={{ ldap.user_base_dn | mandatory }}
+ldap.user.request={{ ldap.user_request | default('(&(objectClass=inetOrgPerson)(uid={login}))') }}
+ldap.user.realNameAttribute={{ ldap.user_real_name_attribute | default('cn') }}
+ldap.user.emailAttribute={{ ldap.user_email_attribute | default('mail') }}
+
+# Group Configuration
+ldap.group.baseDn={{ ldap.group_base_dn | mandatory }}
+ldap.group.request={{ ldap.group_request | default('(&(objectClass=posixGroup)(memberUid={uid}))') }}
+{%- endif %}

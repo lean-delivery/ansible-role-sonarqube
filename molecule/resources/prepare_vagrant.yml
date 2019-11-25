@@ -1,0 +1,21 @@
+---
+- name: Prepare pre-requisites
+  hosts: all
+  roles:
+    - role: lean_delivery.java
+      java_major_version: 11
+      transport: repositories
+    - role: anxs.postgresql
+      become: true
+      postgresql_users:
+        - name: sonar
+          pass: sonar
+      postgresql_databases:
+        - name: sonar
+          owner: sonar
+    - role: nginxinc.nginx
+      become: true
+    - role: jdauphant.ssl-certs
+      become: true
+      ssl_certs_path_owner: nginx
+      ssl_certs_path_group: nginx

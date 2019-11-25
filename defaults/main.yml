@@ -75,7 +75,7 @@ dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}1.2
                           {% else %}1.1.6{% endif %}"
 xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
-python_version: '{% if sonar_version is version("7.9", ">=") %}2.0.0.5043{% else %}1.14.1.3143{% endif %}'
+python_version: '{% if sonar_version is version("7.9", ">=") %}2.1.0.5269{% else %}1.14.1.3143{% endif %}'
 javascript_version: '{% if sonar_version is version("7.9", ">=") %}6.1.0.11503{% else %}5.2.1.7778{% endif %}'
 typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.0.0.4283{% else %}1.9.0.3766{% endif %}'
 
@@ -217,3 +217,16 @@ sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
 sonar_restore_profiles: false
 sonar_profile_list:
   - files/example_profile.xml
+
+# See https://docs.sonarqube.org/latest/instance-administration/delegated-auth/#header-6 to get description
+# ldap:
+#    authenticator_downcase: false
+#    url: ldap://myserver.mycompany.com
+#    bind_dn: my_bind_dn
+#    bind_password: my_bind_password
+#    user_base_dn: ou=Users,dc=mycompany,dc=com
+#    user_request: (&(objectClass=inetOrgPerson)(uid={login}))
+#    user_real_name_attribute: cn
+#    user_email_attribute: mail
+#    group_base_dn: ou=Groups,dc=sonarsource,dc=com
+#    group_request: (&(objectClass=posixGroup)(memberUid={uid}))

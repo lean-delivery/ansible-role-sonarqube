@@ -2,3 +2,6 @@ __pycache__
 *.pyc
 *.rst
 *.log
+.vagrant
+playbook.yml
+playbook.retry
