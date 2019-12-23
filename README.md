@@ -39,6 +39,9 @@ This role also provides some configuration options:
   - ability to migrate db when updating SonarQube to new version
   - ability to set Jenkins webhook
   - ability to restore custom profiles
+  - LDAP configuration
+
+See Jenkins pipeline example in files/example_pipeline.groovy.
 
 Requirements
 --------------
@@ -47,8 +50,8 @@ Requirements
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
-   - 7.9 - 7.9.1 LTS
-   - 8.0
+   - 7.9 - 7.9.2 LTS
+   - 8.0 - 8.1.0.31237
  - **Supported Java**:
    - Oracle JRE    8, 11 (SonarQube 7.9+ requries Java 11+ to run)
    - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
@@ -81,7 +84,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 8
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 0
+    default: 1.0.31237
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
