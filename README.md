@@ -224,7 +224,7 @@ Example Playbook
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
     sonar_major_version: 8
-    sonar_minor_version: 0
+    sonar_minor_version: 1.0.31237
     sonar_check_url: 'https://{{ ansible_fqdn }}'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
