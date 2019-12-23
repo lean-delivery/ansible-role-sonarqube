@@ -75,7 +75,7 @@ dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}1.2
                           {% else %}1.1.6{% endif %}"
 xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
-python_version: '{% if sonar_version is version("7.9", ">=") %}2.1.0.5269{% else %}1.14.1.3143{% endif %}'
+python_version: '{% if sonar_version is version("7.9", ">=") %}2.3.0.5351{% else %}1.14.1.3143{% endif %}'
 javascript_version: '{% if sonar_version is version("7.9", ">=") %}6.1.0.11503{% else %}5.2.1.7778{% endif %}'
 typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.1.0.4359{% else %}1.9.0.3766{% endif %}'
 
