@@ -109,6 +109,8 @@ sonar_plugins:
 
   - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
 
+  - https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/1.2.0/sonarqube-community-branch-plugin-1.2.0.jar
+
 # Updates for plugins included into SonarQube installation
   - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.0.0.20538.jar
   - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_version }}.jar'
