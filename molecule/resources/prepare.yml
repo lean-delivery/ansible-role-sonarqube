@@ -4,12 +4,6 @@
 
 - name: Prepare pre-requisites
   hosts: all
-  pre_tasks:
-    - name: install epel
-      package:
-        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        state: present
-      when: ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS'
   roles:
     - role: lean_delivery.java
       java_major_version: 11
