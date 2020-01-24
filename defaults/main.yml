@@ -78,6 +78,7 @@ gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.
 python_version: '{% if sonar_version is version("7.9", ">=") %}2.3.0.5351{% else %}1.14.1.3143{% endif %}'
 javascript_version: '{% if sonar_version is version("7.9", ">=") %}6.1.0.11503{% else %}5.2.1.7778{% endif %}'
 typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.1.0.4359{% else %}1.9.0.3766{% endif %}'
+java_version: '{% if sonar_version is version("7.9", ">=") %}6.0.1.20589{% else %}5.14.0.18788{% endif %}'
 
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
@@ -110,7 +111,7 @@ sonar_plugins:
   - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
 
 # Updates for plugins included into SonarQube installation
-  - https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.0.0.20538.jar
+  - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-{{ typescript_version }}.jar'
   - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.10.0.1898.jar
