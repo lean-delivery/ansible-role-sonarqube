@@ -24,6 +24,7 @@ install:
   - pip3 install jmespath
   - ansible --version
   - ansible-lint --version
+  - python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'
 
 script:
   - yamllint . -c .yamllint
