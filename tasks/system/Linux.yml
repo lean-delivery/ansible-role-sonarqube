@@ -121,8 +121,8 @@
       dest: '{{ sonar_installation }}/lib/common/'
     when:
       - community_version is version("1.2.0", ">=")
-      - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-        {{ community_version }}/sonarqube-community-branch-plugin-{{ community_version }}.jar in {{ sonar_all_plugins }}"
+      - "'https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+        {{ community_version }}/sonarqube-community-branch-plugin-{{ community_version }}.jar' in {{ sonar_all_plugins }}"
 
   - meta: flush_handlers
 
