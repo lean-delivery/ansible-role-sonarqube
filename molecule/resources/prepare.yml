@@ -2,6 +2,9 @@
 - name: Include common prepare
   import_playbook: provisioning/AWS/prepare.yml
 
+- name: Check yum
+  command: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
+
 - name: Prepare pre-requisites
   hosts: all
   roles:
