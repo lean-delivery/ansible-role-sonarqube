@@ -6,8 +6,8 @@
     name: nginx
     baseurl: https://nginx.org/packages/mainline/centos/7/$basearch/
     description: NGINX Repository
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
 
 - name: "(Install: CentOS/RedHat) Install Required CentOS/RedHat Dependencies"
   yum:
