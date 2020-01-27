@@ -18,7 +18,7 @@
           owner: sonar
 #    - role: nginxinc.nginx
 #      become: true
-    - role: jdauphant.ssl-certs
-      become: true
-      ssl_certs_path_owner: nginx
-      ssl_certs_path_group: nginx
+#    - role: jdauphant.ssl-certs
+#      become: true
+#      ssl_certs_path_owner: nginx
+#      ssl_certs_path_group: nginx
