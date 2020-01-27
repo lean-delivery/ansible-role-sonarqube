@@ -12,6 +12,10 @@
 - name: "(Install: CentOS/RedHat) Install Required CentOS/RedHat Dependencies"
   yum:
     name: openssl
+  register: install_result
+  until: install_result is succeeded
+  retries: 3
+  delay: 5
 
 - name: "(Install: CentOS/RedHat) Install NGINX"
   yum:
@@ -19,6 +23,10 @@
     state: present
     disablerepo: "*"
     enablerepo: "nginx"
+  register: install_result
+  until: install_result is succeeded
+  retries: 3
+  delay: 5
 
 - name: Choose platform based task
   include_tasks: '{{ platform }}'
