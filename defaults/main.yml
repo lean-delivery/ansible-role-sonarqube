@@ -81,6 +81,7 @@ typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.1.0.4359{% 
 java_version: '{% if sonar_version is version("7.9", ">=") %}6.0.1.20589{% else %}5.14.0.18788{% endif %}'
 php_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.3.0.5166{% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
              {% else %}3.0.0.4537{% endif %}"
+community_version: '{% if sonar_version is version("7.8", ">=") %}1.2.0{% else %}1.0.2{% endif %}'
 
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
@@ -111,8 +112,6 @@ sonar_plugins:
   - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.3.0/sonar-shellcheck-plugin-2.3.0.jar
 
   - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
-
-  - https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/1.2.0/sonarqube-community-branch-plugin-1.2.0.jar
 
 # Updates for plugins included into SonarQube installation
   - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_version }}.jar'
@@ -155,6 +154,9 @@ sonar_optional_plugins:
   - 'https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/{{ gitlab_version }}/sonar-gitlab-plugin-{{ gitlab_version }}.jar'
 
   - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_version }}/sonar-xanitizer-plugin-{{ xanitizer_version }}.jar'
+
+  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+    {{ community_version }}/sonarqube-community-branch-plugin-{{ community_version }}.jar"
 
 sonar_all_plugins: '{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}{% else %}{{ sonar_plugins }}{% endif %}'
 
