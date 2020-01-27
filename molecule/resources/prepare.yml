@@ -5,7 +5,8 @@
 - name: Prepare pre-requisites
   hosts: all
   tasks:
-    - command: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
+    - name: Check yum
+      command: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
   roles:
     - role: lean_delivery.java
       java_major_version: 11
