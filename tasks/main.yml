@@ -21,6 +21,7 @@
   yum:
     name: nginx
     state: present
+    update_cache: true
     disablerepo: "*"
     enablerepo: "nginx"
   register: install_result
