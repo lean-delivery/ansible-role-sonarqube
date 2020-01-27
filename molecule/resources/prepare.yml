@@ -4,9 +4,6 @@
 
 - name: Prepare pre-requisites
   hosts: all
-  tasks:
-    - name: Check yum
-      command: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
   roles:
     - role: lean_delivery.java
       java_major_version: 11
@@ -19,8 +16,8 @@
       postgresql_databases:
         - name: sonar
           owner: sonar
-    - role: nginxinc.nginx
-      become: true
+#    - role: nginxinc.nginx
+#      become: true
     - role: jdauphant.ssl-certs
       become: true
       ssl_certs_path_owner: nginx
