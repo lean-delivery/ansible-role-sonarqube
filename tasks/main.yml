@@ -2,7 +2,7 @@
 # tasks file for sonarqube
 
 - name: Check yum
-  command: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
+  shell: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
 
 - name: Choose platform based task
   include_tasks: '{{ platform }}'
