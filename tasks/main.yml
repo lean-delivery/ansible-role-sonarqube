@@ -1,13 +1,24 @@
 ---
 # tasks file for sonarqube
 
-- name: Check yum
-  command: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
-  register: yum_output
-  changed_when: false
+- name: "(Install: CentOS/RedHat) Add NGINX Repository"
+  yum_repository:
+    name: nginx
+    baseurl: https://nginx.org/packages/mainline/centos/7/$basearch/
+    description: NGINX Repository
+    enabled: yes
+    gpgcheck: yes
 
-- debug:
-    var: yum_output.stdout
+- name: "(Install: CentOS/RedHat) Install Required CentOS/RedHat Dependencies"
+  yum:
+    name: openssl
+
+- name: "(Install: CentOS/RedHat) Install NGINX"
+  yum:
+    name: nginx
+    state: present
+    disablerepo: "*"
+    enablerepo: "nginx"
 
 - name: Choose platform based task
   include_tasks: '{{ platform }}'
