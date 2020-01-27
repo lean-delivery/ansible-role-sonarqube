@@ -22,5 +22,3 @@
       become: true
       ssl_certs_path_owner: nginx
       ssl_certs_path_group: nginx
-  rescue:
-    command: "cat /etc/yum.repos.d/nginx.repo"

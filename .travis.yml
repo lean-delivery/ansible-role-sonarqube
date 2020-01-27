@@ -28,7 +28,7 @@ install:
 script:
   - yamllint . -c .yamllint
   - ansible-lint . -c .ansible-lint
-  - molecule test -s default
+  - molecule --debug test -s default
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
