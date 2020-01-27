@@ -4,6 +4,7 @@
 - name: Check yum
   command: "python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'"
   register: yum_output
+  changed_when: false
 
 - debug:
     var: yum_output.stdout
