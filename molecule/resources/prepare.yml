@@ -2,20 +2,20 @@
 - name: Include common prepare
   import_playbook: provisioning/AWS/prepare.yml
 
-- name: Prepare pre-requisites
-  hosts: all
-  roles:
-    - role: lean_delivery.java
-      java_major_version: 11
-      transport: repositories
-    - role: anxs.postgresql
-      become: true
-      postgresql_users:
-        - name: sonar
-          pass: sonar
-      postgresql_databases:
-        - name: sonar
-          owner: sonar
+#- name: Prepare pre-requisites
+#  hosts: all
+#  roles:
+#    - role: lean_delivery.java
+#      java_major_version: 11
+#      transport: repositories
+#    - role: anxs.postgresql
+#      become: true
+#      postgresql_users:
+#        - name: sonar
+#          pass: sonar
+#      postgresql_databases:
+#        - name: sonar
+#          owner: sonar
 #    - role: nginxinc.nginx
 #      become: true
 #    - role: jdauphant.ssl-certs
