@@ -14,6 +14,10 @@
 - name: "(Install: RPM OSs) Add RPM NGINX Signing Key"
   rpm_key:
     key: "{{ keysite }}"
+  register: install_result
+  until: install_result is succeeded
+  retries: 3
+  delay: 5
 
 - name: "(Install: CentOS/RedHat) Add NGINX Repository"
   yum_repository:
