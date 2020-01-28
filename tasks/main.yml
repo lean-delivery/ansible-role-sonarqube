@@ -1,14 +1,6 @@
 ---
 # tasks file for sonarqube
 
-- name: Get info
-  command: 'yum info nginx'
-  register: info
-  changed_when: false
-
-- debug:
-    var: info.stdout
-
 - name: "(Install: CentOS/RedHat) Add NGINX Repository"
   yum_repository:
     name: nginx
@@ -17,20 +9,10 @@
     enabled: true
     gpgcheck: true
 
-- name: Get info
-  command: 'yum info nginx'
-  register: info
-  changed_when: false
-
-- debug:
-    var: info.stdout
-
 - name: "(Install: CentOS/RedHat) Install NGINX"
   yum:
     name: nginx
     state: present
-    disablerepo: '*'
-    enablerepo: nginx
   register: install_result
   until: install_result is succeeded
   retries: 3
