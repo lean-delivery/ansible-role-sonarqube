@@ -31,6 +31,8 @@
   yum:
     name: nginx
     state: present
+    disablerepo: '*'
+    enablerepo: nginx
   register: install_result
   until: install_result is succeeded
   retries: 3
