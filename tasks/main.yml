@@ -29,7 +29,7 @@
   yum:
     name: nginx
     state: present
-    disablerepo: *
+    disablerepo: '*'
     enablerepo: nginx
   register: install_result
   until: install_result is succeeded
