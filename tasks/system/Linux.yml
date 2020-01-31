@@ -115,6 +115,20 @@
     notify: Restart Sonarqube
     loop: '{{ sonar_all_plugins }}'
 
+  - name: Get branch plugin url
+    set_fact:
+      branch_plugin_url: "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+                         {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
+
+  - name: Copy branch plugin
+    copy:
+      src: '{{ sonar_installation }}/extensions/plugins/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar'
+      dest: '{{ sonar_installation }}/lib/common/'
+      remote_src: true
+    when:
+      - sonar_branch_plugin_version is version("1.2.0", ">=")
+      - branch_plugin_url in sonar_all_plugins
+
   - meta: flush_handlers
 
   rescue:

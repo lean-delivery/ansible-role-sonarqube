@@ -10,17 +10,17 @@ sonarqube role
 This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-4.26
+  - checkstyle-sonar-plugin-4.29
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-3.11.1
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
   - sonar-groovy-plugin-1.6
-  - sonar-dependency-check-plugin-1.2.6
+  - sonar-dependency-check-plugin-2.0.2
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
-  - sonar-yaml-plugin-1.4.3
-  - sonar-ansible-plugin-2.2.0
+  - sonar-yaml-plugin-1.5.0
+  - sonar-ansible-plugin-2.3.0
   - sonar-shellcheck-plugin-2.3.0
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
@@ -32,6 +32,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
+  - sonarqube-community-branch-plugin-1.2.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
@@ -53,7 +54,7 @@ Requirements
    - 7.9 - 7.9.2 LTS
    - 8.0 - 8.1.0.31237
  - **Supported Java**:
-   - Oracle JRE    8, 11 (SonarQube 7.9+ requries Java 11+ to run)
+   - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
    - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
  - **Supported databases**
    - PostgreSQL
@@ -224,23 +225,22 @@ Example Playbook
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
     sonar_major_version: 8
-    sonar_minor_version: 1.0.31237
+    sonar_minor_version: 0
     sonar_check_url: 'https://{{ ansible_fqdn }}'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
-      - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
-        qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
-      - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
+        # Plugin is not supported in SonarQube 8.1
+      - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+        {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
-    sonar_migrate_db: false # set to true if updating SonarQube to new version 
+    sonar_migrate_db: false  # set to true if updating SonarQube to new version 
     sonar_set_jenkins_webhook: true
     sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
     sonar_restore_profiles: true
     sonar_profile_list:
-      - files/custom_profile_1.xml
-      - files/custom_profile_2.xml
+      - files/custom_profile.xml
   pre_tasks:
     - name: install epel
       package:
