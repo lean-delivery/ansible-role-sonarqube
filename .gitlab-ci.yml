@@ -9,6 +9,7 @@ stages:
   - deployment test
 
 before_script:
+  - export
   - rm -rf molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
