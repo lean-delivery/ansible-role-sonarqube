@@ -79,7 +79,7 @@ gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.
 python_version: '{% if sonar_version is version("7.9", ">=") %}2.5.0.5733{% else %}1.14.1.3143{% endif %}'
 javascript_version: '{% if sonar_version is version("7.9", ">=") %}6.2.0.12043{% else %}5.2.1.7778{% endif %}'
 typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.1.0.4359{% else %}1.9.0.3766{% endif %}'
-java_version: '{% if sonar_version is version("7.9", ">=") %}6.0.1.20589{% else %}5.14.0.18788{% endif %}'
+java_version: '{% if sonar_version is version("7.9", ">=") %}6.2.0.20899{% else %}5.14.0.18788{% endif %}'
 php_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.3.0.5166{% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
              {% else %}3.0.0.4537{% endif %}"
 sonar_branch_plugin_version: '{% if sonar_version is version("7.8", ">=") %}1.2.0{% else %}1.0.2{% endif %}'
