@@ -9,6 +9,8 @@ sonarqube role
 
 This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
 
+See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
+
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
   - checkstyle-sonar-plugin-4.29
   - sonar-pmd-plugin-3.2.1
@@ -19,7 +21,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-dependency-check-plugin-2.0.2
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
-  - sonar-yaml-plugin-1.5.0
+  - sonar-yaml-plugin-1.5.1
   - sonar-ansible-plugin-2.3.0
   - sonar-shellcheck-plugin-2.3.0
   
@@ -32,7 +34,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
-  - sonarqube-community-branch-plugin-1.2.0
+  - sonarqube-community-branch-plugin-1.3.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
@@ -42,7 +44,7 @@ This role also provides some configuration options:
   - ability to restore custom profiles
   - LDAP configuration
 
-See Jenkins pipeline example in files/example_pipeline.groovy.
+See Jenkins pipeline example here: https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/files/example_pipeline.groovy
 
 Requirements
 --------------
@@ -52,7 +54,7 @@ Requirements
    - 6.7.7 LTS
    - 7.0 - 7.8
    - 7.9 - 7.9.2 LTS
-   - 8.0 - 8.1.0.31237
+   - 8.0 - 8.2.0.32929
  - **Supported Java**:
    - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
    - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
@@ -85,7 +87,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 8
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 1.0.31237
+    default: 2.0.32929
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -230,7 +232,7 @@ Example Playbook
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
-        # Plugin is not supported in SonarQube 8.1
+        # Plugin is not yet supported in SonarQube 8.1, 8.2.
       - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
         {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
     sonar_default_excluded_plugins:
