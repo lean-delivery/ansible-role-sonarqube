@@ -8,6 +8,7 @@ sonarqube role
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29212%2F&query=$.min_ansible_version)
 
 This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
+See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
   - checkstyle-sonar-plugin-4.29
@@ -32,7 +33,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
   - sonar-xanitizer-plugin-2.0.0
-  - sonarqube-community-branch-plugin-1.2.0
+  - sonarqube-community-branch-plugin-1.3.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
@@ -42,7 +43,7 @@ This role also provides some configuration options:
   - ability to restore custom profiles
   - LDAP configuration
 
-See Jenkins pipeline example in files/example_pipeline.groovy.
+See Jenkins pipeline example here: https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/files/example_pipeline.groovy
 
 Requirements
 --------------
@@ -225,12 +226,12 @@ Example Playbook
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
     sonar_major_version: 8
-    sonar_minor_version: 2.0.32929
+    sonar_minor_version: 0
     sonar_check_url: 'https://{{ ansible_fqdn }}'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
-        # Plugin is not supported in SonarQube 8.1
+        # Plugin is not yet supported in SonarQube 8.1, 8.2.
       - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
         {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
     sonar_default_excluded_plugins:
