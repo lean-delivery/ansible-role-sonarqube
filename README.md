@@ -158,8 +158,12 @@ Role Variables
     default: []
   - `sonar_web_user` - default username for admin user\
     default: admin
-  - `sonar_web_default_password` - default password for admin user\
+  - `sonar_web_password` - default password for admin user\
     default: admin
+  - `change_password` - set true to change password 
+    default: false
+  - `sonar_web_old_password` - current password
+    default: pwd
   - `sonar_migrate_db` - is DB migrate required. Set to true when updating existing SonarQube to new version.\
     default: false
   - `sonar_set_jenkins_webhook` - is jenkins webhook configuration required\

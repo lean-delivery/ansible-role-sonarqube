@@ -206,7 +206,9 @@ sonar_all_excluded_plugins: '{{ sonar_excluded_plugins }} + {{ sonar_default_exc
 
 # SonarQube configuration
 sonar_web_user: admin
-sonar_web_default_password: admin
+sonar_web_password: admin
+change_password: false
+sonar_web_old_password: pwd
 
 sonar_migrate_db: false
 

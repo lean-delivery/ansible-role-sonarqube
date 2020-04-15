@@ -5,7 +5,7 @@
     method: GET
     force_basic_auth: true
     user: '{{ sonar_web_user }}'
-    password: '{{ sonar_web_default_password }}'
+    password: '{{ sonar_web_password }}'
     validate_certs: false
     return_content: true
   register: webhooks_list
@@ -23,7 +23,7 @@
     method: POST
     force_basic_auth: true
     user: '{{ sonar_web_user }}'
-    password: '{{ sonar_web_default_password }}'
+    password: '{{ sonar_web_password }}'
     body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_url }}'
     body_format: form-urlencoded
     validate_certs: false
@@ -36,7 +36,7 @@
     method: POST
     force_basic_auth: true
     user: '{{ sonar_web_user }}'
-    password: '{{ sonar_web_default_password }}'
+    password: '{{ sonar_web_password }}'
     body: 'name={{ sonar_jenkins_webhook_name }}&url={{ sonar_jenkins_webhook_url }}&webhook={{ webhook_key }}'
     body_format: form-urlencoded
     validate_certs: false
