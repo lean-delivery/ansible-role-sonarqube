@@ -78,7 +78,7 @@
     retries: 3
     delay: 5
     when:
-       - sonar_version is version("8.3", "<")
+       - sonar_version is version("8.3", ">=")
 
   - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
     unarchive:
