@@ -1,7 +1,4 @@
 ---
-- name: Include common prepare
-  import_playbook: provisioning/AWS/prepare.yml
-
 - name: Prepare pre-requisites
   hosts: all
   roles:
