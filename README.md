@@ -53,8 +53,8 @@ Requirements
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
-   - 7.9 - 7.9.2 LTS
-   - 8.0 - 8.2.0.32929
+   - 7.9 - 7.9.3 LTS
+   - 8.0 - 8.3.1.34397
  - **Supported Java**:
    - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
    - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
@@ -87,7 +87,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 8
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 2.0.32929
+    default: 3.1.34397
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
