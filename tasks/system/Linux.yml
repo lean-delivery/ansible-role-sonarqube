@@ -74,7 +74,7 @@
       remote_src: true
       creates: '{{ sonar_installation }}/conf/wrapper.conf'
     notify: Restart Sonarqube
-  
+
   - name: Render sonar.properties
     template:
       src: sonar.properties.j2
@@ -126,7 +126,7 @@
       body_format: form-urlencoded
       validate_certs: false
       status_code: 204
-    when: 
+    when:
       - change_password | bool
 
   - name: Get branch plugin url
