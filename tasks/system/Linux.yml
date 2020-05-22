@@ -148,6 +148,20 @@
 
   become: true
 
+- name: Verify login with old password
+  uri:
+    url: '{{ sonar_check_url }}/api/authentication/login'
+    method: POST
+    force_basic_auth: true
+    user: '{{ sonar_web_user }}'
+    password: '{{ sonar_web_old_password }}'
+    body: 'login={{ sonar_web_user }}&password={{ sonar_web_old_password }}'
+    body_format: form-urlencoded
+    validate_certs: false
+  register: login_result
+  when:
+    - change_password | bool
+
 - name: Update sonar web password
   uri:
     url: '{{ sonar_check_url }}/api/users/change_password'
@@ -161,6 +175,7 @@
     status_code: 204
   when:
     - change_password | bool
+    - login_result.status == 204
 
 - name: Jenkins webhook block
   include_tasks: jenkins.yaml
