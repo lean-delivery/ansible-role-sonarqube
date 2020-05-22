@@ -115,20 +115,6 @@
     notify: Restart Sonarqube
     loop: '{{ sonar_all_plugins }}'
 
-  - name: Update sonar web password
-    uri:
-      url: '{{ sonar_check_url }}/api/users/change_password'
-      method: POST
-      force_basic_auth: true
-      user: '{{ sonar_web_user }}'
-      password: '{{ sonar_web_old_password }}'
-      body: 'login={{ sonar_web_user }}&password={{ sonar_web_password }}&previousPassword={{ sonar_web_old_password }}'
-      body_format: form-urlencoded
-      validate_certs: false
-      status_code: 204
-    when:
-      - change_password | bool
-
   - name: Get branch plugin url
     set_fact:
       branch_plugin_url: "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
@@ -161,6 +147,20 @@
         var: web_log.stdout
 
   become: true
+
+- name: Update sonar web password
+  uri:
+    url: '{{ sonar_check_url }}/api/users/change_password'
+    method: POST
+    force_basic_auth: true
+    user: '{{ sonar_web_user }}'
+    password: '{{ sonar_web_old_password }}'
+    body: 'login={{ sonar_web_user }}&password={{ sonar_web_password }}&previousPassword={{ sonar_web_old_password }}'
+    body_format: form-urlencoded
+    validate_certs: false
+    status_code: 204
+  when:
+    - change_password | bool
 
 - name: Jenkins webhook block
   include_tasks: jenkins.yaml
