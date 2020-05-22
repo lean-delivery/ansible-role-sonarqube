@@ -166,6 +166,38 @@
 
   become: true
 
+- name: Verify login with old password
+  uri:
+    url: '{{ sonar_check_url }}/api/authentication/login'
+    method: POST
+    force_basic_auth: true
+    user: '{{ sonar_web_user }}'
+    password: '{{ sonar_web_old_password }}'
+    body: 'login={{ sonar_web_user }}&password={{ sonar_web_old_password }}'
+    body_format: form-urlencoded
+    validate_certs: false
+    status_code:
+      - 200
+      - 401
+  register: login_result
+  when:
+    - change_password | bool
+
+- name: Update sonar web password
+  uri:
+    url: '{{ sonar_check_url }}/api/users/change_password'
+    method: POST
+    force_basic_auth: true
+    user: '{{ sonar_web_user }}'
+    password: '{{ sonar_web_old_password }}'
+    body: 'login={{ sonar_web_user }}&password={{ sonar_web_password }}&previousPassword={{ sonar_web_old_password }}'
+    body_format: form-urlencoded
+    validate_certs: false
+    status_code: 204
+  when:
+    - change_password | bool
+    - login_result.status == 200
+
 - name: Jenkins webhook block
   include_tasks: jenkins.yaml
   when:
@@ -216,7 +248,7 @@
     - name: Restore profiles
       # have to use curl because of https://github.com/ansible/ansible/issues/38172
       command: >-
-        {{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_default_password }} -F
+        {{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_password }} -F
           'backup=@{{ profile_item.path }}' {{ sonar_check_url }}/api/qualityprofiles/restore
       args:
         warn: false
