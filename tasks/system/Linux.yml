@@ -162,9 +162,6 @@
   when:
     - change_password | bool
 
-- debug:
-    var: login_result
-
 - name: Update sonar web password
   uri:
     url: '{{ sonar_check_url }}/api/users/change_password'
@@ -178,7 +175,7 @@
     status_code: 204
   when:
     - change_password | bool
-    - login_result.status == 204
+    - login_result.status == 200
 
 - name: Jenkins webhook block
   include_tasks: jenkins.yaml
