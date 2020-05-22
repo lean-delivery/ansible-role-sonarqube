@@ -18,3 +18,6 @@
           {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
       sonar_set_jenkins_webhook: true
       sonar_restore_profiles: true
+      change_password: true
+      sonar_web_password: newpass
+      sonar_web_old_password: admin
