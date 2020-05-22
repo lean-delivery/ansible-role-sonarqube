@@ -223,7 +223,7 @@ sonar_all_excluded_plugins: '{{ sonar_excluded_plugins }} + {{ sonar_default_exc
 sonar_web_user: admin
 sonar_web_password: admin
 change_password: false
-sonar_web_old_password: pwd
+sonar_web_old_password: admin
 
 sonar_migrate_db: false
 
