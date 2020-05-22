@@ -232,7 +232,7 @@ Example Playbook
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins:
-        # Plugin is not yet supported in SonarQube 8.1, 8.2.
+        # Plugin is not yet supported in SonarQube 8.1+
       - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
         {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
     sonar_default_excluded_plugins:
