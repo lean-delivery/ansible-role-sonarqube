@@ -43,6 +43,7 @@ This role also provides some configuration options:
   - ability to set Jenkins webhook
   - ability to restore custom profiles
   - LDAP configuration
+  - ability to change password for admin user
 
 See Jenkins pipeline example here: https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/files/example_pipeline.groovy
 
@@ -162,13 +163,13 @@ Role Variables
   - `sonar_excluded_plugins` - list of old plugins excluded from SonarQube installer
   - `sonar_default_excluded_plugins` - list of default plugins you don't need\
     default: []
-  - `sonar_web_user` - default username for admin user\
+  - `sonar_web_user` - username for admin user\
     default: admin
-  - `sonar_web_password` - default password for admin user\
+  - `sonar_web_password` - password for admin user\
     default: admin
   - `change_password` - set true to change password 
     default: false
-  - `sonar_web_old_password` - current password
+  - `sonar_web_old_password` - current password (before changing)
     default: pwd
   - `sonar_migrate_db` - is DB migrate required. Set to true when updating existing SonarQube to new version.\
     default: false
@@ -184,8 +185,8 @@ Role Variables
 
   Ldap configuration section. 
   See https://docs.sonarqube.org/latest/instance-administration/delegated-auth/#header-6 to get description
-  default: undefined
-  - `ldap`:
+  - `ldap`:\
+    default: undefined
       - `authenticator_downcase`\
         default: false
       - `url`\
@@ -241,6 +242,9 @@ Example Playbook
         {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
+    sonar_web_password: your_new_secure_password
+    password_change: true
+    sonar_web_old_password: admin
     sonar_migrate_db: false  # set to true if updating SonarQube to new version 
     sonar_set_jenkins_webhook: true
     sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
