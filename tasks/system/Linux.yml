@@ -158,6 +158,9 @@
     body: 'login={{ sonar_web_user }}&password={{ sonar_web_old_password }}'
     body_format: form-urlencoded
     validate_certs: false
+    status_code:
+      - 200
+      - 401
   register: login_result
   when:
     - change_password | bool
