@@ -12,13 +12,13 @@ This role installs SonarQube with extended set of plugins. It uses openJDK, post
 See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-4.29
+  - checkstyle-sonar-plugin-4.32
   - sonar-pmd-plugin-3.2.1
-  - sonar-findbugs-plugin-3.11.1
+  - sonar-findbugs-plugin-4.0.0
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
   - sonar-groovy-plugin-1.6
-  - sonar-dependency-check-plugin-2.0.2
+  - sonar-dependency-check-plugin-2.0.4
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.5.1
@@ -53,8 +53,8 @@ Requirements
  - **Supported SonarQube versions**:
    - 6.7.7 LTS
    - 7.0 - 7.8
-   - 7.9 - 7.9.2 LTS
-   - 8.0 - 8.2.0.32929
+   - 7.9 - 7.9.3 LTS
+   - 8.0 - 8.3.1.34397
  - **Supported Java**:
    - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
    - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
@@ -87,7 +87,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 8
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 2.0.32929
+    default: 3.1.34397
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
