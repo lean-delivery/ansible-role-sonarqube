@@ -162,6 +162,9 @@
   when:
     - change_password | bool
 
+- debug:
+    var: login_result
+
 - name: Update sonar web password
   uri:
     url: '{{ sonar_check_url }}/api/users/change_password'
