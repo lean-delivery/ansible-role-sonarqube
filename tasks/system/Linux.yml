@@ -199,7 +199,7 @@
     - login_result.status == 200
 
 - name: Jenkins webhook block
-  include_tasks: jenkins.yaml
+  include_tasks: jenkins.yml
   when:
     - sonar_set_jenkins_webhook | bool
 

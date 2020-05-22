@@ -243,14 +243,14 @@ Example Playbook
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_web_password: your_new_secure_password
-    password_change: true
+    change_password`: true
     sonar_web_old_password: admin
     sonar_migrate_db: false  # set to true if updating SonarQube to new version 
     sonar_set_jenkins_webhook: true
     sonar_jenkins_webhook_url: https://jenkins.example.com/sonarqube-webhook/
     sonar_restore_profiles: true
     sonar_profile_list:
-      - files/custom_profile.xml
+      - files/example_profile.xml
   pre_tasks:
     - name: install epel
       package:
