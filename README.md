@@ -232,7 +232,7 @@ Example Playbook
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
     sonar_major_version: 8
-    sonar_minor_version: 0
+    sonar_minor_version: 0 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
     sonar_check_url: 'https://{{ ansible_fqdn }}'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
@@ -243,7 +243,7 @@ Example Playbook
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_web_password: your_new_secure_password
-    change_password`: true
+    change_password: true
     sonar_web_old_password: admin
     sonar_migrate_db: false  # set to true if updating SonarQube to new version 
     sonar_set_jenkins_webhook: true
