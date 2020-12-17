@@ -2,20 +2,21 @@
 # Run all tests
 default:
   image:
-    name: leandelivery/docker-ansible-ci:ansible-2.7
+    name: leandelivery/docker-ansible-ci:ansible-2.9
 
 stages:
   - lint
   - deployment test
 
 before_script:
-  - docker --version
   - rm -rf molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
   - molecule --version
   - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
   - pip install jmespath
+  - echo $PATH
+  - whereis docker
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"
