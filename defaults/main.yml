@@ -87,7 +87,7 @@ sonar_branch_plugin_version: '{% if sonar_version is version("7.8", ">=") %}1.3.
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
 
-  - https://github.com/checkstyle/sonar-checkstyle/releases/download/4.32/checkstyle-sonar-plugin-4.32.jar
+  - https://github.com/checkstyle/sonar-checkstyle/releases/download/8.37/checkstyle-sonar-plugin-8.37.jar
 
   - https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar
 
