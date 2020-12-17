@@ -1,7 +1,7 @@
 ---
 # defaults file for sonarqube
 sonar_major_version: 8
-sonar_minor_version: 3.1.34397
+sonar_minor_version: 4.0.35506
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
