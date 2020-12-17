@@ -118,7 +118,7 @@ sonar_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-{{ typescript_version }}.jar'
-  - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.1.2008.jar
+  - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.12.1.2064.jar
   - https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.0.1.2020.jar
   - 'https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-{{ python_version }}.jar'
   - https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-1.5.0.315.jar
