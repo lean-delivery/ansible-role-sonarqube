@@ -72,7 +72,7 @@ nginx_config_path: /etc/nginx/conf.d/sonar.conf
 sonar_version: '{{ sonar_major_version }}.{{ sonar_minor_version }}'
 
 findbugs_version: '{% if sonar_version is version("7.6", ">=") %}4.0.0{% else %}3.9.4{% endif %}'
-dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.4{% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
+dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.6{% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
                           {% else %}1.1.6{% endif %}"
 xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
