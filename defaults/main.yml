@@ -72,17 +72,35 @@ nginx_config_path: /etc/nginx/conf.d/sonar.conf
 sonar_version: '{{ sonar_major_version }}.{{ sonar_minor_version }}'
 
 findbugs_version: '{% if sonar_version is version("7.6", ">=") %}4.0.0{% else %}3.9.4{% endif %}'
-dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.6{% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
-                          {% else %}1.1.6{% endif %}"
+
+dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.6\
+                           {% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
+                           {% else %}1.1.6\
+                           {% endif %}"
+
 xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
+
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
+
 python_version: '{% if sonar_version is version("7.9", ">=") %}3.1.0.7619{% else %}1.14.1.3143{% endif %}'
+
 javascript_version: '{% if sonar_version is version("7.9", ">=") %}7.0.1.14561{% else %}5.2.1.7778{% endif %}'
+
 typescript_version: '{% if sonar_version is version("7.9", ">=") %}2.1.0.4359{% else %}1.9.0.3766{% endif %}'
+
 java_version: '{% if sonar_version is version("7.9", ">=") %}6.10.0.24201{% else %}5.14.0.18788{% endif %}'
-php_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.13.0.6849{% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
-             {% else %}3.0.0.4537{% endif %}"
-sonar_branch_plugin_version: '{% if sonar_version is version("7.8", ">=") %}1.3.0{% else %}1.0.2{% endif %}'
+
+php_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.13.0.6849\
+              {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
+              {% else %}3.0.0.4537\
+              {% endif %}"
+
+sonar_branch_plugin_version: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
+                              {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
+                              {% elif sonar_version is version(\"8.1.0.31237\", \">=\") %}1.4.0\
+                              {% elif sonar_version is version(\"7.8\", \">=\") %}1.3.2\
+                              {% else %}1.0.2\
+                              {% endif %}"
 
 sonar_plugins:
 # This plugins set is mandatory for the all E-Commerce projects
