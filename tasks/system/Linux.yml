@@ -52,7 +52,6 @@
       - sonar_version is version("8.3", "<")
       - sonar_version is not version("7.9.4", "==")
       - sonar_version is not version("7.9.5", "==")
-       
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} with check'
     get_url:
