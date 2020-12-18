@@ -15,7 +15,8 @@ before_script:
   - molecule --version
   - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
   - pip install jmespath
-  - apk add --no-cache docker
+  - apk add --no-cache docker # temp fix
+  - export
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"
