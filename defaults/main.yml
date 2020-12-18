@@ -122,7 +122,7 @@ sonar_plugins:
 
   - https://github.com/racodond/sonar-json-plugin/releases/download/2.3/sonar-json-plugin-2.3.jar
 
-  - https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar
+  - https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.2/sonar-yaml-plugin-1.5.2.jar
 
   - https://github.com/sbaudoin/sonar-ansible/releases/download/v2.4.0/sonar-ansible-plugin-2.4.0.jar
 
