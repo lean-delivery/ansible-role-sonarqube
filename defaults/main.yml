@@ -195,6 +195,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-java-plugin-5.14.0.18788.jar'
   - '{{ sonar_plugins_path }}/sonar-java-plugin-6.1.0.20866.jar'
   - '{{ sonar_plugins_path }}/sonar-java-plugin-6.3.0.21585.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-6.5.1.22586.jar'
 
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar'
