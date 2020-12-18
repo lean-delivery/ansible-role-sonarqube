@@ -49,7 +49,10 @@
       return_content: true
     register: sonarqube_checksum
     when:
-       - sonar_version is version("8.3", "<")
+      - sonar_version is version("8.3", "<")
+      - sonar_version is not version("7.9.4", "==")
+      - sonar_version is not version("7.9.5", "==")
+       
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} with check'
     get_url:
@@ -64,7 +67,9 @@
     retries: 3
     delay: 5
     when:
-       - sonar_version is version("8.3", "<")
+      - sonar_version is version("8.3", "<")
+      - sonar_version is not version("7.9.4", "==")
+      - sonar_version is not version("7.9.5", "==")
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} without check'
     get_url:
@@ -78,7 +83,9 @@
     retries: 3
     delay: 5
     when:
-       - sonar_version is version("8.3", ">=")
+      sonar_version is version("8.3", ">=") or
+      sonar_version is version("7.9.4", "==") or
+      sonar_version is version("7.9.5", "==")
 
   - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
     unarchive:
