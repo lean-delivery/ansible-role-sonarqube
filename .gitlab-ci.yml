@@ -9,6 +9,7 @@ stages:
   - deployment test
 
 before_script:
+  - if [[ ${CI_COMMIT_BRANCH} == dependabot* ]]; then echo 'Skipping test for dependabot branch' && exit 0; fi
   - rm -rf molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
@@ -16,7 +17,6 @@ before_script:
   - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
   - pip install jmespath
   - apk add --no-cache docker # temp fix
-  - export
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"
