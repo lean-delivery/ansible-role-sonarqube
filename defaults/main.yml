@@ -93,7 +93,7 @@ python_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
                  {% else %}1.14.1.3143
                  {% endif %}"
 
-javascript_version: "{% if sonar_version is version(\"7.9\", \">=\") %}7.0.1.14561\
+javascript_version: "{% if sonar_version is version(\"7.9\", \">=\") %}6.2.2.13315\
                      {% else %}5.2.1.7778\
                      {% endif %}"
 
