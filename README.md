@@ -33,7 +33,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-stash-plugin-1.6.0 (for Bitbucket Server)
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
-  - sonar-xanitizer-plugin-2.0.0
+  - sonar-xanitizer-plugin-2.1.0
   - sonarqube-community-branch-plugin-1.3.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/

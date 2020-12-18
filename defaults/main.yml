@@ -78,7 +78,7 @@ dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0
                            {% else %}1.1.6\
                            {% endif %}"
 
-xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.0.0{% else %}1.5.0{% endif %}'
+xanitizer_version: '{% if sonar_version is version("7.3", ">=") %}2.1.0{% else %}1.5.0{% endif %}'
 
 gitlab_version: '{% if sonar_version is version("7.0", ">=") %}4.0.0{% else %}3.0.2{% endif %}'
 
