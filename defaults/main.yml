@@ -170,9 +170,11 @@ sonar_plugins:
 
   - 'https://github.com/spotbugs/sonar-findbugs/releases/download/{{ findbugs_version }}/sonar-findbugs-plugin-{{ findbugs_version }}.jar'
 
-  - 'https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/sonar-jdepend-plugin-{{ jdepend_version }}/sonar-jdepend-plugin-{{ jdepend_version }}.jar'
+  - "https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/\
+    sonar-jdepend-plugin-{{ jdepend_version }}/sonar-jdepend-plugin-{{ jdepend_version }}.jar"
 
-  - 'https://github.com/racodond/sonar-jproperties-plugin/releases/download/{{ jproperties_version }}/sonar-jproperties-plugin-{{ jproperties_version }}.jar'
+  - "https://github.com/racodond/sonar-jproperties-plugin/releases/download/\
+    {{ jproperties_version }}/sonar-jproperties-plugin-{{ jproperties_version }}.jar"
 
   - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_version }}/\
     sonar-dependency-check-plugin-{{ dependency_check_version }}.jar"
@@ -227,14 +229,14 @@ sonar_optional_plugins:
   - 'https://github.com/AmadeusITGroup/sonar-stash/releases/download/{{ stash_version }}/sonar-stash-plugin-{{ stash_version }}.jar'
 
 #   Plugin is not supported in SonarQube 8+
-  - 'https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/{{ auth_gitlab_version }}/sonar-auth-gitlab-plugin-{{ auth_gitlab_version }}.jar'
+  - "https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/\
+    {{ auth_gitlab_version }}/sonar-auth-gitlab-plugin-{{ auth_gitlab_version }}.jar"
 
 #   Plugin is not supported in SonarQube 7.6+
   - 'https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/{{ gitlab_version }}/sonar-gitlab-plugin-{{ gitlab_version }}.jar'
 
   - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_version }}/sonar-xanitizer-plugin-{{ xanitizer_version }}.jar'
 
-#   Plugin is not yet supported in SonarQube 8.1, 8.2
   - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
     {{ branch_version }}/sonarqube-community-branch-plugin-{{ branch_version }}.jar"
 
