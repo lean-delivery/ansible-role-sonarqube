@@ -99,7 +99,7 @@ ansible_pversion: 2.4.0
 
 shellcheck_pversion: 2.4.0
 
-groovy_pversion: 2.6
+groovy_pversion: 1.6
 
 java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.10.0.24201\
                {% else %}5.14.0.18788\
