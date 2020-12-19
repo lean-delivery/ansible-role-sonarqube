@@ -142,15 +142,15 @@
   - name: Get branch plugin url
     set_fact:
       branch_plugin_url: "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-                         {{ branch_version }}/sonarqube-community-branch-plugin-{{ branch_version }}.jar"
+                         {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
 
   - name: Copy branch plugin
     copy:
-      src: '{{ sonar_installation }}/extensions/plugins/sonarqube-community-branch-plugin-{{ branch_version }}.jar'
+      src: '{{ sonar_installation }}/extensions/plugins/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
       dest: '{{ sonar_installation }}/lib/common/'
       remote_src: true
     when:
-      - branch_version is version("1.2.0", ">=")
+      - branch_pversion is version("1.2.0", ">=")
       - branch_plugin_url in sonar_all_plugins
 
   - meta: flush_handlers

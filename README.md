@@ -239,7 +239,7 @@ Example Playbook
     sonar_optional_plugins:
         # Plugin is not yet supported in SonarQube 8.1+
       - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-        {{ branch_version }}/sonarqube-community-branch-plugin-{{ branch_version }}.jar"
+        {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
     sonar_default_excluded_plugins:
       - '{{ sonar_plugins_path }}/sonar-scm-svn-plugin-1.9.0.1295.jar'
     sonar_web_password: your_new_secure_password
