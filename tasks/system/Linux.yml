@@ -147,7 +147,7 @@
 
   - name: Copy branch plugin
     copy:
-      src: ''{{ sonar_plugins_dir }}'/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
+      src: '{{ sonar_plugins_dir }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
       dest: '{{ sonar_installation }}/lib/common/'
       remote_src: true
     when:
