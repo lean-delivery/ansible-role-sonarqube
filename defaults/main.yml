@@ -155,10 +155,6 @@ xanitizer_version: "{% if sonar_version is version(\"7.3\", \">=\") %}2.0.0\
                     {% else %}1.5.0\
                     {% endif %}"
 
-
-
-
-
 branch_version: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
                               {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
                               {% elif sonar_version is version(\"8.1.0.31237\", \">=\") %}1.4.0\
@@ -181,7 +177,8 @@ sonar_plugins:
   - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_version }}/\
     sonar-dependency-check-plugin-{{ dependency_check_version }}.jar"
 
-  - 'https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_version }}/sonar-issueresolver-plugin-{{ issueresolver_version }}.jar'
+  - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_version }}/\
+    sonar-issueresolver-plugin-{{ issueresolver_version }}.jar"
 
   - 'https://github.com/racodond/sonar-json-plugin/releases/download/{{ json_version }}/sonar-json-plugin-{{ json_version }}.jar'
 
