@@ -277,6 +277,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-6.1.0.11503.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-6.2.0.12043.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-6.2.1.12157.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-6.5.0.13383.jar'
 
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar'
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar'
