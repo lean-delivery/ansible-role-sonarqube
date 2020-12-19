@@ -132,7 +132,7 @@
       mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
-    when: '0.0.0' not in item
+    when: '"0.0.0" not in item'
     register: download_plugin_result
     until: download_plugin_result is succeeded
     retries: 3
