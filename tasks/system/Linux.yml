@@ -132,8 +132,9 @@
       mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
-    register: download_plugins_result
-    until: download_plugins_result is succeeded
+    when: 0.0.0 not in item
+    register: download_plugin_result
+    until: download_plugin_result is succeeded
     retries: 3
     delay: 5
     notify: Restart Sonarqube
