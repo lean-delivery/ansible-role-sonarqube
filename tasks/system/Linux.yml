@@ -128,7 +128,7 @@
   - name: Download plugins
     get_url:
       url: '{{ item }}'
-      dest: '{{ sonar_installation }}/extensions/plugins/'
+      dest: '{{ sonar_plugins_dir }}'
       mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
@@ -147,7 +147,7 @@
 
   - name: Copy branch plugin
     copy:
-      src: '{{ sonar_installation }}/extensions/plugins/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
+      src: ''{{ sonar_plugins_dir }}'/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
       dest: '{{ sonar_installation }}/lib/common/'
       remote_src: true
     when:
