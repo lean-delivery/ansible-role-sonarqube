@@ -72,26 +72,38 @@ nginx_config_path: /etc/nginx/conf.d/sonar.conf
 sonar_version: '{{ sonar_major_version }}.{{ sonar_minor_version }}'
 
 # Plugin versions
+checkstyle_version: 8.37
+
+pmd_version: 3.2.1
+
 findbugs_version: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.0\
                    {% else %}3.9.4\
                    {% endif %}"
+
+jdepend_version: 1.1.1
+
+jproperties_version: 2.6
 
 dependency_check_version: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.6\
                            {% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
                            {% else %}1.1.6\
                            {% endif %}"
 
-xanitizer_version: "{% if sonar_version is version(\"7.3\", \">=\") %}2.0.0\
-                    {% else %}1.5.0\
-                    {% endif %}"
+issueresolver_version: 1.0.2
 
-gitlab_version: "{% if sonar_version is version(\"7.0\", \">=\") %}4.0.0\
-                 {% else %}3.0.2\
-                 {% endif %}"
+json_version: 2.3
 
-python_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
-                 {% else %}1.14.1.3143
-                 {% endif %}"
+yaml_version: 1.5.2
+
+ansible_version: 2.4.0
+
+shellcheck_version: 2.4.0
+
+groovy_version: 2.6
+
+java_version: "{% if sonar_version is version(\"7.9\", \">=\") %}6.10.0.24201\
+               {% else %}5.14.0.18788\
+               {% endif %}"
 
 javascript_version: "{% if sonar_version is version(\"8.0\", \">=\") %}7.0.1.14561\
                      {% elif sonar_version is version(\"7.9\", \">=\") %}6.7.0.14237\
@@ -102,88 +114,123 @@ typescript_version: "{% if sonar_version is version(\"7.9\", \">=\") %}2.1.0.435
                      {% else %}1.9.0.3766\
                      {% endif %}"
 
-java_version: "{% if sonar_version is version(\"7.9\", \">=\") %}6.10.0.24201\
-               {% else %}5.14.0.18788\
-               {% endif %}"
+git_version: 1.12.1.2064
+
+xml_version: 2.0.1.2020
+
+python_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
+                 {% else %}1.14.1.3143
+                 {% endif %}"
+
+kotlin_version: 1.5.0.315
+
+css_version: 1.2.0.1325
+
+html_version: 3.3.0.2534
 
 php_version: "{% if sonar_version is version(\"7.9\", \">=\") %}3.13.0.6849\
               {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
               {% else %}3.0.0.4537\
               {% endif %}"
 
-sonar_branch_plugin_version: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
+smell_version: 4.0.0
+
+badges_version: 3.0.1
+
+auth_github_version: 1.5.0.870
+
+auth_bitbucket_version: 1.1.0.381
+
+bitbucket_version: 1.3.0
+
+stash_version: 1.6.0
+
+auth_gitlab_version: 1.3.2
+
+gitlab_version: "{% if sonar_version is version(\"7.0\", \">=\") %}4.0.0\
+                 {% else %}3.0.2\
+                 {% endif %}"
+
+xanitizer_version: "{% if sonar_version is version(\"7.3\", \">=\") %}2.0.0\
+                    {% else %}1.5.0\
+                    {% endif %}"
+
+
+
+
+
+branch_version: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
                               {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
                               {% elif sonar_version is version(\"8.1.0.31237\", \">=\") %}1.4.0\
                               {% elif sonar_version is version(\"7.8\", \">=\") %}1.3.2\
                               {% else %}1.0.2\
                               {% endif %}"
 
+# Recommended plugins
 sonar_plugins:
-# This plugins set is mandatory for the all E-Commerce projects
+  - 'https://github.com/checkstyle/sonar-checkstyle/releases/download/{{ checkstyle_version }}/checkstyle-sonar-plugin-{{ checkstyle_version }}.jar'
 
-  - https://github.com/checkstyle/sonar-checkstyle/releases/download/8.37/checkstyle-sonar-plugin-8.37.jar
-
-  - https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/3.2.1/sonar-pmd-plugin-3.2.1.jar
+  - 'https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/{{ pmd_version }}/sonar-pmd-plugin-{{ pmd_version }}.jar'
 
   - 'https://github.com/spotbugs/sonar-findbugs/releases/download/{{ findbugs_version }}/sonar-findbugs-plugin-{{ findbugs_version }}.jar'
 
-  - https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/sonar-jdepend-plugin-1.1.1/sonar-jdepend-plugin-1.1.1.jar
+  - 'https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/sonar-jdepend-plugin-{{ jdepend_version }}/sonar-jdepend-plugin-{{ jdepend_version }}.jar'
 
-  - https://github.com/racodond/sonar-jproperties-plugin/releases/download/2.6/sonar-jproperties-plugin-2.6.jar
+  - 'https://github.com/racodond/sonar-jproperties-plugin/releases/download/{{ jproperties_version }}/sonar-jproperties-plugin-{{ jproperties_version }}.jar'
 
   - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_version }}/\
     sonar-dependency-check-plugin-{{ dependency_check_version }}.jar"
 
-  - https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-1.0.2/sonar-issueresolver-plugin-1.0.2.jar
+  - 'https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_version }}/sonar-issueresolver-plugin-{{ issueresolver_version }}.jar'
 
-  - https://github.com/racodond/sonar-json-plugin/releases/download/2.3/sonar-json-plugin-2.3.jar
+  - 'https://github.com/racodond/sonar-json-plugin/releases/download/{{ json_version }}/sonar-json-plugin-{{ json_version }}.jar'
 
-  - https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.2/sonar-yaml-plugin-1.5.2.jar
+  - 'https://github.com/sbaudoin/sonar-yaml/releases/download/v{{ yaml_version }}/sonar-yaml-plugin-{{ yaml_version }}.jar'
 
-  - https://github.com/sbaudoin/sonar-ansible/releases/download/v2.4.0/sonar-ansible-plugin-2.4.0.jar
+  - 'https://github.com/sbaudoin/sonar-ansible/releases/download/v{{ ansible_version }}/sonar-ansible-plugin-{{ ansible_version }}.jar'
 
-  - https://github.com/sbaudoin/sonar-ansible/releases/download/v2.4.0/sonar-ansible-extras-plugin-2.4.0.jar
+  - 'https://github.com/sbaudoin/sonar-ansible/releases/download/v{{ ansible_version }}/sonar-ansible-extras-plugin-{{ ansible_version }}.jar'
 
-  - https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.4.0/sonar-shellcheck-plugin-2.4.0.jar
+  - 'https://github.com/sbaudoin/sonar-shellcheck/releases/download/v{{ shellcheck_version }}/sonar-shellcheck-plugin-{{ shellcheck_version }}.jar'
 
-  - https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
+  - 'https://github.com/Inform-Software/sonar-groovy/releases/download/{{ groovy_version }}/sonar-groovy-plugin-{{ groovy_version }}.jar'
 
 # Updates for plugins included into SonarQube installation
   - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-{{ typescript_version }}.jar'
-  - https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.12.1.2064.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.0.1.2020.jar
+  - 'https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-{{ git_version }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-{{ xml_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-{{ python_version }}.jar'
-  - https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-1.5.0.315.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-1.2.0.1325.jar
-  - https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.3.0.2534.jar
+  - 'https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-{{ kotlin_version }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-{{ css_version }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-{{ html_version }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-{{ php_version }}.jar'
 
 sonar_install_optional_plugins: false
 sonar_optional_plugins:
 
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
-    qualinsight-plugins-sonarqube-smell-4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar"
+    qualinsight-plugins-sonarqube-smell-{{ smell_version }}/qualinsight-sonarqube-smell-plugin-{{ smell_version }}.jar"
 
 #   Plugin is not supported in SonarQube 7.3+
 #   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/issues/82
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
-    qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar"
+    qualinsight-plugins-sonarqube-badges-{{ badges_version }}/qualinsight-sonarqube-badges-{{ badges_version }}.jar"
 
 #   Plugin is not supported in SonarQube 8+
-  - https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar
+  - 'https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-{{ auth_github_version }}.jar'
 
-  - https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
-
-#   Plugin is not supported in SonarQube 7.7+: https://github.com/mibexsoftware/sonar-bitbucket-plugin/issues/104
-  - https://github.com/Soyn/sonar-bitbucket-plugin/releases/download/v1.3.0/sonar-bitbucket-plugin-1.3.0.jar
+  - 'https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-{{ auth_bitbucket_version }}.jar'
 
 #   Plugin is not supported in SonarQube 7.7+
-  - https://github.com/AmadeusITGroup/sonar-stash/releases/download/1.6.0/sonar-stash-plugin-1.6.0.jar
+  - 'https://github.com/Soyn/sonar-bitbucket-plugin/releases/download/v{{ bitbucket_version }}/sonar-bitbucket-plugin-{{ bitbucket_version }}.jar'
+
+#   Plugin is not supported in SonarQube 7.7+
+  - 'https://github.com/AmadeusITGroup/sonar-stash/releases/download/{{ stash_version }}/sonar-stash-plugin-{{ stash_version }}.jar'
 
 #   Plugin is not supported in SonarQube 8+
-  - https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/1.3.2/sonar-auth-gitlab-plugin-1.3.2.jar
+  - 'https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin/releases/download/{{ auth_gitlab_version }}/sonar-auth-gitlab-plugin-{{ auth_gitlab_version }}.jar'
 
 #   Plugin is not supported in SonarQube 7.6+
   - 'https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/{{ gitlab_version }}/sonar-gitlab-plugin-{{ gitlab_version }}.jar'
@@ -192,7 +239,7 @@ sonar_optional_plugins:
 
 #   Plugin is not yet supported in SonarQube 8.1, 8.2
   - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-    {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
+    {{ branch_version }}/sonarqube-community-branch-plugin-{{ branch_version }}.jar"
 
 sonar_all_plugins: '{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}{% else %}{{ sonar_plugins }}{% endif %}'
 
