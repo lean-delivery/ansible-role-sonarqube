@@ -28,7 +28,7 @@
     file:
       path: '{{ sonar_path }}'
       state: directory
-      mode: 0644
+      mode: 0755
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
 

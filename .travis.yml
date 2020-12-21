@@ -13,6 +13,15 @@ git:
   submodules:
     false
 
+jobs:
+  include:
+  - name: "sonarqube-latest"
+    env:
+      - TEST="default"
+  - name: "sonarqube-6.7.7"
+    env:
+      - TEST="sonarqube-6.7.7"
+
 before_install:
   - git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
 
@@ -28,7 +37,7 @@ install:
 script:
   - yamllint . -c .yamllint
   - ansible-lint . -c .ansible-lint
-  - molecule test -s default
+  - molecule test -s $TEST
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
