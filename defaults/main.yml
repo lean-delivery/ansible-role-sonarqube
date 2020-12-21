@@ -120,7 +120,7 @@ git_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}0.0.0
 xml_pversion: 2.0.1.2020
 
 python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
-                  {% else %}1.14.1.3143
+                  {% else %}1.14.1.3143\
                   {% endif %}"
 
 kotlin_pversion: 1.8.1.1804
