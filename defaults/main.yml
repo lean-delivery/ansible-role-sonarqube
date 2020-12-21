@@ -123,7 +123,7 @@ python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
                   {% else %}1.14.1.3143
                   {% endif %}"
 
-kotlin_pversion: 1.5.0.315
+kotlin_pversion: 1.8.1.1804
 
 css_pversion: 1.3.1.1642
 
@@ -308,6 +308,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.5.0.315.jar'
 
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar'
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar'
@@ -364,3 +365,9 @@ sonar_profile_list:
 #    user_email_attribute: mail
 #    group_base_dn: ou=Groups,dc=sonarsource,dc=com
 #    group_request: (&(objectClass=posixGroup)(memberUid={uid}))
+
+sonar_log_path: "{% if sonar_version is version(\"8.6.0.39681\", \">=\") %}\
+                   {{ sonar_installation }}/logs/sonar-{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log\
+                 {% else %}\
+                   {{ sonar_installation }}/logs/sonar.log\
+                 {% endif %}"
