@@ -97,3 +97,6 @@
 [submodule "submodules/build-breaker-plugin"]
 	path = submodules/build-breaker-plugin
 	url = https://github.com/adnovum/sonar-build-breaker.git
+[submodule "submodules/jacoco-plugin"]
+	path = submodules/jacoco-plugin
+	url = https://github.com/SonarSource/sonar-jacoco.git
