@@ -16,8 +16,8 @@
         - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/\
           {{ gitlab_pversion }}/sonar-gitlab-plugin-{{ gitlab_pversion }}.jar"
         - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_pversion }}/sonar-xanitizer-plugin-{{ xanitizer_pversion }}.jar'
-        - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-          {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
+        - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
+          sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
       sonar_set_jenkins_webhook: true
       sonar_restore_profiles: true
       sonar_web_password: your_new_secure_password

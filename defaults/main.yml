@@ -180,9 +180,6 @@ sonar_plugins:
   - "https://github.com/stevespringett/dependency-check-sonar-plugin/releases/download/{{ dependency_check_pversion }}/\
     sonar-dependency-check-plugin-{{ dependency_check_pversion }}.jar"
 
-  - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
-    sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
-
   - 'https://github.com/racodond/sonar-json-plugin/releases/download/{{ json_pversion }}/sonar-json-plugin-{{ json_pversion }}.jar'
 
   - 'https://github.com/sbaudoin/sonar-yaml/releases/download/v{{ yaml_pversion }}/sonar-yaml-plugin-{{ yaml_pversion }}.jar'
@@ -194,6 +191,9 @@ sonar_plugins:
   - 'https://github.com/sbaudoin/sonar-shellcheck/releases/download/v{{ shellcheck_pversion }}/sonar-shellcheck-plugin-{{ shellcheck_pversion }}.jar'
 
   - 'https://github.com/Inform-Software/sonar-groovy/releases/download/{{ groovy_pversion }}/sonar-groovy-plugin-{{ groovy_pversion }}.jar'
+
+  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
 
 # Updates for plugins included into SonarQube installation
   - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_pversion }}.jar'
@@ -238,8 +238,8 @@ sonar_optional_plugins:
 
   - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_pversion }}/sonar-xanitizer-plugin-{{ xanitizer_pversion }}.jar'
 
-  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
+  - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
+    sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
 
 sonar_all_plugins: "{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}\
                     {% else %}{{ sonar_plugins }}\
