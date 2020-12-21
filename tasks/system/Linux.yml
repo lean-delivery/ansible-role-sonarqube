@@ -158,7 +158,7 @@
 
   rescue:
     - name: Get sonar log
-      command: 'cat {{ sonar_installation }}/logs/sona*.log'
+      command: 'cat {{ sonar_installation }}/logs/sonar-{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log'
       register: sonar_log
 
     - debug:
