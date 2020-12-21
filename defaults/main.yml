@@ -75,7 +75,7 @@ checkstyle_pversion: 8.37
 
 pmd_pversion: 3.2.1
 
-findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.0\
+findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.2\
                     {% else %}3.9.4\
                     {% endif %}"
 
