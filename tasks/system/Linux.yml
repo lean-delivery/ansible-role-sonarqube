@@ -158,7 +158,7 @@
 
   rescue:
     - name: Get sonar log
-      command: 'cat {{ sonar_installation }}/logs/sonar.log'
+      command: 'cat {{ sonar_installation }}/logs/sona*.log'
       register: sonar_log
 
     - debug:
