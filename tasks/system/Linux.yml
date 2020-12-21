@@ -28,6 +28,7 @@
     file:
       path: '{{ sonar_path }}'
       state: directory
+      mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
 
@@ -149,6 +150,7 @@
     copy:
       src: '{{ sonar_plugins_dir }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
       dest: '{{ sonar_installation }}/lib/common/'
+      mode: 0644
       remote_src: true
     when:
       - branch_pversion is version("1.2.0", ">=")
@@ -229,6 +231,7 @@
       copy:
         src: '{{ profile_item }}'
         dest: '{{ sonar_path }}/profiles/'
+        mode: 0644
         owner: '{{ sonar_user }}'
         group: '{{ sonar_group }}'
       loop: '{{ sonar_profile_list }}'
