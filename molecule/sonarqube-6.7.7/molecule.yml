@@ -41,7 +41,7 @@ provisioner:
     prepare: ../resources/prepare.yml
     verify: ../resources/tests/verify.yml
 scenario:
-  name: default
+  name: sonarqube-6.7.7
 verifier:
   name: ansible
   lint:
