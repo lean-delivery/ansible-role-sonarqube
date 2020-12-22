@@ -142,7 +142,9 @@ smell_pversion: 4.0.0
 
 badges_pversion: 3.0.1
 
-auth_github_pversion: 1.5.0.870
+auth_github_pversion: "{% if sonar_version is version(\"8.5.1.38104\", \">=\") %}0.0.0\
+                       {% else %}1.5.0.870\
+                       {% endif %}"
 
 auth_bitbucket_pversion: "{% if sonar_version is version(\"7.2\", \">=\") %}1.1.0.381\
                           {% else %}1.0\
@@ -152,7 +154,9 @@ bitbucket_pversion: 1.3.0
 
 stash_pversion: 1.6.0
 
-auth_gitlab_pversion: 1.3.2
+auth_gitlab_pversion: "{% if sonar_version is version(\"8.5.1.38104\", \">=\") %}0.0.0\
+                       {% else %}1.3.2\
+                       {% endif %}"
 
 gitlab_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}4.0.0\
                   {% else %}3.0.2\
