@@ -149,9 +149,9 @@ auth_github_pversion: "{% if sonar_version is version(\"8.4.2.36762\", \">=\") %
                        {% endif %}"
 
 auth_bitbucket_epversion: "{% if sonar_version is version(\"7.2\", \">=\") %}\
-https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar
-                          {% else %}
-https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar"
+  https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar\
+                          {% else %}\
+  https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar\
                           {% endif %}"
 
 bitbucket_pversion: 1.3.0
