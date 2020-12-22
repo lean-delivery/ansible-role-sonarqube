@@ -233,7 +233,7 @@ sonar_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-{{ css_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-{{ html_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-{{ php_pversion }}.jar'
-  - 'https://github.com/SonarSource/sonar-jacoco/releases/download/{{ jacoco_pversion }}/sonar-jacoco-plugin-{{ jacoco_pversion }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-jacoco-plugin/sonar-jacoco-plugin-{{ jacoco_pversion }}.jar'
 
 sonar_install_optional_plugins: false
 sonar_optional_plugins:
