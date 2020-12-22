@@ -4,21 +4,6 @@
   roles:
     - role: ansible-role-sonarqube
       sonar_install_optional_plugins: true
-      sonar_optional_plugins:
-        - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
-          qualinsight-plugins-sonarqube-smell-{{ smell_pversion }}/qualinsight-sonarqube-smell-plugin-{{ smell_pversion }}.jar"
-        - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/\
-          qualinsight-plugins-sonarqube-badges-{{ badges_pversion }}/qualinsight-sonarqube-badges-{{ badges_pversion }}.jar"
-        - 'https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-{{ auth_bitbucket_pversion }}.jar'
-        - "https://github.com/Soyn/sonar-bitbucket-plugin/releases/download/\
-          v{{ bitbucket_pversion }}/sonar-bitbucket-plugin-{{ bitbucket_pversion }}.jar"
-        - 'https://github.com/AmadeusITGroup/sonar-stash/releases/download/{{ stash_pversion }}/sonar-stash-plugin-{{ stash_pversion }}.jar'
-        - "https://github.com/gabrie-allaigre/sonar-gitlab-plugin/releases/download/\
-          {{ gitlab_pversion }}/sonar-gitlab-plugin-{{ gitlab_pversion }}.jar"
-        - 'https://github.com/RIGS-IT/sonar-xanitizer/releases/download/{{ xanitizer_epversion }}'
-        - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
-          sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
-        - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
       sonar_set_jenkins_webhook: true
       sonar_restore_profiles: true
       sonar_web_password: your_new_secure_password

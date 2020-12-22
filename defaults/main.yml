@@ -144,7 +144,9 @@ badges_pversion: 3.0.1
 
 auth_github_pversion: 1.5.0.870
 
-auth_bitbucket_pversion: 1.1.0.381
+auth_bitbucket_pversion: "{% if sonar_version is version(\"7.2\", \">=\") %}1.1.0.381\
+                          {% else %}1.0\
+                          {% endif %}"
 
 bitbucket_pversion: 1.3.0
 
@@ -252,8 +254,6 @@ sonar_optional_plugins:
 
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
     sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
-
-
 
 sonar_all_plugins: "{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}\
                     {% else %}{{ sonar_plugins }}\
