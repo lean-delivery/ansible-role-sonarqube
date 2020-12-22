@@ -42,7 +42,6 @@ pipeline {
                         ${SQ_SCANNER_HOME}/bin/sonar-scanner \
                             -Dsonar.sources=. \
                             -Dsonar.projectKey=${PROJECT} \
-                            -Dsonar.projectVersion=${env.BUILD_NUMBER} \
                             -Dsonar.pullrequest.branch=${CHANGE_BRANCH} \
                             -Dsonar.pullrequest.key=${CHANGE_ID} \
                             -Dsonar.pullrequest.base=${CHANGE_TARGET}
@@ -116,12 +115,10 @@ pipeline {
         stage('SonarQube quality gate') {   // Catches webhook from SonarQube
             agent none
             steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    script {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                        }
+                retry(2) {
+                    timeout(time: 5, unit: 'MINUTES') {
+                        sleep 10
+                        waitForQualityGate abortPipeline: true
                     }
                 }
             }
