@@ -18,6 +18,9 @@ jobs:
   - name: "sonarqube-latest"
     env:
       - TEST="default"
+  - name: "sonarqube-8.5.1"
+    env:
+      - TEST="sonarqube-8.5.1"
   - name: "sonarqube-7.9.5"
     env:
       - TEST="sonarqube-7.9.5"
@@ -26,6 +29,7 @@ jobs:
       - TEST="sonarqube-6.7.7"
 
 before_install:
+  - export
   - git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
 
 install:
