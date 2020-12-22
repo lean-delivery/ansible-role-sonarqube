@@ -243,7 +243,7 @@ sonar_optional_plugins:
 #   Plugin is not supported in SonarQube 8+
   - 'https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-{{ auth_github_pversion }}.jar'
 
-  - '{{ auth_bitbucket_pversion }}'
+  - '{{ auth_bitbucket_epversion }}'
 
 #   Plugin is not supported in SonarQube 7.7+
   - 'https://github.com/Soyn/sonar-bitbucket-plugin/releases/download/v{{ bitbucket_pversion }}/sonar-bitbucket-plugin-{{ bitbucket_pversion }}.jar'
