@@ -119,7 +119,7 @@ typescript_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}2.1.0.43
 
 git_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}0.0.0\
                {% elif sonar_version is version(\"7.9\", \">=\") %}1.12.1.2064\
-               {% else %}1.12.0.2034\
+               {% else %}1.11.1.2008\
                {% endif %}"
 
 xml_pversion: 2.0.1.2020
