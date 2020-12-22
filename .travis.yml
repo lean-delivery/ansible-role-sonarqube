@@ -33,6 +33,9 @@ jobs:
   - name: "sonarqube-8.1"
     env:
       - TEST="sonarqube-8.1"
+  - name: "sonarqube-8.0"
+    env:
+      - TEST="sonarqube-8.0"
   - name: "sonarqube-7.9.5"
     env:
       - TEST="sonarqube-7.9.5"
