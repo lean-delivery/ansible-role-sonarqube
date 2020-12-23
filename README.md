@@ -12,13 +12,13 @@ This role installs SonarQube with extended set of plugins. It uses openJDK, post
 See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-8.37
+  - checkstyle-sonar-plugin-8.38
   - sonar-pmd-plugin-3.2.1
   - sonar-findbugs-plugin-4.0.0
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
   - sonar-groovy-plugin-1.6
-  - sonar-dependency-check-plugin-2.0.6
+  - sonar-dependency-check-plugin-2.0.7
   - sonar-issueresolver-plugin-1.0.2
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.5.2
@@ -33,8 +33,8 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-stash-plugin-1.6.0 (for Bitbucket Server)
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
-  - sonar-xanitizer-plugin-2.0.0
-  - sonarqube-community-branch-plugin-1.3.0
+  - sonar-xanitizer-plugin-2.0.1
+  - sonarqube-community-branch-plugin-1.6.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
