@@ -161,7 +161,9 @@ php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.13.0.6849\
 
 jacoco_pversion: 1.1.0.898
 
-smell_pversion: 4.0.0
+smell_epversion: "{% if sonar_version is version(\"7.9\", \">=\") %}4.0.0/qualinsight-sonarqube-smell-plugin-4.0.0.jar\
+                  {% else %}3.0.0/qualinsight-plugins-sonarqube-smell-plugin-3.0.0.jar\
+                  {% endif %}"
 
 badges_pversion: 3.0.1
 
@@ -247,7 +249,7 @@ sonar_install_optional_plugins: false
 sonar_optional_plugins:
 
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
-    qualinsight-plugins-sonarqube-smell-{{ smell_pversion }}/qualinsight-sonarqube-smell-plugin-{{ smell_pversion }}.jar"
+    qualinsight-plugins-sonarqube-smell-{{ smell_epversion }}"
 
 #   Plugin is not supported in SonarQube 7.3+
 #   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/issues/82
