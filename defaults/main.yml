@@ -111,32 +111,32 @@ branch_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.
 
 java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.10.0.24201\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
-                {% else %}4.15.0.12310\
+                {% else %}0.0.0\
                 {% endif %}"
 
 javascript_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}7.1.0.14721\
                       {% elif sonar_version is version(\"7.9\", \">=\") %}6.7.0.14237\
                       {% elif sonar_version is version(\"7.0\", \">=\") %}5.2.1.7778\
-                      {% else %}3.2.0.5506\
+                      {% else %}0.0.0\
                       {% endif %}"
 
 typescript_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}2.1.0.4359\
                       {% elif sonar_version is version(\"7.0\", \">=\") %}1.9.0.3766\
-                      {% else %}1.1.0.1079\
+                      {% else %}0.0.0\
                       {% endif %}"
 
 git_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}0.0.0\
                {% elif sonar_version is version(\"7.0\", \">=\") %}1.12.1.2064\
-               {% else %}1.3.0.869\
+               {% else %}0.0.0\
                {% endif %}"
 
 xml_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}2.0.1.2020\
-               {% else %}1.4.3.1027\
+               {% else %}0.0.0\
                {% endif %}"
 
 python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
-                  {% else %}1.8.0.1496\
+                  {% else %}0.0.0\
                   {% endif %}"
 
 kotlin_pversion: "{% if sonar_version is version(\"7.3\", \">=\") %}1.8.1.1804\
@@ -154,7 +154,7 @@ html_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.3.0.2534\
 php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.13.0.6849\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
-               {% else %}2.11.0.2485\
+               {% else %}0.0.0\
                {% endif %}"
 
 jacoco_pversion: 1.1.0.898
@@ -286,8 +286,7 @@ sonar_plugins_path: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}s
                      {% endif %}"
 
 sonar_plugins_dir: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}{{ sonar_installation }}/lib/extensions\
-                    {% elif sonar_version is version(\"7.2\", \">=\") %}{{ sonar_installation }}/extensions/plugins\
-                    {% else %}{{ sonar_installation }}/lib/bundled-plugins\
+                    {% else %}{{ sonar_installation }}/extensions/plugins\
                     {% endif %}"
 
 # Exclude old plugins that go with SonarQube installations
