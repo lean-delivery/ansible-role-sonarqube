@@ -108,7 +108,7 @@ java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.10.0.24201\
                 {% else %}5.14.0.18788\
                 {% endif %}"
 
-javascript_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}7.0.1.14561\
+javascript_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}7.1.0.14721\
                       {% elif sonar_version is version(\"7.9\", \">=\") %}6.7.0.14237\
                       {% else %}5.2.1.7778\
                       {% endif %}"
