@@ -277,7 +277,8 @@ sonar_plugins_path: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}s
                      {% endif %}"
 
 sonar_plugins_dir: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}{{ sonar_installation }}/lib/extensions\
-                    {% else %}{{ sonar_installation }}/extensions/plugins\
+                    {% elif sonar_version is version(\"7.2\", \">=\") %}{{ sonar_installation }}/extensions/plugins\
+                    {% else %}{{ sonar_installation }}/lib/bundled-plugins\
                     {% endif %}"
 
 # Exclude old plugins that go with SonarQube installations
