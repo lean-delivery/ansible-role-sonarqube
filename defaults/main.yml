@@ -132,7 +132,7 @@ git_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}0.0.0\
 
 xml_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}2.0.1.2020\
                {% else %}1.4.3.1027\
-               {% endif %}"              
+               {% endif %}"
 
 python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
