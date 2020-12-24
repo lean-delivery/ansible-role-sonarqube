@@ -78,7 +78,8 @@ pmd_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}3.2.1\
                {% else %}2.6\
                {% endif %}"
 
-findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.2\
+# https://github.com/spotbugs/sonar-findbugs/issues/345
+findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.0\
                     {% else %}0.0.0\
                     {% endif %}"
 
