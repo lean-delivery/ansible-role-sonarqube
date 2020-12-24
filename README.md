@@ -54,7 +54,6 @@ Requirements
 
  - **Minimal Ansible version**: 2.8
  - **Supported SonarQube versions**:
-   - 6.7.7
    - 7.0 - 7.8
    - 7.9 - 7.9.5 LTS
    - 8.0 - 8.6.0.39681

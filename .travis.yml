@@ -39,9 +39,6 @@ jobs:
   - name: "sonarqube-7.9.5"
     env:
       - TEST="sonarqube-7.9.5"
-  - name: "sonarqube-6.7.7"
-    env:
-      - TEST="sonarqube-6.7.7"
 
 before_install:
   - if [[ ${TRAVIS_PULL_REQUEST_BRANCH} == dependabot* ]]; then echo 'Skipping test for dependabot branch' && exit 0; fi

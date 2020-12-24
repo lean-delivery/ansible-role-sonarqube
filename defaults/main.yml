@@ -79,7 +79,7 @@ pmd_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}3.2.1\
                {% endif %}"
 
 findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.0\
-                    {% else %}3.9.4\
+                    {% else %}0.0.0\
                     {% endif %}"
 
 jdepend_pversion: 1.1.1
