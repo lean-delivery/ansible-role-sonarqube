@@ -233,7 +233,7 @@ Example Playbook
     # sonarqube
     sonar_major_version: 8
     sonar_minor_version: 6.0.39681 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
-    sonar_check_url: 'https://{{ ansible_fqdn }}'
+    sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins: 
@@ -271,6 +271,8 @@ Example Playbook
       file:
         path: /etc/nginx/conf.d/default.conf
         state: absent
+    - name: reload nginx
+      command: 'nginx -s reload'
 ```
 
 License
