@@ -368,6 +368,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.3.0.5166.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.5.0.5655.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.9.0.6331.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-3.13.0.6849.jar'
 
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.1.0.1615.jar'
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.2.0.2082.jar'
