@@ -115,11 +115,9 @@ pipeline {
         stage('SonarQube quality gate') {   // Catches webhook from SonarQube
             agent none
             steps {
-                retry(2) {
-                    timeout(time: 5, unit: 'MINUTES') {
-                        sleep 10
-                        waitForQualityGate abortPipeline: true
-                    }
+                sleep 300
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
