@@ -34,7 +34,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-stash-plugin-1.6.0 (for Bitbucket Server)
   - sonar-auth-gitlab-plugin-1.3.2
   - sonar-gitlab-plugin-4.0.0
-  - sonar-xanitizer-plugin-2.0.1
+  - sonar-xanitizer-plugin-2.2.0
   - sonar-build-breaker-plugin-2.3.1.347
   - sonar-issueresolver-plugin-1.0.2
   
