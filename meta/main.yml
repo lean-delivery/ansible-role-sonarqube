@@ -15,17 +15,16 @@ galaxy_info:
     - name: 'Debian'
       versions:
         - 'stretch'
-        - 'jessie'
     - name: 'EL'
       versions:
         - '7'
 
   galaxy_tags:
+    - sonarqube
+    - sonar
     - codequality
     - development
     - monitoring
     - scanner
-    - sonar
-    - sonarqube
 
 dependencies: []

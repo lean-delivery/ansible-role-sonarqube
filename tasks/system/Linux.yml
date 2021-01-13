@@ -28,6 +28,7 @@
     file:
       path: '{{ sonar_path }}'
       state: directory
+      mode: 0755
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
 
@@ -49,7 +50,9 @@
       return_content: true
     register: sonarqube_checksum
     when:
-       - sonar_version is version("8.3", "<")
+      - sonar_version is version("8.3", "<")
+      - sonar_version is not version("7.9.4", "==")
+      - sonar_version is not version("7.9.5", "==")
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} with check'
     get_url:
@@ -64,7 +67,9 @@
     retries: 3
     delay: 5
     when:
-       - sonar_version is version("8.3", "<")
+      - sonar_version is version("8.3", "<")
+      - sonar_version is not version("7.9.4", "==")
+      - sonar_version is not version("7.9.5", "==")
 
   - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} without check'
     get_url:
@@ -78,7 +83,9 @@
     retries: 3
     delay: 5
     when:
-       - sonar_version is version("8.3", ">=")
+      sonar_version is version("8.3", ">=") or
+      sonar_version is version("7.9.4", "==") or
+      sonar_version is version("7.9.5", "==")
 
   - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
     unarchive:
@@ -122,12 +129,13 @@
   - name: Download plugins
     get_url:
       url: '{{ item }}'
-      dest: '{{ sonar_installation }}/extensions/plugins/'
+      dest: '{{ sonar_plugins_dir }}'
       mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
-    register: download_plugins_result
-    until: download_plugins_result is succeeded
+    when: '"0.0.0" not in item'
+    register: download_plugin_result
+    until: download_plugin_result is succeeded
     retries: 3
     delay: 5
     notify: Restart Sonarqube
@@ -136,22 +144,23 @@
   - name: Get branch plugin url
     set_fact:
       branch_plugin_url: "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-                         {{ sonar_branch_plugin_version }}/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar"
+                         {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
 
   - name: Copy branch plugin
     copy:
-      src: '{{ sonar_installation }}/extensions/plugins/sonarqube-community-branch-plugin-{{ sonar_branch_plugin_version }}.jar'
+      src: '{{ sonar_plugins_dir }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
       dest: '{{ sonar_installation }}/lib/common/'
+      mode: 0644
       remote_src: true
     when:
-      - sonar_branch_plugin_version is version("1.2.0", ">=")
+      - branch_pversion is version("1.2.0", ">=")
       - branch_plugin_url in sonar_all_plugins
 
   - meta: flush_handlers
 
   rescue:
     - name: Get sonar log
-      command: 'cat {{ sonar_installation }}/logs/sonar.log'
+      command: 'cat {{ sonar_log_path }}'
       register: sonar_log
 
     - debug:
@@ -222,6 +231,7 @@
       copy:
         src: '{{ profile_item }}'
         dest: '{{ sonar_path }}/profiles/'
+        mode: 0644
         owner: '{{ sonar_user }}'
         group: '{{ sonar_group }}'
       loop: '{{ sonar_profile_list }}'
