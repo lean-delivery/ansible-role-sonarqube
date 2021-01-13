@@ -4,7 +4,7 @@ sudo: required
 
 language: python
 python:
-  - "3.7"
+  - "3.8"
 
 services:
   - docker
@@ -13,13 +13,41 @@ git:
   submodules:
     false
 
+jobs:
+  include:
+  - name: "sonarqube-latest"
+    env:
+      - TEST="default"
+  - name: "sonarqube-8.5.1"
+    env:
+      - TEST="sonarqube-8.5.1"
+  - name: "sonarqube-8.4.2"
+    env:
+      - TEST="sonarqube-8.4.2"
+  - name: "sonarqube-8.3.1"
+    env:
+      - TEST="sonarqube-8.3.1"
+  - name: "sonarqube-8.2"
+    env:
+      - TEST="sonarqube-8.2"
+  - name: "sonarqube-8.1"
+    env:
+      - TEST="sonarqube-8.1"
+  - name: "sonarqube-8.0"
+    env:
+      - TEST="sonarqube-8.0"
+  - name: "sonarqube-7.9.5"
+    env:
+      - TEST="sonarqube-7.9.5"
+
 before_install:
+  - if [[ ${TRAVIS_PULL_REQUEST_BRANCH} == dependabot* ]]; then echo 'Skipping test for dependabot branch' && exit 0; fi
   - git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
 
 install:
   - pip3 install --upgrade ansible==2.9.* docker
   - pip3 install molecule==2.22
-  - pip3 install git+https://github.com/ansible/ansible-lint.git@v4.3.0a0
+  - pip3 install git+https://github.com/ansible/ansible-lint.git@v4.3.7
   - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
   - pip3 install jmespath
   - ansible --version
@@ -28,7 +56,7 @@ install:
 script:
   - yamllint . -c .yamllint
   - ansible-lint . -c .ansible-lint
-  - molecule test -s default
+  - molecule test -s $TEST
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
