@@ -112,7 +112,7 @@ branch_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.
                   {% else %}0.0.0\
                   {% endif %}"
 
-java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.10.0.24201\
+java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.11.0.24617\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
                 {% else %}0.0.0\
                 {% endif %}"
@@ -154,7 +154,7 @@ html_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.3.0.2534\
                 {% else %}3.2.0.2082\
                 {% endif %}"
 
-php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.13.0.6849\
+php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.14.0.6990\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
                {% else %}0.0.0\
