@@ -422,6 +422,7 @@ sonar_updatecenter_activate: true
 #    user_email_attribute: mail
 #    group_base_dn: ou=Groups,dc=sonarsource,dc=com
 #    group_request: (&(objectClass=posixGroup)(memberUid={uid}))
+#    group_idAttribute: cn
 
 sonar_log_path: "{% if sonar_version is version(\"8.6.0.39681\", \">=\") %}\
                    {{ sonar_installation }}/logs/sonar-{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log\

@@ -219,7 +219,9 @@ Role Variables
         default: ou=Groups,dc=sonarsource,dc=com
       - `group_request`\
         default: (&(objectClass=posixGroup)(memberUid={uid}))
-
+      - `group_idAttribute`\
+        default: cn
+      
 Example Playbook
 ----------------
 ```yaml
