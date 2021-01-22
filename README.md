@@ -182,6 +182,8 @@ Role Variables
   - `sonar_restore_profiles` - is profile restore required\
     default: false
   - `sonar_profile_list` - list of profiles to restore
+  - `sonar_updatecenter_activate` - activate the SonarQube update center
+    default: true
 
   Ldap configuration section. 
   See https://docs.sonarqube.org/latest/instance-administration/delegated-auth/#header-6 to get description
@@ -195,6 +197,16 @@ Role Variables
         default: my_bind_dn
       - `bind_password`\
         default: my_bind_password
+      - `authentication`\
+         default: simple
+      - `realm`\
+        default: 
+      - `contextFactoryClass`\
+        default: com.sun.jndi.ldap.LdapCtxFactory
+      - `StartTLS`\
+        default: false
+      - `followReferrals`\
+        default: true
       - `user_base_dn`\
         default : ou=Users,dc=mycompany,dc=com
       - `user_request`\
@@ -207,7 +219,9 @@ Role Variables
         default: ou=Groups,dc=sonarsource,dc=com
       - `group_request`\
         default: (&(objectClass=posixGroup)(memberUid={uid}))
-
+      - `group_idAttribute`\
+        default: cn
+      
 Example Playbook
 ----------------
 ```yaml

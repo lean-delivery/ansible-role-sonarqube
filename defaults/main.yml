@@ -403,18 +403,26 @@ sonar_restore_profiles: false
 sonar_profile_list:
   - files/example_profile.xml
 
+sonar_updatecenter_activate: true
+
 # See https://docs.sonarqube.org/latest/instance-administration/delegated-auth/#header-6 to get description
 # ldap:
 #    authenticator_downcase: false
 #    url: ldap://myserver.mycompany.com
 #    bind_dn: my_bind_dn
 #    bind_password: my_bind_password
+#    authentication: simple
+#    realm:
+#    contextFactoryClass: com.sun.jndi.ldap.LdapCtxFactory
+#    StartTLS: false
+#    followReferrals: true
 #    user_base_dn: ou=Users,dc=mycompany,dc=com
 #    user_request: (&(objectClass=inetOrgPerson)(uid={login}))
 #    user_real_name_attribute: cn
 #    user_email_attribute: mail
 #    group_base_dn: ou=Groups,dc=sonarsource,dc=com
 #    group_request: (&(objectClass=posixGroup)(memberUid={uid}))
+#    group_idAttribute: cn
 
 sonar_log_path: "{% if sonar_version is version(\"8.6.0.39681\", \">=\") %}\
                    {{ sonar_installation }}/logs/sonar-{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log\
