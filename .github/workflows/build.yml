@@ -8,7 +8,7 @@ on:
 name: CI
 jobs:
   sonarqube:
-    name: sonarqube 
+    name: sonarqube
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
