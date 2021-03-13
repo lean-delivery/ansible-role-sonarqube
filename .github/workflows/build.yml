@@ -1,0 +1,16 @@
+---
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+name: CI
+jobs:
+  sonarqube:
+    name: sonarqube 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
