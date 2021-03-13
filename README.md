@@ -12,7 +12,7 @@ This role installs SonarQube with extended set of plugins. It uses openJDK, post
 See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-8.38
+  - checkstyle-sonar-plugin-8.40
   - sonar-pmd-plugin-3.3.0
   - sonar-findbugs-plugin-4.0.3
   - sonar-jdepend-plugin-1.1.1
