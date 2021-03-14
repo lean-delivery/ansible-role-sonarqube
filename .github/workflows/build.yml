@@ -9,6 +9,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -30,14 +31,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Prepare
-        run: |
-          ansible --version
-          ansible-lint --version
-          molecule --version
-          rm -rf molecule/resources/provisioning
-          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-          pip install jmespath
-          apk add --no-cache docker # temp fix
+        uses: ansible-role-sonarqube/actions-prepare-step@v1
       - name: Molecule
         run: molecule test -s ${TEST}
   sonarqube-7_9_5:
