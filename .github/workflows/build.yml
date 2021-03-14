@@ -8,6 +8,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   sonarqube-latest:
+    runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
     env:
       GET_SOURCES_ATTEMPTS: "5"
