@@ -1,11 +1,11 @@
 ---
 inputs:
-  name: 
+  name:
     description: 'Your name'
     default: 'No name provided'
 runs:
   using: "composite"
-  steps: 
+  steps:
     - run: |
         ansible --version
         ansible-lint --version

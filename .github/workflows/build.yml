@@ -31,7 +31,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Prepare
-        uses: lean-delivery/ansible-role-sonarqube/actions-prepare-step@v1
+        uses: lean-delivery:ansible-role-sonarqube/actions-prepare-step@v1
       - name: Molecule
         run: molecule test -s ${TEST}
   sonarqube-7_9_5:
