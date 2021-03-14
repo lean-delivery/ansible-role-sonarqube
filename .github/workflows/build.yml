@@ -34,3 +34,5 @@ jobs:
           yamllint . -c .yamllint
           ansible-lint . -c .ansible-lint
           rm -rf ~/ansible-lint-rules
+      - name: Molecule
+        run: molecule test -s default
