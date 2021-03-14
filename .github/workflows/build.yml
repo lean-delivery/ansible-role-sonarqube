@@ -1,16 +1,32 @@
 ---
+name: CI
 on:
   push:
     branches:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
-name: CI
 jobs:
-  sonarqube:
-    name: sonarqube
+  sonarqube-latest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Run a multi-line script
+        env:
+          TEST: default
+        run: |
+          export
+          if [[ ${TRAVIS_PULL_REQUEST_BRANCH} == dependabot* ]]; then echo 'Skipping test for dependabot branch' && exit 0; fi
+          git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
+          pip3 install --upgrade ansible==2.9.* docker
+          pip3 install molecule==2.22
+          pip3 install git+https://github.com/ansible/ansible-lint.git@v4.3.7
+          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+          pip3 install jmespath
+          ansible --version
+          ansible-lint --version
+          yamllint . -c .yamllint
+          ansible-lint . -c .ansible-lint
+          molecule test -s $TEST
