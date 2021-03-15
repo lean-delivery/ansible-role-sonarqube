@@ -35,12 +35,57 @@ jobs:
         uses: ./.github/prepare
       - name: Molecule
         run: molecule test -s ${TEST}
-  sonarqube-8_0:
+  sonarqube-8_5_1:
     needs: lint
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
     env:
-      TEST: sonarqube-8.0
+      TEST: sonarqube-8.5.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_4_2:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.4.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_3_1:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.3.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_2:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.2
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -56,6 +101,21 @@ jobs:
     container: leandelivery/docker-ansible-ci:ansible-2.9
     env:
       TEST: sonarqube-8.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_0:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.0
     steps:
       - name: Checkout
         uses: actions/checkout@v2
