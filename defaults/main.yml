@@ -424,7 +424,9 @@ sonar_updatecenter_activate: true
 #    group_request: (&(objectClass=posixGroup)(memberUid={uid}))
 #    group_idAttribute: cn
 
-sonar_log_path: "{% if sonar_version is version(\"8.6.0.39681\", \">=\") %}\
+sonar_log_path: "{% if sonar_version is version(\"8.7.0.41497\", \">=\") %}\
+                   {{ sonar_installation }}/logs/sonar.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log\
+                 {% elif sonar_version is version(\"8.6.0.39681\", \">=\") %}\
                    {{ sonar_installation }}/logs/sonar-{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log\
                  {% else %}\
                    {{ sonar_installation }}/logs/sonar.log\
