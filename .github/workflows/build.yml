@@ -35,25 +35,33 @@ jobs:
         uses: ./.github/prepare
       - name: Molecule
         run: molecule test -s ${TEST}
-  sonarqube-7_9_5:
+  sonarqube-8_0:
     needs: lint
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
     env:
-      TEST: sonarqube-7.9.5
+      TEST: sonarqube-8.0
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Prepare
-        run: |
-          ansible --version
-          ansible-lint --version
-          molecule --version
-          rm -rf molecule/resources/provisioning
-          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-          pip install jmespath
-          apk add --no-cache docker # temp fix
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-7_9_6:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-7.9.6
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
       - name: Molecule
         run: molecule test -s ${TEST}

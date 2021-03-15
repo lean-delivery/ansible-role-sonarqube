@@ -1,7 +1,6 @@
 sonarqube role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/LICENSE)
-[![Build Status](https://travis-ci.org/lean-delivery/ansible-role-sonarqube.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-sonarqube)
 [![Build Status](https://gitlab.com/lean-delivery/ansible-role-sonarqube/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-sonarqube/pipelines)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.sonarqube-blue.svg)](https://galaxy.ansible.com/lean_delivery/sonarqube)
 ![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
@@ -55,7 +54,7 @@ Requirements
  - **Minimal Ansible version**: 2.8
  - **Supported SonarQube versions**:
    - 7.0 - 7.8
-   - 7.9 - 7.9.5 LTS
+   - 7.9 - 7.9.6 LTS
    - 8.0 - 8.6.0.39681
  - **Supported Java**:
    - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
