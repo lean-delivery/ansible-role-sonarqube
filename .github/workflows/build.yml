@@ -21,6 +21,7 @@ jobs:
           yamllint . -c .yamllint
           ansible-lint . -c .ansible-lint
   sonarqube-latest:
+    needs: lint
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
     env:
@@ -31,10 +32,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Prepare
-        uses: lean-delivery:ansible-role-sonarqube/actions-prepare-step@v1
+        uses: https://github.com/lean-delivery/ansible-role-sonarqube/actions-prepare-step@update
       - name: Molecule
         run: molecule test -s ${TEST}
   sonarqube-7_9_5:
+    needs: lint
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
     env:
