@@ -32,7 +32,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Prepare
-        uses: https://github.com/lean-delivery/ansible-role-sonarqube/actions-prepare-step@update
+        uses: ./.github/actions/prepare
       - name: Molecule
         run: molecule test -s ${TEST}
   sonarqube-7_9_5:
