@@ -162,6 +162,13 @@
   - meta: flush_handlers
 
   rescue:
+    - name: Show logs
+      command: 'ls {{ sonar_installation }}/logs/'
+      register: logs_list
+
+    - debug:
+        var: logs_list.stdout
+
     - name: Get sonar log
       command: 'cat {{ sonar_log_path }}'
       register: sonar_log
