@@ -50,6 +50,21 @@ jobs:
         uses: ./.github/prepare
       - name: Molecule
         run: molecule test -s ${TEST}
+  sonarqube-8_1:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
   sonarqube-7_9_6:
     needs: lint
     runs-on: ubuntu-latest
