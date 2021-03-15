@@ -22,7 +22,6 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-yaml-plugin-1.5.2
   - sonar-ansible-plugin-2.4.0
   - sonar-shellcheck-plugin-2.4.0
-  - sonarqube-community-branch-plugin-1.6.0
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0
@@ -36,6 +35,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-xanitizer-plugin-2.2.0
   - sonar-build-breaker-plugin-2.3.1.347
   - sonar-issueresolver-plugin-1.0.2
+  - sonarqube-community-branch-plugin-1.6.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 

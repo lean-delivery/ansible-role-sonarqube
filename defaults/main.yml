@@ -230,9 +230,6 @@ sonar_plugins:
 
   - 'https://github.com/sbaudoin/sonar-shellcheck/releases/download/v{{ shellcheck_pversion }}/sonar-shellcheck-plugin-{{ shellcheck_pversion }}.jar'
 
-  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
-
 # Updates for plugins included into SonarQube installation
   - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_pversion }}.jar'
@@ -281,6 +278,9 @@ sonar_optional_plugins:
 
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
     sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
+
+  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
 
 sonar_all_plugins: "{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}\
                     {% else %}{{ sonar_plugins }}\
