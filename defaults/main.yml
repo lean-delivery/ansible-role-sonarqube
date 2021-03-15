@@ -112,7 +112,7 @@ branch_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.
                   {% else %}0.0.0\
                   {% endif %}"
 
-java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.11.0.24617\
+java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.13.0.25138\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
                 {% else %}0.0.0\
                 {% endif %}"
