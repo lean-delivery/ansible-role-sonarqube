@@ -8,6 +8,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   lint:
+    if: ${{ !contains(github.head.ref, 'dependabot') }}
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
     steps:
