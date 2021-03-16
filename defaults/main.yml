@@ -104,14 +104,6 @@ shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.4.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
-branch_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
-                  {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
-                  {% elif sonar_version is version(\"8.1.0.31237\", \">=\") %}1.4.0\
-                  {% elif sonar_version is version(\"7.8\", \">=\") %}1.3.2\
-                  {% elif sonar_version is version(\"7.4\", \">=\") %}1.3.2\
-                  {% else %}0.0.0\
-                  {% endif %}"
-
 java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.13.0.25138\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
                 {% else %}0.0.0\
@@ -200,6 +192,15 @@ build_breaker_epversion: "{% if sonar_version is version(\"7.3\", \">=\") %}2.3.
                          {% endif %}"
 
 issueresolver_pversion: 1.0.2
+
+branch_pversion: "{% if sonar_version is version(\"7.0.41497\", \">=\") %}0.0.0\
+                  {% elif sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
+                  {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
+                  {% elif sonar_version is version(\"8.1.0.31237\", \">=\") %}1.4.0\
+                  {% elif sonar_version is version(\"7.8\", \">=\") %}1.3.2\
+                  {% elif sonar_version is version(\"7.4\", \">=\") %}1.3.2\
+                  {% else %}0.0.0\
+                  {% endif %}"
 
 # Recommended plugins
 sonar_plugins:
