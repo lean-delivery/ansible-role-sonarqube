@@ -1,7 +1,6 @@
 sonarqube role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/LICENSE)
-[![Build Status](https://travis-ci.org/lean-delivery/ansible-role-sonarqube.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-sonarqube)
 [![Build Status](https://gitlab.com/lean-delivery/ansible-role-sonarqube/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-sonarqube/pipelines)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.sonarqube-blue.svg)](https://galaxy.ansible.com/lean_delivery/sonarqube)
 ![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
@@ -12,8 +11,8 @@ This role installs SonarQube with extended set of plugins. It uses openJDK, post
 See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-8.38
-  - sonar-pmd-plugin-3.3.0
+  - checkstyle-sonar-plugin-8.40
+  - sonar-pmd-plugin-3.3.1
   - sonar-findbugs-plugin-4.0.3
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
@@ -23,7 +22,6 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-yaml-plugin-1.5.2
   - sonar-ansible-plugin-2.4.0
   - sonar-shellcheck-plugin-2.4.0
-  - sonarqube-community-branch-plugin-1.6.0
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0
@@ -37,6 +35,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-xanitizer-plugin-2.2.0
   - sonar-build-breaker-plugin-2.3.1.347
   - sonar-issueresolver-plugin-1.0.2
+  - sonarqube-community-branch-plugin-1.6.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
@@ -55,8 +54,8 @@ Requirements
  - **Minimal Ansible version**: 2.8
  - **Supported SonarQube versions**:
    - 7.0 - 7.8
-   - 7.9 - 7.9.5 LTS
-   - 8.0 - 8.6.0.39681
+   - 7.9 - 7.9.6 LTS
+   - 8.0 - 8.7.1.42226
  - **Supported Java**:
    - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
    - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
@@ -88,7 +87,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 8
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 6.0.39681
+    default: 7.1.42226
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -246,7 +245,7 @@ Example Playbook
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
     sonar_major_version: 8
-    sonar_minor_version: 6.0.39681 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
+    sonar_minor_version: 7.1.42226 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
