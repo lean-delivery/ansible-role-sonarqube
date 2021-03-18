@@ -1,0 +1,158 @@
+---
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  lint:
+    if: ${{ !contains(github.head.ref, 'dependabot') }}
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Lints
+        run: |
+          git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
+          yamllint . -c .yamllint
+          ansible-lint . -c .ansible-lint
+  sonarqube-latest:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: default
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_6_1:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.6.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_5_1:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.5.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_4_2:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.4.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_3_1:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.3.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_2:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_1:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-8_0:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-8.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}
+  sonarqube-7_9_6:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    env:
+      TEST: sonarqube-7.9.6
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        uses: ./.github/prepare
+      - name: Molecule
+        run: molecule test -s ${TEST}

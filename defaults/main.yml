@@ -1,7 +1,7 @@
 ---
 # defaults file for sonarqube
 sonar_major_version: 8
-sonar_minor_version: 6.0.39681
+sonar_minor_version: 7.1.42226
 sonar_version: '{{ sonar_major_version }}.{{ sonar_minor_version }}'
 
 sonar_path: /opt/sonarqube
@@ -70,11 +70,11 @@ sonar_proxy_client_max_body_size: 32m
 nginx_config_path: /etc/nginx/conf.d/sonar.conf
 
 # Plugin versions
-checkstyle_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}8.38\
+checkstyle_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}8.40\
                       {% else %}4.27\
                       {% endif %}"
 
-pmd_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}3.3.0\
+pmd_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}3.3.1\
                {% else %}2.6\
                {% endif %}"
 
@@ -104,20 +104,12 @@ shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.4.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
-branch_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
-                  {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
-                  {% elif sonar_version is version(\"8.1.0.31237\", \">=\") %}1.4.0\
-                  {% elif sonar_version is version(\"7.8\", \">=\") %}1.3.2\
-                  {% elif sonar_version is version(\"7.4\", \">=\") %}1.3.2\
-                  {% else %}0.0.0\
-                  {% endif %}"
-
-java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.11.0.24617\
+java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}6.13.0.25138\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
                 {% else %}0.0.0\
                 {% endif %}"
 
-javascript_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}7.1.0.14721\
+javascript_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}7.2.1.14998\
                       {% elif sonar_version is version(\"7.9\", \">=\") %}6.7.0.14237\
                       {% elif sonar_version is version(\"7.0\", \">=\") %}5.2.1.7778\
                       {% else %}0.0.0\
@@ -137,16 +129,16 @@ xml_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}2.0.1.2020\
                {% else %}0.0.0\
                {% endif %}"
 
-python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.1.0.7619\
+python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.3.0.7945\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
                   {% else %}0.0.0\
                   {% endif %}"
 
-kotlin_pversion: "{% if sonar_version is version(\"7.3\", \">=\") %}1.8.1.1804\
+kotlin_pversion: "{% if sonar_version is version(\"7.3\", \">=\") %}1.8.2.1946\
                   {% else %}0.0.0\
                   {% endif %}"
 
-css_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}1.3.1.1642\
+css_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}1.4.0.1899\
                {% else %}1.1.1.1010\
                {% endif %}"
 
@@ -154,7 +146,7 @@ html_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.3.0.2534\
                 {% else %}3.2.0.2082\
                 {% endif %}"
 
-php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.14.0.6990\
+php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.15.0.7197\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
                {% else %}0.0.0\
@@ -201,6 +193,15 @@ build_breaker_epversion: "{% if sonar_version is version(\"7.3\", \">=\") %}2.3.
 
 issueresolver_pversion: 1.0.2
 
+branch_pversion: "{% if sonar_version is version(\"7.0.41497\", \">=\") %}0.0.0\
+                  {% elif sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
+                  {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
+                  {% elif sonar_version is version(\"8.1.0.31237\", \">=\") %}1.4.0\
+                  {% elif sonar_version is version(\"7.8\", \">=\") %}1.3.2\
+                  {% elif sonar_version is version(\"7.4\", \">=\") %}1.3.2\
+                  {% else %}0.0.0\
+                  {% endif %}"
+
 # Recommended plugins
 sonar_plugins:
   - 'https://github.com/checkstyle/sonar-checkstyle/releases/download/{{ checkstyle_pversion }}/checkstyle-sonar-plugin-{{ checkstyle_pversion }}.jar'
@@ -229,9 +230,6 @@ sonar_plugins:
   - 'https://github.com/sbaudoin/sonar-ansible/releases/download/v{{ ansible_pversion }}/sonar-ansible-extras-plugin-{{ ansible_pversion }}.jar'
 
   - 'https://github.com/sbaudoin/sonar-shellcheck/releases/download/v{{ shellcheck_pversion }}/sonar-shellcheck-plugin-{{ shellcheck_pversion }}.jar'
-
-  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
 
 # Updates for plugins included into SonarQube installation
   - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_pversion }}.jar'
@@ -282,6 +280,9 @@ sonar_optional_plugins:
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
     sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
 
+  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
+
 sonar_all_plugins: "{% if sonar_install_optional_plugins %}{{ sonar_plugins }}+{{ sonar_optional_plugins }}\
                     {% else %}{{ sonar_plugins }}\
                     {% endif %}"
@@ -308,6 +309,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-java-plugin-6.5.1.22586.jar'
   - '{{ sonar_plugins_path }}/sonar-java-plugin-6.8.0.23379.jar'
   - '{{ sonar_plugins_path }}/sonar-java-plugin-6.9.0.23563.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-6.12.0.24852.jar'
 
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar'
@@ -319,6 +321,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-6.2.1.12157.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-6.5.0.13383.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-7.0.1.14561.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-7.2.0.14938.jar'
 
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar'
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar'
@@ -346,12 +349,14 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-python-plugin-2.8.0.6204.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-2.13.0.7236.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-3.1.0.7619.jar'
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-3.2.0.7856.jar'
 
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.4.0.155.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.5.0.315.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.8.1.1804.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.8.2.1946.jar'
 
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar'
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar'
@@ -361,6 +366,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.2.0.1325.jar'
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.3.0.1580.jar'
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.3.1.1642.jar'
+  - '{{ sonar_plugins_path }}/sonar-css-plugin-1.3.2.1782.jar'
 
   - '{{ sonar_plugins_path }}/sonar-php-plugin-2.13.0.3107.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-2.14.0.3569.jar'
@@ -373,6 +379,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.5.0.5655.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.9.0.6331.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.13.0.6849.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-3.15.0.7197.jar'
 
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.1.0.1615.jar'
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.2.0.2082.jar'
@@ -424,7 +431,9 @@ sonar_updatecenter_activate: true
 #    group_request: (&(objectClass=posixGroup)(memberUid={uid}))
 #    group_idAttribute: cn
 
-sonar_log_path: "{% if sonar_version is version(\"8.6.0.39681\", \">=\") %}\
+sonar_log_path: "{% if sonar_version is version(\"8.7.0.41497\", \">=\") %}\
+                   {{ sonar_installation }}/logs/sonar.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log\
+                 {% elif sonar_version is version(\"8.6.0.39681\", \">=\") %}\
                    {{ sonar_installation }}/logs/sonar-{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}.log\
                  {% else %}\
                    {{ sonar_installation }}/logs/sonar.log\
