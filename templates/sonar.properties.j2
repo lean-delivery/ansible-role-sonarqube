@@ -17,7 +17,7 @@ sonar.search.javaOpts={{ sonar_java_opts.es }}
 sonar.ce.javaOpts={{ sonar_java_opts.ce }}
 
 # update center
-sonar.updatecenter.activate={{ sonar_updatecenter_activate }}
+sonar.updatecenter.activate={{ sonar_updatecenter_activate | bool | lower }}
 
 # LDAP AUTH
 {%- if (ldap is defined) %}
