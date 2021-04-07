@@ -28,6 +28,7 @@ jobs:
       matrix:
         scenario:
           - default
+          - sonarqube-8.7.1
           - sonarqube-8.6.1
           - sonarqube-8.5.1
           - sonarqube-8.4.2
