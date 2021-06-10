@@ -153,7 +153,7 @@ php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.17.0.7439\
                {% else %}0.0.0\
                {% endif %}"
 
-jacoco_pversion: 1.1.0.898
+jacoco_pversion: 1.1.1.1157
 
 smell_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}4.0.0\
                  {% else %}0.0.0\
