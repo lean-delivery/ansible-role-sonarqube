@@ -17,7 +17,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
   - sonar-groovy-plugin-1.7
-  - sonar-dependency-check-plugin-2.0.7
+  - sonar-dependency-check-plugin-2.0.8
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.5.2
   - sonar-ansible-plugin-2.4.0

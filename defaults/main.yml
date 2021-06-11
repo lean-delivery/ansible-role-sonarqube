@@ -90,7 +90,7 @@ jproperties_pversion: 2.6
 
 groovy_pversion: 1.7
 
-dependency_check_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.7\
+dependency_check_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.8\
                             {% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
                             {% else %}1.1.6\
                             {% endif %}"
