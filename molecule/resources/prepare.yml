@@ -13,6 +13,15 @@
       postgresql_databases:
         - name: sonar
           owner: sonar
+      ignore_errors: true # temp fix
+    - role: anxs.postgresql # temp fix
+      become: true
+      postgresql_users:
+        - name: sonar
+          pass: sonar
+      postgresql_databases:
+        - name: sonar
+          owner: sonar
     - role: nginxinc.nginx
       become: true
     - role: jdauphant.ssl-certs
