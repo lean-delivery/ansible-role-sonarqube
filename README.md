@@ -77,7 +77,7 @@ Requirements
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
-  - anxs.postgresql
+  - https://github.com/ANXS/postgresql # should be replaced with anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
   - jdauphant.ssl-certs
   - nginxinc.nginx
 
@@ -270,9 +270,14 @@ Example Playbook
     sonar_profile_list:
       - files/example_profile.xml
   pre_tasks:
+    - name: install rpm key
+      rpm_key:
+        state: present
+        key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+      when: ansible_distribution == 'RedHat'
     - name: install epel
       package:
-        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
         state: present
       when: ansible_distribution == 'RedHat'
     # delete previously installed sonar to prevent plugins conflict
@@ -282,7 +287,7 @@ Example Playbook
         state: absent
   roles:
     - role: lean_delivery.java
-    - role: anxs.postgresql
+    - role: https://github.com/ANXS/postgresql # should be replaced with src: anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
     - role: nginxinc.nginx
     - role: jdauphant.ssl-certs
     - role: lean_delivery.sonarqube

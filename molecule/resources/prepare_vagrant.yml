@@ -5,7 +5,7 @@
     - role: lean_delivery.java
       java_major_version: 11
       transport: repositories
-    - role: anxs.postgresql
+    - role: postgresql # should be replaced with anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
       become: true
       postgresql_users:
         - name: sonar
