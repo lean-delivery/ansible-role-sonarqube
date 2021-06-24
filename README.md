@@ -157,7 +157,12 @@ Role Variables
     default: '/etc/ssl/{{ sonar_proxy_server_name }}/{{ sonar_proxy_server_name }}.key'
   - `sonar_proxy_client_max_body_size` - client max body size setting in web server config\
     default: 32m
-  - `sonar_plugins` - list of plugins
+  - `sonar_install_recommended_plugins` - are recommended plugins required\
+    default: true
+  - `sonar_recommended_plugins` - list of recommended plugins\
+  - `sonar_update_default_plugins` - is update required for default plugins\
+    default: true
+  - `sonar_default_plugins` - list of default plugins\
   - `sonar_install_optional_plugins` - are optional plugins required\
     default: false
   - `sonar_optional_plugins` - list of optional plugins switched off by default. Not all of them are supported in latest SonarQube versions, so select ones you need and override this property.
