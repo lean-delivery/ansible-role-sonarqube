@@ -232,7 +232,7 @@ sonar_recommended_plugins:
 
   - 'https://github.com/sbaudoin/sonar-shellcheck/releases/download/v{{ shellcheck_pversion }}/sonar-shellcheck-plugin-{{ shellcheck_pversion }}.jar'
 
-sonar_install_default_plugins: true
+sonar_update_default_plugins: true
 sonar_default_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_pversion }}.jar'
@@ -286,7 +286,7 @@ sonar_optional_plugins:
     {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
 
 sonar_all_plugins: "{{ sonar_install_recommended_plugins | ternary(sonar_recommended_plugins, []) +\
-                       sonar_install_default_plugins | ternary(sonar_default_plugins, []) +\
+                       sonar_update_default_plugins | ternary(sonar_default_plugins, []) +\
                        sonar_install_optional_plugins | ternary(sonar_optional_plugins, []) }}"
 
 sonar_plugins_path: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}sonarqube-{{ sonar_version }}/lib/extensions\
@@ -400,7 +400,8 @@ sonar_excluded_plugins:
 # Override this var to exclude default plugins you don't need
 sonar_default_excluded_plugins: []
 
-sonar_all_excluded_plugins: '{{ sonar_excluded_plugins }} + {{ sonar_default_excluded_plugins }}'
+sonar_all_excluded_plugins: "{{ sonar_update_default_plugins | ternary(sonar_excluded_plugins, []) +\
+                                sonar_default_excluded_plugins }}"
 
 # SonarQube configuration
 sonar_web_user: admin
