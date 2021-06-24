@@ -135,6 +135,8 @@ Role Variables
     default: https://sonarsource.bintray.com/Distribution/sonarqube
   - `sonar_check_url` - url for SonarQube startup verification\
     default: http://{{ web.host }}:{{ web.port }}
+  - `sonar_download` - is sonarqube.zip download required. Set to false when not possible to download zip and put zip to sonar_download_path manually before playbook run.
+    default: true
   - `sonar_download_path` - local download path\
     default: /tmp/
   - `sonar_proxy_type` - web server, nginx is only supported for now\

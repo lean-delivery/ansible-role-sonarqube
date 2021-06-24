@@ -55,6 +55,7 @@ sonar_check_url: http://{{ web.host }}:{{ web.port }}
 sonar_installation: '{{ sonar_path }}/sonarqube-{{ sonar_version }}'
 
 # local download path
+sonar_download: true
 sonar_download_path: /tmp
 
 sonar_proxy_type: nginx
