@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Install yamllint
+      - name: Install yamllint # till https://github.com/lean-delivery/docker-ansible-ci/pull/22 is not resolved
         run: apk add --update yamllint
       - name: Lints
         run: |
