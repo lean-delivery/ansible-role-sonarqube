@@ -14,11 +14,14 @@ jobs:
   lint:
     if: ${{ !contains(github.head.ref, 'dependabot') }}
     runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Install yamllint
+        run: apk add --update yamllint
       - name: Lints
         run: |
           git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
