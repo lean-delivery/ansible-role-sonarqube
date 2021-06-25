@@ -6,6 +6,10 @@ on:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
+env:
+  PY_COLORS: 1
+  ANSIBLE_FORCE_COLOR: 1
+  ANSIBLE_STDOUT_CALLBACK: yaml
 jobs:
   lint:
     if: ${{ !contains(github.head.ref, 'dependabot') }}
