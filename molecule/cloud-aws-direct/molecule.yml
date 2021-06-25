@@ -5,8 +5,7 @@ dependency:
     role-file: requirements.yml
 driver:
   name: ec2
-lint:
-  name: yamllint
+lint: yamllint
   options:
     config-file: .yamllint
 platforms:
@@ -56,11 +55,9 @@ provisioner:
     prepare: ../resources/prepare.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
     verify: ../resources/tests/verify.yml
-  lint: |
-    ansible-lint
+  lint: ansible-lint
 scenario:
   name: cloud-aws-direct
 verifier:
   name: ansible
-  lint: |
-    ansible-lint
+  lint: ansible-lint
