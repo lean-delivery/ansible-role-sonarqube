@@ -31,7 +31,7 @@ Lint:
   after_script:
     - rm -rf ~/ansible-lint-rules
   tags:
-    - aws
+    - lint
 
 Docker sonarqube:
   stage: deployment test
