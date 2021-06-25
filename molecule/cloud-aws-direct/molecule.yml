@@ -62,5 +62,5 @@ scenario:
   name: cloud-aws-direct
 verifier:
   name: ansible
-  lint:
-    name: ansible-lint
+  lint: |
+    ansible-lint
