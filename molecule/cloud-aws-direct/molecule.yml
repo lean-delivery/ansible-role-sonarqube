@@ -5,9 +5,9 @@ dependency:
     role-file: requirements.yml
 driver:
   name: ec2
-lint: yamllint
-  options:
-    config-file: .yamllint
+lint: |
+  yamllint
+  ansible-lint
 platforms:
   - name: test-aws-centos7-sonarqube
     image: ami-9887c6e7
@@ -55,9 +55,7 @@ provisioner:
     prepare: ../resources/prepare.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
     verify: ../resources/tests/verify.yml
-  lint: ansible-lint
 scenario:
   name: cloud-aws-direct
 verifier:
   name: ansible
-  lint: ansible-lint
