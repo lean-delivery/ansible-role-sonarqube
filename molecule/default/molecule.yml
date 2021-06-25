@@ -5,10 +5,9 @@ dependency:
     role-file: requirements.yml
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: .yamllint
+lint: |
+  yamllint
+  ansible-lint
 platforms:
   - name: test-docker-centos7-sonarqube
     image: leandelivery/docker-systemd:centos7
@@ -33,8 +32,6 @@ platforms:
 provisioner:
   name: ansible
   log: true
-  lint:
-    name: ansible-lint
   config_options:
     defaults:
       callback_whitelist: profile_tasks,timer
@@ -49,5 +46,3 @@ scenario:
   name: default
 verifier:
   name: ansible
-  lint:
-    name: ansible-lint

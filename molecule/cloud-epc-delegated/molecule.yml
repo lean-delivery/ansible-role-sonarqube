@@ -5,10 +5,9 @@ dependency:
     role-file: requirements.yml
 driver:
   name: delegated
-lint:
-  name: yamllint
-  options:
-    config-file: .yamllint
+lint: |
+  yamllint
+  ansible-lint
 platforms:
   - name: test-epc-centos7-sonarqube
     image: CentOS7_64-bit
@@ -40,8 +39,6 @@ provisioner:
   config_options:
     ssh_connection:
       control_path: "/var/ans/%%h"
-  lint:
-    name: ansible-lint
 scenario:
   name: cloud-epc-delegated
 verifier:
@@ -49,5 +46,3 @@ verifier:
   options:
     verbose: true
   directory: ../resources/tests/
-  lint:
-    name: ansible-lint
