@@ -105,7 +105,7 @@ shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.4.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
-java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}7.0.0.26422\
+java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}7.1.0.26670\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
                 {% else %}0.0.0\
                 {% endif %}"

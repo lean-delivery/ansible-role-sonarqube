@@ -51,7 +51,7 @@ See Jenkins pipeline example here: https://raw.githubusercontent.com/lean-delive
 Requirements
 --------------
 
- - **Minimal Ansible version**: 2.8
+ - **Minimal Ansible version**: 2.9
  - **Supported SonarQube versions**:
    - 7.0 - 7.8
    - 7.9 - 7.9.6 LTS
