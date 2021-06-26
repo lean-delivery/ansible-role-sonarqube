@@ -16,8 +16,8 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-findbugs-plugin-4.0.3
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
-  - sonar-groovy-plugin-1.6
-  - sonar-dependency-check-plugin-2.0.7
+  - sonar-groovy-plugin-1.7
+  - sonar-dependency-check-plugin-2.0.8
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.5.2
   - sonar-ansible-plugin-2.4.0
@@ -35,7 +35,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-xanitizer-plugin-2.2.0
   - sonar-build-breaker-plugin-2.3.1.347
   - sonar-issueresolver-plugin-1.0.2
-  - sonarqube-community-branch-plugin-1.7.0
+  - sonarqube-community-branch-plugin-1.8.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
@@ -51,11 +51,11 @@ See Jenkins pipeline example here: https://raw.githubusercontent.com/lean-delive
 Requirements
 --------------
 
- - **Minimal Ansible version**: 2.8
+ - **Minimal Ansible version**: 2.9
  - **Supported SonarQube versions**:
    - 7.0 - 7.8
    - 7.9 - 7.9.6 LTS
-   - 8.0 - 8.8.0.42792
+   - 8.0 - 8.9.1.44547
  - **Supported Java**:
    - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
    - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
@@ -77,7 +77,7 @@ Requirements
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
-  - anxs.postgresql
+  - https://github.com/ANXS/postgresql # should be replaced with anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
   - jdauphant.ssl-certs
   - nginxinc.nginx
 
@@ -87,7 +87,7 @@ Role Variables
   - `sonar_major_version` - major number of SonarQube version\
     default: 8
   - `sonar_minor_version` - minor number of SonarQube version\
-    default: 8.0.42792
+    default: 9.1.44547
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -252,7 +252,7 @@ Example Playbook
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
     sonar_major_version: 8
-    sonar_minor_version: 7.1.42226 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
+    sonar_minor_version: 9.1.44547 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
@@ -270,9 +270,14 @@ Example Playbook
     sonar_profile_list:
       - files/example_profile.xml
   pre_tasks:
+    - name: install rpm key
+      rpm_key:
+        state: present
+        key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+      when: ansible_distribution == 'RedHat'
     - name: install epel
       package:
-        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
         state: present
       when: ansible_distribution == 'RedHat'
     # delete previously installed sonar to prevent plugins conflict
@@ -282,7 +287,7 @@ Example Playbook
         state: absent
   roles:
     - role: lean_delivery.java
-    - role: anxs.postgresql
+    - role: https://github.com/ANXS/postgresql # should be replaced with src: anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
     - role: nginxinc.nginx
     - role: jdauphant.ssl-certs
     - role: lean_delivery.sonarqube
