@@ -14,8 +14,7 @@ platforms:
     shape: large
     region: EPAM-BY2
     wait_timeout: 3600
-    groups:
-      - rhel_family
+    groups: []
   - name: test-epc-ubuntu1804-sonarqube
     image: Ubuntu18.04_64-bit
     shape: large

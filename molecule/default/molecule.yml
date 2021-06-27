@@ -12,8 +12,7 @@ platforms:
   - name: test-docker-centos7-sonarqube
     image: leandelivery/docker-systemd:centos7
     privileged: true
-    groups:
-      - rhel_family
+    groups: []
 #  - name: test-docker-ubuntu1604-sonarqube
 #    image: leandelivery/docker-systemd:ubuntu-16.04
 #    privileged: true
