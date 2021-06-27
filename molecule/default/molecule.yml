@@ -9,16 +9,16 @@ lint: |
   yamllint
   ansible-lint
 platforms:
-  - name: test-docker-centos8-sonarqube
-    image: jrei/systemd-centos:8
-    privileged: true
-    groups:
-      - rhel_family
   - name: test-docker-centos7-sonarqube
     image: leandelivery/docker-systemd:centos7
     privileged: true
     groups:
       - rhel_family
+#  - name: test-docker-centos8-sonarqube
+#    image: jrei/systemd-centos:8
+#    privileged: true
+#    groups:
+#      - rhel_family
 #  - name: test-docker-ubuntu14.04-sonarqube
 #    image: leandelivery/docker-systemd:ubuntu-14.04
 #    privileged: true
@@ -63,6 +63,20 @@ platforms:
       - python3
   - name: test-docker-ubuntu20.04-sonarqube
     image: jrei/systemd-ubuntu:20.04
+    privileged: true
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
+    groups:
+      - python3
+  - name: test-docker-debian9-sonarqube
+    image: jrei/systemd-debian:9
     privileged: true
     security_opts:
       - seccomp=unconfined
