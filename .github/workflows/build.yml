@@ -37,10 +37,15 @@ jobs:
         distro:
           - centos8
           - centos7
-          - fedora32
+          - fedora34
+          - fedora33
+          - amazonlinux2
           - ubuntu2004
           - ubuntu1804
+          - ubuntu1604
+          - ubuntu1404
           - debian10
+          - debian9
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
