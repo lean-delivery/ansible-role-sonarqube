@@ -22,7 +22,6 @@ platforms:
     region: EPAM-BY2
     wait_timeout: 3600
     groups:
-      - debian_family
       - python3
 provisioner:
   name: ansible
