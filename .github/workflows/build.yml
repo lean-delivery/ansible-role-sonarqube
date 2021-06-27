@@ -34,16 +34,6 @@ jobs:
       matrix:
         scenario:
           - default
-          - sonarqube-8.8.0
-          - sonarqube-8.7.1
-          - sonarqube-8.6.1
-          - sonarqube-8.5.1
-          - sonarqube-8.4.2
-          - sonarqube-8.3.1
-          - sonarqube-8.2
-          - sonarqube-8.1
-          - sonarqube-8.0
-          - sonarqube-7.9.6
         distro:
           - centos8
           - centos7
@@ -53,7 +43,6 @@ jobs:
           - debian10
       fail-fast: false
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-2.9
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -66,7 +55,7 @@ jobs:
       - name: Install test dependencies.
         run: pip3 install ansible molecule[docker] docker
       - name: Prepare
-        uses: ./.github/prepare
+        run: ansible --version && ansible-lint --version && molecule --version && pip install jmespath
       - name: Molecule
         run: molecule test -s ${{ matrix.scenario }}
         env:
