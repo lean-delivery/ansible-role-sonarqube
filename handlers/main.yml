@@ -6,11 +6,17 @@
       state: restarted
       daemon_reload: true
       enabled: true
+    register: service_status
     notify:
+      - Show status
       - Wait for migrate DB
       - Migrate DB
       - Wait for Sonarqube
     become: true
+
+  - name: Show status
+    debug:
+      var: service_status.status
 
   - name: Wait for migrate DB
     uri:
