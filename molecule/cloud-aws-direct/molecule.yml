@@ -21,8 +21,7 @@ platforms:
       - default
     wait_timeout: 1800
     ssh_user: centos
-    groups:
-      - centos8
+    groups: []
 
   - name: test-aws-Centos7-sonarqube
     image: ami-9887c6e7
@@ -50,7 +49,7 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: centos
-#    groups:
+#    groups: []
 
   - name: test-aws-Ubuntu18-sonarqube
     image: ami-012fd5eb46f56731f
@@ -65,23 +64,21 @@ platforms:
     wait_timeout: 1800
     ssh_user: ubuntu
     groups:
-      - debian_family
       - python3
 
-  - name: test-aws-Ubuntu16-sonarqube
-    image: ami-09677e0a6b14905b0
-    platform: ubuntu16
-    instance_type: t3a.medium
-    region: us-east-1
-    vpc_subnet_id: subnet-0f2b9cd66faea38af
-    assign_public_ip: false
-    spot_price: 0.04
-    security_group_name:
-      - default
-    wait_timeout: 1800
-    ssh_user: ubuntu
-    groups:
-      - debian_family
+#  - name: test-aws-Ubuntu16-sonarqube
+#    image: ami-09677e0a6b14905b0
+#    platform: ubuntu16
+#    instance_type: t3a.medium
+#    region: us-east-1
+#    vpc_subnet_id: subnet-0f2b9cd66faea38af
+#    assign_public_ip: false
+#    spot_price: 0.04
+#    security_group_name:
+#      - default
+#    wait_timeout: 1800
+#    ssh_user: ubuntu
+#    groups: []
 
 #  - name: test-aws-Debian10-sonarqube
 #    image: ami-0dedf6a6502877301
@@ -95,8 +92,7 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: admin
-#    groups:
-#      - debian_family
+#    groups: []
 
 #  - name: test-aws-Debian9-sonarqube
 #    image: ami-003f19e0e687de1cd
@@ -110,8 +106,7 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: admin
-#    groups:
-#      - debian_family
+#    groups: []
 
 #  - name: test-aws-Amazon2-sonarqube
 #    image: ami-0b898040803850657
