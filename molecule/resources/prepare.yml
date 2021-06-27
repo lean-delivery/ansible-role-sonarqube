@@ -5,14 +5,13 @@
     - role: lean_delivery.java
       java_major_version: 11
       transport: repositories
-    - role: postgresql # should be replaced with anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
+    - role: geerlingguy.postgresql
       become: true
       postgresql_users:
         - name: sonar
-          pass: sonar
+          password: sonar
       postgresql_databases:
         - name: sonar
-          owner: sonar
     - role: nginxinc.nginx
       become: true
     - role: jdauphant.ssl-certs
