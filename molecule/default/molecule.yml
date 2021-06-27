@@ -14,34 +14,34 @@ platforms:
     privileged: true
     groups:
       - rhel_family
-  - name: test-docker-ubuntu14.04-sonarqube
-    image: leandelivery/docker-systemd:ubuntu-14.04
-    privileged: true
-    security_opts:
-      - seccomp=unconfined
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    tmpfs:
-      - /tmp
-      - /run
-    capabilities:
-      - SYS_ADMIN
-    groups:
-      - python3
-  - name: test-docker-ubuntu16.04-sonarqube
-    image: leandelivery/docker-systemd:ubuntu-16.04
-    privileged: true
-    security_opts:
-      - seccomp=unconfined
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    tmpfs:
-      - /tmp
-      - /run
-    capabilities:
-      - SYS_ADMIN
-    groups:
-      - python3
+#  - name: test-docker-ubuntu14.04-sonarqube
+#    image: leandelivery/docker-systemd:ubuntu-14.04
+#    privileged: true
+#    security_opts:
+#      - seccomp=unconfined
+#    volumes:
+#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+#    tmpfs:
+#      - /tmp
+#      - /run
+#    capabilities:
+#      - SYS_ADMIN
+#    groups:
+#      - python3
+#  - name: test-docker-ubuntu16.04-sonarqube
+#    image: leandelivery/docker-systemd:ubuntu-16.04
+#    privileged: true
+#    security_opts:
+#      - seccomp=unconfined
+#    volumes:
+#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+#    tmpfs:
+#      - /tmp
+#      - /run
+#    capabilities:
+#      - SYS_ADMIN
+#    groups:
+#      - python3
   - name: test-docker-ubuntu18.04-sonarqube
     image: leandelivery/docker-systemd:ubuntu-18.04
     privileged: true
