@@ -65,7 +65,7 @@ platforms:
     capabilities:
       - SYS_ADMIN
     groups:
-      - debian_family
+      - python3
   - name: test-docker-ubuntu20.04-sonarqube
     image: jrei/systemd-ubuntu:20.04
     privileged: true
