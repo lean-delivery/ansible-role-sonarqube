@@ -19,6 +19,11 @@ platforms:
 #    privileged: true
 #    groups:
 #      - rhel_family
+  - name: test-docker-fedora-sonarqube
+    image: jrei/systemd-fedora:latest
+    privileged: true
+    groups:
+      - rhel_family
 #  - name: test-docker-ubuntu14.04-sonarqube
 #    image: leandelivery/docker-systemd:ubuntu-14.04
 #    privileged: true
@@ -77,6 +82,34 @@ platforms:
       - python3
   - name: test-docker-debian9-sonarqube
     image: jrei/systemd-debian:9
+    privileged: true
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
+    groups:
+      - python3
+  - name: test-docker-debian10-sonarqube
+    image: jrei/systemd-debian:10
+    privileged: true
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
+    groups:
+      - python3
+  - name: test-docker-debian11-sonarqube
+    image: jrei/systemd-debian:11
     privileged: true
     security_opts:
       - seccomp=unconfined
