@@ -39,21 +39,6 @@ platforms:
     groups:
       - rhel_family
 
-  - name: test-aws-Centos6-sonarqube
-    image: ami-1585c46a
-    platform: centos6
-    instance_type: t3a.medium
-    region: us-east-1
-    vpc_subnet_id: subnet-0f2b9cd66faea38af
-    assign_public_ip: false
-    spot_price: 0.05
-    security_group_name:
-      - default
-    wait_timeout: 1800
-    ssh_user: centos
-    groups:
-      - rhel_family
-
   - name: test-aws-Ubuntu18-sonarqube
     image: ami-012fd5eb46f56731f
     platform: ubuntu18
