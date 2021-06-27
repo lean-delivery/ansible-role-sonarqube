@@ -44,6 +44,13 @@ jobs:
           - sonarqube-8.1
           - sonarqube-8.0
           - sonarqube-7.9.6
+        distro:
+          - centos8
+          - centos7
+          - fedora32
+          - ubuntu2004
+          - ubuntu1804
+          - debian10
       fail-fast: false
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
@@ -52,7 +59,15 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install test dependencies.
+        run: pip3 install ansible molecule[docker] docker
       - name: Prepare
         uses: ./.github/prepare
       - name: Molecule
         run: molecule test -s ${{ matrix.scenario }}
+        env:
+          MOLECULE_DISTRO: ${{ matrix.distro }}
