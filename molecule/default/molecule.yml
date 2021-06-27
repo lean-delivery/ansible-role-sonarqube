@@ -27,7 +27,7 @@ platforms:
     capabilities:
       - SYS_ADMIN
     groups:
-      - python3
+      - python3.5
 #  - name: test-docker-ubuntu16.04-sonarqube
 #    image: leandelivery/docker-systemd:ubuntu-16.04
 #    privileged: true
@@ -80,6 +80,8 @@ provisioner:
     group_vars:
       python3:
         ansible_python_interpreter: /usr/bin/python3
+      python3.5:
+        ansible_python_interpreter: /usr/bin/python3.5
   playbooks:
     prepare: ../resources/prepare.yml
     verify: ../resources/tests/verify.yml
