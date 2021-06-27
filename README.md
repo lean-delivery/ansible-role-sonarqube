@@ -67,13 +67,12 @@ Requirements
  - **Supported OS**:
    - CentOS
      - 7
+	 - 8
    - RHEL
      - 7
+	 - 8
    - Ubuntu
-     - 16.04
      - 18.04
-   - Debian
-     - 'stretch'
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
