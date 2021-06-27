@@ -58,7 +58,7 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install test dependencies.
-        run: pip3 install ansible molecule[docker] docker
+        run: pip3 install ansible==2.9.* molecule[docker] docker
       - name: Prepare
         run: | 
           ansible --version
