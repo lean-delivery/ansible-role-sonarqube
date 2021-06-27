@@ -21,7 +21,8 @@ platforms:
       - default
     wait_timeout: 1800
     ssh_user: centos
-    groups: []
+    groups:
+      - rhel_family
 
   - name: test-aws-Centos7-sonarqube
     image: ami-9887c6e7
@@ -35,7 +36,8 @@ platforms:
       - default
     wait_timeout: 1800
     ssh_user: centos
-    groups: []
+    groups:
+      - rhel_family
 
 #  - name: test-aws-Centos6-sonarqube
 #    image: ami-1585c46a
@@ -49,7 +51,8 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: centos
-#    groups: []
+#    groups:
+#      - rhel_family
 
   - name: test-aws-Ubuntu18-sonarqube
     image: ami-012fd5eb46f56731f
@@ -78,7 +81,8 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: ubuntu
-#    groups: []
+#    groups:
+#      - python3
 
 #  - name: test-aws-Debian10-sonarqube
 #    image: ami-0dedf6a6502877301
@@ -92,7 +96,8 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: admin
-#    groups: []
+#    groups:
+#      - python3
 
 #  - name: test-aws-Debian9-sonarqube
 #    image: ami-003f19e0e687de1cd
@@ -106,7 +111,8 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: admin
-#    groups: []
+#    groups:
+#      - python3
 
 #  - name: test-aws-Amazon2-sonarqube
 #    image: ami-0b898040803850657
@@ -120,7 +126,8 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: ec2-user
-#    groups: []
+#    groups:
+#      - rhel_family
 
 #  - name: test-aws-Amazon-sonarqube
 #    image: ami-035b3c7efe6d061d5
@@ -134,7 +141,8 @@ platforms:
 #      - default
 #    wait_timeout: 1800
 #    ssh_user: ec2-user
-#    groups: []
+#    groups:
+#      - rhel_family
 
 provisioner:
   name: ansible
