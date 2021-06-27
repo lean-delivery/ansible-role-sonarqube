@@ -19,11 +19,11 @@ platforms:
 #    privileged: true
 #    groups:
 #      - rhel_family
-  - name: test-docker-fedora-sonarqube
-    image: jrei/systemd-fedora:latest
-    privileged: true
-    groups:
-      - rhel_family
+#  - name: test-docker-fedora-sonarqube
+#    image: jrei/systemd-fedora:latest
+#    privileged: true
+#    groups:
+#      - rhel_family
 #  - name: test-docker-ubuntu14.04-sonarqube
 #    image: leandelivery/docker-systemd:ubuntu-14.04
 #    privileged: true
