@@ -164,7 +164,14 @@
   - meta: flush_handlers
 
   rescue:
-    - name: Show logs
+    - name: Show service status
+      command: 'systemctl status sonarqube'
+      register: service_status
+
+    - debug:
+        var: service_status.stdout
+
+    - name: Show logs list
       command: 'ls {{ sonar_installation }}/logs/'
       register: logs_list
 

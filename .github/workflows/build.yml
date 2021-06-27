@@ -55,7 +55,11 @@ jobs:
       - name: Install test dependencies.
         run: pip3 install ansible molecule[docker] docker
       - name: Prepare
-        run: ansible --version && ansible-lint --version && molecule --version && pip install jmespath
+        run: | 
+          ansible --version
+          ansible-lint --version
+          molecule --version
+          pip install jmespath
       - name: Molecule
         run: molecule test -s ${{ matrix.scenario }}
         env:
