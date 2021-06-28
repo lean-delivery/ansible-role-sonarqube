@@ -10,14 +10,6 @@
     return_content: true
   register: webhooks_list
 
-- name: Install jmespath
-  pip:
-    name: jmespath
-  register: jmespath_install_result
-  until: jmespath_install_result is succeeded
-  retries: 3
-  delay: 5
-
 - name: Get jenkins webhook key
   set_fact:
     webhook_key: '{{ item }}'
