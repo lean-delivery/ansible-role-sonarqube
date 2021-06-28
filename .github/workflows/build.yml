@@ -25,6 +25,8 @@ jobs:
       - name: Lints
         run: |
           git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
+          yamllint --version
+          ansible-lint --version
           yamllint . -c .yamllint
           ansible-lint . -c .ansible-lint
 
@@ -46,6 +48,10 @@ jobs:
           - ubuntu1404
           - debian10
           - debian9
+        ansible:
+          - 2.9.*
+          - 3.*
+          - 4.*
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
@@ -53,18 +59,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Set up Python 3.
+      - name: Set up Python 3
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - name: Install test dependencies.
-        run: pip3 install ansible==2.9.* molecule[docker] docker
-      - name: Prepare
+      - name: Install test dependencies
+        run: pip3 install ansible==${{ matrix.ansible }} molecule[docker] docker
+      - name: Show versions
         run: | 
           ansible --version
-          ansible-lint --version
           molecule --version
-          pip install jmespath
       - name: Molecule
         run: molecule test -s ${{ matrix.scenario }}
         env:
