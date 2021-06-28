@@ -10,6 +10,10 @@
     return_content: true
   register: webhooks_list
 
+- name: Install jmespath
+  pip:
+    name: jmespath
+
 - name: Get jenkins webhook key
   set_fact:
     webhook_key: '{{ item }}'
