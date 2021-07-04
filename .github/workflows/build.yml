@@ -91,7 +91,6 @@ jobs:
         ansible_version:
           - 2.9
           - 3
-          - 4
       fail-fast: false
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-${{ matrix.ansible_version }}
