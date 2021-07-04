@@ -48,11 +48,11 @@ jobs:
       - name: Molecule
         run: molecule test -s default
 
-  sonar-old-versions:
+  ubuntu1804-sonar-old-versions:
     needs: lint
     strategy:
       matrix:
-        version:
+        sonar_version:
           - '8.8.0.42792'
           - '8.7.1.42226'
           - '8.6.1.40680'
@@ -80,6 +80,33 @@ jobs:
           git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
           pip install jmespath
       - name: Molecule
-        run: molecule test -s old-versions
+        run: molecule test -s base
         env:
-          SONAR_VERSION: ${{ matrix.version }}
+          SONAR_VERSION: ${{ matrix.sonar_version }}
+
+  ubuntu1804-ansible-versions:
+    needs: lint
+    strategy:
+      matrix:
+        ansible_version:
+          - 2.9
+          - 3
+          - 4
+      fail-fast: false
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-${{ matrix.ansible_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        run: |
+          ansible --version
+          ansible-lint --version
+          molecule --version
+          rm -rf molecule/resources/provisioning
+          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+          pip install jmespath
+      - name: Molecule
+        run: molecule test -s base

@@ -40,6 +40,6 @@ provisioner:
     prepare: ../resources/prepare.yml
     verify: ../resources/tests/verify.yml
 scenario:
-  name: old-versions
+  name: base
 verifier:
   name: ansible
