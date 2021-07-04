@@ -33,13 +33,12 @@ provisioner:
     group_vars:
       python3:
         ansible_python_interpreter: /usr/bin/python3
-  playbooks:
-    prepare: ../resources/prepare.yml
-    verify: ../resources/tests/verify.yml
-  inventory:
     host_vars:
       test-docker-ubuntu1804-sonarqube:
         sonar_version: ${SONAR_VERSION:-7.9.6}
+  playbooks:
+    prepare: ../resources/prepare.yml
+    verify: ../resources/tests/verify.yml
 scenario:
   name: old-versions
 verifier:
