@@ -44,9 +44,9 @@
     delay: 5
     notify: Restart Sonarqube
 
-  - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} checksum'
+  - name: 'Download SonarQube {{ sonar_version }} checksum'
     uri:
-      url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip.sha'
+      url: '{{ sonar_store }}/sonarqube-{{ sonar_version }}.zip.sha'
       return_content: true
     register: sonarqube_checksum
     when:
@@ -55,9 +55,9 @@
       - sonar_version is not version("7.9.5", "==")
       - sonar_version is not version("7.9.6", "==")
 
-  - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} with check'
+  - name: 'Download SonarQube {{ sonar_version }} with check'
     get_url:
-      url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
+      url: '{{ sonar_store }}/sonarqube-{{ sonar_version }}.zip'
       dest: '{{ sonar_download_path }}/'
       mode: 0644
       owner: '{{ sonar_user }}'
@@ -74,9 +74,9 @@
       - sonar_version is not version("7.9.6", "==")
       - sonar_download
 
-  - name: 'Download SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }} without check'
+  - name: 'Download SonarQube {{ sonar_version }} without check'
     get_url:
-      url: '{{ sonar_store }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
+      url: '{{ sonar_store }}/sonarqube-{{ sonar_version }}.zip'
       dest: '{{ sonar_download_path }}/'
       mode: 0644
       owner: '{{ sonar_user }}'
@@ -92,12 +92,12 @@
         sonar_version is version("7.9.6", "==")
       - sonar_download
 
-  - name: 'Install SonarQube {{ sonar_major_version }}.{{ sonar_minor_version }}'
+  - name: 'Install SonarQube {{ sonar_version }}'
     unarchive:
-      src: '{{ sonar_download_path }}/sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}.zip'
+      src: '{{ sonar_download_path }}/sonarqube-{{ sonar_version }}.zip'
       exclude: "{{ sonar_all_excluded_plugins }} + \
-      [ 'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/conf/sonar.properties', \
-      'sonarqube-{{ sonar_major_version }}.{{ sonar_minor_version }}/temp/README.txt']"
+      [ 'sonarqube-{{ sonar_version }}/conf/sonar.properties', \
+      'sonarqube-{{ sonar_version }}/temp/README.txt']"
       dest: '{{ sonar_path }}'
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
