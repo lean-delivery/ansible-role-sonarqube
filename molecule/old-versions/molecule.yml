@@ -36,7 +36,11 @@ provisioner:
   playbooks:
     prepare: ../resources/prepare.yml
     verify: ../resources/tests/verify.yml
+  inventory:
+    host_vars:
+      test-docker-ubuntu1804-sonarqube:
+        sonar_version: ${SONAR_VERSION:-7.9.6}
 scenario:
-  name: sonarqube-8.1
+  name: old-versions
 verifier:
   name: ansible
