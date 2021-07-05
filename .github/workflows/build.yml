@@ -28,22 +28,41 @@ jobs:
           yamllint . -c .yamllint
           ansible-lint . -c .ansible-lint
 
-  molecule:
+  sonar-latest:
+    needs: lint
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-2.9
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        run: |
+          ansible --version
+          ansible-lint --version
+          molecule --version
+          rm -rf molecule/resources/provisioning
+          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+          pip install jmespath
+      - name: Molecule
+        run: molecule test -s default
+
+  ubuntu1804-sonar-old-versions:
     needs: lint
     strategy:
       matrix:
-        scenario:
-          - default
-          - sonarqube-8.8.0
-          - sonarqube-8.7.1
-          - sonarqube-8.6.1
-          - sonarqube-8.5.1
-          - sonarqube-8.4.2
-          - sonarqube-8.3.1
-          - sonarqube-8.2
-          - sonarqube-8.1
-          - sonarqube-8.0
-          - sonarqube-7.9.6
+        sonar_version:
+          - '8.8.0.42792'
+          - '8.7.1.42226'
+          - '8.6.1.40680'
+          - '8.5.1.38104'
+          - '8.4.2.36762'
+          - '8.3.1.34397'
+          - '8.2.0.32929'
+          - '8.1.0.31237'
+          - '8.0'
+          - '7.9.6'
       fail-fast: false
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-2.9
@@ -53,6 +72,40 @@ jobs:
         with:
           fetch-depth: 0
       - name: Prepare
-        uses: ./.github/prepare
+        run: |
+          ansible --version
+          ansible-lint --version
+          molecule --version
+          rm -rf molecule/resources/provisioning
+          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+          pip install jmespath
       - name: Molecule
-        run: molecule test -s ${{ matrix.scenario }}
+        run: molecule test -s base
+        env:
+          SONAR_VERSION: ${{ matrix.sonar_version }}
+
+  ubuntu1804-ansible-versions:
+    needs: lint
+    strategy:
+      matrix:
+        ansible_version:
+          - 2.9
+          - 3
+      fail-fast: false
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-${{ matrix.ansible_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        run: |
+          ansible --version
+          ansible-lint --version
+          molecule --version
+          rm -rf molecule/resources/provisioning
+          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+          pip install jmespath
+      - name: Molecule
+        run: molecule test -s base

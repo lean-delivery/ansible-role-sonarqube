@@ -51,14 +51,14 @@ See Jenkins pipeline example here: https://raw.githubusercontent.com/lean-delive
 Requirements
 --------------
 
- - **Minimal Ansible version**: 2.9
+ - **Supported Ansible versions**:
+   - 2.9
+   - 3 (2.10)
  - **Supported SonarQube versions**:
-   - 7.0 - 7.8
-   - 7.9 - 7.9.6 LTS
+   - 7.9.6 LTS
    - 8.0 - 8.9.1.44547
  - **Supported Java**:
-   - Oracle JRE 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
-   - OpenJDK 8, 11 (SonarQube 7.9+ requries Java 11+ to run)
+   - 11
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -83,10 +83,8 @@ Java, database, web server with self-signed certificate should be installed prel
 Role Variables
 --------------
 
-  - `sonar_major_version` - major number of SonarQube version\
-    default: 8
-  - `sonar_minor_version` - minor number of SonarQube version\
-    default: 9.1.44547
+  - `sonar_version` - SonarQube version\
+    default: 8.9.1.44547
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -250,8 +248,7 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_major_version: 8
-    sonar_minor_version: 9.1.44547 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
+    sonar_version: 8.9.1.44547 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true

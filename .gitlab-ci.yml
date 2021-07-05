@@ -47,12 +47,3 @@ AWS sonarqube:
     - molecule test -s cloud-aws-direct
   tags:
     - aws
-
-.EPC sonarqube:
-  variables:
-    EPC_REGION: EPAM-BY2
-  stage: deployment test
-  script:
-    - molecule test -s cloud-epc-delegated
-  tags:
-    - delegated
