@@ -4,4 +4,4 @@
   version: master
 - src: jdauphant.ssl-certs
 - src: nginxinc.nginx
-  version: 0.21.3
+  version: 0.20.0
