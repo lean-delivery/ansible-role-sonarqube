@@ -95,7 +95,7 @@ dependency_check_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}2.
 
 json_pversion: 2.3
 
-yaml_pversion: 1.5.2
+yaml_pversion: 1.7.0
 
 ansible_pversion: 2.5.0
 
