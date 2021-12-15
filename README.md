@@ -35,7 +35,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-xanitizer-plugin-2.2.0
   - sonar-build-breaker-plugin-2.3.1.347
   - sonar-issueresolver-plugin-1.0.2
-  - sonarqube-community-branch-plugin-1.8.0
+  - sonarqube-community-branch-plugin-1.8.1
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
