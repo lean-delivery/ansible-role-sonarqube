@@ -16,6 +16,9 @@ sonar.web.javaOpts={{ sonar_java_opts.web }}
 sonar.search.javaOpts={{ sonar_java_opts.es }}
 sonar.ce.javaOpts={{ sonar_java_opts.ce }}
 
+# CVE-2021-44228, to remove after elasticsearch/lib/log4j-*.jar updated to 2.15.0+ version
+sonar.search.javaAdditionalOpts=-Dlog4j2.formatMsgNoLookups=true
+
 # update center
 sonar.updatecenter.activate={{ sonar_updatecenter_activate | bool | lower }}
 
