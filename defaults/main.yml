@@ -247,6 +247,9 @@ sonar_default_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-jacoco-plugin/sonar-jacoco-plugin-{{ jacoco_pversion }}.jar'
 
 sonar_install_optional_plugins: false
+
+branch_plugin_url: "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
+                    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
 sonar_optional_plugins:
 
   - "https://github.com/QualInsight/qualinsight-plugins-sonarqube-smell/releases/download/\
@@ -282,8 +285,7 @@ sonar_optional_plugins:
   - "https://github.com/willemsrb/sonar-issueresolver-plugin/releases/download/sonar-issueresolver-plugin-{{ issueresolver_pversion }}/\
     sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
 
-  - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/\
-    {{ branch_pversion }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar"
+  - '{{ branch_plugin_url }}'
 
 sonar_all_plugins: "{{ sonar_install_recommended_plugins | ternary(sonar_recommended_plugins, []) +\
                        sonar_update_default_plugins | ternary(sonar_default_plugins, []) +\
