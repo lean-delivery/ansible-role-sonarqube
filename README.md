@@ -13,14 +13,14 @@ See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-p
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
   - checkstyle-sonar-plugin-8.40
   - sonar-pmd-plugin-3.3.1
-  - sonar-findbugs-plugin-4.0.3
+  - sonar-findbugs-plugin-4.0.5
   - sonar-jdepend-plugin-1.1.1
   - sonar-jproperties-plugin-2.6
-  - sonar-groovy-plugin-1.7
+  - sonar-groovy-plugin-1.8
   - sonar-dependency-check-plugin-2.0.8
   - sonar-json-plugin-2.3
-  - sonar-yaml-plugin-1.5.2
-  - sonar-ansible-plugin-2.4.0
+  - sonar-yaml-plugin-1.7.0
+  - sonar-ansible-plugin-2.5.0
   - sonar-shellcheck-plugin-2.4.0
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
@@ -35,7 +35,7 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-xanitizer-plugin-2.2.0
   - sonar-build-breaker-plugin-2.3.1.347
   - sonar-issueresolver-plugin-1.0.2
-  - sonarqube-community-branch-plugin-1.8.1
+  - sonarqube-community-branch-plugin-1.9.0
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 

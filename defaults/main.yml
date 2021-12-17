@@ -77,8 +77,7 @@ pmd_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}3.3.1\
                {% else %}2.6\
                {% endif %}"
 
-# https://github.com/spotbugs/sonar-findbugs/issues/345
-findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.3\
+findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.5\
                     {% else %}0.0.0\
                     {% endif %}"
 
@@ -86,7 +85,9 @@ jdepend_pversion: 1.1.1
 
 jproperties_pversion: 2.6
 
-groovy_pversion: 1.7
+groovy_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}1.8\
+                  {% else %}1.7\
+                  {% endif %}"
 
 dependency_check_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}2.0.8\
                             {% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
@@ -95,20 +96,21 @@ dependency_check_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}2.
 
 json_pversion: 2.3
 
-yaml_pversion: 1.5.2
+yaml_pversion: 1.7.0
 
-ansible_pversion: 2.4.0
+ansible_pversion: 2.5.0
 
 shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.4.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
-java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}7.1.0.26670\
+java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}7.6.0.28201\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
                 {% else %}0.0.0\
                 {% endif %}"
 
-javascript_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}8.1.0.15788\
+javascript_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}8.5.0.16762\
+                      {% elif sonar_version is version(\"8.0\", \">=\") %}8.3.0.16208\
                       {% elif sonar_version is version(\"7.9\", \">=\") %}6.7.0.14237\
                       {% elif sonar_version is version(\"7.0\", \">=\") %}5.2.1.7778\
                       {% else %}0.0.0\
@@ -128,7 +130,7 @@ xml_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}2.2.0.2973\
                {% else %}0.0.0\
                {% endif %}"
 
-python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.5.0.8244\
+python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.8.0.8883\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
                   {% else %}0.0.0\
                   {% endif %}"
@@ -141,11 +143,11 @@ css_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}1.4.2.2002\
                {% else %}1.1.1.1010\
                {% endif %}"
 
-html_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.4.0.2754\
+html_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.5.0.3009\
                 {% else %}3.2.0.2082\
                 {% endif %}"
 
-php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.17.0.7439\
+php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.22.0.8482\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
                {% else %}0.0.0\
@@ -192,7 +194,8 @@ build_breaker_epversion: "{% if sonar_version is version(\"7.3\", \">=\") %}2.3.
 
 issueresolver_pversion: 1.0.2
 
-branch_pversion: "{% if sonar_version is version(\"8.9.0.43852\", \">=\") %}1.8.1\
+branch_pversion: "{% if sonar_version is version(\"9.0\", \">=\") %}1.9.0\
+                  {% elif sonar_version is version(\"8.9.0.43852\", \">=\") %}1.8.1\
                   {% elif sonar_version is version(\"8.7.0.41497\", \">=\") %}1.7.0\
                   {% elif sonar_version is version(\"8.5.0.37579\", \">=\") %}1.6.0\
                   {% elif sonar_version is version(\"8.2.0.32929\", \">=\") %}1.5.0\
