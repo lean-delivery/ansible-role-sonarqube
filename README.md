@@ -11,7 +11,7 @@ This role installs SonarQube with extended set of plugins. It uses openJDK, post
 See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
 
 In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-8.40
+  - checkstyle-sonar-plugin-9.2
   - sonar-pmd-plugin-3.3.1
   - sonar-findbugs-plugin-4.0.5
   - sonar-jdepend-plugin-1.1.1
@@ -21,7 +21,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.7.0
   - sonar-ansible-plugin-2.5.0
-  - sonar-shellcheck-plugin-2.4.0
+  - sonar-shellcheck-plugin-2.5.0
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0

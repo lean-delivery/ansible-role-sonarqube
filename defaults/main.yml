@@ -69,7 +69,8 @@ sonar_proxy_client_max_body_size: 32m
 nginx_config_path: /etc/nginx/conf.d/sonar.conf
 
 # Plugin versions
-checkstyle_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}8.40\
+checkstyle_pversion: "{% if sonar_version is version(\"8.9.3\", \">=\") %}9.2\
+                      {% elif sonar_version is version(\"7.9\", \">=\") %}8.45.1\
                       {% else %}4.27\
                       {% endif %}"
 
@@ -100,7 +101,7 @@ yaml_pversion: 1.7.0
 
 ansible_pversion: 2.5.0
 
-shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.4.0\
+shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.5.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
@@ -126,7 +127,8 @@ git_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}0.0.0\
                {% else %}0.0.0\
                {% endif %}"
 
-xml_pversion: "{% if sonar_version is version(\"7.0\", \">=\") %}2.2.0.2973\
+xml_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}2.5.0.3376\
+               {% elif sonar_version is version(\"7.0\", \">=\") %}2.4.0.3273\
                {% else %}0.0.0\
                {% endif %}"
 
