@@ -21,7 +21,7 @@ In addition to default plugins included into SonarQube installation role install
   - sonar-json-plugin-2.3
   - sonar-yaml-plugin-1.7.0
   - sonar-ansible-plugin-2.5.0
-  - sonar-shellcheck-plugin-2.4.0
+  - sonar-shellcheck-plugin-2.5.0
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
   - qualinsight-sonarqube-smell-plugin-4.0.0

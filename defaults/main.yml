@@ -100,7 +100,7 @@ yaml_pversion: 1.7.0
 
 ansible_pversion: 2.5.0
 
-shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.4.0\
+shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.5.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
