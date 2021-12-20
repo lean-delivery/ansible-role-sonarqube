@@ -53,6 +53,7 @@ jobs:
     strategy:
       matrix:
         sonar_version:
+          - '9.0.1.46107'
           - '8.9.5.50698'
           - '7.9.6'
       fail-fast: false

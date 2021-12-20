@@ -57,7 +57,7 @@ Requirements
  - **Supported SonarQube versions**:
    - 7.9.6
    - 8.9.x LTS
-   - 9.0.1.46107
+   - 9.0 - 9.1.0.47736
  - **Supported Java**:
    - 11
  - **Supported databases**
@@ -85,7 +85,7 @@ Role Variables
 --------------
 
   - `sonar_version` - SonarQube version\
-    default: 9.0.1.46107
+    default: 9.1.0.47736
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -249,7 +249,7 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 9.0.1.46107 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
+    sonar_version: 9.1.0.47736 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
