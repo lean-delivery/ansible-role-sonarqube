@@ -84,7 +84,9 @@ findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.0.5\
 
 jdepend_pversion: 1.1.1
 
-jproperties_pversion: 2.6
+jproperties_pversion: "{% if sonar_version is version(\"9.0\", \">=\") %}0.0.0\
+                       {% else %}2.6\
+                       {% endif %}"
 
 groovy_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}1.8\
                   {% else %}1.7\
