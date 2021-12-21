@@ -54,7 +54,7 @@ jobs:
       matrix:
         sonar_version:
           - '9.0.1.46107'
-          - '8.9.5.50698'
+          - '8.9.6.50800'
           - '7.9.6'
       fail-fast: false
     runs-on: ubuntu-latest
