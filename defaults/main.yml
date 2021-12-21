@@ -358,6 +358,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-xml-plugin-2.0.1.2020.jar'
   - '{{ sonar_plugins_path }}/sonar-xml-plugin-2.1.0.2861.jar'
   - '{{ sonar_plugins_path }}/sonar-xml-plugin-2.2.0.2973.jar'
+  - '{{ sonar_plugins_path }}/sonar-xml-plugin-2.3.0.3155.jar'
 
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.10.0.2131.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-1.11.0.2473.jar'
