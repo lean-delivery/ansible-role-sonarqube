@@ -414,6 +414,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.15.0.7197.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.16.0.7320.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.17.0.7439.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-3.20.0.8080.jar'
 
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.1.0.1615.jar'
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.2.0.2082.jar'
