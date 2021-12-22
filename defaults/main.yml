@@ -114,7 +114,7 @@ java_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}7.6.0.28201\
                 {% else %}0.0.0\
                 {% endif %}"
 
-javascript_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}8.5.0.16762\
+javascript_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}8.6.0.16913\
                       {% elif sonar_version is version(\"8.0\", \">=\") %}8.3.0.16208\
                       {% elif sonar_version is version(\"7.9\", \">=\") %}6.7.0.14237\
                       {% elif sonar_version is version(\"7.0\", \">=\") %}5.2.1.7778\
@@ -345,6 +345,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-7.4.4.15624.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-8.1.0.15788.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-8.4.0.16431.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-8.6.0.16913.jar'
 
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar'
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar'
