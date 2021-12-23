@@ -141,7 +141,7 @@ python_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.8.0.8883\
                   {% else %}0.0.0\
                   {% endif %}"
 
-kotlin_pversion: "{% if sonar_version is version(\"7.3\", \">=\") %}2.2.0.499\
+kotlin_pversion: "{% if sonar_version is version(\"7.3\", \">=\") %}2.7.0.948\
                   {% else %}0.0.0\
                   {% endif %}"
 
@@ -392,6 +392,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.8.3.2219.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.0.1.110.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.2.0.499.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.7.0.948.jar'
 
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar'
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar'
