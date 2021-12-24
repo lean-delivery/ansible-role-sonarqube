@@ -145,7 +145,8 @@ kotlin_pversion: "{% if sonar_version is version(\"7.3\", \">=\") %}2.7.0.948\
                   {% else %}0.0.0\
                   {% endif %}"
 
-css_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}1.4.2.2002\
+css_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}0.0.0\
+               {% elif sonar_version is version(\"7.9\", \">=\") %}1.4.2.2002\
                {% else %}1.1.1.1010\
                {% endif %}"
 
