@@ -100,3 +100,12 @@
 [submodule "submodules/jacoco-plugin"]
 	path = submodules/jacoco-plugin
 	url = https://github.com/SonarSource/sonar-jacoco.git
+[submodule "submodules/kotlin-plugin"]
+	path = submodules/kotlin-plugin
+	url = https://github.com/SonarSource/sonar-kotlin.git
+[submodule "submodules/iac-plugin"]
+	path = submodules/iac-plugin
+	url = https://github.com/SonarSource/sonar-iac.git
+[submodule "submodules/config-plugin"]
+	path = submodules/config-plugin
+	url = https://github.com/SonarSource/sonar-config.git
