@@ -163,6 +163,12 @@ php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.22.0.8482\
 
 jacoco_pversion: 1.1.1.1157
 
+iac_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}1.4.0.1294\
+               {% else %}0.0.0\
+               {% endif %}"
+
+config_pversion: 1.1.0.185
+
 smell_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}4.0.0\
                  {% else %}0.0.0\
                  {% endif %}"
@@ -258,6 +264,8 @@ sonar_default_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-{{ html_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-{{ php_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-jacoco-plugin/sonar-jacoco-plugin-{{ jacoco_pversion }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-iac-plugin/sonar-iac-plugin-{{ iac_pversion }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-config-plugin/sonar-config-plugin-{{ config_pversion }}.jar'
 
 sonar_install_optional_plugins: false
 
