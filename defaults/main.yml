@@ -167,7 +167,9 @@ iac_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}1.4.0.1294\
                {% else %}0.0.0\
                {% endif %}"
 
-config_pversion: 1.1.0.185
+config_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}1.1.0.185\
+                  {% else %}0.0.0\
+                  {% endif %}"
 
 smell_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}4.0.0\
                  {% else %}0.0.0\
