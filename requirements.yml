@@ -1,7 +1,6 @@
 ---
 - src: lean_delivery.java
-- src: https://github.com/ANXS/postgresql # should be replaced with src: anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
+- src: anxs.postgresql
   version: master
 - src: jdauphant.ssl-certs
 - src: nginxinc.nginx
-  version: 0.20.0
