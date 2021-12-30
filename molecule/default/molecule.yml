@@ -9,11 +9,12 @@ lint: |
   yamllint
   ansible-lint
 platforms:
-  - name: test-docker-centos7-sonarqube
-    image: leandelivery/docker-systemd:centos7
-    privileged: true
-    groups:
-      - rhel_family
+#  - name: test-docker-centos7-sonarqube
+#    image: leandelivery/docker-systemd:centos7
+#    privileged: true
+#    groups:
+#      - rhel_family
+
 #  - name: test-docker-ubuntu14.04-sonarqube
 #    image: leandelivery/docker-systemd:ubuntu-14.04
 #    privileged: true
