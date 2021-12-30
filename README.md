@@ -77,9 +77,11 @@ Requirements
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
-  - https://github.com/ANXS/postgresql # should be replaced with anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
+  - anxs.postgresql
+    version: master
   - jdauphant.ssl-certs
   - nginxinc.nginx
+    version: 0.20.0
 
 Role Variables
 --------------
@@ -284,7 +286,7 @@ Example Playbook
         state: absent
   roles:
     - role: lean_delivery.java
-    - role: https://github.com/ANXS/postgresql # should be replaced with src: anxs.postgresql after resolving https://github.com/ANXS/postgresql/issues/517
+    - role: anxs.postgresql
     - role: nginxinc.nginx
     - role: jdauphant.ssl-certs
     - role: lean_delivery.sonarqube
