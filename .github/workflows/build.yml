@@ -14,14 +14,12 @@ jobs:
   lint:
     if: ${{ !contains(github.head.ref, 'dependabot') }}
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-2.9
+    container: leandelivery/docker-ansible-ci:ansible-4
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Install yamllint # till https://github.com/lean-delivery/docker-ansible-ci/pull/22 is not resolved
-        run: apk add --update yamllint
       - name: Lints
         run: |
           git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
@@ -31,7 +29,7 @@ jobs:
   sonar-latest:
     needs: lint
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-2.9
+    container: leandelivery/docker-ansible-ci:ansible-4
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -59,7 +57,7 @@ jobs:
           - '7.9.6'
       fail-fast: false
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-2.9
+    container: leandelivery/docker-ansible-ci:ansible-4
     steps:
       - name: Checkout
         uses: actions/checkout@v2
