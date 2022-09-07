@@ -121,6 +121,12 @@
       owner: '{{ sonar_user }}'
     notify: Restart Sonarqube
 
+  - name: make sure template destination directory exists
+    file:
+      path: "{{ nginx_config_path | dirname }}"
+      state: directory
+      recurse: true
+
   - name: Render nginx config
     template:
       src: nginx.sonar.conf.j2
