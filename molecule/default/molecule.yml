@@ -6,8 +6,8 @@ dependency:
 driver:
   name: docker
 lint: |
-  yamllint
-  ansible-lint
+  yamllint .
+#  ansible-lint
 platforms:
   - name: test-docker-centos7-sonarqube
     image: leandelivery/docker-systemd:centos7

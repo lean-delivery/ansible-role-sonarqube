@@ -157,28 +157,32 @@
       - branch_pversion is version("1.2.0", ">=")
       - branch_pversion is version("1.7.0", "<=")
 
-  - meta: flush_handlers
+  - name: Flush handlers
+    meta: flush_handlers
 
   rescue:
     - name: Show logs
       command: 'ls {{ sonar_installation }}/logs/'
       register: logs_list
 
-    - debug:
+    - name: Debug
+      debug:
         var: logs_list.stdout
 
     - name: Get sonar log
       command: 'cat {{ sonar_log_path }}'
       register: sonar_log
 
-    - debug:
+    - name: Debug
+      debug:
         var: sonar_log.stdout
 
     - name: Get web log
       command: 'cat {{ sonar_installation }}/logs/web.log'
       register: web_log
 
-    - debug:
+    - name: Debug
+      debug:
         var: web_log.stdout
 
   become: true
