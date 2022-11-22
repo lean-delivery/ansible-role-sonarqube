@@ -6,10 +6,6 @@ name: CI
     branches:
       - master
 
-defaults:
-  run:
-    working-directory: 'geerlingguy.postgresql'
-
 jobs:
 
   lint:
@@ -18,8 +14,6 @@ jobs:
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
-        with:
-          path: 'geerlingguy.postgresql'
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
@@ -48,8 +42,6 @@ jobs:
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
-        with:
-          path: 'geerlingguy.postgresql'
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2

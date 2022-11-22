@@ -2,6 +2,8 @@
 role_name_check: 1
 dependency:
   name: galaxy
+  options:
+    role-file: requirements.yml
 driver:
   name: docker
 platforms:
