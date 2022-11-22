@@ -2,16 +2,10 @@
 - name: Prepare pre-requisites
   hosts: all
   pre_tasks:
-    - name: Update apt cache.
-      apt: update_cache=true cache_valid_time=600
-      changed_when: false
-      when: ansible_os_family == 'Debian'
   roles:
     - role: lean_delivery.java
       java_major_version: 11
       transport: repositories
-    - role: nginxinc.nginx
-      become: true
     - role: jdauphant.ssl-certs
       become: true
       ssl_certs_path_owner: nginx
