@@ -1,92 +1,21 @@
 ---
+role_name_check: 1
 dependency:
   name: galaxy
   options:
     role-file: requirements.yml
 driver:
   name: docker
-lint: |
-  yamllint
-  ansible-lint
 platforms:
-  - name: test-docker-centos7-sonarqube
-    image: leandelivery/docker-systemd:centos7
-    privileged: true
-    groups:
-      - rhel_family
-
-#  - name: test-docker-ubuntu14.04-sonarqube
-#    image: leandelivery/docker-systemd:ubuntu-14.04
-#    privileged: true
-#    security_opts:
-#      - seccomp=unconfined
-#    volumes:
-#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    tmpfs:
-#      - /tmp
-#      - /run
-#    capabilities:
-#      - SYS_ADMIN
-#    groups:
-#      - python3.5
-#  - name: test-docker-ubuntu16.04-sonarqube
-#    image: leandelivery/docker-systemd:ubuntu-16.04
-#    privileged: true
-#    security_opts:
-#      - seccomp=unconfined
-#    volumes:
-#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    tmpfs:
-#      - /tmp
-#      - /run
-#    capabilities:
-#      - SYS_ADMIN
-#    groups:
-#      - python3
-  - name: test-docker-ubuntu18.04-sonarqube
-    image: leandelivery/docker-systemd:ubuntu-18.04
-    privileged: true
-    security_opts:
-      - seccomp=unconfined
+  - name: instance
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    tmpfs:
-      - /tmp
-      - /run
-    capabilities:
-      - SYS_ADMIN
-    groups:
-      - python3
-#  - name: test-docker-ubuntu20.04-sonarqube
-#    image: leandelivery/docker-systemd:ubuntu-20.04
-#    privileged: true
-#    security_opts:
-#      - seccomp=unconfined
-#    volumes:
-#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    tmpfs:
-#      - /tmp
-#      - /run
-#    capabilities:
-#      - SYS_ADMIN
-#    groups:
-#      - python3
+    privileged: true
+    pre_build_image: true
 provisioner:
   name: ansible
-  log: true
-  config_options:
-    defaults:
-      callback_whitelist: profile_tasks,timer
-  inventory:
-    group_vars:
-      python3:
-        ansible_python_interpreter: /usr/bin/python3
-      python3.5:
-        ansible_python_interpreter: /usr/bin/python3.5
   playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
     prepare: ../resources/prepare.yml
-    verify: ../resources/tests/verify.yml
-scenario:
-  name: default
-verifier:
-  name: ansible
