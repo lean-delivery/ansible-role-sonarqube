@@ -1,0 +1,27 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  vars:
+    postgresql_databases:
+      - name: sonar
+    postgresql_users:
+      - name: sonar
+        password: sonar
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=true cache_valid_time=600
+      changed_when: false
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - role: geerlingguy.postgresql
+
+  post_tasks:
+    - name: Verify postgres is running.
+      command: "{{ postgresql_bin_path }}/pg_ctl -D {{ postgresql_data_dir }} status"
+      changed_when: false
+      become: true
+      become_user: postgres
