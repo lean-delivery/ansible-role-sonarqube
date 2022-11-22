@@ -1,16 +1,27 @@
 ---
 # handlers file for sonarqube
+#  - name: Restart Sonarqube
+#    ansible.builtin.systemd:
+#      name: sonarqube
+#      state: restarted
+#      daemon_reload: true
+#      enabled: true
+#    notify:
+#      - Wait for migrate DB
+#      - Migrate DB
+#      - Wait for Sonarqube
+#    become: true
+
+  # temp task, see https://github.com/lean-delivery/ansible-role-sonarqube/issues/3026
   - name: Restart Sonarqube
-    ansible.builtin.systemd:
-      name: sonarqube
-      state: restarted
-      daemon_reload: true
-      enabled: true
+    ansible.builtin.command: 'sudo -u {{ sonar_user }} {{ sonar_installation }}/bin/linux-x86-64/sonar.sh start'
+    register: start_result
+    changed_when: start_result.rc == 0
     notify:
       - Wait for migrate DB
       - Migrate DB
       - Wait for Sonarqube
-    become: true
+    when: not (sonar_start_by_service | bool)
 
   - name: Wait for migrate DB
     ansible.builtin.uri:

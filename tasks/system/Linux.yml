@@ -95,9 +95,7 @@
   - name: 'Install SonarQube {{ sonar_version }}'
     ansible.builtin.unarchive:
       src: '{{ sonar_download_path }}/sonarqube-{{ sonar_version }}.zip'
-      exclude: "{{ sonar_all_excluded_plugins }} + \
-      [ 'sonarqube-{{ sonar_version }}/conf/sonar.properties', \
-      'sonarqube-{{ sonar_version }}/temp/README.txt']"
+      exclude: "{{ sonar_all_excluded_plugins }}"
       dest: '{{ sonar_path }}'
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
