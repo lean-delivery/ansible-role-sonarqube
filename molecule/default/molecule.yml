@@ -18,3 +18,4 @@ provisioner:
   name: ansible
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+    prepare: ../resources/prepare.yml
