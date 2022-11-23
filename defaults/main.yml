@@ -409,6 +409,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.0.1.110.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.2.0.499.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.7.0.948.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.9.0.1147.jar'
 
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar'
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar'
