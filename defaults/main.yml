@@ -458,6 +458,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.5.0.1600.jar'
 
   - '{{ sonar_plugins_path }}/sonar-config-plugin-1.1.0.185.jar'
+  - '{{ sonar_plugins_path }}/sonar-config-plugin-1.2.0.267.jar'
 
 # Override this var to exclude default plugins you don't need
 sonar_default_excluded_plugins: []
