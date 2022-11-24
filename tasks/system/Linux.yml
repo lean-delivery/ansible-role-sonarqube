@@ -119,8 +119,8 @@
       owner: '{{ sonar_user }}'
     notify: Restart Sonarqube
 
-  - name: make sure template destination directory exists
-    file:
+  - name: Make sure template destination directory exists
+    ansible.builtin.file:
       path: "{{ nginx_config_path | dirname }}"
       state: directory
       recurse: true
