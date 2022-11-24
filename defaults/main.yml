@@ -103,7 +103,7 @@ json_pversion: "{% if sonar_version is version(\"9.0\", \">=\") %}0.0.0\
 
 yaml_pversion: 1.7.0
 
-ansible_pversion: 2.5.0
+ansible_pversion: 2.5.1
 
 shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.5.0\
                       {% else %}2.2.1\
