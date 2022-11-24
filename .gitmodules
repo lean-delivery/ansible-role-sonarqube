@@ -109,3 +109,6 @@
 [submodule "submodules/config-plugin"]
 	path = submodules/config-plugin
 	url = https://github.com/SonarSource/sonar-config.git
+[submodule "submodules/text-plugin"]
+	path = submodules/text-plugin
+	url = https://github.com/SonarSource/sonar-text.git
