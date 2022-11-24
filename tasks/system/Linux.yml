@@ -42,7 +42,6 @@
     until: install_result is succeeded
     retries: 3
     delay: 5
-    notify: Restart Sonarqube
 
   - name: 'Download checksum for SonarQube {{ sonar_version }}'
     ansible.builtin.uri:
@@ -101,7 +100,9 @@
       group: '{{ sonar_group }}'
       remote_src: true
       creates: '{{ sonar_installation }}/conf/wrapper.conf'
-    notify: Restart Sonarqube
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Render sonar.properties
     ansible.builtin.template:
@@ -109,7 +110,9 @@
       dest: '{{ sonar_installation }}/conf/sonar.properties'
       mode: 0400
       owner: '{{ sonar_user }}'
-    notify: Restart Sonarqube
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Render sonarqube.service
     ansible.builtin.template:
@@ -117,7 +120,9 @@
       dest: /etc/systemd/system/sonarqube.service
       mode: 0444
       owner: '{{ sonar_user }}'
-    notify: Restart Sonarqube
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Make sure template destination directory exists
     ansible.builtin.file:
@@ -133,7 +138,6 @@
       owner: '{{ sonar_user }}'
     when:
       - sonar_proxy_type == 'nginx'
-    notify: Restart Sonarqube
 
   - name: Download plugins
     ansible.builtin.get_url:
@@ -147,8 +151,10 @@
     until: download_plugin_result is succeeded
     retries: 3
     delay: 5
-    notify: Restart Sonarqube
     loop: '{{ sonar_all_plugins }}'
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Copy branch plugin
     ansible.builtin.copy:
@@ -160,6 +166,9 @@
       - branch_plugin_url in sonar_all_plugins
       - branch_pversion is version("1.2.0", ">=")
       - branch_pversion is version("1.7.0", "<=")
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Flush handlers
     ansible.builtin.meta: flush_handlers
@@ -182,6 +191,24 @@
     - name: Debug
       ansible.builtin.debug:
         var: sonar_log.stdout
+
+    - name: Get es log
+      ansible.builtin.command: 'cat {{ sonar_installation }}/logs/es.log'
+      register: es_log
+      changed_when: es_log.rc != 0
+
+    - name: Debug
+      ansible.builtin.debug:
+        var: es_log.stdout
+
+    - name: Get nohup log
+      ansible.builtin.command: 'cat {{ sonar_installation }}/logs/nohup.log'
+      register: nohup_log
+      changed_when: nohup_log.rc != 0
+
+    - name: Debug
+      ansible.builtin.debug:
+        var: nohup_log.stdout
 
     - name: Get web log
       ansible.builtin.command: 'cat {{ sonar_installation }}/logs/web.log'
