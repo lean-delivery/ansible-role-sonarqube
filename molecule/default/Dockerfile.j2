@@ -15,3 +15,5 @@ RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get install -y pyth
 
 RUN if [ -f /sbin/agetty ]; then cp /bin/true /sbin/agetty; \
     elif [ -f /sbin/mingetty ]; then cp /bin/true /sbin/mingetty; fi
+
+ENTRYPOINT ["/bin/bash"]
