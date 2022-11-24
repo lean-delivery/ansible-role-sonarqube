@@ -6,11 +6,11 @@ Wants=network-online.target
 [Service]
 LimitNOFILE={{ sonar_nofile }}
 LimitNPROC={{ sonar_nproc }}
-WorkingDirectory={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}
-ExecStart={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh start
-ExecStop={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh stop
-ExecReload={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/sonar.sh restart
-PIDFile={{ sonar_installation }}/bin/{{ distro }}-{{ arch }}/SonarQube.pid
+WorkingDirectory={{ sonar_installation }}/bin/{{ '-'.join((ansible_system | lower, ansible_architecture | replace('_','-'))) }}
+ExecStart={{ sonar_installation }}/bin/{{ '-'.join((ansible_system | lower, ansible_architecture | replace('_','-'))) }}/sonar.sh start
+ExecStop={{ sonar_installation }}/bin/{{ '-'.join((ansible_system | lower, ansible_architecture | replace('_','-'))) }}/sonar.sh stop
+ExecReload={{ sonar_installation }}/bin/{{ '-'.join((ansible_system | lower, ansible_architecture | replace('_','-'))) }}/sonar.sh restart
+PIDFile={{ sonar_installation }}/bin/{{ '-'.join((ansible_system | lower, ansible_architecture | replace('_','-'))) }}/SonarQube.pid
 Type=forking
 User={{ sonar_user }}
 StartLimitInterval=30
