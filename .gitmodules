@@ -112,3 +112,6 @@
 [submodule "submodules/text-plugin"]
 	path = submodules/text-plugin
 	url = https://github.com/SonarSource/sonar-text.git
+[submodule "submodules/mutation-plugin"]
+	path = submodules/mutation-plugin
+	url = https://github.com/devcon5io/mutation-analysis-plugin.git

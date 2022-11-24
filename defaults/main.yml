@@ -84,6 +84,8 @@ findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.2.2\
 
 jdepend_pversion: 1.1.1
 
+mutation_pversion: 1.7
+
 jproperties_pversion: "{% if sonar_version is version(\"9.0\", \">=\") %}0.0.0\
                        {% else %}2.6\
                        {% endif %}"
@@ -239,6 +241,9 @@ sonar_recommended_plugins:
 
   - "https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/\
     sonar-jdepend-plugin-{{ jdepend_pversion }}/sonar-jdepend-plugin-{{ jdepend_pversion }}.jar"
+
+  - "https://github.com/devcon5io/mutation-analysis-plugin/releases/download/\
+    v{{ mutation_pversion }}/mutation-analysis-plugin-{{ mutation_pversion }}.jar"
 
   - "https://github.com/racodond/sonar-jproperties-plugin/releases/download/\
     {{ jproperties_pversion }}/sonar-jproperties-plugin-{{ jproperties_pversion }}.jar"
