@@ -6,8 +6,8 @@ dependency:
 driver:
   name: docker
 lint: |
-  yamllint
-  ansible-lint
+  yamllint . -c .yamllint
+  ansible-lint . -c .ansible-lint
 platforms:
   - name: test-docker-ubuntu1804-sonarqube
     image: leandelivery/docker-systemd:ubuntu-18.04
