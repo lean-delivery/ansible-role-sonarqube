@@ -156,7 +156,7 @@ html_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.6.0.3106\
                 {% else %}3.2.0.2082\
                 {% endif %}"
 
-php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.22.0.8482\
+php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.25.0.9077\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
                {% else %}0.0.0\
