@@ -28,8 +28,8 @@ platforms:
       - SYS_ADMIN
     groups:
       - python3
-  - name: test-docker-ubuntu20.04-sonarqube
-    image: leandelivery/docker-systemd:ubuntu-20.04
+  - name: test-docker-ubuntu22.04-sonarqube
+    image: leandelivery/docker-systemd:ubuntu-22.04
     privileged: true
     security_opts:
       - seccomp=unconfined
