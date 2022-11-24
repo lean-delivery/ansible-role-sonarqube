@@ -172,7 +172,9 @@ config_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}1.2.0.267\
                   {% else %}0.0.0\
                   {% endif %}"
 
-text_pversion: 1.1.0.282
+text_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}1.1.0.282\
+                {% else %}0.0.0\
+                {% endif %}"
 
 smell_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}4.0.0\
                  {% else %}0.0.0\
@@ -471,6 +473,9 @@ sonar_excluded_plugins:
 
   - '{{ sonar_plugins_path }}/sonar-config-plugin-1.1.0.185.jar'
   - '{{ sonar_plugins_path }}/sonar-config-plugin-1.2.0.267.jar'
+
+  - '{{ sonar_plugins_path }}/sonar-text-plugin-1.0.0.120.jar'
+  - '{{ sonar_plugins_path }}/sonar-text-plugin-1.1.0.282.jar'
 
 # Override this var to exclude default plugins you don't need
 sonar_default_excluded_plugins: []
