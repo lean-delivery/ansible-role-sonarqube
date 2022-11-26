@@ -356,6 +356,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-java-plugin-7.7.0.28547.jar'
   - '{{ sonar_plugins_path }}/sonar-java-plugin-7.11.0.29148.jar'
   - '{{ sonar_plugins_path }}/sonar-java-plugin-7.12.0.29739.jar'
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-7.13.0.29990.jar'
 
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar'
@@ -376,6 +377,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-8.8.0.17228.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-9.1.0.17747.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-9.3.0.18033.jar'
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-9.6.0.18814.jar'
 
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar'
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar'
@@ -417,6 +419,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-python-plugin-3.9.0.9230.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-3.12.0.9583.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-3.13.0.9611.jar'
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-3.15.1.9817.jar'
 
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar'
@@ -429,6 +432,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.2.0.499.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.7.0.948.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.9.0.1147.jar'
+  - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-2.10.0.1456.jar'
 
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.1.508.jar'
   - '{{ sonar_plugins_path }}/sonar-css-plugin-1.0.2.611.jar'
@@ -460,6 +464,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.21.2.8292.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.22.1.8626.jar'
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.23.1.8766.jar'
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-3.24.0.8949.jar'
 
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.1.0.1615.jar'
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.2.0.2082.jar'
@@ -475,6 +480,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.4.0.1294.jar'
   - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.5.0.1600.jar'
   - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.7.0.2012.jar'
+  - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.9.2.2279.jar'
 
   - '{{ sonar_plugins_path }}/sonar-config-plugin-1.1.0.185.jar'
   - '{{ sonar_plugins_path }}/sonar-config-plugin-1.2.0.267.jar'
