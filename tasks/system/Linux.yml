@@ -204,11 +204,15 @@
     - name: Get nohup log
       ansible.builtin.command: 'cat {{ sonar_installation }}/logs/nohup.log'
       register: nohup_log
+      when:
+        - sonar_version is version("8.0", ">=")
       changed_when: nohup_log.rc != 0
 
     - name: Debug
       ansible.builtin.debug:
         var: nohup_log.stdout
+      when:
+        - sonar_version is version("8.0", ">=")
 
     - name: Get web log
       ansible.builtin.command: 'cat {{ sonar_installation }}/logs/web.log'

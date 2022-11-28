@@ -77,11 +77,9 @@ Requirements
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
-  - anxs.postgresql
-    version: master
+  - geerlingguy.postgresql
   - jdauphant.ssl-certs
   - nginxinc.nginx
-    version: 0.20.0
 
 Role Variables
 --------------
@@ -242,16 +240,15 @@ Example Playbook
     # postgresql
     postgresql_users:
       - name: sonar
-        pass: sonar
+        password: sonar
     postgresql_databases:
       - name: sonar
-        owner: sonar
     # ssl-certs
     ssl_certs_path_owner: nginx
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 9.2.4.50792 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
+    sonar_version: 9.2.4.50792
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
@@ -286,7 +283,7 @@ Example Playbook
         state: absent
   roles:
     - role: lean_delivery.java
-    - role: anxs.postgresql
+    - role: geerlingguy.postgresql
     - role: nginxinc.nginx
     - role: jdauphant.ssl-certs
     - role: lean_delivery.sonarqube
