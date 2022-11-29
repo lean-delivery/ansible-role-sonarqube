@@ -7,15 +7,16 @@ galaxy_info:
   company: EPAM Systems
   issue_tracker_url: https://github.com/lean-delivery/ansible-role-sonarqube/issues
   license: Apache
-  min_ansible_version: 2.9
+  min_ansible_version: '5'
   platforms:
     - name: 'Ubuntu'
       versions:
-        - 'bionic'
+        - '18.04'
+        - '20.04'
+        - '22.04'
     - name: 'EL'
       versions:
         - '7'
-        - '8'
 
   galaxy_tags:
     - sonarqube
