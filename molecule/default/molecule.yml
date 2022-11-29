@@ -9,11 +9,11 @@ lint: |
   yamllint . -c .yamllint
   ansible-lint . -c .ansible-lint
 platforms:
-  - name: test-docker-centos7-sonarqube
+  - name: centos7
     image: leandelivery/docker-systemd:centos7
     privileged: true
 
-  - name: test-docker-ubuntu18.04-sonarqube
+  - name: ubuntu18.04
     image: leandelivery/docker-systemd:ubuntu-18.04
     privileged: true
     security_opts:
@@ -25,8 +25,19 @@ platforms:
       - /run
     capabilities:
       - SYS_ADMIN
-    groups:
-      - python3
+
+  - name: ubuntu20.04
+    image: leandelivery/docker-systemd:ubuntu-20.04
+    privileged: true
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
 provisioner:
   name: ansible
   log: true
