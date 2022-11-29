@@ -11,9 +11,9 @@ galaxy_info:
   platforms:
     - name: 'Ubuntu'
       versions:
-        - '18.04'
-        - '20.04'
-        - '22.04'
+        - bionic
+        - focal
+        - jammy
     - name: 'EL'
       versions:
         - '7'
