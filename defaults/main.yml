@@ -256,6 +256,7 @@ sonar_recommended_plugins:
 
   - 'https://github.com/racodond/sonar-json-plugin/releases/download/{{ json_pversion }}/sonar-json-plugin-{{ json_pversion }}.jar'
 
+    # plugin conflicts with iac plugin: https://github.com/sbaudoin/sonar-yaml/issues/70
   - 'https://github.com/sbaudoin/sonar-yaml/releases/download/v{{ yaml_pversion }}/sonar-yaml-plugin-{{ yaml_pversion }}.jar'
 
   - 'https://github.com/sbaudoin/sonar-ansible/releases/download/v{{ ansible_pversion }}/sonar-ansible-plugin-{{ ansible_pversion }}.jar'
