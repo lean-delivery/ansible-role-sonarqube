@@ -59,12 +59,13 @@ Requirements
    - 7.9.6 former LTS
    - 8.9.x LTS
    - 9.0 - 9.5
-   - 9.6.1 - 9.7.1 - not covered by tests yet, should work
+   - 9.6.1 - 9.8.0 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
+   - embedded H2 (for tests only)
  - **Supported web servers**
    - nginx 
  - **Supported OS**:
@@ -72,8 +73,8 @@ Requirements
      - 7
    - Ubuntu
      - 18.04
-	 - 20.04 - not covered by tests yet, should work
-	 - 22.04 - not covered by tests yet, should work
+     - 20.04 - not covered by tests yet, should work
+     - 22.04 - not covered by tests yet, should work
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
