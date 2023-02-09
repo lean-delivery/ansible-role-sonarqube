@@ -3,8 +3,9 @@
   hosts: all
   roles:
     - role: lean_delivery.java
-      java_major_version: 11
-      transport: repositories
+      transport: web
+      transport_web: https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz
+      java_tarball_install: true
 # https://github.com/lean-delivery/ansible-role-sonarqube/issues/3025
 #    - role: anxs.postgresql
 #      become: true
