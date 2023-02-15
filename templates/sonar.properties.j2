@@ -53,3 +53,6 @@ ldap.group.baseDn={{ ldap.group_base_dn | mandatory }}
 ldap.group.request={{ ldap.group_request | default('(&(objectClass=posixGroup)(memberUid={uid}))') }}
 ldap.group.idAttribute={{ ldap.group_idAttribute | default('cn') }}
 {%- endif %}
+
+# Base URL
+sonar.core.serverBaseURL=http://example.com
