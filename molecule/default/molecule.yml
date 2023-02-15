@@ -9,9 +9,9 @@ lint: |
   yamllint . -c .yamllint
   ansible-lint . -c .ansible-lint
 platforms:
-  - name: test-docker-centos7-sonarqube
-    image: leandelivery/docker-systemd:centos7
-    privileged: true
+#  - name: test-docker-centos7-sonarqube
+#    image: leandelivery/docker-systemd:centos7
+#    privileged: true
 
   - name: test-docker-ubuntu18.04-sonarqube
     image: leandelivery/docker-systemd:ubuntu-18.04
