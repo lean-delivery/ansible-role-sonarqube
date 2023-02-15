@@ -54,7 +54,7 @@ Requirements
  - **Supported Ansible versions**:
    - 5 (2.12) - not covered by tests yet, should work
    - 6 (2.13)
-   - 7 (2.14) - not covered by tests yet, should work
+   - 7 (2.14)
  - **Supported SonarQube versions**:
    - 7.9.6 previous LTS
    - 8.9.10 previous LTS
@@ -67,7 +67,7 @@ Requirements
    - PostgreSQL
    - MySQL (not recommended)
    - embedded H2 (for tests only)
- - **Supported web servers**
+ - **Supported web servers (reverse proxy for https)**
    - nginx 
  - **Supported OS**:
    - CentOS, RHEL
