@@ -56,12 +56,13 @@ Requirements
    - 6 (2.13)
    - 7 (2.14) - not covered by tests yet, should work
  - **Supported SonarQube versions**:
-   - 7.9.6 former LTS
-   - 8.9.x LTS
+   - 7.9.6 previous LTS
+   - 8.9.10 previous LTS
    - 9.0 - 9.5
-   - 9.6.1 - 9.8.0 - not covered by tests yet, should work
+   - 9.6.1 - 9.9.0 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
+   - 17 (use for SonarQube 9.9)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
