@@ -14,7 +14,7 @@ jobs:
   lint:
     if: ${{ !contains(github.head.ref, 'dependabot') }}
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-6
+    container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,7 +40,7 @@ jobs:
   all-sonar-latest:
     needs: lint
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-6
+    container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -53,7 +53,6 @@ jobs:
           molecule --version
           rm -rf molecule/resources/provisioning
           git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-          apk add --update --no-cache rsync # https://github.com/lean-delivery/docker-ansible-ci/pull/25/files
       - name: Molecule
         run: molecule test -s default
 
@@ -71,7 +70,7 @@ jobs:
           - '7.9.6'
       fail-fast: false
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-6
+    container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -84,33 +83,31 @@ jobs:
           molecule --version
           rm -rf molecule/resources/provisioning
           git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-          apk add --update --no-cache rsync
       - name: Molecule
         run: molecule test -s base
         env:
           SONAR_VERSION: ${{ matrix.sonar_version }}
 
-#  https://github.com/lean-delivery/ansible-role-sonarqube/issues/3024
-#  ubuntu1804-ansible-versions:
-#    needs: lint
-#    strategy:
-#      matrix:
-#        ansible_version:
-#          - 5
-#      fail-fast: false
-#    runs-on: ubuntu-latest
-#    container: leandelivery/docker-ansible-ci:ansible-${{ matrix.ansible_version }}
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#        with:
-#          fetch-depth: 0
-#      - name: Prepare
-#        run: |
-#          ansible --version
-#          ansible-lint --version
-#          molecule --version
-#          rm -rf molecule/resources/provisioning
-#          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-#      - name: Molecule
-#        run: molecule test -s base
+  ubuntu1804-ansible-old:
+    needs: lint
+    strategy:
+      matrix:
+        ansible_version:
+          - 6
+      fail-fast: false
+    runs-on: ubuntu-latest
+    container: leandelivery/docker-ansible-ci:ansible-${{ matrix.ansible_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Prepare
+        run: |
+          ansible --version
+          ansible-lint --version
+          molecule --version
+          rm -rf molecule/resources/provisioning
+          git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+      - name: Molecule
+        run: molecule test -s default

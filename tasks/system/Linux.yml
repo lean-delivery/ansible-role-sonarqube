@@ -310,8 +310,6 @@
       ansible.builtin.command: >-
         {{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_password }} -F
           'backup=@{{ profile_item.path }}' {{ sonar_check_url }}/api/qualityprofiles/restore
-      args:
-        warn: false
       loop: '{{ sonar_profile_list_result.files }}'
       loop_control:
         loop_var: profile_item
