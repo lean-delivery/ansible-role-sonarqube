@@ -15,13 +15,16 @@
 
   # temp task, see https://github.com/lean-delivery/ansible-role-sonarqube/issues/3026
   - name: Restart Sonarqube with script
-    ansible.builtin.command: 'sudo -u {{ sonar_user }} {{ sonar_installation }}/bin/linux-x86-64/sonar.sh restart'
+    ansible.builtin.command: "sudo -u {{ sonar_user }} {{ sonar_installation }}/bin/linux-x86-64/sonar.sh start"
     register: restart_result
     changed_when: restart_result.rc == 0
     notify:
       - Wait for migrate DB
       - Migrate DB
       - Wait for Sonarqube
+      - Read pid
+      - Stop
+      - Debug stop
     when: not (sonar_start_by_service | bool)
 
   - name: Wait for migrate DB
@@ -52,3 +55,19 @@
     until: "'UP' in uri_result.content"
     retries: 40
     delay: 3
+
+  - name: Read pid
+    ansible.builtin.command: "cat {{ sonar_installation }}/bin/linux-x86-64/SonarQube.pid"
+    register: pid
+    changed_when: pid.rc == 0
+    when: not (sonar_start_by_service | bool)
+
+  - name: Stop
+    ansible.builtin.command: "sudo kill -9 {{ pid.stdout }}"
+    register: stop_result
+    changed_when: stop_result.rc == 0
+    when: not (sonar_start_by_service | bool)
+
+  - name: Debug stop
+    ansible.builtin.debug:
+      var: stop_result.stdout
