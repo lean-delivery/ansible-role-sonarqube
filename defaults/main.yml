@@ -181,6 +181,8 @@ text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.0.1.611\
                 {% else %}0.0.0\
                 {% endif %}"
 
+dotnet_pversion: 8.53.0.62665
+
 smell_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}4.0.0\
                  {% else %}0.0.0\
                  {% endif %}"
@@ -284,6 +286,8 @@ sonar_default_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-iac-plugin/sonar-iac-plugin-{{ iac_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-config-plugin/sonar-config-plugin-{{ config_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-text-plugin/sonar-text-plugin-{{ text_pversion }}.jar'
+  - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-csharp-plugin-{{ dotnet_pversion }}.jar'
+  - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-vbnet-plugin-{{ dotnet_pversion }}.jar'
 
 sonar_install_optional_plugins: false
 
@@ -511,6 +515,32 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-text-plugin-1.1.0.282.jar'
   - '{{ sonar_plugins_path }}/sonar-text-plugin-1.2.0.510.jar'
   - '{{ sonar_plugins_path }}/sonar-text-plugin-2.0.1.611.jar'
+
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-7.15.0.8572.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.22.0.31243.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.25.0.33663.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.29.0.36737.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.32.0.39516.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.34.0.42011.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.36.1.44192.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.40.0.48530.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.43.0.51858.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.46.0.54807.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.50.0.58025.jar'
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.51.0.59060.jar'
+
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-7.15.0.8572.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.22.0.31243.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.25.0.33663.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.29.0.36737.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.32.0.39516.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.34.0.42011.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.36.1.44192.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.40.0.48530.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.43.0.51858.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.46.0.54807.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.50.0.58025.jar'
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.51.0.59060.jar'
 
 # Override this var to exclude default plugins you don't need
 sonar_default_excluded_plugins: []
