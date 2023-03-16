@@ -181,7 +181,7 @@ text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.0.1.611\
                 {% else %}0.0.0\
                 {% endif %}"
 
-dotnet_pversion: 8.53.0.62665
+dotnet_pversion: 8.54.0.64047
 
 smell_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}4.0.0\
                  {% else %}0.0.0\
