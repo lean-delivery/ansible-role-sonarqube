@@ -1,6 +1,6 @@
 ---
 # defaults file for sonarqube
-sonar_version: 9.9.0.65466
+sonar_version: 9.9.1.69595
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
