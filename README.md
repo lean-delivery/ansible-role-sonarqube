@@ -59,7 +59,7 @@ Requirements
    - 7.9.6 previous LTS
    - 8.9.10 previous LTS
    - 9.0 - 9.5
-   - 9.6.1 - 9.9.0 - not covered by tests yet, should work
+   - 9.6.1 - 9.9.1 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9)
