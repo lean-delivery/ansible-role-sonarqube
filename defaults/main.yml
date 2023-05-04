@@ -163,7 +163,8 @@ html_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.7.1.3306\
                 {% else %}3.2.0.2082\
                 {% endif %}"
 
-php_pversion: "{% if sonar_version is version(\"7.9\", \">=\") %}3.28.0.9490\
+php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.29.0.9684\
+               {% elif sonar_version is version(\"7.9\", \">=\") %}3.28.0.9490\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
                {% else %}0.0.0\
