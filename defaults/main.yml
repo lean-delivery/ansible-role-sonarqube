@@ -180,7 +180,7 @@ config_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}1.2.0.267\
                   {% else %}0.0.0\
                   {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.0.1.611\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.0.2.1090\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
@@ -519,6 +519,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-text-plugin-1.1.0.282.jar'
   - '{{ sonar_plugins_path }}/sonar-text-plugin-1.2.0.510.jar'
   - '{{ sonar_plugins_path }}/sonar-text-plugin-2.0.1.611.jar'
+  - '{{ sonar_plugins_path }}/sonar-text-plugin-2.0.2.1090.jar'
 
   - '{{ sonar_plugins_path }}/sonar-csharp-plugin-7.15.0.8572.jar'
   - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.22.0.31243.jar'
