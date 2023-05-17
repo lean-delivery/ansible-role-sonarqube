@@ -1,7 +1,7 @@
 ---
 # handlers file for sonarqube
   - name: Restart Sonarqube
-    systemd:
+    ansible.builtin.systemd:
       name: sonarqube
       state: restarted
       daemon_reload: true
@@ -10,10 +10,22 @@
       - Wait for migrate DB
       - Migrate DB
       - Wait for Sonarqube
+    when: sonar_start_by_service | bool
     become: true
 
+  # temp task, see https://github.com/lean-delivery/ansible-role-sonarqube/issues/3026
+  - name: Restart Sonarqube with script
+    ansible.builtin.command: 'sudo -u {{ sonar_user }} {{ sonar_installation }}/bin/linux-x86-64/sonar.sh restart'
+    register: restart_result
+    changed_when: restart_result.rc == 0
+    notify:
+      - Wait for migrate DB
+      - Migrate DB
+      - Wait for Sonarqube
+    when: not (sonar_start_by_service | bool)
+
   - name: Wait for migrate DB
-    uri:
+    ansible.builtin.uri:
       url: '{{ sonar_check_url }}/api/system/status'
       return_content: true
       validate_certs: false
@@ -24,7 +36,7 @@
     when: sonar_migrate_db | bool
 
   - name: Migrate DB
-    uri:
+    ansible.builtin.uri:
       url: '{{ sonar_check_url }}/api/system/migrate_db'
       method: POST
       validate_certs: false
@@ -32,7 +44,7 @@
     when: sonar_migrate_db | bool
 
   - name: Wait for Sonarqube
-    uri:
+    ansible.builtin.uri:
       url: '{{ sonar_check_url }}/api/system/status'
       return_content: true
       validate_certs: false

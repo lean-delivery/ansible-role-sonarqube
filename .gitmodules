@@ -109,3 +109,12 @@
 [submodule "submodules/config-plugin"]
 	path = submodules/config-plugin
 	url = https://github.com/SonarSource/sonar-config.git
+[submodule "submodules/text-plugin"]
+	path = submodules/text-plugin
+	url = https://github.com/SonarSource/sonar-text.git
+[submodule "submodules/mutation-plugin"]
+	path = submodules/mutation-plugin
+	url = https://github.com/devcon5io/mutation-analysis-plugin.git
+[submodule "submodules/dotnet-plugin"]
+	path = submodules/dotnet-plugin
+	url = https://github.com/SonarSource/sonar-dotnet.git

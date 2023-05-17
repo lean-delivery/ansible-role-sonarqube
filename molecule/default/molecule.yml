@@ -6,43 +6,13 @@ dependency:
 driver:
   name: docker
 lint: |
-  yamllint
-  ansible-lint
+  yamllint . -c .yamllint
+  ansible-lint . -c .ansible-lint
 platforms:
   - name: test-docker-centos7-sonarqube
     image: leandelivery/docker-systemd:centos7
     privileged: true
-    groups:
-      - rhel_family
 
-#  - name: test-docker-ubuntu14.04-sonarqube
-#    image: leandelivery/docker-systemd:ubuntu-14.04
-#    privileged: true
-#    security_opts:
-#      - seccomp=unconfined
-#    volumes:
-#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    tmpfs:
-#      - /tmp
-#      - /run
-#    capabilities:
-#      - SYS_ADMIN
-#    groups:
-#      - python3.5
-#  - name: test-docker-ubuntu16.04-sonarqube
-#    image: leandelivery/docker-systemd:ubuntu-16.04
-#    privileged: true
-#    security_opts:
-#      - seccomp=unconfined
-#    volumes:
-#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    tmpfs:
-#      - /tmp
-#      - /run
-#    capabilities:
-#      - SYS_ADMIN
-#    groups:
-#      - python3
   - name: test-docker-ubuntu18.04-sonarqube
     image: leandelivery/docker-systemd:ubuntu-18.04
     privileged: true
@@ -57,20 +27,6 @@ platforms:
       - SYS_ADMIN
     groups:
       - python3
-#  - name: test-docker-ubuntu20.04-sonarqube
-#    image: leandelivery/docker-systemd:ubuntu-20.04
-#    privileged: true
-#    security_opts:
-#      - seccomp=unconfined
-#    volumes:
-#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    tmpfs:
-#      - /tmp
-#      - /run
-#    capabilities:
-#      - SYS_ADMIN
-#    groups:
-#      - python3
 provisioner:
   name: ansible
   log: true
@@ -81,8 +37,6 @@ provisioner:
     group_vars:
       python3:
         ansible_python_interpreter: /usr/bin/python3
-      python3.5:
-        ansible_python_interpreter: /usr/bin/python3.5
   playbooks:
     prepare: ../resources/prepare.yml
     verify: ../resources/tests/verify.yml

@@ -3,8 +3,8 @@ sonar.web.host={{ web.host }}
 sonar.web.port={{ web.port }}
 sonar.web.context={{ web.path }}
 
-{% if sonar_db.type != 'H2' %}
 # DB connections
+{% if sonar_db.type != 'H2' %}
 sonar.jdbc.username={{ sonar_db.user }}
 sonar.jdbc.password={{ sonar_db.password }}
 sonar.jdbc.url=jdbc:{{ sonar_db.type }}://{{ sonar_db.host }}:{{ sonar_db.port }}/{{ sonar_db.name }}{{ sonar_db.options }}

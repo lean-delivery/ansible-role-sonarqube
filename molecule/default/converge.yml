@@ -9,3 +9,13 @@
       sonar_web_password: your_new_secure_password
       change_password: true
       sonar_web_old_password: admin
+      sonar_proxy_type:
+      sonar_db:
+        type: H2
+        port:
+        host:
+        name:
+        user:
+        password:
+        options:
+      sonar_start_by_service: false

@@ -1,6 +1,6 @@
 ---
 - name: Get webhooks list
-  uri:
+  ansible.builtin.uri:
     url: '{{ sonar_check_url }}/api/webhooks/list'
     method: GET
     force_basic_auth: true
@@ -11,14 +11,14 @@
   register: webhooks_list
 
 - name: Get jenkins webhook key
-  set_fact:
+  ansible.builtin.set_fact:
     webhook_key: '{{ item }}'
   loop: '{{ webhooks_list | json_query(webhook_name_query) }}'
   vars:
     webhook_name_query: "json.webhooks[?name=='{{ sonar_jenkins_webhook_name }}'].key"
 
 - name: Create jenkins webhook
-  uri:
+  ansible.builtin.uri:
     url: '{{ sonar_check_url }}/api/webhooks/create'
     method: POST
     force_basic_auth: true
@@ -31,7 +31,7 @@
     - webhook_key is undefined
 
 - name: Update jenkins webhook
-  uri:
+  ansible.builtin.uri:
     url: '{{ sonar_check_url }}/api/webhooks/update'
     method: POST
     force_basic_auth: true

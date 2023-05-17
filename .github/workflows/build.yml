@@ -14,24 +14,33 @@ jobs:
   lint:
     if: ${{ !contains(github.head.ref, 'dependabot') }}
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-2.9
+    container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Install yamllint # till https://github.com/lean-delivery/docker-ansible-ci/pull/22 is not resolved
-        run: apk add --update yamllint
       - name: Lints
         run: |
           git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
           yamllint . -c .yamllint
-          ansible-lint . -c .ansible-lint
-
-  sonar-latest:
+#          ansible-lint . -c .ansible-lint # https://github.com/lean-delivery/ansible-role-sonarqube/issues/3023
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  all-sonar-latest:
     needs: lint
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-2.9
+    container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -44,22 +53,24 @@ jobs:
           molecule --version
           rm -rf molecule/resources/provisioning
           git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-          pip install jmespath
       - name: Molecule
         run: molecule test -s default
 
-  ubuntu1804-sonar-old-versions:
+  ubuntu1804-sonar-old:
     needs: lint
     strategy:
       matrix:
         sonar_version:
+          - '9.4.0.54424'
+          - '9.3.0.51899'
+          - '9.2.4.50792'
           - '9.1.0.47736'
           - '9.0.1.46107'
-          - '8.9.6.50800'
+          - '8.9.10.61524'
           - '7.9.6'
       fail-fast: false
     runs-on: ubuntu-latest
-    container: leandelivery/docker-ansible-ci:ansible-2.9
+    container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -72,18 +83,17 @@ jobs:
           molecule --version
           rm -rf molecule/resources/provisioning
           git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-          pip install jmespath
       - name: Molecule
         run: molecule test -s base
         env:
           SONAR_VERSION: ${{ matrix.sonar_version }}
 
-  ubuntu1804-ansible-versions:
+  ubuntu1804-ansible-old:
     needs: lint
     strategy:
       matrix:
         ansible_version:
-          - 3
+          - 6
       fail-fast: false
     runs-on: ubuntu-latest
     container: leandelivery/docker-ansible-ci:ansible-${{ matrix.ansible_version }}
@@ -99,6 +109,5 @@ jobs:
           molecule --version
           rm -rf molecule/resources/provisioning
           git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-          pip install jmespath
       - name: Molecule
-        run: molecule test -s base
+        run: molecule test -s default

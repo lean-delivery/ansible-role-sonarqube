@@ -1,22 +1,30 @@
+# https://docs.sonarqube.org/latest/setup-and-upgrade/configure-and-operate-a-server/operating-the-server/
+
 upstream sonar {
     server {{ web.host }}:{{ web.port }};
 }
 
 server {
-    server_name {{ sonar_proxy_server_name }};
 {% if sonar_proxy_http %}
     listen {{ sonar_proxy_http_port }};
-{% endif %}
-{% if sonar_proxy_ssl %}
+    server_name {{ sonar_proxy_server_name }};
+
+    location / {
+      proxy_pass http://sonar;
+	}
+{% elif sonar_proxy_ssl %}
     listen {{ sonar_proxy_ssl_port }} ssl;
 
     ssl_certificate {{ sonar_proxy_ssl_cert_path }};
     ssl_certificate_key {{ sonar_proxy_ssl_key_path }};
-{% endif %}
 
     location / {
       proxy_pass http://sonar;
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-For $remote_addr;
+      proxy_set_header X-Forwarded-Proto https;
     }
+{% endif %}
 
 # temporarily disabled, doesn't work correctly on all systems
 #

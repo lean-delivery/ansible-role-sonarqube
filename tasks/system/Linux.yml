@@ -11,12 +11,12 @@
       state: present
 
   - name: Create sonar group
-    group:
+    ansible.builtin.group:
       name: '{{ sonar_group }}'
       state: present
 
   - name: Create sonar user
-    user:
+    ansible.builtin.user:
       name: '{{ sonar_user }}'
       shell: /sbin/nologin
       group: '{{ sonar_group }}'
@@ -25,7 +25,7 @@
       createhome: true
 
   - name: Mkdir for SonarQube installation
-    file:
+    ansible.builtin.file:
       path: '{{ sonar_path }}'
       state: directory
       mode: 0755
@@ -33,7 +33,7 @@
       group: '{{ sonar_group }}'
 
   - name: Install requirements
-    package:
+    ansible.builtin.package:
       name:
         - unzip
         - curl
@@ -42,10 +42,9 @@
     until: install_result is succeeded
     retries: 3
     delay: 5
-    notify: Restart Sonarqube
 
-  - name: 'Download SonarQube {{ sonar_version }} checksum'
-    uri:
+  - name: 'Download checksum for SonarQube {{ sonar_version }}'
+    ansible.builtin.uri:
       url: '{{ sonar_store }}/sonarqube-{{ sonar_version }}.zip.sha'
       return_content: true
     register: sonarqube_checksum
@@ -55,8 +54,8 @@
       - sonar_version is not version("7.9.5", "==")
       - sonar_version is not version("7.9.6", "==")
 
-  - name: 'Download SonarQube {{ sonar_version }} with check'
-    get_url:
+  - name: 'Download with check SonarQube {{ sonar_version }}'
+    ansible.builtin.get_url:
       url: '{{ sonar_store }}/sonarqube-{{ sonar_version }}.zip'
       dest: '{{ sonar_download_path }}/'
       mode: 0644
@@ -74,8 +73,8 @@
       - sonar_version is not version("7.9.6", "==")
       - sonar_download
 
-  - name: 'Download SonarQube {{ sonar_version }} without check'
-    get_url:
+  - name: 'Download without check SonarQube {{ sonar_version }}'
+    ansible.builtin.get_url:
       url: '{{ sonar_store }}/sonarqube-{{ sonar_version }}.zip'
       dest: '{{ sonar_download_path }}/'
       mode: 0644
@@ -93,33 +92,43 @@
       - sonar_download
 
   - name: 'Install SonarQube {{ sonar_version }}'
-    unarchive:
+    ansible.builtin.unarchive:
       src: '{{ sonar_download_path }}/sonarqube-{{ sonar_version }}.zip'
-      exclude: "{{ sonar_all_excluded_plugins }} + \
-      [ 'sonarqube-{{ sonar_version }}/conf/sonar.properties', \
-      'sonarqube-{{ sonar_version }}/temp/README.txt']"
+      exclude: "{{ sonar_all_excluded_plugins }}"
       dest: '{{ sonar_path }}'
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
       remote_src: true
       creates: '{{ sonar_installation }}/conf/wrapper.conf'
-    notify: Restart Sonarqube
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Render sonar.properties
-    template:
+    ansible.builtin.template:
       src: sonar.properties.j2
       dest: '{{ sonar_installation }}/conf/sonar.properties'
       mode: 0400
       owner: '{{ sonar_user }}'
-    notify: Restart Sonarqube
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Render sonarqube.service
-    template:
+    ansible.builtin.template:
       src: sonarqube.service.j2
       dest: /etc/systemd/system/sonarqube.service
       mode: 0444
       owner: '{{ sonar_user }}'
-    notify: Restart Sonarqube
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
+
+  - name: Make sure template destination directory exists
+    ansible.builtin.file:
+      path: "{{ nginx_config_path | dirname }}"
+      state: directory
+      recurse: true
 
   - name: make sure template destination directory exists
     file:
@@ -128,17 +137,16 @@
       recurse: true
 
   - name: Render nginx config
-    template:
+    ansible.builtin.template:
       src: nginx.sonar.conf.j2
       dest: '{{ nginx_config_path }}'
       mode: 0444
       owner: '{{ sonar_user }}'
     when:
       - sonar_proxy_type == 'nginx'
-    notify: Restart Sonarqube
 
   - name: Download plugins
-    get_url:
+    ansible.builtin.get_url:
       url: '{{ item }}'
       dest: '{{ sonar_plugins_dir }}'
       mode: 0644
@@ -149,11 +157,13 @@
     until: download_plugin_result is succeeded
     retries: 3
     delay: 5
-    notify: Restart Sonarqube
     loop: '{{ sonar_all_plugins }}'
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
   - name: Copy branch plugin
-    copy:
+    ansible.builtin.copy:
       src: '{{ sonar_plugins_dir }}/sonarqube-community-branch-plugin-{{ branch_pversion }}.jar'
       dest: '{{ sonar_installation }}/lib/common/'
       mode: 0644
@@ -162,35 +172,67 @@
       - branch_plugin_url in sonar_all_plugins
       - branch_pversion is version("1.2.0", ">=")
       - branch_pversion is version("1.7.0", "<=")
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
 
-  - meta: flush_handlers
+  - name: Flush handlers
+    ansible.builtin.meta: flush_handlers
 
   rescue:
     - name: Show logs
-      command: 'ls {{ sonar_installation }}/logs/'
+      ansible.builtin.command: 'ls {{ sonar_installation }}/logs/'
       register: logs_list
+      changed_when: logs_list.rc != 0
 
-    - debug:
+    - name: Debug
+      ansible.builtin.debug:
         var: logs_list.stdout
 
     - name: Get sonar log
-      command: 'cat {{ sonar_log_path }}'
+      ansible.builtin.command: 'cat {{ sonar_log_path }}'
       register: sonar_log
+      changed_when: sonar_log.rc != 0
 
-    - debug:
+    - name: Debug
+      ansible.builtin.debug:
         var: sonar_log.stdout
 
-    - name: Get web log
-      command: 'cat {{ sonar_installation }}/logs/web.log'
-      register: web_log
+    - name: Get es log
+      ansible.builtin.command: 'cat {{ sonar_installation }}/logs/es.log'
+      register: es_log
+      changed_when: es_log.rc != 0
 
-    - debug:
+    - name: Debug
+      ansible.builtin.debug:
+        var: es_log.stdout
+
+    - name: Get web log
+      ansible.builtin.command: 'cat {{ sonar_installation }}/logs/web.log'
+      register: web_log
+      changed_when: web_log.rc != 0
+
+    - name: Debug
+      ansible.builtin.debug:
         var: web_log.stdout
+
+    - name: Get nohup log
+      ansible.builtin.command: 'cat {{ sonar_installation }}/logs/nohup.log'
+      register: nohup_log
+      when:
+        - sonar_version is version("8.0", ">=")
+      changed_when: nohup_log.rc != 0
+
+    - name: Debug
+      ansible.builtin.debug:
+        var: nohup_log.stdout
+      when:
+        - sonar_version is version("8.0", ">=")
 
   become: true
 
 - name: Verify login with old password
-  uri:
+  ansible.builtin.uri:
     url: '{{ sonar_check_url }}/api/authentication/login'
     method: POST
     force_basic_auth: true
@@ -207,7 +249,7 @@
     - change_password | bool
 
 - name: Update sonar web password
-  uri:
+  ansible.builtin.uri:
     url: '{{ sonar_check_url }}/api/users/change_password'
     method: POST
     force_basic_auth: true
@@ -222,18 +264,18 @@
     - login_result.status == 200
 
 - name: Jenkins webhook block
-  include_tasks: jenkins.yml
+  ansible.builtin.include_tasks: jenkins.yml
   when:
     - sonar_set_jenkins_webhook | bool
 
 - name: Get initial list of profiles
-  find:
+  ansible.builtin.find:
     paths: '{{ sonar_path }}/profiles/'
   register: sonar_profile_list_initial
   become: true
 
 - name: Set list of profile filenames
-  set_fact:
+  ansible.builtin.set_fact:
     sonar_profile_names_list_initial: >-
       {{ sonar_profile_list_initial.files | map(attribute='path') | map('basename') | list }}
     sonar_profile_names_list: >-
@@ -242,7 +284,7 @@
 - name: Restore profiles block
   block:
     - name: Copy profiles to profiles directory
-      copy:
+      ansible.builtin.copy:
         src: '{{ profile_item }}'
         dest: '{{ sonar_path }}/profiles/'
         mode: 0644
@@ -254,7 +296,7 @@
       become: true
 
     - name: Cleanup profiles directory
-      file:
+      ansible.builtin.file:
         path: '{{ profile_item.path }}'
         state: absent
       loop: '{{ sonar_profile_list_initial.files }}'
@@ -264,21 +306,21 @@
       become: true
 
     - name: Get list of profiles
-      find:
+      ansible.builtin.find:
         paths: '{{ sonar_path }}/profiles/'
       register: sonar_profile_list_result
       become: true
 
     - name: Restore profiles
       # have to use curl because of https://github.com/ansible/ansible/issues/38172
-      command: >-
+      ansible.builtin.command: >-
         {{ curl_command }} -k -u {{ sonar_web_user }}:{{ sonar_web_password }} -F
           'backup=@{{ profile_item.path }}' {{ sonar_check_url }}/api/qualityprofiles/restore
-      args:
-        warn: false
       loop: '{{ sonar_profile_list_result.files }}'
       loop_control:
         loop_var: profile_item
+      register: profile_result
+      changed_when: profile_result.rc != 0
   when:
     - sonar_restore_profiles | bool
     - sonar_profile_names_list | difference(sonar_profile_names_list_initial) | length

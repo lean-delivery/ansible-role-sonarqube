@@ -1,41 +1,41 @@
 sonarqube role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/LICENSE)
-[![Build Status](https://gitlab.com/lean-delivery/ansible-role-sonarqube/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-sonarqube/pipelines)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.sonarqube-blue.svg)](https://galaxy.ansible.com/lean_delivery/sonarqube)
 ![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29212%2F&query=$.min_ansible_version)
 
-This role installs SonarQube with extended set of plugins. It uses openJDK, postgreSQL database and nginx web server with enabled https.
+This role installs SonarQube with extended set of plugins. Playbook example below also uses openJDK, postgreSQL database and nginx web server with enabled https.
 
 See article here: https://lean-delivery.com/2020/02/how-to-add-sonarqube-to-ci-process.html
 
-In addition to default plugins included into SonarQube installation role installs following extra plugins:
-  - checkstyle-sonar-plugin-9.2
-  - sonar-pmd-plugin-3.3.1
-  - sonar-findbugs-plugin-4.0.5
-  - sonar-jdepend-plugin-1.1.1
-  - sonar-jproperties-plugin-2.6
-  - sonar-groovy-plugin-1.8
-  - sonar-dependency-check-plugin-2.0.8
-  - sonar-json-plugin-2.3
-  - sonar-yaml-plugin-1.7.0
-  - sonar-ansible-plugin-2.5.0
-  - sonar-shellcheck-plugin-2.5.0
+In addition to default plugins included into SonarQube role could install following recommended plugins:
+  - checkstyle-sonar-plugin
+  - sonar-pmd-plugin
+  - sonar-findbugs-plugin
+  - mutation-analysis-plugin
+  - sonar-jdepend-plugin
+  - sonar-jproperties-plugin
+  - sonar-groovy-plugin
+  - sonar-dependency-check-plugin
+  - sonar-json-plugin
+  - sonar-yaml-plugin
+  - sonar-ansible-plugin
+  - sonar-shellcheck-plugin
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
-  - qualinsight-sonarqube-smell-plugin-4.0.0
-  - qualinsight-sonarqube-badges-3.0.1
-  - sonar-auth-github-plugin-1.5.0.870
-  - sonar-auth-bitbucket-plugin-1.1.0.381
-  - sonar-bitbucket-plugin-1.3.0 (for Bitbucket Cloud)
-  - sonar-stash-plugin-1.6.0 (for Bitbucket Server)
-  - sonar-auth-gitlab-plugin-1.3.2
-  - sonar-gitlab-plugin-4.0.0
-  - sonar-xanitizer-plugin-2.2.0
-  - sonar-build-breaker-plugin-2.3.1.347
-  - sonar-issueresolver-plugin-1.0.2
-  - sonarqube-community-branch-plugin-1.10.0
+  - qualinsight-sonarqube-smell-plugin
+  - qualinsight-sonarqube-badges
+  - sonar-auth-github-plugin
+  - sonar-auth-bitbucket-plugin
+  - sonar-bitbucket-plugin (for Bitbucket Cloud)
+  - sonar-stash-plugin (for Bitbucket Server)
+  - sonar-auth-gitlab-plugin
+  - sonar-gitlab-plugin
+  - sonar-xanitizer-plugin
+  - sonar-build-breaker-plugin
+  - sonar-issueresolver-plugin
+  - sonarqube-community-branch-plugin
   
 See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
 
@@ -52,42 +52,42 @@ Requirements
 --------------
 
  - **Supported Ansible versions**:
-   - 2.9
-   - 3 (2.10)
+   - 5 (2.12) - not covered by tests yet, should work
+   - 6 (2.13)
+   - 7 (2.14)
  - **Supported SonarQube versions**:
-   - 7.9.6
-   - 8.9.x LTS
-   - 9.0 - 9.2.4.50792
+   - 7.9.6 previous LTS
+   - 8.9.10 previous LTS
+   - 9.0 - 9.5
+   - 9.6.1 - 9.9.1 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
+   - 17 (use for SonarQube 9.9)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
- - **Supported web servers**
+   - embedded H2 (for tests only)
+ - **Supported web servers (reverse proxy for https)**
    - nginx 
  - **Supported OS**:
-   - CentOS
+   - CentOS, RHEL
      - 7
-	 - 8
-   - RHEL
-     - 7
-	 - 8
    - Ubuntu
      - 18.04
+     - 20.04 - not covered by tests yet, should work
+     - 22.04 - not covered by tests yet, should work
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
-  - anxs.postgresql
-    version: master
+  - geerlingguy.postgresql
   - jdauphant.ssl-certs
   - nginxinc.nginx
-    version: 0.20.0
 
 Role Variables
 --------------
 
   - `sonar_version` - SonarQube version\
-    default: 9.2.4.50792
+    default: 9.5.0.56709
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -242,23 +242,22 @@ Example Playbook
     # postgresql
     postgresql_users:
       - name: sonar
-        pass: sonar
+        password: sonar
     postgresql_databases:
       - name: sonar
-        owner: sonar
     # ssl-certs
     ssl_certs_path_owner: nginx
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 9.2.4.50792 # see versions here https://sonarsource.bintray.com/Distribution/sonarqube
+    sonar_version: 9.5.0.56709
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins: 
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
-      - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.15.0.24505.jar'
+      - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.40.0.48530.jar'
     sonar_web_password: your_new_secure_password
     change_password: true
     sonar_web_old_password: admin
@@ -286,7 +285,7 @@ Example Playbook
         state: absent
   roles:
     - role: lean_delivery.java
-    - role: anxs.postgresql
+    - role: geerlingguy.postgresql
     - role: nginxinc.nginx
     - role: jdauphant.ssl-certs
     - role: lean_delivery.sonarqube

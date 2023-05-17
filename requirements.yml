@@ -1,7 +1,9 @@
 ---
 - src: lean_delivery.java
-- src: anxs.postgresql
-  version: master
+  version: 7.1.0
+- src: geerlingguy.postgresql
+  version: 3.4.2
 - src: jdauphant.ssl-certs
+  version: v1.7.1
 - src: nginxinc.nginx
-  version: 0.20.0
+  version: 0.23.2
