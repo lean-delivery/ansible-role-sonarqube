@@ -69,7 +69,7 @@ sonar_proxy_client_max_body_size: 32m
 nginx_config_path: /etc/nginx/conf.d/sonar.conf
 
 # Plugin versions
-checkstyle_pversion: "{% if sonar_version is version(\"8.9.3\", \">=\") %}10.9.3\
+checkstyle_pversion: "{% if sonar_version is version(\"8.9.3\", \">=\") %}10.11.0\
                       {% elif sonar_version is version(\"7.9\", \">=\") %}8.45.1\
                       {% else %}4.27\
                       {% endif %}"
