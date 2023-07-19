@@ -60,10 +60,10 @@ Requirements
    - 8.9.10 previous LTS
    - 9.0 - 9.5
    - 9.6.1 - 9.9.1 LTS - not covered by tests yet, should work
-   - 10.0 - not covered by tests yet, should work
+   - 10.0 - 10.1 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
-   - 17 (use for SonarQube 9.9)
+   - 17 (use for SonarQube 9.9+)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
