@@ -184,7 +184,7 @@ config_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}1.2.0.267\
                   {% else %}0.0.0\
                   {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.1.0.1163\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.3.0.1632\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
