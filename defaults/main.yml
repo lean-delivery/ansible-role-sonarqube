@@ -180,7 +180,7 @@ iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.20.0.5654\
                {% else %}0.0.0\
                {% endif %}"
 
-config_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}1.2.0.267\
+config_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}1.3.0.654\
                   {% else %}0.0.0\
                   {% endif %}"
 
