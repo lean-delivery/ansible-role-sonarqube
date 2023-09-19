@@ -60,10 +60,10 @@ Requirements
    - 8.9.10 previous LTS
    - 9.0 - 9.5
    - 9.6.1 - 9.9.1 LTS - not covered by tests yet, should work
-   - 10.0 - not covered by tests yet, should work
+   - 10.0 - 10.1 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
-   - 17 (use for SonarQube 9.9)
+   - 17 (use for SonarQube 9.9+)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -88,7 +88,6 @@ Role Variables
 --------------
 
   - `sonar_version` - SonarQube version\
-    default: 9.5.0.56709
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -238,7 +237,7 @@ Example Playbook
   become: true
   vars:
     # java
-    java_major_version: 11
+    java_major_version: 17
     transport: repositories
     # postgresql
     postgresql_users:
@@ -251,14 +250,14 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 9.5.0.56709
+    sonar_version: 9.9.1.69595
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins: 
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
-      - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.40.0.48530.jar'
+      - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.8.0.3166.jar'
     sonar_web_password: your_new_secure_password
     change_password: true
     sonar_web_old_password: admin
