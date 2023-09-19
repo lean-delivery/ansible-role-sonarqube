@@ -456,6 +456,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-python-plugin-3.19.0.10254.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-3.21.0.10628.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-3.24.0.10784.jar'
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-3.24.1.11916.jar' # 9.9.2
   - '{{ sonar_plugins_path }}/sonar-python-plugin-4.1.0.11333.jar'
   - '{{ sonar_plugins_path }}/sonar-python-plugin-4.3.0.11660.jar' # 10.1
 
