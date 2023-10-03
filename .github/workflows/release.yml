@@ -27,4 +27,4 @@ jobs:
       - name: Import role to Ansible Galaxy
         run: |
           sed -i "s/<your-api-token>/${{ secrets.GALAXY_API_KEY }}/" ansible.cfg
-          ansible-galaxy role import
+          ansible-galaxy role import $(echo ${{ github.repository }} | cut -d/ -f1) $(echo ${{ github.repository }} | cut -d/ -f2)
