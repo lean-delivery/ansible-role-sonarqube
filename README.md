@@ -58,9 +58,9 @@ Requirements
  - **Supported SonarQube versions**:
    - 7.9.6 previous LTS
    - 8.9.10 previous LTS
-   - 9.0 - 9.5
-   - 9.6.1 - 9.9.1 LTS - not covered by tests yet, should work
-   - 10.0 - 10.1 - not covered by tests yet, should work
+   - 9.5
+   - 9.6.1 - 9.9.2 LTS - not covered by tests yet, should work
+   - 10.0 - 10.2.1 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9+)
@@ -250,7 +250,7 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 9.9.1.69595
+    sonar_version: 9.9.2.77730
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
