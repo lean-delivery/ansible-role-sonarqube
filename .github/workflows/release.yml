@@ -25,6 +25,6 @@ jobs:
         run: pip3 install ansible-base
 
       - name: Import role to Ansible Galaxy
-        run: >
+        run: |
           sed -i "s/<your-api-token>/${{ secrets.GALAXY_API_KEY }}/" ansible.cfg
           ansible-galaxy role import
