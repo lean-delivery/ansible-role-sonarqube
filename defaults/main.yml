@@ -105,7 +105,7 @@ json_pversion: "{% if sonar_version is version(\"9.0\", \">=\") %}0.0.0\
                 {% else %}2.3\
                 {% endif %}"
 
-yaml_pversion: 1.7.0
+yaml_pversion: 1.8.0
 
 ansible_pversion: 2.5.1
 
@@ -113,14 +113,14 @@ shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.5.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
-java_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}7.24.0.32100\
+java_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}7.28.0.33738\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}7.17.0.31219\
                 {% elif sonar_version is version(\"7.9\", \">=\") %}7.6.0.28201\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
                 {% else %}0.0.0\
                 {% endif %}"
 
-javascript_pversion: "{% if sonar_version is version(\"10.0\", \">=\") %}10.7.0.22914\
+javascript_pversion: "{% if sonar_version is version(\"10.0\", \">=\") %}10.9.0.24449\
                       {% elif sonar_version is version(\"9.2\", \">=\") %}9.13.0.20537\
                       {% elif sonar_version is version(\"8.9\", \">=\") %}8.5.0.16762\
                       {% elif sonar_version is version(\"8.0\", \">=\") %}8.3.0.16208\
@@ -145,7 +145,7 @@ xml_pversion: "{% if sonar_version is version(\"9.9\", \">=\") %}2.10.0.4108\
                {% else %}0.0.0\
                {% endif %}"
 
-python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}4.8.0.12420\
+python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}4.10.0.13725\
                   {% elif sonar_version is version(\"7.9\", \">=\") %}4.1.0.11333\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
                   {% else %}0.0.0\
@@ -166,7 +166,7 @@ html_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.10.0.3651\
                 {% else %}3.2.0.2082\
                 {% endif %}"
 
-php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.32.0.10180\
+php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.33.0.11274\
                {% elif sonar_version is version(\"7.9\", \">=\") %}3.28.0.9490\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
@@ -175,7 +175,7 @@ php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.32.0.10180\
 
 jacoco_pversion: 1.3.0.1538
 
-iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.21.0.5999\
+iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.22.0.7057\
                {% elif sonar_version is version(\"8.9\", \">=\") %}1.16.0.3845\
                {% else %}0.0.0\
                {% endif %}"
@@ -184,12 +184,12 @@ config_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}1.3.0.654\
                   {% else %}0.0.0\
                   {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.4.0.2120\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.5.0.2293\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
 
-dotnet_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}9.11.0.78383\
+dotnet_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}9.13.0.79967\
                   {% else %}9.0.0.68202\
                   {% endif %}"
 
