@@ -248,6 +248,10 @@ branch_pversion: "{% if sonar_version is version(\"10.0\", \">=\") %}0.0.0\
                   {% else %}0.0.0\
                   {% endif %}"
 
+aem_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}1.6\
+               {% else %}1.3\
+               {% endif %}"
+
 sonar_install_recommended_plugins: true
 sonar_recommended_plugins:
   - 'https://github.com/checkstyle/sonar-checkstyle/releases/download/{{ checkstyle_pversion }}/checkstyle-sonar-plugin-{{ checkstyle_pversion }}.jar'
@@ -340,6 +344,9 @@ sonar_optional_plugins:
     sonar-issueresolver-plugin-{{ issueresolver_pversion }}.jar"
 
   - '{{ branch_plugin_url }}'
+
+  - "https://github.com/wttech/AEM-Rules-for-SonarQube/releases/download/\
+    v{{ aem_pversion }}/sonar-aemrules-plugin-{{ aem_pversion }}.jar"
 
 sonar_all_plugins: "{{ sonar_install_recommended_plugins | ternary(sonar_recommended_plugins, []) +\
                        sonar_update_default_plugins | ternary(sonar_default_plugins, []) +\
