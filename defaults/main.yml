@@ -113,7 +113,7 @@ shellcheck_pversion: "{% if sonar_version is version(\"7.4\", \">=\") %}2.5.0\
                       {% else %}2.2.1\
                       {% endif %}"
 
-java_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}7.28.0.33738\
+java_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}7.29.0.34131\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}7.17.0.31219\
                 {% elif sonar_version is version(\"7.9\", \">=\") %}7.6.0.28201\
                 {% elif sonar_version is version(\"7.0\", \">=\") %}5.14.0.18788\
