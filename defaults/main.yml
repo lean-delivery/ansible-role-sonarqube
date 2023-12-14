@@ -69,7 +69,7 @@ sonar_proxy_client_max_body_size: 32m
 nginx_config_path: /etc/nginx/conf.d/sonar.conf
 
 # Plugin versions
-checkstyle_pversion: "{% if sonar_version is version(\"8.9.3\", \">=\") %}10.12.3\
+checkstyle_pversion: "{% if sonar_version is version(\"8.9.3\", \">=\") %}10.12.5\
                       {% elif sonar_version is version(\"7.9\", \">=\") %}8.45.1\
                       {% else %}4.27\
                       {% endif %}"
@@ -166,7 +166,7 @@ html_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.10.0.3651\
                 {% else %}3.2.0.2082\
                 {% endif %}"
 
-php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.33.0.11274\
+php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.34.0.11311\
                {% elif sonar_version is version(\"7.9\", \">=\") %}3.28.0.9490\
                {% elif sonar_version is version(\"7.8\", \">=\") %}3.1.1.4762\
                {% elif sonar_version is version(\"7.0\", \">=\") %}3.0.0.4537\
