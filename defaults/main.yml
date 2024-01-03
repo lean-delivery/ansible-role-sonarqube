@@ -94,7 +94,7 @@ groovy_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}1.8\
                   {% else %}1.7\
                   {% endif %}"
 
-dependency_check_pversion: "{% if sonar_version is version(\"9.9\", \">=\") %}4.0.0\
+dependency_check_pversion: "{% if sonar_version is version(\"9.9\", \">=\") %}4.0.1\
                             {% elif sonar_version is version(\"8.9\", \">=\") %}3.1.0\
                             {% elif sonar_version is version(\"7.6\", \">=\") %}2.0.8\
                             {% elif sonar_version is version(\"7.3\", \">=\") %}1.2.1\
