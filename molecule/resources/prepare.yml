@@ -3,7 +3,9 @@
   hosts: all
   roles:
     - role: lean_delivery.java
-      java_major_version: 17
+      java_major_version: "{% if sonar_version is version(\"8.0\", \">=\") %}17\
+                           {% else %}11\
+                           {% endif %}"
       transport: repositories
 # https://github.com/lean-delivery/ansible-role-sonarqube/issues/3025
 #    - role: anxs.postgresql

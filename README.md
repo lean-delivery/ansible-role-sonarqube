@@ -88,7 +88,7 @@ Java, database, web server with self-signed certificate should be installed prel
 Role Variables
 --------------
 
-  - `sonar_version` - SonarQube version\
+  - `sonar_version` - SonarQube version
   - `sonar_path` - installation directory\
     default: /opt/sonarqube
   - `sonar_user` - user for installing SonarQube\
@@ -251,14 +251,14 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 9.9.3.79811
+    sonar_version: 10.3.0.82913
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins: 
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
-      - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.8.0.3166.jar'
+      - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.12.0.4568.jar'
     sonar_web_password: your_new_secure_password
     change_password: true
     sonar_web_old_password: admin
