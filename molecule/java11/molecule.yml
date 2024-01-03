@@ -1,0 +1,45 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+driver:
+  name: docker
+lint: |
+  yamllint . -c .yamllint
+  ansible-lint . -c .ansible-lint
+platforms:
+  - name: test-docker-ubuntu1804-sonarqube
+    image: leandelivery/docker-systemd:ubuntu-18.04
+    privileged: true
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
+    groups:
+      - python3
+provisioner:
+  name: ansible
+  log: true
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks,timer
+  inventory:
+    group_vars:
+      python3:
+        ansible_python_interpreter: /usr/bin/python3
+    host_vars:
+      test-docker-ubuntu1804-sonarqube:
+        sonar_version: ${SONAR_VERSION:-7.9.6}
+  playbooks:
+    prepare: ../resources/prepare_java11.yml
+    verify: ../resources/tests/verify.yml
+scenario:
+  name: java11
+verifier:
+  name: ansible
