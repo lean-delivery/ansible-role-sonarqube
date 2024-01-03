@@ -3,7 +3,7 @@
   hosts: all
   roles:
     - role: lean_delivery.java
-      java_major_version: 17
+      java_major_version: 11
       transport: repositories
 # https://github.com/lean-delivery/ansible-role-sonarqube/issues/3025
 #    - role: anxs.postgresql

@@ -9,11 +9,7 @@ lint: |
   yamllint . -c .yamllint
   ansible-lint . -c .ansible-lint
 platforms:
-#  - name: test-docker-centos7-sonarqube
-#    image: leandelivery/docker-systemd:centos7
-#    privileged: true
-
-  - name: test-docker-ubuntu18.04-sonarqube
+  - name: test-docker-ubuntu1804-sonarqube
     image: leandelivery/docker-systemd:ubuntu-18.04
     privileged: true
     security_opts:
@@ -37,10 +33,13 @@ provisioner:
     group_vars:
       python3:
         ansible_python_interpreter: /usr/bin/python3
+    host_vars:
+      test-docker-ubuntu1804-sonarqube:
+        sonar_version: ${SONAR_VERSION:-7.9.6}
   playbooks:
-    prepare: ../resources/prepare.yml
+    prepare: ../resources/prepare_java11.yml
     verify: ../resources/tests/verify.yml
 scenario:
-  name: default
+  name: java11
 verifier:
   name: ansible
