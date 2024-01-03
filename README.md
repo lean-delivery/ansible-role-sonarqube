@@ -36,8 +36,9 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - sonar-build-breaker-plugin
   - sonar-issueresolver-plugin
   - sonarqube-community-branch-plugin
+  - sonar-aemrules-plugin
   
-See plugin matrix here: https://docs.sonarqube.org/latest/instance-administration/plugin-version-matrix/
+See plugin matrix here: https://docs.sonarsource.com/sonarqube/latest/instance-administration/plugin-version-matrix/
 
 This role also provides some configuration options:
   - ability to migrate db when updating SonarQube to new version
@@ -59,8 +60,8 @@ Requirements
    - 7.9.6 previous LTS
    - 8.9.10 previous LTS
    - 9.5
-   - 9.6.1 - 9.9.2 LTS - not covered by tests yet, should work
-   - 10.0 - 10.2.1 - not covered by tests yet, should work
+   - 9.6.1 - 9.9.3 LTS - not covered by tests yet, should work
+   - 10.0 - 10.3 - not covered by tests yet, should work
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9+)
@@ -250,7 +251,7 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 9.9.2.77730
+    sonar_version: 9.9.3.79811
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true

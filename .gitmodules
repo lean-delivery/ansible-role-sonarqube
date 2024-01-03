@@ -118,3 +118,6 @@
 [submodule "submodules/dotnet-plugin"]
 	path = submodules/dotnet-plugin
 	url = https://github.com/SonarSource/sonar-dotnet.git
+[submodule "submodules/aem-plugin"]
+	path = submodules/aem-plugin
+	url = https://github.com/wttech/AEM-Rules-for-SonarQube.git
