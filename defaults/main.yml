@@ -177,14 +177,12 @@ php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.34.0.11311\
 
 jacoco_pversion: 1.3.0.1538
 
-iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.22.0.7057\
+iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.24.0.7839\
                {% elif sonar_version is version(\"8.9\", \">=\") %}1.16.0.3845\
                {% else %}0.0.0\
                {% endif %}"
 
-config_pversion: "{% if sonar_version is version(\"9.2\", \">=\") %}1.3.0.654\
-                  {% else %}0.0.0\
-                  {% endif %}"
+config_pversion: 0.0.0
 
 text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.5.0.2293\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
