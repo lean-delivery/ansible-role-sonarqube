@@ -40,6 +40,7 @@ jobs:
   all-sonar-latest:
     needs: lint
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
@@ -68,6 +69,7 @@ jobs:
           - '8.9.10.61524'
       fail-fast: false
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
@@ -94,6 +96,7 @@ jobs:
           - '7.9.6'
       fail-fast: false
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container: leandelivery/docker-ansible-ci:ansible-7
     steps:
       - name: Checkout
@@ -120,6 +123,7 @@ jobs:
           - 6
       fail-fast: false
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container: leandelivery/docker-ansible-ci:ansible-${{ matrix.ansible_version }}
     steps:
       - name: Checkout
