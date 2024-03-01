@@ -62,10 +62,11 @@ jobs:
     strategy:
       matrix:
         sonar_version:
+          - '10.3.0.82913'
           - '10.2.1.78527'
           - '10.1.0.73491'
           - '10.0.0.68432'
-          - '9.9.3.79811'
+          - '9.9.4.87374'
           - '8.9.10.61524'
       fail-fast: false
     runs-on: ubuntu-latest
