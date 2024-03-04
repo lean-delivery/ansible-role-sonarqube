@@ -185,6 +185,10 @@ iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.26.0.8471\
 
 config_pversion: 0.0.0
 
+cayc_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}2.3.0.1782\
+                {% else %}0.0.0\
+                {% endif %}"
+
 text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.5.0.2293\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
@@ -307,6 +311,7 @@ sonar_default_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-text-plugin/sonar-text-plugin-{{ text_pversion }}.jar'
   - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-csharp-plugin-{{ dotnet_pversion }}.jar'
   - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-vbnet-plugin-{{ dotnet_pversion }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-cayc-plugin/sonar-cayc-plugin-{{ cayc_pversion }}.jar'
 
 sonar_install_optional_plugins: false
 
@@ -615,6 +620,11 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-9.8.0.76515.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-9.13.0.79967.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-9.19.0.84025.jar' # 10.4
+
+  - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.0.0.334.jar' # 10.1
+  - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.1.0.500.jar' # 10.2
+  - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.2.2.656.jar' # 10.3
+  - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.3.0.1782.jar' # 10.4
 
 # Override this var to exclude default plugins you don't need
 sonar_default_excluded_plugins: []
