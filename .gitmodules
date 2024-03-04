@@ -121,3 +121,6 @@
 [submodule "submodules/aem-plugin"]
 	path = submodules/aem-plugin
 	url = https://github.com/wttech/AEM-Rules-for-SonarQube.git
+[submodule "submodules/cayc-plugin"]
+	path = submodules/cayc-plugin
+	url = https://github.com/SonarSource/sonar-cayc-stats-plugin

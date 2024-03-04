@@ -61,7 +61,7 @@
       mode: 0644
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
-      checksum: 'sha1:{{ sonarqube_checksum.content|trim }}'
+      checksum: 'sha1:{{ sonarqube_checksum.content | trim }}'
     register: download_distrib_result
     until: download_distrib_result is succeeded
     retries: 3
