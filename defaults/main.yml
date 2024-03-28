@@ -191,6 +191,11 @@ cayc_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}2.3.0.1782\
                 {% else %}0.0.0\
                 {% endif %}"
 
+flex_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.12.0.4568\
+                {% elif sonar_version is version(\"9.9\", \">=\") %}2.8.0.3166\
+                {% else %}2.7.0.2865\
+                {% endif %}"
+
 text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.5.0.2293\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
@@ -314,6 +319,7 @@ sonar_default_plugins:
   - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-csharp-plugin-{{ dotnet_pversion }}.jar'
   - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-vbnet-plugin-{{ dotnet_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-cayc-plugin/sonar-cayc-plugin-{{ cayc_pversion }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-flex-plugin/sonar-flex-plugin-{{ flex_pversion }}.jar'
 
 sonar_install_optional_plugins: false
 
@@ -627,6 +633,13 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.1.0.500.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.2.2.656.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.3.0.1782.jar' # 10.4
+
+  - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.5.1.1831.jar' # 7.9
+  - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.6.1.2564.jar' # 8.9
+  - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.8.0.3166.jar' # 9.9
+  - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.9.0.3375.jar' # 10.1
+  - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.10.0.3458.jar' # 10.2
+  - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.12.0.4568.jar' # 10.3
 
 # Override this var to exclude default plugins you don't need
 sonar_default_excluded_plugins: []
