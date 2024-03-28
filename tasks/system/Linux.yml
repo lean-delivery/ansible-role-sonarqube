@@ -2,8 +2,8 @@
 # tasks file for sonarqube pre install
 
 - name: Become section
+  become: true
   block:
-
   - name: Tune virtual memory
     sysctl:
       name: vm.max_map_count
@@ -222,8 +222,6 @@
         var: nohup_log.stdout
       when:
         - sonar_version is version("8.0", ">=")
-
-  become: true
 
 - name: Verify login with old password
   ansible.builtin.uri:
