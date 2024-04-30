@@ -5,7 +5,7 @@
   become: true
   block:
   - name: Tune virtual memory
-    sysctl:
+    ansible.posix.sysctl:
       name: vm.max_map_count
       value: '{{ sonar_max_map_count | int }}'
       state: present
