@@ -87,7 +87,9 @@ findbugs_pversion: "{% if sonar_version is version(\"7.6\", \">=\") %}4.2.9\
 
 jdepend_pversion: 1.1.1
 
-mutation_pversion: 1.7
+mutation_pversion: "{% if sonar_version is version(\"9.0\", \">=\") %}1.8\
+                    {% else %}1.7\
+                    {% endif %}"
 
 jproperties_pversion: "{% if sonar_version is version(\"9.0\", \">=\") %}0.0.0\
                        {% else %}2.6\
