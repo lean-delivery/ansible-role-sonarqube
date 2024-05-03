@@ -1,6 +1,6 @@
 ---
 # defaults file for sonarqube
-sonar_version: 10.4.1.88267
+sonar_version: 10.5.1.90531
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
@@ -412,6 +412,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-java-plugin-7.24.0.32100.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-java-plugin-7.27.1.33504.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-java-plugin-7.30.0.34429.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-java-plugin-7.33.0.35775.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.1.0.6085.jar'
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-4.2.0.6476.jar'
@@ -441,6 +442,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-10.5.1.22382.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-10.9.0.24449.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-javascript-plugin-10.11.1.25225-multi.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-javascript-plugin-10.13.2.25981-multi.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.7.0.2893.jar'
   - '{{ sonar_plugins_path }}/sonar-typescript-plugin-1.8.0.3332.jar'
@@ -496,6 +498,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-python-plugin-4.7.0.12181.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-python-plugin-4.10.0.13725.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-python-plugin-4.14.0.14263.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-python-plugin-4.17.0.14845.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.0.1.965.jar'
   - '{{ sonar_plugins_path }}/sonar-kotlin-plugin-1.2.1.2009.jar'
@@ -553,6 +556,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.30.0.9766.jar' # 10.1
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.32.0.10180.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-php-plugin-3.33.0.11274.jar' # 10.3
+  - '{{ sonar_plugins_path }}/sonar-php-plugin-3.35.0.11659.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.1.0.1615.jar'
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.2.0.2082.jar'
@@ -564,6 +568,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.9.0.3600.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.11.0.4708.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-html-plugin-3.13.0.4821.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-html-plugin-3.15.0.5107.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-jacoco-plugin-1.0.1.143.jar'
   - '{{ sonar_plugins_path }}/sonar-jacoco-plugin-1.0.2.475.jar'
@@ -581,6 +586,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.20.0.5654.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.22.0.7057.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.26.0.8471.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-iac-plugin-1.27.0.9518.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-config-plugin-1.1.0.185.jar'
   - '{{ sonar_plugins_path }}/sonar-config-plugin-1.2.0.267.jar'
@@ -595,6 +601,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-text-plugin-2.3.0.1632.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-text-plugin-2.7.1.1388.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-text-plugin-2.8.0.1635.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-text-plugin-2.10.0.2188.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-csharp-plugin-7.15.0.8572.jar'
   - '{{ sonar_plugins_path }}/sonar-csharp-plugin-8.22.0.31243.jar'
@@ -613,6 +620,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-csharp-plugin-9.8.0.76515.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-csharp-plugin-9.13.0.79967.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-csharp-plugin-9.19.0.84025.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-9.23.2.88755.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-7.15.0.8572.jar'
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-8.22.0.31243.jar'
@@ -631,6 +639,7 @@ sonar_excluded_plugins:
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-9.8.0.76515.jar' # 10.2
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-9.13.0.79967.jar' # 10.3
   - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-9.19.0.84025.jar' # 10.4
+  - '{{ sonar_plugins_path }}/sonar-vbnet-plugin-9.23.2.88755.jar' # 10.5
 
   - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.0.0.334.jar' # 10.1
   - '{{ sonar_plugins_path }}/sonar-cayc-plugin-2.1.0.500.jar' # 10.2
