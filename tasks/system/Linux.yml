@@ -274,6 +274,9 @@
       {{ sonar_profile_list | map('basename') | list }}
 
 - name: Restore profiles block
+  when:
+    - sonar_restore_profiles | bool
+    - sonar_profile_names_list | difference(sonar_profile_names_list_initial) | length
   block:
     - name: Copy profiles to profiles directory
       ansible.builtin.copy:
@@ -313,6 +316,3 @@
         loop_var: profile_item
       register: profile_result
       changed_when: profile_result.rc != 0
-  when:
-    - sonar_restore_profiles | bool
-    - sonar_profile_names_list | difference(sonar_profile_names_list_initial) | length
