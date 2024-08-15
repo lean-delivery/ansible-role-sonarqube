@@ -7,9 +7,9 @@ sonar_user: sonar
 sonar_group: sonar
 
 # tuning
-sonar_nofile: 65536
-sonar_nproc: 4096
-sonar_max_map_count: 262144
+sonar_nofile: 131072
+sonar_nproc: 8192
+sonar_max_map_count: 524288
 sonar_log_level: INFO
 sonar_java_opts:
   web: -Xmx512m -Xms128m
