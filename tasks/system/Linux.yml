@@ -173,7 +173,7 @@
   - name: Flush handlers
     ansible.builtin.meta: flush_handlers
 
-  rescue:
+  always:
     - name: Show logs
       ansible.builtin.command: 'ls {{ sonar_installation }}/logs/'
       register: logs_list
