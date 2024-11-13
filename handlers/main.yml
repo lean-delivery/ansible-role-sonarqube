@@ -10,6 +10,9 @@
       - Wait for migrate DB
       - Migrate DB
       - Wait for Sonarqube
+      - Show logs
+      - Debug
+      - Fail
     when: sonar_start_by_service | bool
     become: true
 
@@ -22,6 +25,9 @@
       - Wait for migrate DB
       - Migrate DB
       - Wait for Sonarqube
+      - Show logs
+      - Debug
+      - Fail
     when: not (sonar_start_by_service | bool)
 
   - name: Wait for migrate DB
@@ -52,3 +58,20 @@
     until: "'UP' in uri_result.content"
     retries: 40
     delay: 3
+    ignore_errors: true
+
+  - name: Show logs
+    ansible.builtin.shell: 'cat {{ sonar_installation }}/logs/*'
+    register: logs
+    changed_when: logs.rc != 0
+    when: "'UP' not in uri_result.content"
+
+  - name: Debug
+    ansible.builtin.debug:
+      var: logs.stdout
+    when: "'UP' not in uri_result.content"
+
+  - name: Fail
+    ansible.builtin.fail:
+      msg: SonarQube failed to start, see logs above
+    when: "'UP' not in uri_result.content"
