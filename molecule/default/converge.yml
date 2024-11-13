@@ -4,6 +4,10 @@
   roles:
     - role: ansible-role-sonarqube
       sonar_install_optional_plugins: true
+      sonar_default_plugins:
+        - 'https://github.com/SonarSource/sonar-dotnet/releases/download/9.10.0.77988/sonar-csharp-plugin-9.10.0.77988.jar'
+      sonar_default_excluded_plugins:
+        - '{{ sonar_plugins_path }}/sonar-csharp-plugin-9.32.0.97167.jar'
       sonar_set_jenkins_webhook: true
       sonar_restore_profiles: true
       sonar_web_password: your_new_secure_password
