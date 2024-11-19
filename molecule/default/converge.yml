@@ -1,15 +1,23 @@
 ---
 - name: Converge
   hosts: all
+  become: true
   roles:
+    - role: lean_delivery.java
+      java_major_version: 17
+      transport: repositories
+#    - role: geerlingguy.postgresql
     - role: ansible-role-sonarqube
-      sonar_install_optional_plugins: true
-      sonar_set_jenkins_webhook: true
-      sonar_restore_profiles: true
-      sonar_web_password: your_new_secure_password
-      change_password: true
-      sonar_web_old_password: admin
-      sonar_proxy_type:
+      sonar_db_password: superpass
+
+#      sonar_db:
+#        type: postgresql
+#        port: 5432
+#        options: ''
+#        host: localhost
+#        name: sonar
+#        user: sonar
+#        password: "{{ sonar_db_password }}"
       sonar_db:
         type: H2
         port:
@@ -18,4 +26,22 @@
         user:
         password:
         options:
+
+      sonar_web_password: magicpass
+
+      sonar_version: 10.7.0.96327
+      sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
+      sonar_proxy_server_name: sonarqube.org.com
+      sonar_install_recommended_plugins: false
+      sonar_install_optional_plugins: false
+
+      sonar_default_excluded_plugins:
+          - '{{ sonar_plugins_path }}/sonar-csharp-plugin-9.32.0.97167.jar'
+
+        # or i've also tried this and it does not seem to exclude it either.
+        # sonar_excluded_plugins:
+        #  - '{{ sonar_plugins_path }}/sonar-csharp-plugin-9.10.0.77988.jar'
+
+      change_password: true
+      sonar_migrate_db: false  # set to true if updating SonarQube to new version
       sonar_start_by_service: false
