@@ -205,7 +205,7 @@ flex_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.13.0.4905\
                 {% else %}2.7.0.2865\
                 {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.16.0.4008\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.19.0.4883\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
