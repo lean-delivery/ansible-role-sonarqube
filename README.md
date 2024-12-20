@@ -56,11 +56,13 @@ Requirements
    - 5 (2.12) - not covered by tests yet, should work
    - 6 (2.13)
    - 7 (2.14)
+   - 8 - 11  - not covered by tests yet, should work
  - **Supported SonarQube versions**:
    - 7.9.6 previous LTS
    - 8.9.10 previous LTS
-   - 9.9.7 LTS
+   - 9.9.8 LTA
    - 10.0 - 10.7
+   - 24.12
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9+)
@@ -77,6 +79,7 @@ Requirements
      - 18.04
      - 20.04 - not covered by tests yet, should work
      - 22.04 - not covered by tests yet, should work
+     - 24.04 - not covered by tests yet, should work
 
 Java, database, web server with self-signed certificate should be installed preliminarily. Use following galaxy roles:
   - lean_delivery.java
@@ -250,14 +253,14 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 10.7.0.96327
+    sonar_version: 24.12.0.100206
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins: 
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
-      - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.12.0.4568.jar'
+      - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.14.0.5032.jar'
     sonar_web_password: your_new_secure_password
     change_password: true
     sonar_web_old_password: admin
