@@ -211,7 +211,7 @@ text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.19.0.4883\
                 {% else %}0.0.0\
                 {% endif %}"
 
-dotnet_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}9.32.0.97167\
+dotnet_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}10.3.0.106239\
                   {% else %}9.0.0.68202\
                   {% endif %}"
 
@@ -332,8 +332,8 @@ sonar_default_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-iac-plugin/sonar-iac-plugin-{{ iac_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-config-plugin/sonar-config-plugin-{{ config_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-text-plugin/sonar-text-plugin-{{ text_pversion }}.jar'
-  - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-csharp-plugin-{{ dotnet_pversion }}.jar'
-  - 'https://github.com/SonarSource/sonar-dotnet/releases/download/{{ dotnet_pversion }}/sonar-vbnet-plugin-{{ dotnet_pversion }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-csharp-plugin/sonar-csharp-plugin-{{ dotnet_pversion }}.jar'
+  - 'https://binaries.sonarsource.com/Distribution/sonar-vbnet-plugin/sonar-vbnet-plugin-{{ dotnet_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-cayc-plugin/sonar-cayc-plugin-{{ cayc_pversion }}.jar'
   - 'https://binaries.sonarsource.com/Distribution/sonar-flex-plugin/sonar-flex-plugin-{{ flex_pversion }}.jar'
 
