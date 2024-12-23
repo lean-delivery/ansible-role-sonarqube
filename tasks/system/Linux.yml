@@ -91,10 +91,14 @@
         sonar_version is version("7.9.6", "==")
       - sonar_download
 
+  - name: Prepare exclusions
+    ansible.builtin.set_fact:
+      sonar_all_excluded_plugins_with_path: "{{ sonar_all_excluded_plugins | map('regex_replace', '^(.*)$', sonar_plugins_path + '/\\1') | list }}"
+
   - name: 'Install SonarQube {{ sonar_version }}'
     ansible.builtin.unarchive:
       src: '{{ sonar_download_path }}/sonarqube-{{ sonar_version }}.zip'
-      exclude: "{{ sonar_all_excluded_plugins }}"
+      exclude: "{{ sonar_all_excluded_plugins_with_path }}"
       dest: '{{ sonar_path }}'
       owner: '{{ sonar_user }}'
       group: '{{ sonar_group }}'
@@ -139,6 +143,14 @@
     when:
       - sonar_proxy_type == 'nginx'
 
+  - name: Filter plugins
+    ansible.builtin.set_fact:
+      sonar_all_plugins_with_exclusions: >-
+        {{
+          sonar_all_plugins if sonar_default_excluded_plugins | length == 0
+          else sonar_all_plugins | select('match', '^(?!.*(' + '|'.join(sonar_default_excluded_plugins) + ')).*$') | list
+        }}
+
   - name: Download plugins
     ansible.builtin.get_url:
       url: '{{ item }}'
@@ -151,7 +163,7 @@
     until: download_plugin_result is succeeded
     retries: 3
     delay: 5
-    loop: '{{ sonar_all_plugins }}'
+    loop: '{{ sonar_all_plugins_with_exclusions }}'
     notify:
       - Restart Sonarqube
       - Restart Sonarqube with script
