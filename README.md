@@ -260,7 +260,7 @@ Example Playbook
     sonar_optional_plugins: 
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
-      - '{{ sonar_plugins_path }}/sonar-flex-plugin-2.14.0.5032.jar'
+      - sonar-flex-plugin-2.14.0.5032.jar
     sonar_web_password: your_new_secure_password
     change_password: true
     sonar_web_old_password: admin
