@@ -81,13 +81,10 @@ pmd_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}3.5.1\
                {% else %}2.6\
                {% endif %}"
 
-findbugs_pversion: "{% if sonar_version is version(\"9.9\", \">=\") %}4.3.0\
+findbugs_pversion: "{% if sonar_version is version(\"9.9\", \">=\") %}4.4.2\
                     {% elif sonar_version is version(\"7.6\", \">=\") %}4.2.10\
                     {% else %}0.0.0\
                     {% endif %}"
-findbugs_prefix: "{% if findbugs_pversion is version(\"4.3.0\", \">=\") %}v\
-                  {% else %}\
-                  {% endif %}"
 
 jdepend_pversion: "{% if sonar_version is version(\"10.4\", \">=\") %}0.0.0\
                    {% else %}1.1.1\
@@ -290,7 +287,7 @@ sonar_recommended_plugins:
   - 'https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/{{ pmd_pversion }}/sonar-pmd-plugin-{{ pmd_pversion }}.jar'
 
   - "https://github.com/spotbugs/sonar-findbugs/releases/download/\
-    {{ findbugs_prefix }}{{ findbugs_pversion }}/sonar-findbugs-plugin-{{ findbugs_pversion }}.jar"
+    {{ findbugs_pversion }}/sonar-findbugs-plugin-{{ findbugs_pversion }}.jar"
 
   - "https://github.com/willemsrb/sonar-jdepend-plugin/releases/download/\
     sonar-jdepend-plugin-{{ jdepend_pversion }}/sonar-jdepend-plugin-{{ jdepend_pversion }}.jar"
