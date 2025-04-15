@@ -159,7 +159,7 @@ xml_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.13.0.5938\
                {% else %}0.0.0\
                {% endif %}"
 
-python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}4.25.0.19056\
+python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}4.26.0.19456\
                   {% elif sonar_version is version(\"7.9\", \">=\") %}4.1.0.11333\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
                   {% else %}0.0.0\
