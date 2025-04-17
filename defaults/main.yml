@@ -204,7 +204,7 @@ flex_pversion: "{% if sonar_version is version(\"10.7\", \">=\") %}2.14.0.5032\
                 {% else %}2.7.0.2865\
                 {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.19.0.4883\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.21.1.5779\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
@@ -660,6 +660,7 @@ sonar_excluded_plugins:
   - 'sonar-text-plugin-2.19.0.4883.jar' # 24.12
   - 'sonar-text-plugin-2.20.0.5038.jar' # 25.01
   - 'sonar-text-plugin-2.21.0.5225.jar' # 25.03
+  - 'sonar-text-plugin-2.21.1.5779.jar' # 25.04
 
   - 'sonar-csharp-plugin-7.15.0.8572.jar'
   - 'sonar-csharp-plugin-8.22.0.31243.jar'

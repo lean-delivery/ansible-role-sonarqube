@@ -261,7 +261,7 @@ Example Playbook
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
       - sonar-flex-plugin-2.14.0.5032.jar
-    sonar_web_password: your_new_secure_password
+    sonar_web_password: your_new_Secure_passw0rd
     change_password: true
     sonar_web_old_password: admin
     sonar_migrate_db: false  # set to true if updating SonarQube to new version 
