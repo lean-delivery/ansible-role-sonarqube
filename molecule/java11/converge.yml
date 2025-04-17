@@ -6,7 +6,7 @@
       sonar_install_optional_plugins: true
       sonar_set_jenkins_webhook: true
       sonar_restore_profiles: true
-      sonar_web_password: your_new_secure_password
+      sonar_web_password: your_new_Secure_passw0rd
       change_password: true
       sonar_web_old_password: admin
       sonar_proxy_type:

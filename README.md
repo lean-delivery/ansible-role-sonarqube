@@ -61,8 +61,8 @@ Requirements
    - 7.9.6 previous LTS
    - 8.9.10 previous LTS
    - 9.9.8 LTA
-   - 10.0 - 10.7
-   - 24.12
+   - 10.7
+   - 24.12 - 25.04
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9+)
@@ -253,7 +253,7 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 24.12.0.100206
+    sonar_version: 25.4.0.105899
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
@@ -261,7 +261,7 @@ Example Playbook
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
       - sonar-flex-plugin-2.14.0.5032.jar
-    sonar_web_password: your_new_secure_password
+    sonar_web_password: your_new_Secure_passw0rd
     change_password: true
     sonar_web_old_password: admin
     sonar_migrate_db: false  # set to true if updating SonarQube to new version 
