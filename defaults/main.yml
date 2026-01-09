@@ -200,7 +200,8 @@ cayc_pversion: "{% if sonar_version is version(\"8.9\", \">=\") %}2.4.0.2018\
                 {% else %}0.0.0\
                 {% endif %}"
 
-flex_pversion: "{% if sonar_version is version(\"10.7\", \">=\") %}2.14.0.5032\
+flex_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.16.0.6009\
+                {% elif sonar_version is version(\"10.7\", \">=\") %}2.14.0.5032\
                 {% elif sonar_version is version(\"10.1\", \">=\") %}2.13.0.4905\
                 {% elif sonar_version is version(\"9.9\", \">=\") %}2.8.0.3166\
                 {% else %}2.7.0.2865\
