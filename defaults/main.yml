@@ -151,7 +151,7 @@ git_pversion: "{% if sonar_version is version(\"8.5.0.37579\", \">=\") %}0.0.0\
                {% else %}0.0.0\
                {% endif %}"
 
-xml_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.14.2.7437\
+xml_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.15.0.7513\
                {% elif sonar_version is version(\"9.9\", \">=\") %}2.10.0.4108\
                {% elif sonar_version is version(\"8.9\", \">=\") %}2.7.0.3820\
                {% elif sonar_version is version(\"7.0\", \">=\") %}2.4.0.3273\
