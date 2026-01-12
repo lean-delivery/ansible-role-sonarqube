@@ -1,6 +1,6 @@
 ---
 # defaults file for sonarqube
-sonar_version: 25.6.0.109173
+sonar_version: 25.7.0.110598
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
@@ -208,7 +208,7 @@ flex_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.16.0.6009\
                 {% else %}2.7.0.2865\
                 {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.24.1.6530\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.24.2.6631\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
@@ -445,6 +445,7 @@ sonar_excluded_plugins:
   - 'sonar-java-plugin-8.11.0.38440.jar' # 25.04
   - 'sonar-java-plugin-8.13.0.38826.jar' # 25.05
   - 'sonar-java-plugin-8.14.1.39293.jar' # 25.06
+  - 'sonar-java-plugin-8.16.0.39645.jar' # 25.07
 
   - 'sonar-javascript-plugin-4.1.0.6085.jar'
   - 'sonar-javascript-plugin-4.2.0.6476.jar'
@@ -548,6 +549,7 @@ sonar_excluded_plugins:
   - 'sonar-python-plugin-5.0.0.20426.jar' # 25.03
   - 'sonar-python-plugin-5.2.0.20808.jar' # 25.04
   - 'sonar-python-plugin-5.4.0.22255.jar' # 25.06
+  - 'sonar-python-plugin-5.5.0.23291.jar' # 25.07
 
   - 'sonar-kotlin-plugin-1.0.1.965.jar'
   - 'sonar-kotlin-plugin-1.2.1.2009.jar'
@@ -684,6 +686,7 @@ sonar_excluded_plugins:
   - 'sonar-text-plugin-2.21.0.5225.jar' # 25.03
   - 'sonar-text-plugin-2.21.1.5779.jar' # 25.04
   - 'sonar-text-plugin-2.24.1.6530.jar' # 25.06
+  - 'sonar-text-plugin-2.24.2.6631.jar' # 25.07
 
   - 'sonar-csharp-plugin-7.15.0.8572.jar'
   - 'sonar-csharp-plugin-8.22.0.31243.jar'
@@ -711,6 +714,7 @@ sonar_excluded_plugins:
   - 'sonar-csharp-plugin-10.7.0.110445.jar' # 25.03
   - 'sonar-csharp-plugin-10.9.0.115408.jar' # 25.05
   - 'sonar-csharp-plugin-10.10.1.116480.jar' # 25.06
+  - 'sonar-csharp-plugin-10.11.0.117924.jar' # 25.07
 
   - 'sonar-vbnet-plugin-7.15.0.8572.jar'
   - 'sonar-vbnet-plugin-8.22.0.31243.jar'
@@ -738,6 +742,7 @@ sonar_excluded_plugins:
   - 'sonar-vbnet-plugin-10.7.0.110445.jar' # 25.03
   - 'sonar-vbnet-plugin-10.9.0.115408.jar' # 25.05
   - 'sonar-vbnet-plugin-10.10.1.116480.jar' # 25.06
+  - 'sonar-vbnet-plugin-10.11.0.117924.jar' # 25.07
 
   - 'sonar-cayc-plugin-2.0.0.334.jar' # 10.1
   - 'sonar-cayc-plugin-2.1.0.500.jar' # 10.2
