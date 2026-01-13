@@ -1,6 +1,6 @@
 ---
 # defaults file for sonarqube
-sonar_version: 25.9.0.112764
+sonar_version: 25.10.0.114319
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
@@ -159,7 +159,7 @@ xml_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.15.0.7513\
                {% else %}0.0.0\
                {% endif %}"
 
-python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}5.8.0.24785\
+python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}5.10.0.25429\
                   {% elif sonar_version is version(\"7.9\", \">=\") %}4.1.0.11333\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
                   {% else %}0.0.0\
@@ -191,7 +191,7 @@ php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.54.0.15452\
 
 jacoco_pversion: 1.4.0.4946
 
-iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.49.0.16030\
+iac_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}1.50.0.16452\
                {% elif sonar_version is version(\"8.9\", \">=\") %}1.16.0.3845\
                {% else %}0.0.0\
                {% endif %}"
@@ -209,7 +209,7 @@ flex_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.16.0.6009\
                 {% else %}2.7.0.2865\
                 {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.27.0.7705\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.30.0.8328\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
@@ -448,6 +448,7 @@ sonar_excluded_plugins:
   - 'sonar-java-plugin-8.14.1.39293.jar' # 25.06
   - 'sonar-java-plugin-8.16.0.39645.jar' # 25.07
   - 'sonar-java-plugin-8.18.0.40025.jar' # 25.08
+  - 'sonar-java-plugin-8.19.0.40387.jar' # 25.10
 
   - 'sonar-javascript-plugin-4.1.0.6085.jar'
   - 'sonar-javascript-plugin-4.2.0.6476.jar'
@@ -487,6 +488,7 @@ sonar_excluded_plugins:
   - 'sonar-javascript-plugin-10.23.0.32711-multi.jar' # 25.06
   - 'sonar-javascript-plugin-10.25.0.33900-multi.jar' # 25.08
   - 'sonar-javascript-plugin-11.3.0.34350-multi.jar' # 25.9
+  - 'sonar-javascript-plugin-11.4.1.34873-multi.jar' # 25.10
 
   - 'sonar-typescript-plugin-1.7.0.2893.jar'
   - 'sonar-typescript-plugin-1.8.0.3332.jar'
@@ -556,6 +558,7 @@ sonar_excluded_plugins:
   - 'sonar-python-plugin-5.5.0.23291.jar' # 25.07
   - 'sonar-python-plugin-5.7.0.24163.jar' # 25.08
   - 'sonar-python-plugin-5.8.0.24785.jar' # 25.9
+  - 'sonar-python-plugin-5.10.0.25429.jar' # 25.10
 
   - 'sonar-kotlin-plugin-1.0.1.965.jar'
   - 'sonar-kotlin-plugin-1.2.1.2009.jar'
@@ -675,6 +678,7 @@ sonar_excluded_plugins:
   - 'sonar-iac-plugin-1.47.0.15287.jar' # 25.06
   - 'sonar-iac-plugin-1.48.0.15768.jar' # 25.08
   - 'sonar-iac-plugin-1.49.0.16030.jar' # 25.09
+  - 'sonar-iac-plugin-1.50.0.16452.jar' # 25.10
 
   - 'sonar-config-plugin-1.1.0.185.jar'
   - 'sonar-config-plugin-1.2.0.267.jar'
@@ -700,6 +704,7 @@ sonar_excluded_plugins:
   - 'sonar-text-plugin-2.24.2.6631.jar' # 25.07
   - 'sonar-text-plugin-2.26.0.7517.jar' # 25.08
   - 'sonar-text-plugin-2.27.0.7705.jar' # 25.9
+  - 'sonar-text-plugin-2.30.0.8328.jar' # 25.10
 
   - 'sonar-csharp-plugin-7.15.0.8572.jar'
   - 'sonar-csharp-plugin-8.22.0.31243.jar'
