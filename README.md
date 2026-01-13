@@ -58,11 +58,11 @@ Requirements
    - 7 (2.14)
    - 8 - 11  - not covered by tests yet, should work
  - **Supported SonarQube versions**:
-   - 7.9.6 previous LTS
-   - 8.9.10 previous LTS
-   - 9.9.8 LTA
+   - 7.9.6
+   - 8.9.10
+   - 9.9.8
    - 10.7
-   - 24.12 - 25.08
+   - 24.12 - 25.9
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9+)
