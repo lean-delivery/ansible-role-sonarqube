@@ -62,7 +62,7 @@ Requirements
    - 8.9.10
    - 9.9.8
    - 10.7
-   - 24.12 - 25.11
+   - 24.12 - 25.12
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9+)
