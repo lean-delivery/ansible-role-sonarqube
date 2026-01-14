@@ -1,6 +1,6 @@
 ---
 # defaults file for sonarqube
-sonar_version: 25.12.0.117093
+sonar_version: 26.1.0.118079
 
 sonar_path: /opt/sonarqube
 sonar_user: sonar
@@ -695,6 +695,7 @@ sonar_excluded_plugins:
   - 'sonar-iac-plugin-1.50.0.16452.jar' # 25.10
   - 'sonar-iac-plugin-1.51.0.16714.jar' # 25.11
   - 'sonar-iac-plugin-2.2.0.18377.jar' # 25.12
+  - 'sonar-iac-plugin-2.4.0.18716.jar' # 26.1
 
   - 'sonar-config-plugin-1.1.0.185.jar'
   - 'sonar-config-plugin-1.2.0.267.jar'
@@ -723,6 +724,7 @@ sonar_excluded_plugins:
   - 'sonar-text-plugin-2.30.0.8328.jar' # 25.10
   - 'sonar-text-plugin-2.31.0.8443.jar' # 25.11
   - 'sonar-text-plugin-2.34.0.9939.jar' # 25.12
+  - 'sonar-text-plugin-2.36.0.10152.jar' # 26.1
 
   - 'sonar-csharp-plugin-7.15.0.8572.jar'
   - 'sonar-csharp-plugin-8.22.0.31243.jar'
@@ -753,6 +755,7 @@ sonar_excluded_plugins:
   - 'sonar-csharp-plugin-10.11.0.117924.jar' # 25.07
   - 'sonar-csharp-plugin-10.15.0.120848.jar' # 25.08
   - 'sonar-csharp-plugin-10.16.2.130377.jar' # 25.12
+  - 'sonar-csharp-plugin-10.17.0.131074.jar' # 26.1
 
   - 'sonar-vbnet-plugin-7.15.0.8572.jar'
   - 'sonar-vbnet-plugin-8.22.0.31243.jar'
@@ -783,6 +786,7 @@ sonar_excluded_plugins:
   - 'sonar-vbnet-plugin-10.11.0.117924.jar' # 25.07
   - 'sonar-vbnet-plugin-10.15.0.120848.jar' # 25.08
   - 'sonar-vbnet-plugin-10.16.2.130377.jar' # 25.12
+  - 'sonar-vbnet-plugin-10.17.0.131074.jar' # 26.1
 
   - 'sonar-cayc-plugin-2.0.0.334.jar' # 10.1
   - 'sonar-cayc-plugin-2.1.0.500.jar' # 10.2
