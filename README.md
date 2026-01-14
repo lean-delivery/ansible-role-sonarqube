@@ -60,10 +60,11 @@ Requirements
    - 8.9.10
    - 9.9.8
    - 10.7
-   - 24.12 - 25.12
+   - 24.12 - 26.1
  - **Supported Java**:
    - 11
    - 17 (use for SonarQube 9.9+)
+   - 21 (use for SonarQube 26.1+)
  - **Supported databases**
    - PostgreSQL
    - MySQL (not recommended)
@@ -238,8 +239,8 @@ Example Playbook
   become: true
   vars:
     # java
-    java_major_version: 17
-    transport: repositories
+    java_major_version: 21
+    java_distribution: zulu
     # postgresql
     postgresql_users:
       - name: sonar
@@ -251,7 +252,7 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 25.12.0.117093
+    sonar_version: 26.1.0.118079
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
