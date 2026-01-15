@@ -191,7 +191,7 @@ php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.54.0.15452\
 
 jacoco_pversion: 1.4.0.4946
 
-iac_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.2.0.18377\
+iac_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.4.0.18716\
                {% elif sonar_version is version(\"9.6\", \">=\") %}1.51.0.16714\
                {% elif sonar_version is version(\"8.9\", \">=\") %}1.16.0.3845\
                {% else %}0.0.0\
@@ -210,7 +210,7 @@ flex_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.16.0.6009\
                 {% else %}2.7.0.2865\
                 {% endif %}"
 
-text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.34.0.9939\
+text_pversion: "{% if sonar_version is version(\"9.8\", \">=\") %}2.36.0.10152\
                 {% elif sonar_version is version(\"8.9\", \">=\") %}1.2.0.510\
                 {% else %}0.0.0\
                 {% endif %}"
