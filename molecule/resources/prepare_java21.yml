@@ -1,0 +1,7 @@
+---
+- name: Prepare pre-requisites
+  hosts: all
+  roles:
+    - role: lean_delivery.java
+      java_major_version: 21
+      java_distribution: zulu

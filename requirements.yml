@@ -1,6 +1,7 @@
 ---
-- src: lean_delivery.java
-  version: 7.1.0
+- name: lean_delivery.java
+  src: https://github.com/lean-delivery/ansible-role-java
+  version: 7.2.5
 - src: geerlingguy.postgresql
   version: 3.4.2
 - src: jdauphant.ssl-certs
