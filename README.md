@@ -56,7 +56,7 @@ Requirements
    - 5 (2.12) - not covered by tests yet, should work
    - 6 (2.13)
    - 7 (2.14)
-   - 8 - 11  - not covered by tests yet, should work
+   - 8 - 13  - not covered by tests yet, should work
  - **Supported SonarQube versions**:
    - 7.9.6
    - 8.9.10
@@ -253,14 +253,14 @@ Example Playbook
     ssl_certs_path_group: nginx
     ssl_certs_common_name: sonarqube.example.com
     # sonarqube
-    sonar_version: 25.4.0.105899
+    sonar_version: 25.12.0.117093
     sonar_check_url: 'http://{{ ansible_fqdn }}:9000'
     sonar_proxy_server_name: sonarqube.example.com
     sonar_install_optional_plugins: true
     sonar_optional_plugins: 
       - 'https://github.com/adnovum/sonar-build-breaker/releases/download/{{ build_breaker_epversion }}'
     sonar_default_excluded_plugins:
-      - sonar-flex-plugin-2.14.0.5032.jar
+      - sonar-flex-plugin-2.16.0.6009.jar
     sonar_web_password: your_new_Secure_passw0rd
     change_password: true
     sonar_web_old_password: admin
