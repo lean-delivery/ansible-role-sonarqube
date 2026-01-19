@@ -182,6 +182,36 @@
       - Restart Sonarqube
       - Restart Sonarqube with script
 
+  - name: 'Download web app'
+    ansible.builtin.get_url:
+      url: 'https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/{{ branch_pversion }}/sonarqube-webapp.zip'
+      dest: '{{ sonar_download_path }}'
+      mode: 0644
+      owner: '{{ sonar_user }}'
+      group: '{{ sonar_group }}'
+    register: download_web_result
+    until: download_web_result is succeeded
+    retries: 3
+    delay: 5
+    when:
+      - branch_plugin_url in sonar_all_plugins
+      - branch_pversion is version("1.24.0", ">=")
+
+  - name: Replace web directory
+    ansible.builtin.unarchive:
+      src: '{{ sonar_download_path }}/sonarqube-webapp.zip'
+      dest: '{{ sonar_installation }}/web'
+      mode: 0755
+      owner: '{{ sonar_user }}'
+      group: '{{ sonar_group }}'
+      remote_src: true
+    when:
+      - branch_plugin_url in sonar_all_plugins
+      - branch_pversion is version("1.24.0", ">=")
+    notify:
+      - Restart Sonarqube
+      - Restart Sonarqube with script
+
   - name: Flush handlers
     ansible.builtin.meta: flush_handlers
 
