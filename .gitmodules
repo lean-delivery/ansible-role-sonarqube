@@ -88,9 +88,6 @@
 [submodule "submodules/stash-plugin"]
 	path = submodules/stash-plugin
 	url = https://github.com/AmadeusITGroup/sonar-stash.git
-[submodule "submodules/branch-plugin"]
-	path = submodules/branch-plugin
-	url = https://github.com/mc1arke/sonarqube-community-branch-plugin.git
 [submodule "submodules/build-breaker-plugin"]
 	path = submodules/build-breaker-plugin
 	url = https://github.com/adnovum/sonar-build-breaker.git
