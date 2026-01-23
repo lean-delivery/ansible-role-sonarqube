@@ -9,7 +9,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
+    env:
+      SECRET: ${{ secrets.GALAXY_API_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,4 +35,4 @@ jobs:
       - name: Publish to Ansible Galaxy
         run: |
           ansible-galaxy role publish "${{ steps.find_tarball.outputs.tarball }}" \
-            --api-key "${{ secrets.GALAXY_API_KEY }}"
+            --api-key "$SECRET"
