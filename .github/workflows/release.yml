@@ -1,5 +1,3 @@
-# https://github.com/marketplace/actions/publish-ansible-role-to-galaxy
-
 ---
 name: Publish Ansible Role
 
@@ -20,7 +18,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: galaxy
-        uses: robertdebock/galaxy-action@1.2.0
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          galaxy_api_key: "$SECRET"
+          python-version: "3.x"
+
+      - name: Install Ansible
+        run: pip install ansible
+
+      - name: Publish to Ansible Galaxy
+        run: ansible-galaxy role import --api-key $SECRET
