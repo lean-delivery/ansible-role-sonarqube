@@ -2,8 +2,7 @@ sonarqube role
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-sonarqube/master/LICENSE)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.sonarqube-blue.svg)](https://galaxy.ansible.com/lean_delivery/sonarqube)
-![Ansible](https://img.shields.io/ansible/role/d/29212.svg)
-![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29212%2F&query=$.min_ansible_version)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=lean-delivery_ansible-role-sonarqube)](https://sonarcloud.io/summary/new_code?id=lean-delivery_ansible-role-sonarqube)
 
 This role installs SonarQube with extended set of plugins. Playbook example below also uses openJDK, postgreSQL database and nginx web server with enabled https.
 
