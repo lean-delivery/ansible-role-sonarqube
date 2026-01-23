@@ -238,8 +238,6 @@ auth_bitbucket_epversion: "{% if sonar_version is version(\"9.2\", \">=\") %}\
   https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar\
                            {% endif %}"
 
-bitbucket_pversion: 1.3.0
-
 stash_pversion: 1.6.0
 
 auth_gitlab_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}0.0.0\
@@ -367,9 +365,6 @@ sonar_optional_plugins:
   - 'https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-{{ auth_github_pversion }}.jar'
 
   - '{{ auth_bitbucket_epversion }}'
-
-#   Plugin is not supported in SonarQube 7.7+
-  - 'https://github.com/Soyn/sonar-bitbucket-plugin/releases/download/v{{ bitbucket_pversion }}/sonar-bitbucket-plugin-{{ bitbucket_pversion }}.jar'
 
 #   Plugin is not supported in SonarQube 7.7+
   - 'https://github.com/AmadeusITGroup/sonar-stash/releases/download/{{ stash_pversion }}/sonar-stash-plugin-{{ stash_pversion }}.jar'

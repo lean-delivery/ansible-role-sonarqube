@@ -28,7 +28,6 @@ Also you may install optional plugins. Be carefull, some of them are not support
   - qualinsight-sonarqube-badges
   - sonar-auth-github-plugin
   - sonar-auth-bitbucket-plugin
-  - sonar-bitbucket-plugin (for Bitbucket Cloud)
   - sonar-stash-plugin (for Bitbucket Server)
   - sonar-auth-gitlab-plugin
   - sonar-gitlab-plugin

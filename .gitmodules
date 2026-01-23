@@ -73,9 +73,6 @@
 [submodule "submodules/auth-bitbucket-plugin"]
 	path = submodules/auth-bitbucket-plugin
 	url = https://github.com/SonarSource/sonar-auth-bitbucket.git
-[submodule "submodules/bitbucket-plugin"]
-	path = submodules/bitbucket-plugin
-	url = https://github.com/mibexsoftware/sonar-bitbucket-plugin.git
 [submodule "submodules/auth-gitlab-plugin"]
 	path = submodules/auth-gitlab-plugin
 	url = https://github.com/gabrie-allaigre/sonar-auth-gitlab-plugin.git
