@@ -1,7 +1,6 @@
 ---
 galaxy_info:
   role_name: sonarqube
-  namespace: lean_delivery_team
   author: Lean Delivery Team <team@lean-delivery.com>
   description: Lean Delivery SonarQube server install
   company: EPAM Systems
