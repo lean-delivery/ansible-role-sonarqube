@@ -38,7 +38,7 @@ provisioner:
       python3:
         ansible_python_interpreter: /usr/bin/python3
   playbooks:
-    prepare: ../resources/prepare.yml
+    prepare: ../resources/prepare_java21.yml
     verify: ../resources/tests/verify.yml
 scenario:
   name: default

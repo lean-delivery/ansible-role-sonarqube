@@ -1,0 +1,12 @@
+---
+- name: Prepare pre-requisites
+  hosts: all
+  pre_tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+  roles:
+    - role: lean_delivery.java
+      java_major_version: 21
+      java_distribution: zulu
