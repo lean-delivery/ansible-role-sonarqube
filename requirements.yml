@@ -1,6 +1,6 @@
 ---
 - src: lean_delivery.java
-  version: 7.1.0
+  version: 7.2.5
 - src: geerlingguy.postgresql
   version: 3.4.2
 - src: jdauphant.ssl-certs
