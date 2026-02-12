@@ -2,10 +2,9 @@
 name: Publish Ansible Role
 
 on:
-  - push
-#  push:
-#    tags:
-#      - "*"
+  push:
+    tags:
+      - "*"
 
 jobs:
   publish:
