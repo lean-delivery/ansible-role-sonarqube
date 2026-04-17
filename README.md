@@ -98,11 +98,11 @@ Role Variables
   - `sonar_group` - group of SonarQube user\
     default: sonar
   - `sonar_nofile` - file descriptors amount that user running SonarQube can open\
-    default: 65536
+    default: 131072
   - `sonar_nproc` - threads amount that user running SonarQube can open\
-    default: 4096
+    default: 8192
   - `sonar_max_map_count` - mmap counts limit required for Elasticsearch\
-    default: 262144
+    default: 524288
   - `sonar_log_level` - Logging level of SonarQube server\
     default: INFO
   - `sonar_java_opts`:
@@ -135,7 +135,7 @@ Role Variables
       - `options`\
         default:
   - `sonar_store` - sonarqube artifact provider\
-    default: https://sonarsource.bintray.com/Distribution/sonarqube
+    default: https://binaries.sonarsource.com/Distribution/sonarqube
   - `sonar_check_url` - url for SonarQube startup verification\
     default: http://{{ web.host }}:{{ web.port }}
   - `sonar_download` - is sonarqube.zip download required. Set to false when not possible to download zip and put zip to sonar_download_path manually before playbook run.
