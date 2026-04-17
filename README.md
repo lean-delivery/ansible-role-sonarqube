@@ -20,6 +20,7 @@ In addition to default plugins included into SonarQube role could install follow
   - sonar-json-plugin
   - sonar-yaml-plugin
   - sonar-ansible-plugin
+  - sonar-ansible-extras-plugin
   - sonar-shellcheck-plugin
   
 Also you may install optional plugins. Be carefull, some of them are not supported in latest SonarQube versions:
