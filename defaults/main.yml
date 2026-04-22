@@ -2,6 +2,8 @@
 # defaults file for sonarqube
 sonar_version: 26.2.0.119303
 
+sonar_binaries_url: https://binaries.sonarsource.com/Distribution
+
 sonar_path: /opt/sonarqube
 sonar_user: sonar
 sonar_group: sonar
@@ -46,7 +48,7 @@ sonar_db:
 #            useSSL=false"
 
 # sonarqube artifact provider
-sonar_store: https://binaries.sonarsource.com/Distribution/sonarqube
+sonar_store: '{{ sonar_binaries_url }}/sonarqube'
 
 # need to use http for self-signed certificates
 sonar_check_url: http://{{ web.host }}:{{ web.port }}
@@ -234,9 +236,9 @@ auth_github_pversion: "{% if sonar_version is version(\"8.0\", \">=\") %}0.0.0\
                        {% endif %}"
 
 auth_bitbucket_epversion: "{% if sonar_version is version(\"9.2\", \">=\") %}\
-  https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-0.0.0.jar\
+  {{ sonar_binaries_url }}/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-0.0.0.jar\
                            {% elif sonar_version is version(\"7.2\", \">=\") %}\
-  https://binaries.sonarsource.com/Distribution/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar\
+  {{ sonar_binaries_url }}/sonar-auth-bitbucket-plugin/sonar-auth-bitbucket-plugin-1.1.0.381.jar\
                            {% else %}\
   https://github.com/SonarSource/sonar-auth-bitbucket/releases/download/1.0/sonar-auth-bitbucket-plugin-1.0.jar\
                            {% endif %}"
@@ -326,24 +328,24 @@ sonar_recommended_plugins:
 
 sonar_update_default_plugins: true
 sonar_default_plugins:
-  - 'https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-{{ java_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-{{ typescript_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-{{ git_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-{{ xml_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-{{ python_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-kotlin-plugin/sonar-kotlin-plugin-{{ kotlin_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-css-plugin/sonar-css-plugin-{{ css_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-{{ html_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-{{ php_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-jacoco-plugin/sonar-jacoco-plugin-{{ jacoco_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-iac-plugin/sonar-iac-plugin-{{ iac_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-config-plugin/sonar-config-plugin-{{ config_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-text-plugin/sonar-text-plugin-{{ text_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-csharp-plugin/sonar-csharp-plugin-{{ dotnet_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-vbnet-plugin/sonar-vbnet-plugin-{{ dotnet_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-cayc-plugin/sonar-cayc-plugin-{{ cayc_pversion }}.jar'
-  - 'https://binaries.sonarsource.com/Distribution/sonar-flex-plugin/sonar-flex-plugin-{{ flex_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-java-plugin/sonar-java-plugin-{{ java_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-javascript-plugin/sonar-javascript-plugin-{{ javascript_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-typescript-plugin/sonar-typescript-plugin-{{ typescript_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-scm-git-plugin/sonar-scm-git-plugin-{{ git_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-xml-plugin/sonar-xml-plugin-{{ xml_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-python-plugin/sonar-python-plugin-{{ python_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-kotlin-plugin/sonar-kotlin-plugin-{{ kotlin_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-css-plugin/sonar-css-plugin-{{ css_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-html-plugin/sonar-html-plugin-{{ html_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-php-plugin/sonar-php-plugin-{{ php_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-jacoco-plugin/sonar-jacoco-plugin-{{ jacoco_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-iac-plugin/sonar-iac-plugin-{{ iac_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-config-plugin/sonar-config-plugin-{{ config_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-text-plugin/sonar-text-plugin-{{ text_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-csharp-plugin/sonar-csharp-plugin-{{ dotnet_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-vbnet-plugin/sonar-vbnet-plugin-{{ dotnet_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-cayc-plugin/sonar-cayc-plugin-{{ cayc_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-flex-plugin/sonar-flex-plugin-{{ flex_pversion }}.jar'
 
 sonar_install_optional_plugins: false
 
@@ -360,7 +362,7 @@ sonar_optional_plugins:
     qualinsight-plugins-sonarqube-badges-{{ badges_pversion }}/qualinsight-sonarqube-badges-{{ badges_pversion }}.jar"
 
 #   Plugin is not supported in SonarQube 8+
-  - 'https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-{{ auth_github_pversion }}.jar'
+  - '{{ sonar_binaries_url }}/sonar-auth-github-plugin/sonar-auth-github-plugin-{{ auth_github_pversion }}.jar'
 
   - '{{ auth_bitbucket_epversion }}'
 

@@ -134,8 +134,10 @@ Role Variables
         default: sonar
       - `options`\
         default:
+  - `sonar_binaries_url` - SonarSource binaries base URL\
+    default: https://binaries.sonarsource.com/Distribution
   - `sonar_store` - sonarqube artifact provider\
-    default: https://binaries.sonarsource.com/Distribution/sonarqube
+    default: {{ sonar_binaries_url }}/sonarqube
   - `sonar_check_url` - url for SonarQube startup verification\
     default: http://{{ web.host }}:{{ web.port }}
   - `sonar_download` - is sonarqube.zip download required. Set to false when not possible to download zip and put zip to sonar_download_path manually before playbook run.
