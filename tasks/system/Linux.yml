@@ -104,9 +104,7 @@
       group: '{{ sonar_group }}'
       remote_src: true
       creates: '{{ sonar_installation }}/conf/wrapper.conf'
-    notify:
-      - Restart Sonarqube
-      - Restart Sonarqube with script
+    notify: "{{ 'Restart Sonarqube' if sonar_start_by_service | bool else 'Restart Sonarqube with script' }}"
 
   - name: Render sonar.properties
     ansible.builtin.template:
@@ -114,9 +112,7 @@
       dest: '{{ sonar_installation }}/conf/sonar.properties'
       mode: 0400
       owner: '{{ sonar_user }}'
-    notify:
-      - Restart Sonarqube
-      - Restart Sonarqube with script
+    notify: "{{ 'Restart Sonarqube' if sonar_start_by_service | bool else 'Restart Sonarqube with script' }}"
 
   - name: Render sonarqube.service
     ansible.builtin.template:
@@ -124,9 +120,7 @@
       dest: /etc/systemd/system/sonarqube.service
       mode: 0444
       owner: '{{ sonar_user }}'
-    notify:
-      - Restart Sonarqube
-      - Restart Sonarqube with script
+    notify: "{{ 'Restart Sonarqube' if sonar_start_by_service | bool else 'Restart Sonarqube with script' }}"
 
   - name: Make sure template destination directory exists
     ansible.builtin.file:
@@ -164,9 +158,7 @@
     retries: 3
     delay: 5
     loop: '{{ sonar_all_plugins_with_exclusions }}'
-    notify:
-      - Restart Sonarqube
-      - Restart Sonarqube with script
+    notify: "{{ 'Restart Sonarqube' if sonar_start_by_service | bool else 'Restart Sonarqube with script' }}"
 
   - name: Copy branch plugin
     ansible.builtin.copy:
@@ -178,9 +170,7 @@
       - branch_plugin_url in sonar_all_plugins
       - branch_pversion is version("1.2.0", ">=")
       - branch_pversion is version("1.7.0", "<=")
-    notify:
-      - Restart Sonarqube
-      - Restart Sonarqube with script
+    notify: "{{ 'Restart Sonarqube' if sonar_start_by_service | bool else 'Restart Sonarqube with script' }}"
 
   - name: 'Download web app'
     ansible.builtin.get_url:
@@ -208,9 +198,7 @@
     when:
       - branch_plugin_url in sonar_all_plugins
       - branch_pversion is version("1.24.0", ">=")
-    notify:
-      - Restart Sonarqube
-      - Restart Sonarqube with script
+    notify: "{{ 'Restart Sonarqube' if sonar_start_by_service | bool else 'Restart Sonarqube with script' }}"
 
   - name: Flush handlers
     ansible.builtin.meta: flush_handlers
