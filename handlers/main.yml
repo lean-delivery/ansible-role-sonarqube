@@ -18,7 +18,7 @@
 
   # temp task, see https://github.com/lean-delivery/ansible-role-sonarqube/issues/3026
   - name: Restart Sonarqube with script
-    ansible.builtin.command: 'sudo -u {{ sonar_user }} {{ sonar_installation }}/bin/linux-x86-64/sonar.sh restart'
+    ansible.builtin.command: 'sudo -u {{ sonar_user }} bash -x {{ sonar_installation }}/bin/linux-x86-64/sonar.sh restart'
     register: restart_result
     changed_when: restart_result.rc == 0
     notify:
