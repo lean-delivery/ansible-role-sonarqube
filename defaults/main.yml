@@ -161,7 +161,19 @@ xml_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.15.0.7513\
                {% else %}0.0.0\
                {% endif %}"
 
-python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}5.14.2.29072\
+python_pversion: "{% if sonar_version is version(\"25.12\", \">=\") %}5.14.2.29072\
+                  {% elif sonar_version is version(\"25.11\", \">=\") %}5.12.0.26629\
+                  {% elif sonar_version is version(\"25.10\", \">=\") %}5.10.0.25429\
+                  {% elif sonar_version is version(\"25.9\", \">=\") %}5.8.0.24785\
+                  {% elif sonar_version is version(\"25.08\", \">=\") %}5.7.0.24163\
+                  {% elif sonar_version is version(\"25.07\", \">=\") %}5.5.0.23291\
+                  {% elif sonar_version is version(\"25.06\", \">=\") %}5.4.0.22255\
+                  {% elif sonar_version is version(\"25.04\", \">=\") %}5.2.0.20808\
+                  {% elif sonar_version is version(\"25.03\", \">=\") %}5.0.0.20426\
+                  {% elif sonar_version is version(\"25.02\", \">=\") %}4.26.0.19456\
+                  {% elif sonar_version is version(\"25.01\", \">=\") %}4.25.0.19056\
+                  {% elif sonar_version is version(\"24.12\", \">=\") %}4.24.0.18631\
+                  {% elif sonar_version is version(\"9.6\", \">=\") %}4.22.0.16914\
                   {% elif sonar_version is version(\"7.9\", \">=\") %}4.1.0.11333\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
                   {% else %}0.0.0\
