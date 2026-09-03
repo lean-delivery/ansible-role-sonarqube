@@ -191,7 +191,7 @@ php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.54.0.15452\
                {% else %}0.0.0\
                {% endif %}"
 
-jacoco_pversion: 1.5.0.5174
+jacoco_pversion: 1.6.0.5741
 
 iac_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.5.0.18803\
                {% elif sonar_version is version(\"9.6\", \">=\") %}1.51.0.16714\
