@@ -161,7 +161,7 @@ xml_pversion: "{% if sonar_version is version(\"10.1\", \">=\") %}2.15.0.7513\
                {% else %}0.0.0\
                {% endif %}"
 
-python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}5.14.2.29072\
+python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}5.27.0.35548\
                   {% elif sonar_version is version(\"7.9\", \">=\") %}4.1.0.11333\
                   {% elif sonar_version is version(\"7.0\", \">=\") %}1.14.1.3143\
                   {% else %}0.0.0\
@@ -565,6 +565,12 @@ sonar_excluded_plugins:
   - 'sonar-python-plugin-5.10.0.25429.jar' # 25.10
   - 'sonar-python-plugin-5.12.0.26629.jar' # 25.11
   - 'sonar-python-plugin-5.14.2.29072.jar' # 25.12
+  - 'sonar-python-plugin-5.18.0.31561.jar' # 26.3
+  - 'sonar-python-plugin-5.20.0.32295.jar' # 26.4
+  - 'sonar-python-plugin-5.21.0.32726.jar' # 26.5
+  - 'sonar-python-plugin-5.23.0.33560.jar' # 26.6
+  - 'sonar-python-plugin-5.24.0.34324.jar' # 26.7
+  - 'sonar-python-plugin-5.27.0.35548.jar' # 26.8
 
   - 'sonar-kotlin-plugin-1.0.1.965.jar'
   - 'sonar-kotlin-plugin-1.2.1.2009.jar'
