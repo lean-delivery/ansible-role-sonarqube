@@ -193,7 +193,7 @@ php_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}3.54.0.15452\
 
 jacoco_pversion: 1.5.0.5174
 
-iac_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.5.0.18803\
+iac_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}2.13.0.21933\
                {% elif sonar_version is version(\"9.6\", \">=\") %}1.51.0.16714\
                {% elif sonar_version is version(\"8.9\", \">=\") %}1.16.0.3845\
                {% else %}0.0.0\
@@ -697,6 +697,11 @@ sonar_excluded_plugins:
   - 'sonar-iac-plugin-2.2.0.18377.jar' # 25.12
   - 'sonar-iac-plugin-2.4.0.18716.jar' # 26.1
   - 'sonar-iac-plugin-2.5.0.18803.jar' # 26.2
+  - 'sonar-iac-plugin-2.6.1.19203.jar' # 26.3
+  - 'sonar-iac-plugin-2.8.0.19776.jar' # 26.4
+  - 'sonar-iac-plugin-2.10.0.20406.jar' # 26.5
+  - 'sonar-iac-plugin-2.12.0.21417.jar' # 26.7
+  - 'sonar-iac-plugin-2.13.0.21933.jar' # 26.8
 
   - 'sonar-config-plugin-1.1.0.185.jar'
   - 'sonar-config-plugin-1.2.0.267.jar'
