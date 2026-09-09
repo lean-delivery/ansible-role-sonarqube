@@ -169,7 +169,8 @@ python_pversion: "{% if sonar_version is version(\"9.6\", \">=\") %}5.27.0.35548
                   {% else %}0.0.0\
                   {% endif %}"
 
-kotlin_pversion: "{% if sonar_version is version(\"24.12\", \">=\") %}3.10.0.9888\
+kotlin_pversion: "{% if sonar_version is version(\"26.01\", \">=\") %}3.10.0.9888\
+                  {% elif sonar_version is version(\"24.12\", \">=\") %}3.9.0.9809\
                   {% elif sonar_version is version(\"9.6\", \">=\") %}2.23.0.6359\
                   {% elif sonar_version is version(\"7.3\", \">=\") %}2.12.1.2158\
                   {% else %}0.0.0\
